@@ -1,9 +1,9 @@
-Node
 AnimationPlayer
 AudioStreamPlayer2D
 CollisionShape2D
 AnimatedSprite2D
 Area2D
+Node
 Container
 Timer
 Label

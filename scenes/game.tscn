@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://g77a77m022qm"]
+[gd_scene load_steps=18 format=3 uid="uid://g77a77m022qm"]
 
 [ext_resource type="Texture2D" uid="uid://kpld5n16lvkg" path="res://assets/sprites/world_tileset.png" id="1_0yvkf"]
 [ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_iry8t"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://scripts/slime.gd" id="7_iu8et"]
 [ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="8_cwuaj"]
 [ext_resource type="PackedScene" uid="uid://b2r4pg8bhe8a0" path="res://scenes/mob.tscn" id="10_kksdw"]
+[ext_resource type="PackedScene" uid="uid://gmlljj8gkgwh" path="res://scenes/apple.tscn" id="11_5btnk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yfw1x"]
 texture = ExtResource("1_0yvkf")
@@ -585,3 +586,6 @@ position = Vector2(664, 10)
 
 [node name="coin11" parent="coins" instance=ExtResource("5_5ioh3")]
 position = Vector2(648, 10)
+
+[node name="apple" parent="." instance=ExtResource("11_5btnk")]
+position = Vector2(152, 40)

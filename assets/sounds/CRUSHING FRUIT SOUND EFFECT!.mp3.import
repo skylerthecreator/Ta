@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://krjhctgv6iyp"
+path="res://.godot/imported/CRUSHING FRUIT SOUND EFFECT!.mp3-e10cd40f1a13a811772fbcea5202c422.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/CRUSHING FRUIT SOUND EFFECT!.mp3"
+dest_files=["res://.godot/imported/CRUSHING FRUIT SOUND EFFECT!.mp3-e10cd40f1a13a811772fbcea5202c422.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

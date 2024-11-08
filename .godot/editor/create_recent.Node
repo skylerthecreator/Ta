@@ -1,0 +1,14 @@
+Node
+AnimationPlayer
+AudioStreamPlayer2D
+CollisionShape2D
+AnimatedSprite2D
+Area2D
+Container
+Timer
+Label
+RayCast2D
+Node2D
+Sprite2D
+AnimatableBody2D
+TileMap

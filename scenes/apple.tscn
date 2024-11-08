@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://gmlljj8gkgwh"]
+[gd_scene load_steps=12 format=3 uid="uid://gmlljj8gkgwh"]
 
 [ext_resource type="Script" path="res://scripts/apple.gd" id="1_o0245"]
 [ext_resource type="Texture2D" uid="uid://ccef0dadgimk3" path="res://assets/sprites/fruit.png" id="2_velvs"]
@@ -9,6 +9,10 @@
 atlas = ExtResource("2_velvs")
 region = Rect2(0, 48, 16, 16)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_sorl4"]
+atlas = ExtResource("2_velvs")
+region = Rect2(16, 32, 16, 16)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_s160n"]
 animations = [{
 "frames": [{
@@ -18,10 +22,19 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sorl4")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_5fbgx"]
-radius = 5.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1u00w"]
+radius = 3.0
+height = 14.0
 
 [sub_resource type="Animation" id="Animation_0o1hw"]
 length = 0.001
@@ -126,11 +139,13 @@ collision_mask = 2
 script = ExtResource("1_o0245")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_s160n")
+animation = &"new_animation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
-shape = SubResource("CircleShape2D_5fbgx")
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_1u00w")
 
 [node name="eating" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_p4gg8")

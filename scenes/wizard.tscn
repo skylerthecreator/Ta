@@ -41,8 +41,8 @@ animations = [{
 [node name="wizard" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -13)
-scale = Vector2(0.78125, 0.78125)
+position = Vector2(0, -17)
+scale = Vector2(0.800781, 1.03289)
 sprite_frames = SubResource("SpriteFrames_ibduq")
 autoplay = "default"
-frame_progress = 0.0146918
+frame_progress = 0.967493

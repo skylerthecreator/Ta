@@ -4,6 +4,7 @@ const ROLL_SPEED = 300
 const SPEED = 130
 const JUMP_VELOCITY = -300
 const MAX_HP = 5
+const PRIORITY_MOVEMENT = ["attack1", "attack2", "wake", "hit"]
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -22,6 +23,7 @@ var hp = 1
 var coins = 0
 var rolling = false
 var waking_up = true
+
 	
 func _physics_process(delta):
 	if waking_up:
@@ -40,6 +42,11 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			jump.play()
 			velocity.y = JUMP_VELOCITY
+		
+		if Input.is_action_just_pressed("attack1"):
+			animated_sprite.play("attack1")
+		if Input.is_action_just_pressed("attack2"):
+			animated_sprite.play("attack2")
 			
 
 
@@ -63,7 +70,7 @@ func _physics_process(delta):
 			footsteps.stop()
 		
 		# play animations
-		if (animated_sprite.animation == "hit" and animated_sprite.is_playing()) or (animated_sprite.animation == "wake" and animated_sprite.is_playing()):
+		if (PRIORITY_MOVEMENT.count(animated_sprite.animation) != 0) and animated_sprite.is_playing():
 			pass
 		else:
 			if is_on_floor():
@@ -85,13 +92,15 @@ func _physics_process(delta):
 		tracker.text = ""
 		for i in range(hp):
 			tracker.text += "❤️"
+		for i in range(MAX_HP - hp):
+			tracker.text += "🖤"
 		tracker.text += "\n"
 		tracker.text += "🪙x" + str(game_manager.score)
 		if !(animated_sprite.animation == "wake" and animated_sprite.is_playing()):
 			move_and_slide()
 		
 	else:
-		tracker.text = "💀"
+		tracker.text = "🖤🖤🖤🖤🖤" + "\n" + "🪙x" + str(game_manager.score)
 		animated_sprite.play("death")
 
 

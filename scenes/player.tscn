@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://cqnov4vrpq7a2"]
+[gd_scene load_steps=104 format=3 uid="uid://cqnov4vrpq7a2"]
 
 [ext_resource type="Texture2D" uid="uid://7m08lj5fcomy" path="res://assets/sprites/knight.png" id="1_5advg"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_osmlu"]
@@ -706,6 +706,8 @@ animations = [{
 radius = 7.0
 height = 32.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bsia8"]
+
 [node name="player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_osmlu")
@@ -714,10 +716,10 @@ script = ExtResource("1_osmlu")
 position = Vector2(3, -34.75)
 scale = Vector2(0.8625, 0.86875)
 sprite_frames = SubResource("SpriteFrames_vvjdw")
-animation = &"attack2"
+animation = &"attack1"
 autoplay = "wake"
-frame = 5
-frame_progress = 1.0
+frame = 1
+frame_progress = 0.0797573
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = 5
@@ -734,3 +736,8 @@ bus = &"SFX"
 
 [node name="footsteps" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("5_0lds3")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+position = Vector2(25, -35)
+shape = SubResource("CircleShape2D_bsia8")
+target_position = Vector2(24, 24)

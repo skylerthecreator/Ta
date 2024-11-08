@@ -18,12 +18,16 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var dead = false
 var hit = false
-var hp = MAX_HP
+var hp = 1
 var coins = 0
 var rolling = false
+var waking_up = true
 	
 func _physics_process(delta):
-	if hit:
+	if waking_up:
+		animated_sprite.play("wake")
+		waking_up = false
+	elif hit:
 		hurt.play()
 		animated_sprite.play("hit")
 		hit = false
@@ -59,7 +63,7 @@ func _physics_process(delta):
 			footsteps.stop()
 		
 		# play animations
-		if animated_sprite.animation == "hit" and animated_sprite.is_playing():
+		if (animated_sprite.animation == "hit" and animated_sprite.is_playing()) or (animated_sprite.animation == "wake" and animated_sprite.is_playing()):
 			pass
 		else:
 			if is_on_floor():
@@ -83,7 +87,8 @@ func _physics_process(delta):
 			tracker.text += "❤️"
 		tracker.text += "\n"
 		tracker.text += "🪙x" + str(game_manager.score)
-		move_and_slide()
+		if !(animated_sprite.animation == "wake" and animated_sprite.is_playing()):
+			move_and_slide()
 		
 	else:
 		tracker.text = "💀"

@@ -5,5 +5,8 @@ res://scenes/slime.tscn
 res://scenes/mob.tscn
 res://scenes/coin.tscn
 res://scenes/game.tscn
-res://scripts/apple.gd
 res://scenes/apple.tscn
+res://scripts/player.gd
+res://scripts/coin.gd
+res://scenes/wizard.tscn
+res://scripts/killzone.gd

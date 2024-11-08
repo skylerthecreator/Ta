@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://dg73ggkblgcq2"]
+
+[ext_resource type="Texture2D" uid="uid://etnaojc6rt1t" path="res://assets/sprites/Pixel Crawler - FREE - 1.8/Heroes/Wizzard/Idle/Idle-Sheet.png" id="1_qh3ef"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbofb"]
+atlas = ExtResource("1_qh3ef")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fxehp"]
+atlas = ExtResource("1_qh3ef")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlkpt"]
+atlas = ExtResource("1_qh3ef")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxfnu"]
+atlas = ExtResource("1_qh3ef")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ibduq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbofb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fxehp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jlkpt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxfnu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="wizard" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -13)
+scale = Vector2(0.78125, 0.78125)
+sprite_frames = SubResource("SpriteFrames_ibduq")
+autoplay = "default"
+frame_progress = 0.0146918

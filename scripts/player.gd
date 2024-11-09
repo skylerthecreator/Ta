@@ -54,7 +54,8 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("attack2"):
 			animated_sprite.play("attack2")
 		'''
-
+		if buy:
+			buy = false
 		if Input.is_action_just_pressed("pickup"):
 			buy = true
 		# Get the input direction and handle the movement/deceleration.

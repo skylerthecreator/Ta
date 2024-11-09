@@ -11,3 +11,4 @@ res://scenes/apple.tscn
 res://scenes/wizard.tscn
 res://scenes/player.tscn
 res://scripts/coin.gd
+res://scenes/merchant.tscn

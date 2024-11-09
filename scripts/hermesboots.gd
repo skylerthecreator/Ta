@@ -5,7 +5,7 @@ extends Area2D
 @onready var insufficientfunds = $insufficientfunds
 
 
-const COST = 5
+const COST = 8
 const SPEED_INC = 50
 var player = null
 

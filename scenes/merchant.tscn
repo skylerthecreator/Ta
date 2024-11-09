@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://c1fnbvgv6vvqc"]
+
+[ext_resource type="Texture2D" uid="uid://huxe38l7bfh7" path="res://assets/sprites/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Rogue/Idle/Idle-Sheet.png" id="1_fxciy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y56eh"]
+atlas = ExtResource("1_fxciy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nru08"]
+atlas = ExtResource("1_fxciy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xj5co"]
+atlas = ExtResource("1_fxciy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2lf6"]
+atlas = ExtResource("1_fxciy")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_idjhg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y56eh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nru08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xj5co")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2lf6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="merchant" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_idjhg")
+frame = 1
+frame_progress = 0.674555
+flip_h = true

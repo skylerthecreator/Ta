@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bhi0vprfpallj"]
 
-[ext_resource type="Texture2D" uid="uid://cenjmro0jdis7" path="res://assets/sprites/slime_green.png" id="1_78qar"]
+[ext_resource type="Texture2D" uid="uid://cenjmro0jdis7" path="res://assets/sprites/default/slime_green.png" id="1_78qar"]
 [ext_resource type="PackedScene" uid="uid://b2r4pg8bhe8a0" path="res://scenes/mob.tscn" id="2_f2bf7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vmit0"]
@@ -42,7 +42,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6pcrf"]
 size = Vector2(10, 13)
 
-[node name="slime" type="Node2D"]
+[node name="slime" type="Node2D" groups=["enemies"]]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)

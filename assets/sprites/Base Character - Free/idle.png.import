@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpkoc5l7b32s2"
-path="res://.godot/imported/slime_purple.png-26dc5ddef235ce6a400e78e0d532b050.ctex"
+uid="uid://bflo8lhf88ddx"
+path="res://.godot/imported/idle.png-43a378b9ff90cb76c40f039868acafaf.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/slime_purple.png"
-dest_files=["res://.godot/imported/slime_purple.png-26dc5ddef235ce6a400e78e0d532b050.ctex"]
+source_file="res://assets/sprites/Base Character - Free/idle.png"
+dest_files=["res://.godot/imported/idle.png-43a378b9ff90cb76c40f039868acafaf.ctex"]
 
 [params]
 

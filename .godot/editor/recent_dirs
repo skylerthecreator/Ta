@@ -1,8 +1,12 @@
-res://assets/sprites/Colour1/NoOutline/120x80_PNGSheets
+res://scenes
+res://scripts
+res://assets/sprites/ITEMS
+res://assets/sprites/Base Character - Free
+res://assets/sprites/Pixel Crawler - FREE - 1.8/Enemy/Orc Crew/Orc/Death
+res://assets/sprites/Pixel Crawler - FREE - 1.8/Enemy/Orc Crew/Orc/Run
+res://assets/sprites/Pixel Crawler - FREE - 1.8/Enemy/Orc Crew/Orc/Idle
 res://assets/sprites/Pixel Crawler - FREE - 1.8/Heroes/Knight/Run
 res://assets/sprites/Pixel Crawler - FREE - 1.8/Heroes/Knight/Death
 res://assets/sprites
-res://scenes
 res://assets/sprites/Pixel Crawler - FREE - 1.8/Heroes/Wizzard/Idle
-res://scripts
 res://

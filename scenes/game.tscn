@@ -1426,7 +1426,7 @@ I ADVISE YOU TO COLLECT AS MANY AS YOU CAN."
 
 [node name="player" parent="." instance=ExtResource("2_3id2r")]
 z_index = 5
-position = Vector2(457, -1)
+position = Vector2(-470, 49)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(0, -7)

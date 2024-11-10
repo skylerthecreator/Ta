@@ -12,26 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://mljc1me0r15" path="res://assets/sprites/Base Character - Free/run.png" id="8_awsxe"]
 [ext_resource type="AudioStream" uid="uid://bel7rsw05p663" path="res://assets/sounds/skills/spell1.wav" id="11_i3pre"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o6ke0"]
-atlas = ExtResource("2_52nr7")
-region = Rect2(0, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_m0u4m"]
-atlas = ExtResource("2_52nr7")
-region = Rect2(80, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5c85o"]
-atlas = ExtResource("2_52nr7")
-region = Rect2(240, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3h3bj"]
-atlas = ExtResource("2_52nr7")
-region = Rect2(320, 0, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_llrgx"]
-atlas = ExtResource("2_52nr7")
-region = Rect2(400, 0, 80, 80)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_wolkd"]
 atlas = ExtResource("4_6shg8")
 region = Rect2(0, 0, 80, 80)
@@ -144,6 +124,26 @@ region = Rect2(480, 0, 80, 80)
 atlas = ExtResource("8_awsxe")
 region = Rect2(560, 0, 80, 80)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6ke0"]
+atlas = ExtResource("2_52nr7")
+region = Rect2(0, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m0u4m"]
+atlas = ExtResource("2_52nr7")
+region = Rect2(80, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5c85o"]
+atlas = ExtResource("2_52nr7")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3h3bj"]
+atlas = ExtResource("2_52nr7")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llrgx"]
+atlas = ExtResource("2_52nr7")
+region = Rect2(400, 0, 80, 80)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_aux1u"]
 atlas = ExtResource("4_6shg8")
 region = Rect2(400, 0, 80, 80)
@@ -170,26 +170,6 @@ region = Rect2(0, 0, 80, 80)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vvjdw"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o6ke0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_m0u4m")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5c85o")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3h3bj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_llrgx")
-}],
-"loop": false,
-"name": &"attack1",
-"speed": 10.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wolkd")
@@ -268,7 +248,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"jump",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -301,6 +281,26 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_o6ke0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m0u4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5c85o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3h3bj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llrgx")
+}],
+"loop": false,
+"name": &"skill1",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_aux1u")
 }, {
 "duration": 1.0,
@@ -328,7 +328,7 @@ radius = 7.0
 height = 18.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4sodr"]
-radius = 34.5324
+radius = 36.8345
 
 [node name="player" type="CharacterBody2D"]
 collision_layer = 2
@@ -338,9 +338,8 @@ script = ExtResource("1_osmlu")
 position = Vector2(0, -8)
 scale = Vector2(1.15938, 1.16778)
 sprite_frames = SubResource("SpriteFrames_vvjdw")
-animation = &"jump"
+animation = &"skill1"
 autoplay = "wake"
-frame_progress = 0.906757
 
 [node name="playeroutline" type="CollisionShape2D" parent="."]
 z_index = 5
@@ -359,19 +358,23 @@ bus = &"SFX"
 stream = ExtResource("5_0lds3")
 bus = &"SFX"
 
-[node name="spell1" type="AudioStreamPlayer2D" parent="."]
+[node name="skill1sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_i3pre")
 bus = &"SFX"
 
-[node name="attack1" type="Area2D" parent="."]
+[node name="skill1outline" type="Area2D" parent="."]
 position = Vector2(7.15256e-07, -35)
 scale = Vector2(0.8625, 0.86875)
 
-[node name="attack1outline" type="CollisionShape2D" parent="attack1"]
+[node name="circle" type="CollisionShape2D" parent="skill1outline"]
 position = Vector2(-8.29282e-07, 28.777)
 rotation = 1.5708
 shape = SubResource("CircleShape2D_4sodr")
 debug_color = Color(0.876622, 0.318657, 0.338226, 0.42)
 
-[connection signal="area_entered" from="attack1" to="." method="_on_attack_1_area_entered"]
-[connection signal="area_exited" from="attack1" to="." method="_on_attack_1_area_exited"]
+[node name="skill1cd" type="Timer" parent="."]
+wait_time = 3.0
+
+[connection signal="area_entered" from="skill1outline" to="." method="_on_skill_1_outline_area_entered"]
+[connection signal="area_exited" from="skill1outline" to="." method="_on_skill_1_outline_area_exited"]
+[connection signal="timeout" from="skill1cd" to="." method="_on_skill_1_cd_timeout"]

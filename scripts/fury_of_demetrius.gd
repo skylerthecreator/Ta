@@ -4,9 +4,7 @@ extends Area2D
 @onready var game_manager = %GameManager
 @onready var insufficientfunds = $insufficientfunds
 
-
-const COST = 8
-const SPEED_INC = 25
+const COST = 0
 var player = null
 
 func _on_body_entered(body):
@@ -17,7 +15,7 @@ func _process(delta):
 	if player and player.buy and game_manager.score >= COST:
 		game_manager.score -= COST
 		player.coins -= COST
-		player.speed += SPEED_INC
+		player.skill1 = true
 		animation_player.play("pickup")
 		player = null
 	elif player and player.buy and game_manager.score < COST:
@@ -25,7 +23,3 @@ func _process(delta):
 		
 func _on_body_exited(body):
 	player = null
-	
-
-
-

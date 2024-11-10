@@ -2,10 +2,10 @@ extends CharacterBody2D
 
 
 const ROLL_SPEED = 300
-const SPEED = 130
-const JUMP_VELOCITY = -250
+const SPEED = 100
+const JUMP_VELOCITY = -225
 const MAX_HP = 5
-const PRIORITY_MOVEMENT = ["attack1", "wake", "hit"]
+const PRIORITY_MOVEMENT = ["skill1", "wake", "hit"]
 
 var speed = SPEED
 var hp = 1
@@ -19,11 +19,14 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var game_manager = %GameManager
 @onready var tracker = $Camera2D/tracker
 @onready var footsteps = $footsteps
-@onready var s1 = $spell1
+@onready var s1 = $skill1sound
+@onready var skill_1_cd = $skill1cd
+
+
 
 # signal facing_dir_changed(facing_right : bool)
 var buy = false
-var areas = null
+var areas = []
 
 var dead = false
 var hit = false
@@ -31,7 +34,8 @@ var coins = 0
 var rolling = false
 var waking_up = true
 var attacking = false
-
+var attack_ready = true
+var skill1 = false
 	
 func _physics_process(delta):
 	if waking_up:
@@ -46,8 +50,8 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			jump.play()
 			velocity.y = JUMP_VELOCITY
-		if Input.is_action_just_pressed("attack1"):
-			_attack1()
+		if Input.is_action_just_pressed("skill1"):
+			_skill1()
 		if buy:
 			buy = false
 		if Input.is_action_just_pressed("pickup"):
@@ -101,12 +105,15 @@ func _update_tracker():
 	tracker.text += "\n"
 	tracker.text += "🪙x" + str(game_manager.score)
 	
-func _attack1():
-	if !(animated_sprite.animation == "attack1" and animated_sprite.is_playing()):
+func _skill1():
+	if !(animated_sprite.animation == "skill1" and animated_sprite.is_playing()) and attack_ready and skill1:
 		s1.play()
-		animated_sprite.play("attack1")
+		animated_sprite.play("skill1")
 		if areas:
-			areas.hit = true
+			for area in areas:
+				area.hit = true
+		attack_ready = false
+		skill_1_cd.start()
 
 func _flip(direction: int):
 	if direction > 0:
@@ -122,9 +129,17 @@ func _play_movement_animations(direction: int):
 	else:
 		animated_sprite.play("jump")
 
-func _on_attack_1_area_entered(area):
-	if area.is_in_group("enemies"):
-		areas = area
 
-func _on_attack_1_area_exited(area):
-	areas = null
+func _on_skill_1_outline_area_entered(area):
+	if area.is_in_group("enemies"):
+		areas.append(area)
+
+
+func _on_skill_1_outline_area_exited(area):
+	var index = areas.find(area,0)
+	if (index != -1):
+		areas.remove_at(index)
+
+
+func _on_skill_1_cd_timeout():
+	attack_ready = true

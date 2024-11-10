@@ -25,10 +25,9 @@ func _process(delta):
 	if ray_cast_left.is_colliding():
 		direction = 1
 		animated_sprite.flip_h = false
-	if hp > 0:
-		position.x += direction * delta * SPEED
 	if !(animated_sprite.animation == "hit" and animated_sprite.is_playing()) and hp > 0:
 		animated_sprite.play("default")
+		position.x += direction * delta * SPEED
 	if mob.hit and hp > 1:
 		animated_sprite.play("hit")
 		hp -= 1

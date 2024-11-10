@@ -1,8 +1,11 @@
-AnimationPlayer
+RayCast2D
 AudioStreamPlayer2D
+AnimationPlayer
 CollisionShape2D
-AnimatedSprite2D
+Sprite2D
+CharacterBody2D
 Area2D
+AnimatedSprite2D
 Node
 StaticBody2D
 TileMap
@@ -10,5 +13,3 @@ Node2D
 ShapeCast2D
 Container
 Timer
-Label
-RayCast2D

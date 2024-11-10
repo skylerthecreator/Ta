@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/mob.gd" id="1_w2qi5"]
 
-[node name="mob" type="Area2D" groups=["enemies"]]
+[node name="mob" type="Area2D"]
 collision_mask = 2
 script = ExtResource("1_w2qi5")
 

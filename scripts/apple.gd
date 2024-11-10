@@ -1,6 +1,6 @@
 extends Area2D
 
-const COINS_PER_APPLE = 3
+const COINS_PER_APPLE = 2
 
 @onready var animation_player = $AnimationPlayer
 @onready var game_manager = %GameManager

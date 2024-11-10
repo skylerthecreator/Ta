@@ -1,8 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://gmlljj8gkgwh"]
+[gd_scene load_steps=11 format=3 uid="uid://gmlljj8gkgwh"]
 
 [ext_resource type="Script" path="res://scripts/apple.gd" id="1_o0245"]
 [ext_resource type="Texture2D" uid="uid://ccef0dadgimk3" path="res://assets/sprites/default/fruit.png" id="2_velvs"]
-[ext_resource type="AudioStream" uid="uid://krjhctgv6iyp" path="res://assets/sounds/CRUSHING FRUIT SOUND EFFECT!.mp3" id="3_p4gg8"]
 [ext_resource type="AudioStream" uid="uid://cho05bhax1mq2" path="res://assets/sounds/power_up.wav" id="4_txp0g"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s08p2"]
@@ -147,9 +146,6 @@ animation = &"new_animation"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_1u00w")
-
-[node name="eating" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_p4gg8")
 
 [node name="powerup" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_txp0g")

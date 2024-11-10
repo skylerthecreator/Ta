@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwj7ef1aq2yrf"]
+
+[ext_resource type="Texture2D" uid="uid://cgokukgh0wyxk" path="res://assets/sprites/traps/singlespike.png" id="2_jkmni"]
+[ext_resource type="PackedScene" uid="uid://b2r4pg8bhe8a0" path="res://scenes/mob.tscn" id="3_e8q27"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1h31d"]
+atlas = ExtResource("2_jkmni")
+region = Rect2(0, 0, 16, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dcda8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1h31d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sakho"]
+size = Vector2(16, 5)
+
+[node name="spike" type="Area2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dcda8")
+
+[node name="mob" parent="." instance=ExtResource("3_e8q27")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="mob"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_sakho")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

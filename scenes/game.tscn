@@ -1820,10 +1820,10 @@ HERE, HAVE THIS HEALING POTION.
 "
 
 [node name="wizarddl3" type="Label" parent="labels"]
-offset_left = 449.0
-offset_top = -129.0
-offset_right = 683.0
-offset_bottom = -55.0
+offset_left = 447.0
+offset_top = -117.0
+offset_right = 681.0
+offset_bottom = -43.0
 theme_override_colors/font_color = Color(0.576471, 0.176471, 0.545098, 1)
 theme_override_fonts/font = ExtResource("8_cwuaj")
 theme_override_font_sizes/font_size = 8
@@ -2014,6 +2014,9 @@ position = Vector2(600, 10)
 [node name="hermesboots" parent="friendlies/items" instance=ExtResource("14_qg6jb")]
 position = Vector2(1223, 143)
 
+[node name="Fury of Demetrius" parent="friendlies/items" instance=ExtResource("18_v616t")]
+position = Vector2(-232, 48)
+
 [node name="NPCS" type="Node" parent="friendlies"]
 
 [node name="merchant" parent="friendlies/NPCS" instance=ExtResource("12_irqes")]
@@ -2081,6 +2084,10 @@ position = Vector2(760, 16)
 [node name="slime2" parent="Enemies" instance=ExtResource("6_sac27")]
 z_index = 5
 position = Vector2(472, 16)
+
+[node name="slime7" parent="Enemies" instance=ExtResource("6_sac27")]
+z_index = 5
+position = Vector2(-298, 43)
 
 [node name="slime3" parent="Enemies" instance=ExtResource("6_sac27")]
 z_index = 5
@@ -2176,6 +2183,3 @@ position = Vector2(184, 13)
 
 [node name="healing_potion" parent="." instance=ExtResource("17_3yjrd")]
 position = Vector2(-168, 24)
-
-[node name="Fury of Demetrius" parent="." instance=ExtResource("18_v616t")]
-position = Vector2(-232, 48)

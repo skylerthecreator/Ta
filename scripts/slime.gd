@@ -2,7 +2,7 @@ extends Node2D
 
 const SPEED = 60
 var direction = 1
-const HEALTH = 3
+const MAX_HP = 3
 
 @onready var ray_cast_right = $RayCastRight
 @onready var ray_cast_left = $RayCastLeft
@@ -11,14 +11,17 @@ const HEALTH = 3
 @onready var animation_player = $AnimationPlayer
 @onready var ray_cast_below = $RayCastBelow
 @onready var ray_cast_below_2 = $RayCastBelow2
+@onready var healthbar = $healthbar
 
 
 
-var hp = HEALTH
+
+var hp = MAX_HP
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 		
 func _process(delta):
+	update_health()
 	if ray_cast_right.is_colliding():
 		direction = -1
 		animated_sprite.flip_h = true
@@ -28,16 +31,23 @@ func _process(delta):
 	if !(animated_sprite.animation == "hit" and animated_sprite.is_playing()) and hp > 0:
 		animated_sprite.play("default")
 		position.x += direction * delta * SPEED
-	if mob.hit and hp > 1:
-		animated_sprite.play("hit")
-		hp -= 1
-		mob.hit = false
-	elif mob.hit:
-		hp -= 1
-		animated_sprite.play("die")
-		animation_player.play("die")
-		
+
+
 	
+func update_health():
+	if mob.hit:
+		hp -= 1
+		healthbar.value = (hp * 100 / MAX_HP)
+		if hp > 0:
+			animated_sprite.play("hit")
+			mob.hit = false
+		else:
+			animated_sprite.play("die")
+			animation_player.play("die")
+	if hp >= MAX_HP:
+		healthbar.visible = false
+	else:
+		healthbar.visible = true
 		
 
 

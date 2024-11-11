@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_osmlu"]
 [ext_resource type="Texture2D" uid="uid://bbvvpsist7yt8" path="res://assets/sprites/Base Character - Free/attack.png" id="2_52nr7"]
-[ext_resource type="AudioStream" uid="uid://cucstecr1htjm" path="res://assets/sounds/jump.wav" id="3_88e4m"]
 [ext_resource type="Texture2D" uid="uid://xsqgr3c7o1fp" path="res://assets/sprites/Base Character - Free/death.png" id="4_6shg8"]
 [ext_resource type="AudioStream" uid="uid://lm1o1sncijak" path="res://assets/sounds/hurt.wav" id="4_nh6jv"]
 [ext_resource type="AudioStream" uid="uid://bvnxuig2xfvso" path="res://assets/sounds/footstepsedit.mp3" id="5_0lds3"]
 [ext_resource type="Texture2D" uid="uid://cq5xtowfvesjx" path="res://assets/sprites/Base Character - Free/damage.png" id="5_ccw1a"]
 [ext_resource type="Texture2D" uid="uid://bflo8lhf88ddx" path="res://assets/sprites/Base Character - Free/idle.png" id="6_xaeln"]
 [ext_resource type="Texture2D" uid="uid://l3qqhdign4rp" path="res://assets/sprites/Base Character - Free/jump.png" id="7_rvgro"]
+[ext_resource type="AudioStream" uid="uid://dw8kenwgr1pdb" path="res://assets/sounds/jump2.wav" id="8_11tyn"]
 [ext_resource type="Texture2D" uid="uid://mljc1me0r15" path="res://assets/sprites/Base Character - Free/run.png" id="8_awsxe"]
 [ext_resource type="AudioStream" uid="uid://bel7rsw05p663" path="res://assets/sounds/skills/spell1.wav" id="11_i3pre"]
 
@@ -298,12 +298,12 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ptx1i")
 }, {
-"duration": 5.0,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_ka06o")
 }],
 "loop": false,
 "name": &"skill0",
-"speed": 3.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -378,7 +378,7 @@ position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_2qq0b")
 
 [node name="jump" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_88e4m")
+stream = ExtResource("8_11tyn")
 bus = &"SFX"
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="."]
@@ -415,3 +415,5 @@ shape = SubResource("RectangleShape2D_beybn")
 [connection signal="area_entered" from="skill1outline" to="." method="_on_skill_1_outline_area_entered"]
 [connection signal="area_exited" from="skill1outline" to="." method="_on_skill_1_outline_area_exited"]
 [connection signal="timeout" from="skill1cd" to="." method="_on_skill_1_cd_timeout"]
+[connection signal="area_entered" from="skill0outline" to="." method="_on_skill_0_outline_area_entered"]
+[connection signal="area_exited" from="skill0outline" to="." method="_on_skill_0_outline_area_exited"]

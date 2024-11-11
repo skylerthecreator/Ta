@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/apple.gd" id="1_o0245"]
 [ext_resource type="Texture2D" uid="uid://ccef0dadgimk3" path="res://assets/sprites/default/fruit.png" id="2_velvs"]
-[ext_resource type="AudioStream" uid="uid://cho05bhax1mq2" path="res://assets/sounds/power_up.wav" id="4_txp0g"]
+[ext_resource type="AudioStream" uid="uid://cvq7tnqeurpqy" path="res://assets/sounds/pickupsounds/berry.mp3" id="3_sigv6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s08p2"]
 atlas = ExtResource("2_velvs")
@@ -76,6 +76,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_7xj16"]
 resource_name = "eating"
+length = 1.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -107,7 +108,7 @@ tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(1.3),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -148,8 +149,8 @@ position = Vector2(0, -3)
 shape = SubResource("CapsuleShape2D_1u00w")
 
 [node name="powerup" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_txp0g")
-bus = &"SFX"
+stream = ExtResource("3_sigv6")
+bus = &"Quiet"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

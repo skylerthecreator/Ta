@@ -1935,6 +1935,9 @@ position = Vector2(2284, -71)
 [node name="apple7" parent="friendlies/apples" instance=ExtResource("11_5btnk")]
 position = Vector2(937, -95)
 
+[node name="apple9" parent="friendlies/apples" instance=ExtResource("11_5btnk")]
+position = Vector2(-152, 31)
+
 [node name="coins" type="Node" parent="friendlies"]
 
 [node name="coin" parent="friendlies/coins" instance=ExtResource("5_5ioh3")]
@@ -2087,7 +2090,7 @@ position = Vector2(472, 16)
 
 [node name="slime7" parent="Enemies" instance=ExtResource("6_sac27")]
 z_index = 5
-position = Vector2(-298, 43)
+position = Vector2(-40, 45)
 
 [node name="slime3" parent="Enemies" instance=ExtResource("6_sac27")]
 z_index = 5

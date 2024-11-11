@@ -1,5 +1,5 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1731309723
+::res://::1731315457
 default_bus_layout.tres::AudioBusLayout::4952399996335579903::1731027222::0::1::::<><>::
 export_presets.cfg::TextFile::-1::1731030826::0::1::::<><>::
 icon.svg::CompressedTexture2D::8077809773837181982::1731003597::1731108425::1::::<><>::
@@ -11,7 +11,7 @@ PixelOperator8.ttf::FontFile::1650657746124306572::1731003670::1731003691::1::::
 ::res://assets/music/::1731027157
 new_bgm.mp3::AudioStreamMP3::3932272466646391005::1731027095::1731027157::1::::<><>::
 time_for_adventure.mp3::AudioStreamMP3::4131151052207378832::1731003670::1731012799::1::::<><>::
-::res://assets/sounds/::1731291884
+::res://assets/sounds/::1731316474
 coin2.wav::AudioStreamWAV::1082107430912481827::1731291836::1731291884::1::::<><>::
 coin.wav::AudioStreamWAV::8696188675701519719::1731003670::1731003682::1::::<><>::
 CRUSHING FRUIT SOUND EFFECT!.mp3::AudioStreamMP3::737541946391460775::1731032155::1731032226::1::::<><>::
@@ -20,13 +20,15 @@ error.wav::AudioStreamWAV::2214223687258098738::1731126974::1731126988::1::::<><
 explosion.wav::AudioStreamWAV::5069616302020334326::1731003670::1731003682::1::::<><>::
 footstepsedit.mp3::AudioStreamMP3::3888655948319626046::1731025232::1731025401::1::::<><>::
 hurt.wav::AudioStreamWAV::798454850000911406::1731003670::1731003682::1::::<><>::
+jump2.wav::AudioStreamWAV::8772156107188891075::1731316455::1731316474::1::::<><>::
 jump.wav::AudioStreamWAV::6181874045599412482::1731003670::1731003682::1::::<><>::
 power_up.wav::AudioStreamWAV::5294636123414327275::1731003670::1731003682::1::::<><>::
 slimedeath.wav::AudioStreamWAV::4973165950536581099::1731214645::1731214667::1::::<><>::
 snowfootsteps.wav::AudioStreamWAV::1797291573128776768::1731024474::1731025018::1::::<><>::
 tap.wav::AudioStreamWAV::6310679071549461418::1731003670::1731003682::1::::<><>::
 upgrade.wav::AudioStreamWAV::2588462753305918411::1731207686::1731207704::1::::<><>::
-::res://assets/sounds/pickupsounds/::1731279814
+::res://assets/sounds/pickupsounds/::1731316928
+berry.mp3::AudioStreamMP3::6281814709432135484::1731316928::1731316931::1::::<><>::
 fod.mp3::AudioStreamMP3::8444171616208624643::1731279806::1731279814::1::::<><>::
 ::res://assets/sounds/skills/::1731217672
 spell1.wav::AudioStreamWAV::2691858496387400110::1731217649::1731217672::1::::<><>::
@@ -164,24 +166,24 @@ peaks_1.png::CompressedTexture2D::6797257132465360456::1731203663::1731203677::1
 peaks_2.png::CompressedTexture2D::5400615607956691523::1731203663::1731203677::1::::<><>::
 peaks_3.png::CompressedTexture2D::7757765090181276155::1731203663::1731203677::1::::<><>::
 peaks_4.png::CompressedTexture2D::326319694040361405::1731203663::1731203677::1::::<><>::
-::res://scenes/::1731298981
-apple.tscn::PackedScene::446593613651475355::1731298179::0::1::::<><>::res://scripts/apple.gd<>uid://ccef0dadgimk3::::res://assets/sprites/default/fruit.png<>uid://cho05bhax1mq2::::res://assets/sounds/power_up.wav
+::res://scenes/::1731316607
+apple.tscn::PackedScene::446593613651475355::1731316606::0::1::::<><>::res://scripts/apple.gd<>uid://ccef0dadgimk3::::res://assets/sprites/default/fruit.png<>uid://cho05bhax1mq2::::res://assets/sounds/power_up.wav
 bgm.tscn::PackedScene::6406289469395342778::1731027187::0::1::::<><>::uid://bwa27nxiha5m4::::res://assets/music/new_bgm.mp3
-coin.tscn::PackedScene::6996842011515336017::1731298179::0::1::::<><>::uid://bqiaw0cmhwnow::::res://assets/sprites/default/coin.png<>res://scripts/coin.gd<>uid://pogfe5jjof4v::::res://assets/sounds/coin2.wav
-fury_of_demetrius.tscn::PackedScene::4778176888509731157::1731298179::0::1::::<><>::res://scripts/fury_of_demetrius.gd<>uid://bycqyfcposkyq::::res://assets/sprites/skills/skill1.png<>uid://6st68mn0dinq::::res://assets/sounds/error.wav<>uid://dskojjmr48h04::::res://assets/sounds/pickupsounds/fod.mp3
-game.tscn::PackedScene::489137824487306368::1731298981::0::1::::<><>::uid://kpld5n16lvkg::::res://assets/sprites/default/world_tileset.png<>res://scripts/gamemanager.gd<>uid://cqnov4vrpq7a2::::res://scenes/player.tscn<>uid://m7ni1fayt0tk::::res://scenes/platform.tscn<>uid://bxbyx5sxjkdkr::::res://assets/sprites/environment/trees.png<>uid://yqh6buypcw30::::res://scenes/killzone.tscn<>uid://c6xk73lautgxt::::res://scenes/coin.tscn<>uid://bhi0vprfpallj::::res://scenes/slime.tscn<>uid://xrudeiuywrxk::::res://assets/fonts/PixelOperator8.ttf<>uid://b2r4pg8bhe8a0::::res://scenes/mob.tscn<>uid://gmlljj8gkgwh::::res://scenes/apple.tscn<>uid://dg73ggkblgcq2::::res://scenes/wizard.tscn<>uid://c1fnbvgv6vvqc::::res://scenes/merchant.tscn<>uid://caosdi6rvgr7s::::res://assets/sprites/Pixel Crawler - FREE - 1.8/Environment/Green Woods/Assets/Trees.png<>uid://cq83vmu4o5p8i::::res://scenes/hermesboots.tscn<>uid://bwj7ef1aq2yrf::::res://scenes/spike.tscn<>uid://b1tymjfdyf48m::::res://scenes/healing_potion.tscn<>uid://cact4017uha0l::::res://scenes/fury_of_demetrius.tscn
-healing_potion.tscn::PackedScene::4252032913565115562::1731298179::0::1::::<><>::res://scripts/healing_potion.gd<>uid://kpld5n16lvkg::::res://assets/sprites/default/world_tileset.png<>uid://cw5u10dvd3upm::::res://assets/sounds/drinking.mp3
-hermesboots.tscn::PackedScene::5965725571461980310::1731298179::0::1::::<><>::res://scripts/hermesboots.gd<>uid://cguy8ginp06n4::::res://assets/sprites/ITEMS/hermes boots.png<>uid://bc44urq1efgw6::::res://assets/sounds/upgrade.wav<>uid://6st68mn0dinq::::res://assets/sounds/error.wav
+coin.tscn::PackedScene::6996842011515336017::1731316606::0::1::::<><>::uid://bqiaw0cmhwnow::::res://assets/sprites/default/coin.png<>res://scripts/coin.gd<>uid://pogfe5jjof4v::::res://assets/sounds/coin2.wav
+fury_of_demetrius.tscn::PackedScene::4778176888509731157::1731316607::0::1::::<><>::res://scripts/fury_of_demetrius.gd<>uid://bycqyfcposkyq::::res://assets/sprites/skills/skill1.png<>uid://6st68mn0dinq::::res://assets/sounds/error.wav<>uid://dskojjmr48h04::::res://assets/sounds/pickupsounds/fod.mp3
+game.tscn::PackedScene::489137824487306368::1731316606::0::1::::<><>::uid://kpld5n16lvkg::::res://assets/sprites/default/world_tileset.png<>res://scripts/gamemanager.gd<>uid://cqnov4vrpq7a2::::res://scenes/player.tscn<>uid://m7ni1fayt0tk::::res://scenes/platform.tscn<>uid://bxbyx5sxjkdkr::::res://assets/sprites/environment/trees.png<>uid://yqh6buypcw30::::res://scenes/killzone.tscn<>uid://c6xk73lautgxt::::res://scenes/coin.tscn<>uid://bhi0vprfpallj::::res://scenes/slime.tscn<>uid://xrudeiuywrxk::::res://assets/fonts/PixelOperator8.ttf<>uid://b2r4pg8bhe8a0::::res://scenes/mob.tscn<>uid://gmlljj8gkgwh::::res://scenes/apple.tscn<>uid://dg73ggkblgcq2::::res://scenes/wizard.tscn<>uid://c1fnbvgv6vvqc::::res://scenes/merchant.tscn<>uid://caosdi6rvgr7s::::res://assets/sprites/Pixel Crawler - FREE - 1.8/Environment/Green Woods/Assets/Trees.png<>uid://cq83vmu4o5p8i::::res://scenes/hermesboots.tscn<>uid://bwj7ef1aq2yrf::::res://scenes/spike.tscn<>uid://b1tymjfdyf48m::::res://scenes/healing_potion.tscn<>uid://cact4017uha0l::::res://scenes/fury_of_demetrius.tscn
+healing_potion.tscn::PackedScene::4252032913565115562::1731316606::0::1::::<><>::res://scripts/healing_potion.gd<>uid://kpld5n16lvkg::::res://assets/sprites/default/world_tileset.png<>uid://cw5u10dvd3upm::::res://assets/sounds/drinking.mp3
+hermesboots.tscn::PackedScene::5965725571461980310::1731316607::0::1::::<><>::res://scripts/hermesboots.gd<>uid://cguy8ginp06n4::::res://assets/sprites/ITEMS/hermes boots.png<>uid://dskojjmr48h04::::res://assets/sounds/pickupsounds/fod.mp3<>uid://6st68mn0dinq::::res://assets/sounds/error.wav
 killzone.tscn::PackedScene::1718042754468189353::1731133536::0::1::::<><>::res://scripts/killzone.gd
 merchant.tscn::PackedScene::6608865410700811950::1731133537::0::1::::<><>::uid://huxe38l7bfh7::::res://assets/sprites/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Rogue/Idle/Idle-Sheet.png
-mob.tscn::PackedScene::4318401829611424269::1731298178::0::1::::<><>::res://scripts/mob.gd
+mob.tscn::PackedScene::4318401829611424269::1731316606::0::1::::<><>::res://scripts/mob.gd
 music.tscn::PackedScene::7880023445249716589::1731012894::0::1::::<><>::uid://by4fppejrgqsm::::res://assets/music/time_for_adventure.mp3
-platform.tscn::PackedScene::909131192407478860::1731298179::0::1::::<><>::uid://quwuae10vtgf::::res://assets/sprites/default/platforms.png
-player.tscn::PackedScene::5923588872379390699::1731298178::0::1::::<><>::res://scripts/player.gd<>uid://bbvvpsist7yt8::::res://assets/sprites/Base Character - Free/attack.png<>uid://cucstecr1htjm::::res://assets/sounds/jump.wav<>uid://xsqgr3c7o1fp::::res://assets/sprites/Base Character - Free/death.png<>uid://lm1o1sncijak::::res://assets/sounds/hurt.wav<>uid://bvnxuig2xfvso::::res://assets/sounds/footstepsedit.mp3<>uid://cq5xtowfvesjx::::res://assets/sprites/Base Character - Free/damage.png<>uid://bflo8lhf88ddx::::res://assets/sprites/Base Character - Free/idle.png<>uid://l3qqhdign4rp::::res://assets/sprites/Base Character - Free/jump.png<>uid://mljc1me0r15::::res://assets/sprites/Base Character - Free/run.png<>uid://bel7rsw05p663::::res://assets/sounds/skills/spell1.wav
-slime.tscn::PackedScene::2895813852042132859::1731298179::0::1::::<><>::uid://cenjmro0jdis7::::res://assets/sprites/default/slime_green.png<>res://scripts/slime.gd<>uid://b2r4pg8bhe8a0::::res://scenes/mob.tscn<>uid://cc4bk1akj7trn::::res://assets/sounds/slimedeath.wav
-spike.tscn::PackedScene::3951105033264634367::1731298178::0::1::::<><>::uid://cgokukgh0wyxk::::res://assets/sprites/traps/singlespike.png<>uid://b2r4pg8bhe8a0::::res://scenes/mob.tscn
+platform.tscn::PackedScene::909131192407478860::1731316606::0::1::::<><>::uid://quwuae10vtgf::::res://assets/sprites/default/platforms.png
+player.tscn::PackedScene::5923588872379390699::1731316606::0::1::::<><>::res://scripts/player.gd<>uid://bbvvpsist7yt8::::res://assets/sprites/Base Character - Free/attack.png<>uid://xsqgr3c7o1fp::::res://assets/sprites/Base Character - Free/death.png<>uid://lm1o1sncijak::::res://assets/sounds/hurt.wav<>uid://bvnxuig2xfvso::::res://assets/sounds/footstepsedit.mp3<>uid://cq5xtowfvesjx::::res://assets/sprites/Base Character - Free/damage.png<>uid://bflo8lhf88ddx::::res://assets/sprites/Base Character - Free/idle.png<>uid://l3qqhdign4rp::::res://assets/sprites/Base Character - Free/jump.png<>uid://dw8kenwgr1pdb::::res://assets/sounds/jump2.wav<>uid://mljc1me0r15::::res://assets/sprites/Base Character - Free/run.png<>uid://bel7rsw05p663::::res://assets/sounds/skills/spell1.wav
+slime.tscn::PackedScene::2895813852042132859::1731316606::0::1::::<><>::uid://cenjmro0jdis7::::res://assets/sprites/default/slime_green.png<>res://scripts/slime.gd<>uid://b2r4pg8bhe8a0::::res://scenes/mob.tscn<>uid://cc4bk1akj7trn::::res://assets/sounds/slimedeath.wav
+spike.tscn::PackedScene::3951105033264634367::1731316606::0::1::::<><>::uid://cgokukgh0wyxk::::res://assets/sprites/traps/singlespike.png<>uid://b2r4pg8bhe8a0::::res://scenes/mob.tscn
 wizard.tscn::PackedScene::7648166322246819523::1731133537::0::1::::<><>::uid://etnaojc6rt1t::::res://assets/sprites/Pixel Crawler - FREE - 1.8/Heroes/Wizzard/Idle/Idle-Sheet.png
-::res://scripts/::1731298972
+::res://scripts/::1731315749
 apple.gd::GDScript::-1::1731220181::0::1::::<>Area2D<>::
 coin.gd::GDScript::-1::1731123754::0::1::::<>Area2D<>::
 fury_of_demetrius.gd::GDScript::-1::1731280293::0::1::::<>Area2D<>::
@@ -191,7 +193,6 @@ healthtracker.gd::GDScript::-1::1731017306::0::1::::<>Label<>::
 hermesboots.gd::GDScript::-1::1731281762::0::1::::<>Area2D<>::
 killzone.gd::GDScript::-1::1731048643::0::1::::<>Area2D<>::
 mob.gd::GDScript::-1::1731214869::0::1::::<>Area2D<>::
-player.gd::GDScript::-1::1731282213::0::1::::<>CharacterBody2D<>::
+player.gd::GDScript::-1::1731315749::0::1::::<>CharacterBody2D<>::
 playeroutline.gd::GDScript::-1::1731119382::0::1::::<>CollisionShape2D<>::
-rock.gd::GDScript::-1::1731212401::0::1::::<>CharacterBody2D<>::
 slime.gd::GDScript::-1::1731298972::0::1::::<>Node2D<>::

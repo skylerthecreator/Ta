@@ -5,7 +5,8 @@ const ROLL_SPEED = 300
 const SPEED = 100
 const JUMP_VELOCITY = -225
 const MAX_HP = 5
-const PRIORITY_MOVEMENT = ["skill1", "wake", "hit"]
+const PRIORITY_MOVEMENT = ["skill0", "skill1", "wake", "hit"]
+const NO_DIR_CHANGE = ["skill0"]
 
 var speed = SPEED
 var hp = 1
@@ -21,7 +22,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var footsteps = $footsteps
 @onready var s0 = $skill0outline
 @onready var s1 = $skill1sound
-@onready var skill_1_cd = $skill1cd
+@onready var skill1_cd = $skill1cd
 
 
 
@@ -29,7 +30,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 # signal facing_dir_changed(facing_right : bool)
 var buy = false
-var areas = []
+var areas0 = []
+var areas1 = []
 
 var dead = false
 var hit = false
@@ -37,7 +39,8 @@ var coins = 0
 var rolling = false
 var waking_up = true
 var attacking = false
-var attack_ready = true
+
+var skill1_ready = true
 var skill1 = false
 	
 func _physics_process(delta):
@@ -53,6 +56,8 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			jump.play()
 			velocity.y = JUMP_VELOCITY
+		if Input.is_action_just_pressed("skill0"):
+			_skill0()
 		if Input.is_action_just_pressed("skill1"):
 			_skill1()
 		if buy:
@@ -107,26 +112,14 @@ func _update_tracker():
 		tracker.text += "🖤"
 	tracker.text += "\n"
 	tracker.text += "🪙x" + str(game_manager.score)
-	
-func _skill1():
-	if !(animated_sprite.animation == "skill1" and animated_sprite.is_playing()) and attack_ready and skill1:
-		s1.play()
-		animated_sprite.play("skill1")
-		if areas:
-			for area in areas:
-				area.hit = true
-		attack_ready = false
-		skill_1_cd.start()
-
 func _flip(direction: int):
-	if direction > 0:
-		animated_sprite.flip_h = false
-		s0.scale.x = 1
-	elif direction < 0:
-		animated_sprite.flip_h = true
-		s0.scale.x = -1
-
-		
+	if NO_DIR_CHANGE.count(animated_sprite.animation) == 0:
+		if direction > 0:
+			animated_sprite.flip_h = false
+			s0.scale.x = 1
+		elif direction < 0:
+			animated_sprite.flip_h = true
+			s0.scale.x = -1
 func _play_movement_animations(direction: int):
 	if is_on_floor():
 		if direction == 0:
@@ -135,18 +128,37 @@ func _play_movement_animations(direction: int):
 			animated_sprite.play("run")
 	else:
 		animated_sprite.play("jump")
+		
 
-
+func _skill1():
+	if !(animated_sprite.animation == "skill1" and animated_sprite.is_playing()) and skill1_ready and skill1:
+		s1.play()
+		animated_sprite.play("skill1")
+		if areas1:
+			for area in areas1:
+				area.hit = true
+		skill1_ready = false
+		skill1_cd.start()
 func _on_skill_1_outline_area_entered(area):
 	if area.is_in_group("enemies"):
-		areas.append(area)
-
-
+		areas1.append(area)
 func _on_skill_1_outline_area_exited(area):
-	var index = areas.find(area,0)
+	var index = areas1.find(area,0)
 	if (index != -1):
-		areas.remove_at(index)
-
-
+		areas1.remove_at(index)
 func _on_skill_1_cd_timeout():
-	attack_ready = true
+	skill1_ready = true
+
+func _skill0():
+	s1.play()
+	animated_sprite.play("skill0")
+	if areas0:
+		for area in areas0:
+			area.hit = true
+func _on_skill_0_outline_area_entered(area):
+	if area.is_in_group("enemies"):
+		areas0.append(area)
+func _on_skill_0_outline_area_exited(area):
+	var index = areas0.find(area,0)
+	if (index != -1):
+		areas0.remove_at(index)

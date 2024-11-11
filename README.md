@@ -1,6 +1,5 @@
 Welcome to my first game!
-I've always wanted to get into game development, so I looked for tutorials and found Brackeys' guide to making a 2D game in Godot. After watching and learning all there was to learn in the video, I became obsessed with the process of game development - from coming up with an idea for a feature, to learning to implement it, and eventually seeing it work.
-The game is still in development, but I have already implemented some core mechanics of the game, such as attacking, looting, purchasing, and more.
+The game is still in development, but some core mechanics of the game have already been implemented, such as attacking, looting, purchasing, and more.
 
 
 

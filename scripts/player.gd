@@ -19,8 +19,11 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var game_manager = %GameManager
 @onready var tracker = $Camera2D/tracker
 @onready var footsteps = $footsteps
+@onready var s0 = $skill0outline
 @onready var s1 = $skill1sound
 @onready var skill_1_cd = $skill1cd
+
+
 
 
 
@@ -118,8 +121,12 @@ func _skill1():
 func _flip(direction: int):
 	if direction > 0:
 		animated_sprite.flip_h = false
+		s0.scale.x = 1
 	elif direction < 0:
 		animated_sprite.flip_h = true
+		s0.scale.x = -1
+
+		
 func _play_movement_animations(direction: int):
 	if is_on_floor():
 		if direction == 0:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://cqnov4vrpq7a2"]
+[gd_scene load_steps=58 format=3 uid="uid://cqnov4vrpq7a2"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_osmlu"]
 [ext_resource type="Texture2D" uid="uid://bbvvpsist7yt8" path="res://assets/sprites/Base Character - Free/attack.png" id="2_52nr7"]
@@ -123,6 +123,18 @@ region = Rect2(480, 0, 80, 80)
 [sub_resource type="AtlasTexture" id="AtlasTexture_bsbdw"]
 atlas = ExtResource("8_awsxe")
 region = Rect2(560, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m73rt"]
+atlas = ExtResource("8_awsxe")
+region = Rect2(240, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ptx1i"]
+atlas = ExtResource("8_awsxe")
+region = Rect2(320, 0, 80, 80)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ka06o"]
+atlas = ExtResource("8_awsxe")
+region = Rect2(400, 0, 80, 80)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o6ke0"]
 atlas = ExtResource("2_52nr7")
@@ -281,6 +293,20 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_m73rt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ptx1i")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_ka06o")
+}],
+"loop": false,
+"name": &"skill0",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_o6ke0")
 }, {
 "duration": 1.0,
@@ -330,6 +356,9 @@ height = 18.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_4sodr"]
 radius = 36.8345
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_beybn"]
+size = Vector2(72.5, 14)
+
 [node name="player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_osmlu")
@@ -338,8 +367,10 @@ script = ExtResource("1_osmlu")
 position = Vector2(0, -8)
 scale = Vector2(1.15938, 1.16778)
 sprite_frames = SubResource("SpriteFrames_vvjdw")
-animation = &"skill1"
+animation = &"skill0"
 autoplay = "wake"
+frame = 2
+frame_progress = 1.0
 
 [node name="playeroutline" type="CollisionShape2D" parent="."]
 z_index = 5
@@ -374,6 +405,12 @@ debug_color = Color(0.876622, 0.318657, 0.338226, 0.42)
 
 [node name="skill1cd" type="Timer" parent="."]
 wait_time = 3.0
+
+[node name="skill0outline" type="Area2D" parent="."]
+
+[node name="beam" type="CollisionShape2D" parent="skill0outline"]
+position = Vector2(44, -8)
+shape = SubResource("RectangleShape2D_beybn")
 
 [connection signal="area_entered" from="skill1outline" to="." method="_on_skill_1_outline_area_entered"]
 [connection signal="area_exited" from="skill1outline" to="." method="_on_skill_1_outline_area_exited"]

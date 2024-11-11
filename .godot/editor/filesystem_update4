@@ -11,3 +11,4 @@ res://scenes/platform.tscn
 res://scenes/hermesboots.tscn
 res://scenes/fury_of_demetrius.tscn
 res://scripts/slime.gd
+res://default_bus_layout.tres

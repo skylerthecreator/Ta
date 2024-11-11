@@ -7,7 +7,6 @@ const JUMP_VELOCITY = -225
 const MAX_HP = 5
 const PRIORITY_MOVEMENT = ["casting", "skill0", "skill1", "wake", "hit"]
 const NO_DIR_CHANGE = ["skill0"]
-
 var speed = SPEED
 var hp = 1
 
@@ -127,6 +126,7 @@ func _waking_up():
 	waking_up = false
 func _hit():
 	hurt.play()
+	_interrupt_skill0()
 	animated_sprite.play("hit")
 	hit = false
 func _update_tracker():
@@ -183,6 +183,7 @@ func _on_skill_1_cd_timeout():
 func _skill0():
 	if !(animated_sprite.animation == "skill0") and animated_sprite.is_playing():
 		s0_casting = true
+		s0_bar.visible = true
 		animated_sprite.play("casting")
 		s0_animation.play("casting")
 		s0_castingtime.start()
@@ -194,6 +195,7 @@ func _interrupt_skill0():
 		s0_animation.stop()
 		s0_sound.stop()
 		s0_casting = false
+		s0_bar.visible = false
 		s0_bar.value = 0
 func _on_skill_0_outline_area_entered(area):
 	if area.is_in_group("enemies"):
@@ -210,4 +212,5 @@ func _on_skill_0_castingtime_timeout():
 			for area in areas0:
 				area.hit = true
 		s0_casting = false
+		s0_bar.visible = false
 		s0_bar.value = 0

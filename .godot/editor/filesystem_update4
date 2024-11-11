@@ -1,5 +1,5 @@
-res://scripts/player.gd
 res://scenes/player.tscn
+res://scripts/player.gd
 res://scenes/mob.tscn
 res://scenes/game.tscn
 res://scenes/spike.tscn
@@ -10,4 +10,4 @@ res://scenes/coin.tscn
 res://scenes/platform.tscn
 res://scenes/hermesboots.tscn
 res://scenes/fury_of_demetrius.tscn
-res://default_bus_layout.tres
+res://scripts/slime.gd

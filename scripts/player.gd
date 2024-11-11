@@ -5,7 +5,7 @@ const ROLL_SPEED = 300
 const SPEED = 100
 const JUMP_VELOCITY = -225
 const MAX_HP = 5
-const PRIORITY_MOVEMENT = ["skill0", "skill1", "wake", "hit"]
+const PRIORITY_MOVEMENT = ["casting", "skill0", "skill1", "wake", "hit"]
 const NO_DIR_CHANGE = ["skill0"]
 
 var speed = SPEED
@@ -17,12 +17,20 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var jump = $jump
 @onready var hurt = $hurt
+@onready var footsteps = $footsteps
 @onready var game_manager = %GameManager
 @onready var tracker = $Camera2D/tracker
-@onready var footsteps = $footsteps
-@onready var s0 = $skill0outline
-@onready var s1 = $skill1sound
-@onready var skill1_cd = $skill1cd
+
+@onready var s0_outline = $skill0outline
+@onready var s0_sound = $skill0sound
+@onready var s0_castingtime = $skill0castingtime
+@onready var s0_animation = $skill0animation
+@onready var s0_bar = $skill0castingbar
+
+
+@onready var s1_sound = $skill1sound
+@onready var s1_cd = $skill1cd
+
 
 
 
@@ -39,16 +47,23 @@ var coins = 0
 var rolling = false
 var waking_up = true
 var attacking = false
+var moving = false
 
-var skill1_ready = true
+var s0_casting = false
+
+var s1_ready = true
 var skill1 = false
 	
 func _physics_process(delta):
 	if waking_up:
 		_waking_up()
+	elif animated_sprite.animation == "wake" and animated_sprite.is_playing():
+		pass
 	elif hit:
 		_hit()
 	elif !dead:
+		var direction = Input.get_axis("move_left", "move_right")
+		moving = direction != 0 or !(is_on_floor())
 		# Add the gravity.
 		if not is_on_floor():
 			velocity.y += gravity * delta
@@ -56,6 +71,16 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			jump.play()
 			velocity.y = JUMP_VELOCITY
+		if moving:
+			_interrupt_skill0()
+		if !s0_casting:
+			if !((s0_animation.animation == "fireball" or s0_animation.animation == "fireball") and s0_animation.is_playing()):
+				s0_animation.visible = false
+		else:
+			s0_animation.visible = true
+			s0_bar.value += 5.0/3.0
+			
+			
 		if Input.is_action_just_pressed("skill0"):
 			_skill0()
 		if Input.is_action_just_pressed("skill1"):
@@ -68,7 +93,7 @@ func _physics_process(delta):
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		
 		# get input direction: -1, 0, 1
-		var direction = Input.get_axis("move_left", "move_right")
+		
 		# flip sprite
 		_flip(direction)
 		if direction != 0 and !footsteps.is_playing() and is_on_floor():
@@ -116,10 +141,16 @@ func _flip(direction: int):
 	if NO_DIR_CHANGE.count(animated_sprite.animation) == 0:
 		if direction > 0:
 			animated_sprite.flip_h = false
-			s0.scale.x = 1
+			s0_outline.scale.x = 1
+			if s0_animation.scale.x < 0:
+				s0_animation.scale.x *= -1
+				s0_animation.position.x *= -1
 		elif direction < 0:
 			animated_sprite.flip_h = true
-			s0.scale.x = -1
+			s0_outline.scale.x = -1
+			if s0_animation.scale.x > 0:
+				s0_animation.scale.x *= -1
+				s0_animation.position.x *= -1
 func _play_movement_animations(direction: int):
 	if is_on_floor():
 		if direction == 0:
@@ -131,14 +162,14 @@ func _play_movement_animations(direction: int):
 		
 
 func _skill1():
-	if !(animated_sprite.animation == "skill1" and animated_sprite.is_playing()) and skill1_ready and skill1:
-		s1.play()
+	if !(animated_sprite.animation == "skill1" and animated_sprite.is_playing()) and s1_ready and skill1:
+		s1_sound.play()
 		animated_sprite.play("skill1")
 		if areas1:
 			for area in areas1:
 				area.hit = true
-		skill1_ready = false
-		skill1_cd.start()
+		s1_ready = false
+		s1_cd.start()
 func _on_skill_1_outline_area_entered(area):
 	if area.is_in_group("enemies"):
 		areas1.append(area)
@@ -147,14 +178,23 @@ func _on_skill_1_outline_area_exited(area):
 	if (index != -1):
 		areas1.remove_at(index)
 func _on_skill_1_cd_timeout():
-	skill1_ready = true
+	s1_ready = true
 
 func _skill0():
-	s1.play()
-	animated_sprite.play("skill0")
-	if areas0:
-		for area in areas0:
-			area.hit = true
+	if !(animated_sprite.animation == "skill0") and animated_sprite.is_playing():
+		s0_casting = true
+		animated_sprite.play("casting")
+		s0_animation.play("casting")
+		s0_castingtime.start()
+		s0_sound.play()
+func _interrupt_skill0():
+	if animated_sprite.animation == "casting" and animated_sprite.is_playing():
+		s0_castingtime.stop()
+		animated_sprite.stop()
+		s0_animation.stop()
+		s0_sound.stop()
+		s0_casting = false
+		s0_bar.value = 0
 func _on_skill_0_outline_area_entered(area):
 	if area.is_in_group("enemies"):
 		areas0.append(area)
@@ -162,3 +202,12 @@ func _on_skill_0_outline_area_exited(area):
 	var index = areas0.find(area,0)
 	if (index != -1):
 		areas0.remove_at(index)
+func _on_skill_0_castingtime_timeout():
+	if (s0_casting):
+		animated_sprite.play("skill0")
+		s0_animation.play("fireball")
+		if areas0:
+			for area in areas0:
+				area.hit = true
+		s0_casting = false
+		s0_bar.value = 0

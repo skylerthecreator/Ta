@@ -12,6 +12,8 @@ const MAX_HP = 3
 @onready var ray_cast_below = $RayCastBelow
 @onready var ray_cast_below_2 = $RayCastBelow2
 @onready var healthbar = $healthbar
+@onready var slimedeath = $slimedeath
+
 
 
 
@@ -40,6 +42,7 @@ func update_health():
 		healthbar.value = (hp * 100 / MAX_HP)
 		if hp > 0:
 			animated_sprite.play("hit")
+			slimedeath.play()
 			mob.hit = false
 		else:
 			animated_sprite.play("die")

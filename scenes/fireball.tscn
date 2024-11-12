@@ -1,0 +1,152 @@
+[gd_scene load_steps=21 format=3 uid="uid://bnoixqobfcow6"]
+
+[ext_resource type="Texture2D" uid="uid://bgottbuu2lkk5" path="res://assets/sprites/skills/fireball5.png" id="1_ddu7k"]
+[ext_resource type="Script" path="res://scripts/fireball.gd" id="1_wsloo"]
+[ext_resource type="Texture2D" uid="uid://ch8okb1e6tcfx" path="res://assets/sprites/skills/fireball6.png" id="3_m6pjm"]
+[ext_resource type="AudioStream" uid="uid://d4hyxetlljfnb" path="res://assets/sounds/skills/fireballhit.wav" id="4_21xpf"]
+[ext_resource type="AudioStream" uid="uid://cxbwn6hsio1ar" path="res://assets/sounds/skills/fireballland.wav" id="5_lg6wi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbvv4"]
+atlas = ExtResource("1_ddu7k")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twybu"]
+atlas = ExtResource("1_ddu7k")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0vr2a"]
+atlas = ExtResource("1_ddu7k")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itrlb"]
+atlas = ExtResource("1_ddu7k")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vs0k7"]
+atlas = ExtResource("3_m6pjm")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_635ab"]
+atlas = ExtResource("3_m6pjm")
+region = Rect2(800, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l55or"]
+atlas = ExtResource("3_m6pjm")
+region = Rect2(900, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtq4b"]
+atlas = ExtResource("3_m6pjm")
+region = Rect2(1100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omtqv"]
+atlas = ExtResource("3_m6pjm")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh0p8"]
+atlas = ExtResource("3_m6pjm")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlvin"]
+atlas = ExtResource("3_m6pjm")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcha8"]
+atlas = ExtResource("3_m6pjm")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nnxun"]
+atlas = ExtResource("3_m6pjm")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6y1km"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbvv4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twybu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0vr2a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itrlb")
+}],
+"loop": false,
+"name": &"chargeup",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vs0k7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_635ab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l55or")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtq4b")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omtqv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hh0p8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlvin")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dcha8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nnxun")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g6omx"]
+radius = 4.0
+
+[node name="fireball" type="Area2D"]
+z_index = 5
+script = ExtResource("1_wsloo")
+
+[node name="fireball_animation" type="AnimatedSprite2D" parent="."]
+z_index = 5
+position = Vector2(-25, -23)
+scale = Vector2(0.48, 0.48)
+sprite_frames = SubResource("SpriteFrames_6y1km")
+animation = &"shoot"
+centered = false
+
+[node name="fireball_shape" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_g6omx")
+disabled = true
+
+[node name="fireball_hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_21xpf")
+bus = &"SFX"
+
+[node name="fireball_land" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_lg6wi")
+bus = &"SFX"
+
+[node name="fireball_cast_time" type="Timer" parent="."]
+
+[node name="fireball_blast" type="Timer" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="fireball_cast_time" to="." method="_on_fireball_cast_time_timeout"]
+[connection signal="timeout" from="fireball_blast" to="." method="_on_fireball_blast_timeout"]

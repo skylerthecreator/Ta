@@ -22,7 +22,7 @@ var hp = MAX_HP
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 		
-func _process(delta):
+func _physics_process(delta):
 	update_health()
 	if ray_cast_right.is_colliding():
 		direction = -1

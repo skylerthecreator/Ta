@@ -178,6 +178,7 @@ _data = {
 }
 
 [node name="hermesboots" type="Area2D"]
+collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_scoif")
 

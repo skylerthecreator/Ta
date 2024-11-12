@@ -5,8 +5,8 @@ const ROLL_SPEED = 300
 const SPEED = 100
 const JUMP_VELOCITY = -225
 const MAX_HP = 5
-const PRIORITY_MOVEMENT = ["casting", "skill0", "skill1", "wake", "hit"]
-const NO_DIR_CHANGE = ["skill0"]
+const PRIORITY_MOVEMENT = ["casting", "fireball", "skill1", "wake", "hit"]
+const PREVENT_START = ["casting", "fireball"]
 var speed = SPEED
 var hp = 1
 
@@ -20,24 +20,17 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var game_manager = %GameManager
 @onready var tracker = $Camera2D/tracker
 
-@onready var s0_outline = $skill0outline
-@onready var s0_sound = $skill0sound
-@onready var s0_castingtime = $skill0castingtime
-@onready var s0_animation = $skill0animation
-@onready var s0_bar = $skill0castingbar
-
-
 @onready var s1_sound = $skill1sound
 @onready var s1_cd = $skill1cd
 
+@onready var fireball_bar = $fireball_bar
+@onready var fireball_chargeup = $fireball_chargeup
+@onready var fireball_sound = $fireball_sound
+@onready var fireball_cast_time = $fireball_cast_time
+@onready var fbspawn = $fbspawn
+var fireball = load("res://scenes/fireball.tscn")
 
-
-
-
-
-# signal facing_dir_changed(facing_right : bool)
 var buy = false
-var areas0 = []
 var areas1 = []
 
 var dead = false
@@ -49,20 +42,31 @@ var attacking = false
 var moving = false
 
 var s0_casting = false
+var skill0 = true
 
 var s1_ready = true
 var skill1 = false
+
+var casting = false
+var cast_dir = 1
 	
 func _physics_process(delta):
 	if waking_up:
 		_waking_up()
-	elif animated_sprite.animation == "wake" and animated_sprite.is_playing():
-		pass
+	#elif animated_sprite.animation == "wake" and animated_sprite.is_playing():
+	#	pass
 	elif hit:
 		_hit()
 	elif !dead:
 		var direction = Input.get_axis("move_left", "move_right")
+		if direction != 0:
+			cast_dir = direction
 		moving = direction != 0 or !(is_on_floor())
+		if moving and casting:
+			_interrupt_skill0()
+		if casting:
+			fireball_bar.visible = true
+			fireball_bar.value += 5.0/3.0
 		# Add the gravity.
 		if not is_on_floor():
 			velocity.y += gravity * delta
@@ -70,16 +74,6 @@ func _physics_process(delta):
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			jump.play()
 			velocity.y = JUMP_VELOCITY
-		if moving:
-			_interrupt_skill0()
-		if !s0_casting:
-			if !((s0_animation.animation == "fireball" or s0_animation.animation == "fireball") and s0_animation.is_playing()):
-				s0_animation.visible = false
-		else:
-			s0_animation.visible = true
-			s0_bar.value += 5.0/3.0
-			
-			
 		if Input.is_action_just_pressed("skill0"):
 			_skill0()
 		if Input.is_action_just_pressed("skill1"):
@@ -126,7 +120,7 @@ func _waking_up():
 	waking_up = false
 func _hit():
 	hurt.play()
-	_interrupt_skill0()
+#	_interrupt_skill0()
 	animated_sprite.play("hit")
 	hit = false
 func _update_tracker():
@@ -138,19 +132,19 @@ func _update_tracker():
 	tracker.text += "\n"
 	tracker.text += "🪙x" + str(game_manager.score)
 func _flip(direction: int):
-	if NO_DIR_CHANGE.count(animated_sprite.animation) == 0:
-		if direction > 0:
-			animated_sprite.flip_h = false
-			s0_outline.scale.x = 1
-			if s0_animation.scale.x < 0:
-				s0_animation.scale.x *= -1
-				s0_animation.position.x *= -1
-		elif direction < 0:
-			animated_sprite.flip_h = true
-			s0_outline.scale.x = -1
-			if s0_animation.scale.x > 0:
-				s0_animation.scale.x *= -1
-				s0_animation.position.x *= -1
+	if direction > 0:
+		animated_sprite.flip_h = false
+		fireball_chargeup.flip_h = false
+		if fbspawn.position.x > 0:
+			fbspawn.position.x *= -1
+			fireball_chargeup.position.x *= -1
+	elif direction < 0:
+		animated_sprite.flip_h = true
+		fireball_chargeup.flip_h = true
+		fbspawn.scale.x = 1
+		if fbspawn.position.x < 0:
+			fbspawn.position.x *= -1
+			fireball_chargeup.position.x *= -1
 func _play_movement_animations(direction: int):
 	if is_on_floor():
 		if direction == 0:
@@ -181,36 +175,32 @@ func _on_skill_1_cd_timeout():
 	s1_ready = true
 
 func _skill0():
-	if !(animated_sprite.animation == "skill0") and animated_sprite.is_playing():
-		s0_casting = true
-		s0_bar.visible = true
+	if !(PREVENT_START.count(animated_sprite.animation) != 0 and animated_sprite.is_playing()) and skill0:
+		casting = true
 		animated_sprite.play("casting")
-		s0_animation.play("casting")
-		s0_castingtime.start()
-		s0_sound.play()
+		fireball_sound.play()
+		fireball_cast_time.start()
+		fireball_chargeup.visible = true
+		fireball_chargeup.play("default")
+
 func _interrupt_skill0():
-	if animated_sprite.animation == "casting" and animated_sprite.is_playing():
-		s0_castingtime.stop()
-		animated_sprite.stop()
-		s0_animation.stop()
-		s0_sound.stop()
-		s0_casting = false
-		s0_bar.visible = false
-		s0_bar.value = 0
-func _on_skill_0_outline_area_entered(area):
-	if area.is_in_group("enemies"):
-		areas0.append(area)
-func _on_skill_0_outline_area_exited(area):
-	var index = areas0.find(area,0)
-	if (index != -1):
-		areas0.remove_at(index)
-func _on_skill_0_castingtime_timeout():
-	if (s0_casting):
-		animated_sprite.play("skill0")
-		s0_animation.play("fireball")
-		if areas0:
-			for area in areas0:
-				area.hit = true
-		s0_casting = false
-		s0_bar.visible = false
-		s0_bar.value = 0
+	casting = false
+	animated_sprite.stop()
+	fireball_sound.stop()
+	fireball_cast_time.stop()
+	fireball_chargeup.visible = false
+	fireball_chargeup.stop()
+	fireball_bar.visible = false
+	fireball_bar.value = 0
+	
+func _on_fireball_cast_time_timeout():
+	fireball_chargeup.visible = false
+	var fb = fireball.instantiate()
+	owner.add_child(fb)
+	fb.transform = fbspawn.global_transform
+	fb.cast_dir = cast_dir
+	fb.charged = true
+	animated_sprite.play("fireball")
+	casting = false
+	fireball_bar.visible = false
+	fireball_bar.value = 0

@@ -22,6 +22,7 @@ animations = [{
 size = Vector2(16, 5)
 
 [node name="spike" type="Area2D"]
+collision_layer = 4
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dcda8")

@@ -4,11 +4,11 @@ extends Node2D
 @onready var coins = $Display/coins
 
 
-func update_hp(curr: int, max: int):
+func update_hp(curr: int, max_hp: int):
 	hp.text = ""
 	for i in range(curr):
 		hp.text += "❤️"
-	for i in range(max - curr):
+	for i in range(max_hp - curr):
 		hp.text += "🖤"
 
 func update_coins(c: int):

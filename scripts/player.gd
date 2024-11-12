@@ -17,7 +17,6 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var hurt = $hurt
 @onready var footsteps = $footsteps
 @onready var game_manager = %GameManager
-@onready var tracker = $Camera2D/tracker
 @onready var death_timer = $death_timer
 @onready var playeroutline = $playeroutline
 

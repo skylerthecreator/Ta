@@ -13,7 +13,7 @@ func _on_body_entered(body):
 	player = body
 	player.buy = false
 
-func _process(delta):
+func _process(_delta):
 	if player and player.buy and game_manager.coins >= COST:
 		game_manager.coins -= COST
 		player.speed += SPEED_INC
@@ -22,7 +22,7 @@ func _process(delta):
 	elif player and player.buy and game_manager.coins < COST:
 		insufficientfunds.play()
 		
-func _on_body_exited(body):
+func _on_body_exited(_body):
 	player = null
 	
 

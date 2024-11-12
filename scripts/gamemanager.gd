@@ -9,6 +9,6 @@ var amnova_ready = true
 var hp = 1
 
 
-func _process(delta):
+func _process(_delta):
 	Hud.update_hp(hp, MAX_HP)
 	Hud.update_coins(coins)

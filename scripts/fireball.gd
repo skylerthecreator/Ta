@@ -28,7 +28,7 @@ func _physics_process(delta):
 	if fireball_animation.animation == "explode" and !fireball_animation.is_playing():
 		fireball_animation.visible = false
 	
-func _on_body_entered(body):
+func _on_body_entered(_body):
 	fireball_hit.stop()
 	fireball_land.play()
 	fireball_animation.play("explode")

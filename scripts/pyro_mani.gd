@@ -6,7 +6,7 @@ extends Area2D
 var player = null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if player and player.buy:
 		game_manager.fireball_unlocked = true
 		animation_player.play("pickup")
@@ -16,5 +16,5 @@ func _on_body_entered(body):
 	player = body
 	player.buy = false
 
-func _on_body_exited(body):
+func _on_body_exited(_body):
 	player = null

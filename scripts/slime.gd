@@ -40,7 +40,7 @@ func update_health():
 		hp -= 1
 		dmg_taken.text = "-1"
 		dtdt.start()
-		healthbar.value = (hp * 100 / MAX_HP)
+		healthbar.value = (hp * 100.0 / MAX_HP)
 		if hp > 0:
 			animated_sprite.play("hit")
 			slimedeath.play()

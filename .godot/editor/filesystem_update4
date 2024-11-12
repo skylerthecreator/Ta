@@ -12,3 +12,12 @@ res://scenes/killzone.tscn
 res://scripts/killzone.gd
 res://scenes/spike.tscn
 res://scripts/spike.gd
+res://scripts/apple.gd
+res://scripts/fireball.gd
+res://scripts/fury_of_demetrius.gd
+res://scripts/gamemanager.gd
+res://scripts/healing_potion.gd
+res://scripts/hermesboots.gd
+res://scripts/hud.gd
+res://scripts/pyro_mani.gd
+res://scripts/training_dummy.gd

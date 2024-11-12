@@ -6,7 +6,7 @@ extends Area2D
 
 var hit = false
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	update_health()
 	if !(body.animation == "hit" and body.is_playing()):
 		body.play("default")

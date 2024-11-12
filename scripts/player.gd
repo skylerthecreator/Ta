@@ -4,11 +4,10 @@ extends CharacterBody2D
 const ROLL_SPEED = 300
 const SPEED = 100
 const JUMP_VELOCITY = -225
-const MAX_HP = 5
 const PRIORITY_MOVEMENT = ["casting", "fireball", "skill1", "wake", "hit"]
 const PREVENT_START = ["casting", "fireball"]
 var speed = SPEED
-var hp = 1
+
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -19,6 +18,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var footsteps = $footsteps
 @onready var game_manager = %GameManager
 @onready var tracker = $Camera2D/tracker
+@onready var death_timer = $death_timer
+@onready var playeroutline = $playeroutline
 
 @onready var s1_sound = $skill1sound
 @onready var s1_cd = $skill1cd
@@ -34,18 +35,13 @@ var buy = false
 var areas1 = []
 
 var dead = false
-var hit = false
-var coins = 0
+
 var rolling = false
 var waking_up = true
 var attacking = false
 var moving = false
 
 var s0_casting = false
-var skill0 = true
-
-var s1_ready = true
-var skill1 = false
 
 var casting = false
 var cast_dir = 1
@@ -55,8 +51,6 @@ func _physics_process(delta):
 		_waking_up()
 	#elif animated_sprite.animation == "wake" and animated_sprite.is_playing():
 	#	pass
-	elif hit:
-		_hit()
 	elif !dead:
 		var direction = Input.get_axis("move_left", "move_right")
 		if direction != 0:
@@ -107,13 +101,11 @@ func _physics_process(delta):
 		else:
 			velocity.x = move_toward(velocity.x, 0, speed)
 		
-		_update_tracker()
 		if !(animated_sprite.animation == "wake" and animated_sprite.is_playing()):
 			move_and_slide()
 		
 	else:
-		tracker.text = "🖤🖤🖤🖤🖤" + "\n" + "🪙x" + str(game_manager.score)
-		animated_sprite.play("death")
+		pass
 
 func _waking_up():
 	animated_sprite.play("wake")
@@ -121,16 +113,11 @@ func _waking_up():
 func _hit():
 	hurt.play()
 	_interrupt_skill0()
+	game_manager.hp -= 1
 	animated_sprite.play("hit")
-	hit = false
-func _update_tracker():
-	tracker.text = ""
-	for i in range(hp):
-		tracker.text += "❤️"
-	for i in range(MAX_HP - hp):
-		tracker.text += "🖤"
-	tracker.text += "\n"
-	tracker.text += "🪙x" + str(game_manager.score)
+	if game_manager.hp == 0:
+		dead = true
+		_die()
 func _flip(direction: int):
 	if direction > 0:
 		animated_sprite.flip_h = false
@@ -156,13 +143,13 @@ func _play_movement_animations(direction: int):
 		
 
 func _skill1():
-	if !(animated_sprite.animation == "skill1" and animated_sprite.is_playing()) and s1_ready and skill1:
+	if !(animated_sprite.animation == "skill1" and animated_sprite.is_playing()) and game_manager.amnova_ready and game_manager.amnova_unlocked:
 		s1_sound.play()
 		animated_sprite.play("skill1")
 		if areas1:
 			for area in areas1:
 				area.hit = true
-		s1_ready = false
+		game_manager.amnova_ready = false
 		s1_cd.start()
 func _on_skill_1_outline_area_entered(area):
 	if area.is_in_group("enemies"):
@@ -172,10 +159,10 @@ func _on_skill_1_outline_area_exited(area):
 	if (index != -1):
 		areas1.remove_at(index)
 func _on_skill_1_cd_timeout():
-	s1_ready = true
+	game_manager.amnova_ready = true
 
 func _skill0():
-	if !(PREVENT_START.count(animated_sprite.animation) != 0 and animated_sprite.is_playing()) and skill0:
+	if !(PREVENT_START.count(animated_sprite.animation) != 0 and animated_sprite.is_playing()) and game_manager.fireball_unlocked:
 		casting = true
 		animated_sprite.play("casting")
 		fireball_sound.play()
@@ -204,3 +191,10 @@ func _on_fireball_cast_time_timeout():
 	casting = false
 	fireball_bar.visible = false
 	fireball_bar.value = 0
+
+func _die():
+	animated_sprite.play("death")
+	death_timer.start()
+
+func _on_death_timer_timeout():
+	get_tree().reload_current_scene()

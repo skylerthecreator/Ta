@@ -14,13 +14,12 @@ func _on_body_entered(body):
 	player.buy = false
 
 func _process(delta):
-	if player and player.buy and game_manager.score >= COST:
-		game_manager.score -= COST
-		player.coins -= COST
+	if player and player.buy and game_manager.coins >= COST:
+		game_manager.coins -= COST
 		player.speed += SPEED_INC
 		animation_player.play("pickup")
 		player = null
-	elif player and player.buy and game_manager.score < COST:
+	elif player and player.buy and game_manager.coins < COST:
 		insufficientfunds.play()
 		
 func _on_body_exited(body):

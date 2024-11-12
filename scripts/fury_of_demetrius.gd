@@ -12,10 +12,9 @@ func _on_body_entered(body):
 	player.buy = false
 
 func _process(delta):
-	if player and player.buy and game_manager.score >= COST:
-		game_manager.score -= COST
-		player.coins -= COST
-		player.skill1 = true
+	if player and player.buy and game_manager.coins >= COST:
+		game_manager.coins -= COST
+		game_manager.amnova_unlocked = true
 		animation_player.play("pickup")
 		player = null
 	elif player and player.buy and game_manager.score < COST:

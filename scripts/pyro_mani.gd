@@ -1,14 +1,14 @@
 extends Area2D
 
 @onready var animation_player = $AnimationPlayer
-
+@onready var game_manager = %GameManager
 
 var player = null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if player and player.buy:
-		player.skill0 = true
+		game_manager.fireball_unlocked = true
 		animation_player.play("pickup")
 		player = null
 

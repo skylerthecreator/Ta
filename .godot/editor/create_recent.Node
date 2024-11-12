@@ -1,9 +1,10 @@
-CollisionPolygon2D
+CollisionShape2D
+Area2D
 Timer
 Label
-CollisionShape2D
+CanvasLayer
+CollisionPolygon2D
 AnimatedSprite2D
-Area2D
 Marker2D
 RigidBody2D
 AnimationPlayer
@@ -11,4 +12,3 @@ AudioStreamPlayer2D
 ProgressBar
 Node
 RayCast2D
-Sprite2D

@@ -7,7 +7,6 @@ const MAX_HP = 3
 @onready var ray_cast_right = $RayCastRight
 @onready var ray_cast_left = $RayCastLeft
 @onready var animated_sprite = $AnimatedSprite2D
-@onready var mob = $mob
 @onready var animation_player = $AnimationPlayer
 @onready var ray_cast_below = $RayCastBelow
 @onready var ray_cast_below_2 = $RayCastBelow2
@@ -16,10 +15,7 @@ const MAX_HP = 3
 @onready var dmg_taken = $dmg_taken
 @onready var dtdt = $dtdt
 
-
-
-
-
+var hit = false
 var hp = MAX_HP
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -36,11 +32,11 @@ func _physics_process(delta):
 		animated_sprite.play("default")
 		position.x += direction * delta * SPEED
 	if dmg_taken.text == "-1":
-		dmg_taken.position.y -= 0.5
+		dmg_taken.position.y -= 0.4
 
 	
 func update_health():
-	if mob.hit:
+	if hit:
 		hp -= 1
 		dmg_taken.text = "-1"
 		dtdt.start()
@@ -48,7 +44,7 @@ func update_health():
 		if hp > 0:
 			animated_sprite.play("hit")
 			slimedeath.play()
-			mob.hit = false
+			hit = false
 		else:
 			animated_sprite.play("die")
 			animation_player.play("die")
@@ -58,8 +54,10 @@ func update_health():
 		healthbar.visible = true
 		
 
-
-
+func _on_body_entered(body):
+	if body.is_in_group("player"):
+		if !body.dead:
+			body._hit()
 
 func _on_dtdt_timeout():
 	dmg_taken.text = ""

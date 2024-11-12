@@ -9,9 +9,9 @@ var hit = false
 func _physics_process(delta):
 	update_health()
 	if !(body.animation == "hit" and body.is_playing()):
-		body.play("idle")
+		body.play("default")
 	if dmg_tracker.text == "-1":
-		dmg_tracker.position.y -= 0.5
+		dmg_tracker.position.y -= 0.4
 
 func update_health():
 	if hit:

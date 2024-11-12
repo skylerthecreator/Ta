@@ -6,10 +6,8 @@ const COINS_PER_APPLE = 2
 @onready var game_manager = %GameManager
 
 func _on_body_entered(body):
-	if body.hp < body.MAX_HP:
-		body.hp += 1
+	if game_manager.hp < game_manager.MAX_HP:
+		game_manager.hp += 1
 	else:
-		for i in range(COINS_PER_APPLE):
-			game_manager.add_pt()
-		
+		game_manager.coins += COINS_PER_APPLE
 	animation_player.play("eating")

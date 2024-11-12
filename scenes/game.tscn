@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://g77a77m022qm"]
+[gd_scene load_steps=33 format=3 uid="uid://g77a77m022qm"]
 
 [ext_resource type="Texture2D" uid="uid://kpld5n16lvkg" path="res://assets/sprites/default/world_tileset.png" id="1_0yvkf"]
 [ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_iry8t"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://c6xk73lautgxt" path="res://scenes/coin.tscn" id="5_5ioh3"]
 [ext_resource type="PackedScene" uid="uid://bhi0vprfpallj" path="res://scenes/slime.tscn" id="6_sac27"]
 [ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="8_cwuaj"]
-[ext_resource type="PackedScene" uid="uid://b2r4pg8bhe8a0" path="res://scenes/mob.tscn" id="10_kksdw"]
 [ext_resource type="PackedScene" uid="uid://gmlljj8gkgwh" path="res://scenes/apple.tscn" id="11_5btnk"]
 [ext_resource type="PackedScene" uid="uid://dg73ggkblgcq2" path="res://scenes/wizard.tscn" id="12_gjoaa"]
 [ext_resource type="PackedScene" uid="uid://c1fnbvgv6vvqc" path="res://scenes/merchant.tscn" id="12_irqes"]
@@ -1647,8 +1646,6 @@ sources/0 = SubResource("TileSetAtlasSource_yfw1x")
 sources/1 = SubResource("TileSetAtlasSource_upb0b")
 sources/2 = SubResource("TileSetAtlasSource_1h4b2")
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bhxt7"]
-
 [sub_resource type="Animation" id="Animation_vv3yi"]
 length = 0.001
 tracks/0/type = "value"
@@ -1764,6 +1761,15 @@ _data = {
 }
 
 [node name="Game" type="Node2D"]
+
+[node name="player" parent="." groups=["player"] instance=ExtResource("2_3id2r")]
+z_index = 5
+position = Vector2(-209, 48)
+collision_mask = 5
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+position = Vector2(0, -7)
+zoom = Vector2(2.5, 2.5)
 
 [node name="TileMap" type="TileMap" parent="." groups=["map"]]
 tile_set = SubResource("TileSet_ilhtr")
@@ -2113,30 +2119,8 @@ text = "MAURICE
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="player" parent="." instance=ExtResource("2_3id2r")]
-z_index = 5
-position = Vector2(-209, 48)
-collision_mask = 5
-
-[node name="Camera2D" type="Camera2D" parent="player"]
-position = Vector2(0, -7)
-zoom = Vector2(2.5, 2.5)
-
-[node name="tracker" type="Label" parent="player/Camera2D"]
-offset_left = -229.0
-offset_top = -128.0
-offset_right = -174.0
-offset_bottom = -116.0
-theme_override_fonts/font = ExtResource("8_cwuaj")
-theme_override_font_sizes/font_size = 8
-
-[node name="mob" parent="." instance=ExtResource("10_kksdw")]
-
 [node name="killzone" parent="." instance=ExtResource("4_4q054")]
-
-[node name="fell" type="CollisionShape2D" parent="killzone"]
-position = Vector2(-90, 209)
-shape = SubResource("WorldBoundaryShape2D_bhxt7")
+position = Vector2(0, 211)
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -2147,10 +2131,6 @@ position = Vector2(760, 16)
 [node name="slime2" parent="Enemies" instance=ExtResource("6_sac27")]
 z_index = 5
 position = Vector2(472, 16)
-
-[node name="slime8" parent="Enemies" instance=ExtResource("6_sac27")]
-z_index = 5
-position = Vector2(3000, -3)
 
 [node name="slime7" parent="Enemies" instance=ExtResource("6_sac27")]
 z_index = 5
@@ -2294,4 +2274,4 @@ Press (F) to claim"
 horizontal_alignment = 1
 
 [node name="training_dummy" parent="." instance=ExtResource("20_e714n")]
-position = Vector2(-329, 36)
+position = Vector2(3016, -13)

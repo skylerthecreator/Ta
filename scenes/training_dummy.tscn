@@ -1,14 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://ceov6lsbfs3u"]
+[gd_scene load_steps=9 format=3 uid="uid://ceov6lsbfs3u"]
 
 [ext_resource type="Script" path="res://scripts/training_dummy.gd" id="1_gc4nk"]
 [ext_resource type="Texture2D" uid="uid://bereyletu5lxj" path="res://assets/sprites/environment/Training Dummy Sprite Sheet.png" id="2_rdaxr"]
 [ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="3_qjaas"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vphvu"]
-atlas = ExtResource("2_rdaxr")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n54y5"]
 atlas = ExtResource("2_rdaxr")
 region = Rect2(0, 0, 32, 32)
 
@@ -36,9 +32,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n54y5")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_nuv1s")
 }, {
 "duration": 1.0,
@@ -49,7 +42,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit",
-"speed": 6.0
+"speed": 8.0
 }]
 
 [node name="training_dummy" type="Area2D" groups=["enemies"]]

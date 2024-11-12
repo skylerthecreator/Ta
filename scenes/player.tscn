@@ -221,7 +221,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"death",
-"speed": 10.0
+"speed": 6.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -421,7 +421,7 @@ script = ExtResource("1_osmlu")
 position = Vector2(0, -8)
 scale = Vector2(1.15938, 1.16778)
 sprite_frames = SubResource("SpriteFrames_vvjdw")
-animation = &"idle"
+animation = &"death"
 autoplay = "wake"
 
 [node name="playeroutline" type="CollisionShape2D" parent="."]
@@ -487,7 +487,10 @@ sprite_frames = SubResource("SpriteFrames_0hdij")
 frame = 3
 frame_progress = 1.0
 
+[node name="death_timer" type="Timer" parent="."]
+
 [connection signal="area_entered" from="skill1outline" to="." method="_on_skill_1_outline_area_entered"]
 [connection signal="area_exited" from="skill1outline" to="." method="_on_skill_1_outline_area_exited"]
 [connection signal="timeout" from="skill1cd" to="." method="_on_skill_1_cd_timeout"]
 [connection signal="timeout" from="fireball_cast_time" to="." method="_on_fireball_cast_time_timeout"]
+[connection signal="timeout" from="death_timer" to="." method="_on_death_timer_timeout"]

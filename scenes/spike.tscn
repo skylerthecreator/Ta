@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bwj7ef1aq2yrf"]
 
+[ext_resource type="Script" path="res://scripts/spike.gd" id="1_mdnbf"]
 [ext_resource type="Texture2D" uid="uid://cgokukgh0wyxk" path="res://assets/sprites/traps/singlespike.png" id="2_jkmni"]
-[ext_resource type="PackedScene" uid="uid://b2r4pg8bhe8a0" path="res://scenes/mob.tscn" id="3_e8q27"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1h31d"]
 atlas = ExtResource("2_jkmni")
@@ -22,14 +22,13 @@ animations = [{
 size = Vector2(16, 5)
 
 [node name="spike" type="Area2D"]
-collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_mdnbf")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_dcda8")
 
-[node name="mob" parent="." instance=ExtResource("3_e8q27")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="mob"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_sakho")
 

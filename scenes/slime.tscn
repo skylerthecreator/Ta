@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://bhi0vprfpallj"]
+[gd_scene load_steps=22 format=3 uid="uid://bhi0vprfpallj"]
 
 [ext_resource type="Texture2D" uid="uid://cenjmro0jdis7" path="res://assets/sprites/default/slime_green.png" id="1_78qar"]
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_xwb3r"]
 [ext_resource type="PackedScene" uid="uid://b2r4pg8bhe8a0" path="res://scenes/mob.tscn" id="2_f2bf7"]
 [ext_resource type="AudioStream" uid="uid://cc4bk1akj7trn" path="res://assets/sounds/slimedeath.wav" id="4_f1vbd"]
+[ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="5_ygk0l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vmit0"]
 atlas = ExtResource("1_78qar")
@@ -229,3 +230,19 @@ scale = Vector2(0.1, 0.1)
 step = 0.0
 value = 100.0
 show_percentage = false
+
+[node name="dmg_taken" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -24.0
+offset_right = 20.0
+offset_bottom = -1.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_ygk0l")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+
+[node name="dtdt" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="dtdt" to="." method="_on_dtdt_timeout"]

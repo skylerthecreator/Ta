@@ -13,6 +13,8 @@ const MAX_HP = 3
 @onready var ray_cast_below_2 = $RayCastBelow2
 @onready var healthbar = $healthbar
 @onready var slimedeath = $slimedeath
+@onready var dmg_taken = $dmg_taken
+@onready var dtdt = $dtdt
 
 
 
@@ -33,12 +35,15 @@ func _physics_process(delta):
 	if !(animated_sprite.animation == "hit" and animated_sprite.is_playing()) and hp > 0:
 		animated_sprite.play("default")
 		position.x += direction * delta * SPEED
-
+	if dmg_taken.text == "-1":
+		dmg_taken.position.y -= 0.5
 
 	
 func update_health():
 	if mob.hit:
 		hp -= 1
+		dmg_taken.text = "-1"
+		dtdt.start()
 		healthbar.value = (hp * 100 / MAX_HP)
 		if hp > 0:
 			animated_sprite.play("hit")
@@ -54,3 +59,8 @@ func update_health():
 		
 
 
+
+
+func _on_dtdt_timeout():
+	dmg_taken.text = ""
+	dmg_taken.position.y = -24

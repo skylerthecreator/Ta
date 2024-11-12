@@ -421,11 +421,10 @@ script = ExtResource("1_osmlu")
 position = Vector2(0, -8)
 scale = Vector2(1.15938, 1.16778)
 sprite_frames = SubResource("SpriteFrames_vvjdw")
-animation = &"fireball"
+animation = &"idle"
 autoplay = "wake"
 
 [node name="playeroutline" type="CollisionShape2D" parent="."]
-visible = false
 z_index = 5
 position = Vector2(0, -8)
 shape = SubResource("CapsuleShape2D_2qq0b")

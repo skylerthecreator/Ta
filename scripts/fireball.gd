@@ -14,7 +14,7 @@ var adjusted = false
 
 func _physics_process(delta):
 	if exploding:
-		pass
+		fireball_shape.disabled = true
 	elif charged:
 		if cast_dir < 0 and !adjusted:
 			fireball_animation.flip_h = true
@@ -35,6 +35,7 @@ func _on_body_entered(body):
 	fireball_blast.start()
 	charged = false
 	exploding = true
+	
 func _on_area_entered(area):
 	fireball_hit.stop()
 	if area.is_in_group("enemies"):

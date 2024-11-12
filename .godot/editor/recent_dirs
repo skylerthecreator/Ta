@@ -1,6 +1,7 @@
-res://assets/sprites/skills
-res://scripts
 res://scenes
+res://scripts
+res://assets/sprites/environment
+res://assets/sprites/skills
 res://assets/sprites/ITEMS
 res://assets/sprites/Base Character - Free
 res://assets/sprites/default

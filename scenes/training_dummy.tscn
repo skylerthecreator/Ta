@@ -1,0 +1,79 @@
+[gd_scene load_steps=10 format=3 uid="uid://ceov6lsbfs3u"]
+
+[ext_resource type="Script" path="res://scripts/training_dummy.gd" id="1_gc4nk"]
+[ext_resource type="Texture2D" uid="uid://bereyletu5lxj" path="res://assets/sprites/environment/Training Dummy Sprite Sheet.png" id="2_rdaxr"]
+[ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="3_qjaas"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vphvu"]
+atlas = ExtResource("2_rdaxr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n54y5"]
+atlas = ExtResource("2_rdaxr")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuv1s"]
+atlas = ExtResource("2_rdaxr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_el25k"]
+atlas = ExtResource("2_rdaxr")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iqkbi"]
+atlas = ExtResource("2_rdaxr")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nvjsi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vphvu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n54y5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nuv1s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_el25k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iqkbi")
+}],
+"loop": false,
+"name": &"hit",
+"speed": 6.0
+}]
+
+[node name="training_dummy" type="Area2D" groups=["enemies"]]
+script = ExtResource("1_gc4nk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nvjsi")
+animation = &"hit"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+scale = Vector2(2, 2)
+polygon = PackedVector2Array(-1.5, -5.5, 1, -5.5, 1, -5, 1.5, -5, 1.5, -4.5, 2, -4.5, 2, -4, 2.5, -4, 2.5, -2, 3, -2, 3, -2.5, 4, -2.5, 4, -1.5, 4.5, -1.5, 4.5, -3, 5, -3, 5, -4, 5.5, -4, 5.5, -4.5, 6.5, -4.5, 6.5, -2, 6, -2, 6, -0.5, 6.5, -0.5, 6.5, 0.5, 5.5, 0.5, 5.5, 1, 3, 1, 3, 1.5, 2.5, 1.5, 2.5, 2.5, 2, 2.5, 2, 3, 1.5, 3, 1.5, 3.5, 2, 3.5, 2, 4, 2.5, 4, 2.5, 5, 1.5, 5, 1.5, 6, -1, 6, -1, 5, -2, 5, -2, 4, -1.5, 4, -1.5, 3.5, -1, 3.5, -1, 3, -1.5, 3, -1.5, 2.5, -2.5, 2.5, -2.5, 3, -3, 3, -3, 3.5, -3.5, 3.5, -3.5, 4, -4.5, 4, -4.5, 3.5, -5, 3.5, -5, 3, -5.5, 3, -5.5, 2.5, -5.5, 2.5, -6, 2.5, -6, 2, -6.5, 2, -6.5, -1.5, -6, -1.5, -6, -2, -3, -2, -3, -3, -2.5, -3, -2.5, -4.5, -2, -4.5, -2, -5, -1.5, -5)
+
+[node name="dmg_tracker" type="Label" parent="."]
+offset_left = -20.0
+offset_top = -22.0
+offset_right = 20.0
+offset_bottom = -6.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_qjaas")
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+
+[node name="dtdt" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="timeout" from="dtdt" to="." method="_on_dtdt_timeout"]

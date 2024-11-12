@@ -120,7 +120,7 @@ func _waking_up():
 	waking_up = false
 func _hit():
 	hurt.play()
-#	_interrupt_skill0()
+	_interrupt_skill0()
 	animated_sprite.play("hit")
 	hit = false
 func _update_tracker():

@@ -6,7 +6,7 @@ var coins = 0
 var amnova_unlocked = false
 var fireball_unlocked = true
 var amnova_ready = true
-var hp = 1
+var hp = 5
 
 
 func _process(_delta):

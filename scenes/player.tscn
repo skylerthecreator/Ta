@@ -489,8 +489,11 @@ frame_progress = 1.0
 
 [node name="death_timer" type="Timer" parent="."]
 
+[node name="immunity" type="Timer" parent="."]
+
 [connection signal="area_entered" from="skill1outline" to="." method="_on_skill_1_outline_area_entered"]
 [connection signal="area_exited" from="skill1outline" to="." method="_on_skill_1_outline_area_exited"]
 [connection signal="timeout" from="skill1cd" to="." method="_on_skill_1_cd_timeout"]
 [connection signal="timeout" from="fireball_cast_time" to="." method="_on_fireball_cast_time_timeout"]
 [connection signal="timeout" from="death_timer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="immunity" to="." method="_on_immunity_timeout"]

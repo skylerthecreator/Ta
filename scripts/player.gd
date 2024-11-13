@@ -19,6 +19,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var game_manager = %GameManager
 @onready var death_timer = $death_timer
 @onready var playeroutline = $playeroutline
+@onready var immunity = $immunity
 
 @onready var s1_sound = $skill1sound
 @onready var s1_cd = $skill1cd
@@ -39,6 +40,7 @@ var rolling = false
 var waking_up = false
 var attacking = false
 var moving = false
+var immune = false
 
 var casting = false
 var cast_dir = 1
@@ -88,7 +90,8 @@ func _physics_process(delta):
 			footsteps.stop()
 		
 		# play animations
-		if (PRIORITY_MOVEMENT.count(animated_sprite.animation) != 0) and animated_sprite.is_playing():
+		if ((PRIORITY_MOVEMENT.count(animated_sprite.animation) != 0) and 
+		animated_sprite.is_playing()):
 			pass
 		else:
 			_play_movement_animations(direction)
@@ -108,13 +111,16 @@ func _waking_up():
 	animated_sprite.play("wake")
 	waking_up = false
 func _hit():
-	hurt.play()
-	_interrupt_skill0()
-	game_manager.hp -= 1
-	animated_sprite.play("hit")
-	if game_manager.hp == 0:
-		dead = true
-		_die()
+	if !immune:
+		hurt.play()
+		_interrupt_skill0()
+		game_manager.hp -= 1
+		animated_sprite.play("hit")
+		if game_manager.hp == 0:
+			dead = true
+			_die()
+		immune = true
+		immunity.start()
 func _flip(direction: int):
 	if direction > 0:
 		animated_sprite.flip_h = false
@@ -140,7 +146,8 @@ func _play_movement_animations(direction: int):
 		
 
 func _skill1():
-	if !(animated_sprite.animation == "skill1" and animated_sprite.is_playing()) and game_manager.amnova_ready and game_manager.amnova_unlocked:
+	if (!(animated_sprite.animation == "skill1" and animated_sprite.is_playing())
+	 and game_manager.amnova_ready and game_manager.amnova_unlocked):
 		s1_sound.play()
 		animated_sprite.play("skill1")
 		if areas1:
@@ -159,7 +166,8 @@ func _on_skill_1_cd_timeout():
 	game_manager.amnova_ready = true
 
 func _skill0():
-	if !(PREVENT_START.count(animated_sprite.animation) != 0 and animated_sprite.is_playing()) and game_manager.fireball_unlocked:
+	if (!(PREVENT_START.count(animated_sprite.animation) != 0 and 
+	animated_sprite.is_playing()) and game_manager.fireball_unlocked):
 		game_manager.fireball_pressed()
 		casting = true
 		animated_sprite.play("casting")
@@ -197,3 +205,7 @@ func _die():
 
 func _on_death_timer_timeout():
 	get_tree().reload_current_scene()
+
+
+func _on_immunity_timeout():
+	immune = false

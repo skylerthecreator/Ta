@@ -12,3 +12,12 @@ var hp = 1
 func _process(_delta):
 	Hud.update_hp(hp, MAX_HP)
 	Hud.update_coins(coins)
+	if fireball_unlocked:
+		Hud.show_fireball()
+		
+func fireball_pressed():
+	if fireball_unlocked:
+		Hud.fireball_pressed()
+func interrupt_fireball():
+	if fireball_unlocked:
+		Hud.fireball_interrupted()

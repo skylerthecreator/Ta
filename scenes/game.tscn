@@ -1770,7 +1770,6 @@ collision_mask = 5
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(0, -7)
 zoom = Vector2(3, 3)
-position_smoothing_enabled = true
 
 [node name="TileMap" type="TileMap" parent="." groups=["map"]]
 tile_set = SubResource("TileSet_ilhtr")
@@ -1858,6 +1857,15 @@ NOW WAS IT? HOWEVER, FOR WHAT'S TO COME,
 YOU'LL NEED MORE THAN JUST YOUR AGILITY. 
 
 ACCEPT MY GIFT, TRAVELER."
+
+[node name="wizarddl8" type="Label" parent="labels"]
+offset_left = 2851.0
+offset_top = -138.0
+offset_right = 3167.0
+offset_bottom = -64.0
+theme_override_colors/font_color = Color(0.576471, 0.176471, 0.545098, 1)
+theme_override_fonts/font = ExtResource("8_cwuaj")
+theme_override_font_sizes/font_size = 8
 
 [node name="wizarddl7" type="Label" parent="labels"]
 offset_left = 2670.0
@@ -1981,9 +1989,6 @@ position = Vector2(2284, -71)
 
 [node name="apple7" parent="friendlies/apples" instance=ExtResource("11_5btnk")]
 position = Vector2(937, -95)
-
-[node name="apple9" parent="friendlies/apples" instance=ExtResource("11_5btnk")]
-position = Vector2(-152, 31)
 
 [node name="coins" type="Node" parent="friendlies"]
 
@@ -2234,4 +2239,4 @@ position = Vector2(-168, 24)
 position = Vector2(2760, -80)
 
 [node name="training_dummy" parent="." instance=ExtResource("20_e714n")]
-position = Vector2(3016, -13)
+position = Vector2(3049, -14)

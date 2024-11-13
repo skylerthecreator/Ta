@@ -9,6 +9,6 @@ res://scenes/killzone.tscn
 res://scenes/spike.tscn
 res://scenes/pyro_mani.tscn
 res://scenes/hermesboots.tscn
-res://scripts/fireball.gd
 res://scripts/gamemanager.gd
+res://scripts/hud.gd
 res://scripts/player.gd

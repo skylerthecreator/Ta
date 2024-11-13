@@ -1,7 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnpgir75n6dgl"]
+[gd_scene load_steps=7 format=3 uid="uid://cnpgir75n6dgl"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_64fqt"]
 [ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="2_mdka8"]
+[ext_resource type="FontFile" uid="uid://cj4qjstjnmyrg" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_libq2"]
+[ext_resource type="Texture2D" uid="uid://dcy1obuvgwlwl" path="res://assets/sprites/skills/skill0/FB500-1.png" id="4_sy2fj"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_44bov"]
+action = &"skill0"
+
+[sub_resource type="Shortcut" id="Shortcut_63jbj"]
+events = [SubResource("InputEventAction_44bov")]
 
 [node name="HUD" type="Node2D"]
 script = ExtResource("1_64fqt")
@@ -25,3 +33,31 @@ offset_bottom = 97.0
 theme_override_fonts/font = ExtResource("2_mdka8")
 theme_override_font_sizes/font_size = 24
 text = "🪙x8"
+
+[node name="fireball_icon" type="Button" parent="Display"]
+offset_left = 384.0
+offset_top = 539.0
+offset_right = 904.0
+offset_bottom = 1059.0
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("3_libq2")
+theme_override_font_sizes/font_size = 128
+action_mode = 0
+shortcut = SubResource("Shortcut_63jbj")
+text = "J"
+icon = ExtResource("4_sy2fj")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="fireball_casting" type="Button" parent="Display/fireball_icon"]
+visible = false
+layout_mode = 0
+offset_right = 520.0
+offset_bottom = 500.0
+theme_override_fonts/font = ExtResource("3_libq2")
+theme_override_font_sizes/font_size = 128
+icon_alignment = 1
+
+[node name="fireball_casting_time" type="Timer" parent="."]
+
+[connection signal="timeout" from="fireball_casting_time" to="." method="_on_fireball_casting_time_timeout"]

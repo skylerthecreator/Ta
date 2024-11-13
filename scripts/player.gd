@@ -40,8 +40,6 @@ var waking_up = false
 var attacking = false
 var moving = false
 
-var s0_casting = false
-
 var casting = false
 var cast_dir = 1
 	
@@ -162,6 +160,7 @@ func _on_skill_1_cd_timeout():
 
 func _skill0():
 	if !(PREVENT_START.count(animated_sprite.animation) != 0 and animated_sprite.is_playing()) and game_manager.fireball_unlocked:
+		game_manager.fireball_pressed()
 		casting = true
 		animated_sprite.play("casting")
 		fireball_sound.play()
@@ -170,6 +169,7 @@ func _skill0():
 		fireball_chargeup.play("default")
 
 func _interrupt_skill0():
+	game_manager.interrupt_fireball()
 	casting = false
 	animated_sprite.stop()
 	fireball_sound.stop()

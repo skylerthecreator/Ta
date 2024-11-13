@@ -1,7 +1,8 @@
+Timer
+Button
 Label
 CollisionShape2D
 Area2D
-Timer
 CanvasLayer
 CollisionPolygon2D
 AnimatedSprite2D
@@ -11,4 +12,3 @@ AnimationPlayer
 AudioStreamPlayer2D
 ProgressBar
 Node
-RayCast2D

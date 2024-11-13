@@ -36,7 +36,7 @@ var areas1 = []
 var dead = false
 
 var rolling = false
-var waking_up = true
+var waking_up = false
 var attacking = false
 var moving = false
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://g77a77m022qm"]
+[gd_scene load_steps=34 format=3 uid="uid://g77a77m022qm"]
 
 [ext_resource type="Texture2D" uid="uid://kpld5n16lvkg" path="res://assets/sprites/default/world_tileset.png" id="1_0yvkf"]
 [ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_iry8t"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c1fnbvgv6vvqc" path="res://scenes/merchant.tscn" id="12_irqes"]
 [ext_resource type="Texture2D" uid="uid://caosdi6rvgr7s" path="res://assets/sprites/Pixel Crawler - FREE - 1.8/Environment/Green Woods/Assets/Trees.png" id="13_tnvc8"]
 [ext_resource type="PackedScene" uid="uid://cq83vmu4o5p8i" path="res://scenes/hermesboots.tscn" id="14_qg6jb"]
+[ext_resource type="PackedScene" uid="uid://8jcdoodxb6cs" path="res://scenes/morrow.tscn" id="15_6eak7"]
 [ext_resource type="PackedScene" uid="uid://bwj7ef1aq2yrf" path="res://scenes/spike.tscn" id="16_slx7y"]
 [ext_resource type="PackedScene" uid="uid://b1tymjfdyf48m" path="res://scenes/healing_potion.tscn" id="17_3yjrd"]
 [ext_resource type="PackedScene" uid="uid://cact4017uha0l" path="res://scenes/fury_of_demetrius.tscn" id="18_v616t"]
@@ -1764,7 +1765,7 @@ _data = {
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("2_3id2r")]
 z_index = 5
-position = Vector2(-265, 47)
+position = Vector2(2522, 0)
 collision_mask = 5
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -1797,14 +1798,15 @@ theme_override_font_sizes/font_size = 8
 text = "(D) MOVE RIGHT
 (A) MOVE LEFT
 (W) JUMP
-(F) PICK UP"
+(F) PICK UP
+(SHIFT) DASH"
 
 [node name="wizarddl1" type="Label" parent="labels"]
 offset_left = -548.0
 offset_top = -167.0
 offset_right = -307.0
 offset_bottom = -93.0
-theme_override_colors/font_color = Color(0.576471, 0.176471, 0.545098, 1)
+theme_override_colors/font_color = Color(0.6, 0.211765, 0.619608, 1)
 theme_override_fonts/font = ExtResource("8_cwuaj")
 theme_override_font_sizes/font_size = 8
 text = "AH, LOOK WHO'S FINALLY AWAKE!
@@ -1820,7 +1822,7 @@ offset_left = -280.0
 offset_top = -166.0
 offset_right = -39.0
 offset_bottom = -114.0
-theme_override_colors/font_color = Color(0.576471, 0.176471, 0.545098, 1)
+theme_override_colors/font_color = Color(0.6, 0.211765, 0.619608, 1)
 theme_override_fonts/font = ExtResource("8_cwuaj")
 theme_override_font_sizes/font_size = 8
 text = "YOU HAVE SUFFERED A GREAT INJURY.
@@ -1833,7 +1835,7 @@ offset_left = 451.0
 offset_top = -154.0
 offset_right = 685.0
 offset_bottom = -80.0
-theme_override_colors/font_color = Color(0.576471, 0.176471, 0.545098, 1)
+theme_override_colors/font_color = Color(0.6, 0.211765, 0.619608, 1)
 theme_override_fonts/font = ExtResource("8_cwuaj")
 theme_override_font_sizes/font_size = 8
 text = "YOU WILL ENCOUNTER MANY MONSTERS
@@ -1848,7 +1850,7 @@ offset_left = 2364.0
 offset_top = -162.0
 offset_right = 2680.0
 offset_bottom = -88.0
-theme_override_colors/font_color = Color(0.576471, 0.176471, 0.545098, 1)
+theme_override_colors/font_color = Color(0.6, 0.211765, 0.619608, 1)
 theme_override_fonts/font = ExtResource("8_cwuaj")
 theme_override_font_sizes/font_size = 8
 text = "WELL DONE! YOU HAVE ALMOST MADE IT PAST THE 
@@ -1863,7 +1865,7 @@ offset_left = 2851.0
 offset_top = -138.0
 offset_right = 3167.0
 offset_bottom = -64.0
-theme_override_colors/font_color = Color(0.576471, 0.176471, 0.545098, 1)
+theme_override_colors/font_color = Color(0.6, 0.211765, 0.619608, 1)
 theme_override_fonts/font = ExtResource("8_cwuaj")
 theme_override_font_sizes/font_size = 8
 
@@ -1872,7 +1874,7 @@ offset_left = 2670.0
 offset_top = -121.0
 offset_right = 2941.0
 offset_bottom = -47.0
-theme_override_colors/font_color = Color(0.576471, 0.176471, 0.545098, 1)
+theme_override_colors/font_color = Color(0.6, 0.211765, 0.619608, 1)
 theme_override_fonts/font = ExtResource("8_cwuaj")
 theme_override_font_sizes/font_size = 8
 
@@ -1881,7 +1883,7 @@ offset_left = -7.0
 offset_top = -169.0
 offset_right = 317.0
 offset_bottom = -106.0
-theme_override_colors/font_color = Color(0.576471, 0.176471, 0.545098, 1)
+theme_override_colors/font_color = Color(0.6, 0.211765, 0.619608, 1)
 theme_override_fonts/font = ExtResource("8_cwuaj")
 theme_override_font_sizes/font_size = 8
 text = "THESE GOLDEN COINS WILL BE VERY 
@@ -1896,7 +1898,7 @@ offset_left = 859.0
 offset_top = -207.0
 offset_right = 1045.0
 offset_bottom = -177.0
-theme_override_colors/font_color = Color(0.576471, 0.176471, 0.545098, 1)
+theme_override_colors/font_color = Color(0.6, 0.211765, 0.619608, 1)
 theme_override_fonts/font = ExtResource("8_cwuaj")
 theme_override_font_sizes/font_size = 8
 text = "BERRIES WILL RESTORE 1
@@ -1921,7 +1923,7 @@ offset_left = 313.0
 offset_top = 85.0
 offset_right = 464.0
 offset_bottom = 115.0
-theme_override_colors/font_color = Color(0.576471, 0.176471, 0.545098, 1)
+theme_override_colors/font_color = Color(0.6, 0.211765, 0.619608, 1)
 theme_override_fonts/font = ExtResource("8_cwuaj")
 theme_override_font_sizes/font_size = 8
 text = "BEWARE OF CLIFFS! 
@@ -1946,7 +1948,7 @@ offset_left = 1093.0
 offset_top = -207.0
 offset_right = 1289.0
 offset_bottom = -166.0
-theme_override_colors/font_color = Color(0.576471, 0.176471, 0.545098, 1)
+theme_override_colors/font_color = Color(0.6, 0.211765, 0.619608, 1)
 theme_override_fonts/font = ExtResource("8_cwuaj")
 theme_override_font_sizes/font_size = 8
 text = "YOU WILL HAVE OPPORTUNITIES
@@ -1960,7 +1962,7 @@ offset_left = 1535.0
 offset_top = -210.0
 offset_right = 1793.0
 offset_bottom = -169.0
-theme_override_colors/font_color = Color(0.576471, 0.176471, 0.545098, 1)
+theme_override_colors/font_color = Color(0.6, 0.211765, 0.619608, 1)
 theme_override_fonts/font = ExtResource("8_cwuaj")
 theme_override_font_sizes/font_size = 8
 text = "THAT IS ALL FOR NOW, BEST OF LUCK ON YOUR
@@ -2091,13 +2093,26 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="wizard" parent="friendlies/NPCS" instance=ExtResource("12_gjoaa")]
-position = Vector2(-566, -15)
+position = Vector2(-584, -15)
 
-[node name="maurice" type="Label" parent="friendlies/NPCS/wizard"]
-offset_left = -53.0
-offset_top = -61.0
-offset_right = 53.0
-offset_bottom = -33.0
+[node name="maurice2" type="Label" parent="friendlies/NPCS/wizard"]
+offset_left = -55.0
+offset_top = -64.0
+offset_right = 51.0
+offset_bottom = -36.0
+theme_override_colors/font_color = Color(0, 0.901961, 0, 1)
+theme_override_fonts/font = ExtResource("8_cwuaj")
+theme_override_font_sizes/font_size = 8
+text = "MAURICE
+<THE WIZARD>"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="maurice2" type="Label" parent="friendlies/NPCS"]
+offset_left = 2538.0
+offset_top = -64.0
+offset_right = 2644.0
+offset_bottom = -36.0
 theme_override_colors/font_color = Color(0, 0.901961, 0, 1)
 theme_override_fonts/font = ExtResource("8_cwuaj")
 theme_override_font_sizes/font_size = 8
@@ -2107,21 +2122,8 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="wizard2" parent="friendlies/NPCS" instance=ExtResource("12_gjoaa")]
-position = Vector2(2546, 0)
+position = Vector2(2593, 0)
 scale = Vector2(-1, 1)
-
-[node name="maurice" type="Label" parent="friendlies/NPCS"]
-offset_left = 2493.0
-offset_top = -61.0
-offset_right = 2599.0
-offset_bottom = -33.0
-theme_override_colors/font_color = Color(0, 0.901961, 0, 1)
-theme_override_fonts/font = ExtResource("8_cwuaj")
-theme_override_font_sizes/font_size = 8
-text = "MAURICE
-<THE WIZARD>"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="killzone" parent="." instance=ExtResource("4_4q054")]
 position = Vector2(0, 211)
@@ -2155,6 +2157,9 @@ position = Vector2(2136, 64)
 [node name="slime6" parent="Enemies" instance=ExtResource("6_sac27")]
 z_index = 5
 position = Vector2(2184, 64)
+
+[node name="morrow" parent="Enemies" instance=ExtResource("15_6eak7")]
+position = Vector2(3169, 0)
 
 [node name="platforms" type="Node" parent="."]
 
@@ -2239,4 +2244,4 @@ position = Vector2(-250, 40)
 position = Vector2(2760, -80)
 
 [node name="training_dummy" parent="." instance=ExtResource("20_e714n")]
-position = Vector2(3049, -14)
+position = Vector2(2887, -14.5)

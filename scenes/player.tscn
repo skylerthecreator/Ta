@@ -1,21 +1,28 @@
-[gd_scene load_steps=111 format=3 uid="uid://cqnov4vrpq7a2"]
+[gd_scene load_steps=125 format=3 uid="uid://cqnov4vrpq7a2"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_osmlu"]
 [ext_resource type="Texture2D" uid="uid://bw55hyv2k77xy" path="res://assets/Pixel Prototype Player/Sprites/Combat/Punch02/Punch0204.png" id="2_2p2b5"]
+[ext_resource type="Texture2D" uid="uid://bai0mqpfvw3wc" path="res://assets/Pixel Prototype Player/Sprites/Dash/Dash02.png" id="3_0a7ef"]
 [ext_resource type="Texture2D" uid="uid://bmvvrg1axhhgq" path="res://assets/Pixel Prototype Player/Sprites/Die/Die01.png" id="3_qf4qb"]
 [ext_resource type="Texture2D" uid="uid://depsk02ldjlsg" path="res://assets/Pixel Prototype Player/Sprites/Die/Die02.png" id="4_d45c6"]
 [ext_resource type="Texture2D" uid="uid://blclvy2nw0unm" path="res://assets/Pixel Prototype Player/Sprites/Combat/Punch02/Punch0201.png" id="4_il5m8"]
 [ext_resource type="AudioStream" uid="uid://lm1o1sncijak" path="res://assets/sounds/hurt.wav" id="4_nh6jv"]
+[ext_resource type="Texture2D" uid="uid://dj1ky5hfy6x1o" path="res://assets/Pixel Prototype Player/Sprites/Dash/Dash03.png" id="4_xqi53"]
 [ext_resource type="AudioStream" uid="uid://bvnxuig2xfvso" path="res://assets/sounds/footstepsedit.mp3" id="5_0lds3"]
 [ext_resource type="Texture2D" uid="uid://dajjd7cvub7a4" path="res://assets/Pixel Prototype Player/Sprites/Die/Die03.png" id="5_4ohom"]
 [ext_resource type="Texture2D" uid="uid://cfc121atvq6p4" path="res://assets/Pixel Prototype Player/Sprites/Combat/Punch02/Punch0202.png" id="5_eecx6"]
+[ext_resource type="Texture2D" uid="uid://jaixkaqqhyk2" path="res://assets/Pixel Prototype Player/Sprites/Dash/Dash04.png" id="5_fsair"]
 [ext_resource type="Texture2D" uid="uid://dd6d5h0u3f623" path="res://assets/Pixel Prototype Player/Sprites/Combat/Punch02/Punch0203.png" id="6_bq8tm"]
 [ext_resource type="Texture2D" uid="uid://b4tkg1uq4ov0" path="res://assets/Pixel Prototype Player/Sprites/Die/Die04.png" id="6_pfhfn"]
+[ext_resource type="Texture2D" uid="uid://rqh2688e5tpb" path="res://assets/Pixel Prototype Player/Sprites/Dash/Dash05.png" id="6_pk2j2"]
 [ext_resource type="Texture2D" uid="uid://c31e1w06r8k5l" path="res://assets/Pixel Prototype Player/Sprites/Die/Die05.png" id="7_gavpl"]
+[ext_resource type="Texture2D" uid="uid://bssc6fdntaxmy" path="res://assets/Pixel Prototype Player/Sprites/Dash/Dash06.png" id="7_yrvta"]
 [ext_resource type="Texture2D" uid="uid://c7xmfo5ccgjce" path="res://assets/Pixel Prototype Player/Sprites/Die/Die06.png" id="8_7m881"]
 [ext_resource type="AudioStream" uid="uid://dw8kenwgr1pdb" path="res://assets/sounds/jump2.wav" id="8_11tyn"]
 [ext_resource type="Texture2D" uid="uid://d1yj6b72qlfs7" path="res://assets/Pixel Prototype Player/Sprites/Idle/Idle01.png" id="8_be26n"]
+[ext_resource type="Texture2D" uid="uid://bl2qdy36lj3if" path="res://assets/Pixel Prototype Player/Sprites/Dash/Dash07.png" id="8_wrpa5"]
 [ext_resource type="Texture2D" uid="uid://c7nv8x8r6inxn" path="res://assets/Pixel Prototype Player/Sprites/Die/Die07.png" id="9_1odu0"]
+[ext_resource type="Texture2D" uid="uid://dhqcwfr1xfduq" path="res://assets/Pixel Prototype Player/Sprites/Dash/Dash08.png" id="9_c7ne7"]
 [ext_resource type="Texture2D" uid="uid://cc5t7t3045tjk" path="res://assets/Pixel Prototype Player/Sprites/Idle/Idle02.png" id="9_sl3qr"]
 [ext_resource type="Texture2D" uid="uid://cukkjpp67hpu" path="res://assets/Pixel Prototype Player/Sprites/Idle/Idle03.png" id="10_e3ou6"]
 [ext_resource type="Texture2D" uid="uid://biljq7p516a38" path="res://assets/Pixel Prototype Player/Sprites/Die/Die08.png" id="10_u3va0"]
@@ -41,6 +48,34 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fojhr"]
 atlas = ExtResource("2_2p2b5")
+region = Rect2(0, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xygf6"]
+atlas = ExtResource("3_0a7ef")
+region = Rect2(0, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6aq04"]
+atlas = ExtResource("4_xqi53")
+region = Rect2(0, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gquc3"]
+atlas = ExtResource("5_fsair")
+region = Rect2(0, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3r5p"]
+atlas = ExtResource("6_pk2j2")
+region = Rect2(0, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awkox"]
+atlas = ExtResource("7_yrvta")
+region = Rect2(0, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7s5as"]
+atlas = ExtResource("8_wrpa5")
+region = Rect2(0, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rhylt"]
+atlas = ExtResource("9_c7ne7")
 region = Rect2(0, 0, 96, 84)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_khwi7"]
@@ -307,6 +342,32 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_xygf6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6aq04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gquc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3r5p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awkox")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7s5as")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rhylt")
+}],
+"loop": false,
+"name": &"dash",
+"speed": 35.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_khwi7")
 }, {
 "duration": 1.0,
@@ -432,11 +493,6 @@ animations = [{
 "name": &"jump",
 "speed": 15.0
 }, {
-"frames": [],
-"loop": true,
-"name": &"new_animation",
-"speed": 5.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fppvw")
@@ -464,7 +520,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"run",
-"speed": 8.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -596,10 +652,8 @@ script = ExtResource("1_osmlu")
 position = Vector2(-2.27374e-13, -28)
 scale = Vector2(0.662424, 0.667223)
 sprite_frames = SubResource("SpriteFrames_vvjdw")
-animation = &"jump"
+animation = &"run"
 autoplay = "wake"
-frame = 11
-frame_progress = 1.0
 
 [node name="playeroutline" type="CollisionShape2D" parent="."]
 z_index = 5
@@ -607,7 +661,8 @@ position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_2qq0b")
 
 [node name="fireball_bar" type="ProgressBar" parent="."]
-modulate = Color(0, 1, 1, 1)
+visible = false
+modulate = Color(0, 1, 0.701961, 1)
 offset_left = -12.0
 offset_top = -32.0
 offset_right = 12.0
@@ -667,9 +722,18 @@ frame_progress = 1.0
 
 [node name="immunity" type="Timer" parent="."]
 
+[node name="dash_duration" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="dash_cd" type="Timer" parent="."]
+wait_time = 3.0
+
 [connection signal="area_entered" from="skill1outline" to="." method="_on_skill_1_outline_area_entered"]
 [connection signal="area_exited" from="skill1outline" to="." method="_on_skill_1_outline_area_exited"]
 [connection signal="timeout" from="skill1cd" to="." method="_on_skill_1_cd_timeout"]
 [connection signal="timeout" from="fireball_cast_time" to="." method="_on_fireball_cast_time_timeout"]
 [connection signal="timeout" from="death_timer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="immunity" to="." method="_on_immunity_timeout"]
+[connection signal="timeout" from="dash_duration" to="." method="_on_dash_duration_timeout"]
+[connection signal="timeout" from="dash_cd" to="." method="_on_dash_cd_timeout"]

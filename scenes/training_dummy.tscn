@@ -46,6 +46,7 @@ animations = [{
 }]
 
 [node name="training_dummy" type="Area2D" groups=["enemies"]]
+scale = Vector2(0.8, 1.2)
 script = ExtResource("1_gc4nk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -64,6 +65,7 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_qjaas")
 theme_override_font_sizes/font_size = 8
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="dtdt" type="Timer" parent="."]
 wait_time = 0.5

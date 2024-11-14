@@ -1,37 +1,51 @@
-[gd_scene load_steps=7 format=3 uid="uid://dg73ggkblgcq2"]
+[gd_scene load_steps=9 format=3 uid="uid://dg73ggkblgcq2"]
 
-[ext_resource type="Texture2D" uid="uid://etnaojc6rt1t" path="res://assets/sprites/Pixel Crawler - FREE - 1.8/Heroes/Wizzard/Idle/Idle-Sheet.png" id="1_qh3ef"]
+[ext_resource type="Texture2D" uid="uid://bb5nav8p8wh6o" path="res://assets/sprites/NPCS/Wizard Pack/Idle.png" id="1_bluda"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mbofb"]
-atlas = ExtResource("1_qh3ef")
-region = Rect2(0, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_p44ot"]
+atlas = ExtResource("1_bluda")
+region = Rect2(0, 0, 231, 190)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_fxehp"]
-atlas = ExtResource("1_qh3ef")
-region = Rect2(32, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6pjwm"]
+atlas = ExtResource("1_bluda")
+region = Rect2(231, 0, 231, 190)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jlkpt"]
-atlas = ExtResource("1_qh3ef")
-region = Rect2(64, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_r1cb4"]
+atlas = ExtResource("1_bluda")
+region = Rect2(462, 0, 231, 190)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rxfnu"]
-atlas = ExtResource("1_qh3ef")
-region = Rect2(96, 0, 32, 32)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xdrk"]
+atlas = ExtResource("1_bluda")
+region = Rect2(693, 0, 231, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1qme"]
+atlas = ExtResource("1_bluda")
+region = Rect2(924, 0, 231, 190)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uefne"]
+atlas = ExtResource("1_bluda")
+region = Rect2(1155, 0, 231, 190)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ibduq"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mbofb")
+"texture": SubResource("AtlasTexture_p44ot")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_fxehp")
+"texture": SubResource("AtlasTexture_6pjwm")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jlkpt")
+"texture": SubResource("AtlasTexture_r1cb4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rxfnu")
+"texture": SubResource("AtlasTexture_8xdrk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1qme")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uefne")
 }],
 "loop": true,
 "name": &"default",
@@ -41,8 +55,9 @@ animations = [{
 [node name="wizard" type="Node2D"]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -17)
-scale = Vector2(0.800781, 1.03289)
+position = Vector2(-34, -58)
+scale = Vector2(0.318782, 0.411182)
 sprite_frames = SubResource("SpriteFrames_ibduq")
 autoplay = "default"
 frame_progress = 0.967493
+centered = false

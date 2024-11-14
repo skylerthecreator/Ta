@@ -2,12 +2,13 @@ extends CharacterBody2D
 
 
 const ROLL_SPEED = 300
-const SPEED = 100
+var MAX_SPEED = 100
 const JUMP_VELOCITY = -225
-const PRIORITY_MOVEMENT = ["casting", "fireball", "skill1", "wake", "hit"]
+const DASH_SPEED_MULTIPLIER = 5
+const PRIORITY_MOVEMENT = ["casting", "fireball", "skill1", "wake", "hit", "dash"]
 const PREVENT_START = ["casting", "fireball"]
 const PREVENT_FLIP = ["fireball"]
-var speed = SPEED
+var speed = MAX_SPEED
 
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -32,6 +33,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var fbspawn = $fbspawn
 var fireball = load("res://scenes/fireball.tscn")
 
+@onready var dash_duration = $dash_duration
+@onready var dash_cd = $dash_cd
+
+
+
+
 var buy = false
 var areas1 = []
 
@@ -42,7 +49,8 @@ var waking_up = false
 var attacking = false
 var moving = false
 var immune = false
-
+var can_dash = true
+var dashing = false
 var casting = false
 var cast_dir = 1
 	
@@ -63,6 +71,8 @@ func _physics_process(delta):
 		if not is_on_floor():
 			velocity.y += gravity * delta
 		# Handle jump.
+		if Input.is_action_just_pressed("dash"):
+			_dash()
 		if Input.is_action_just_pressed("jump") and is_on_floor():
 			jump.play()
 			velocity.y = JUMP_VELOCITY
@@ -95,7 +105,9 @@ func _physics_process(delta):
 		else:
 			_play_movement_animations(direction)
 			
-		if direction:
+		if dashing and direction:
+			velocity.x = direction * speed * DASH_SPEED_MULTIPLIER
+		elif direction:
 			velocity.x = direction * speed
 		else:
 			velocity.x = move_toward(velocity.x, 0, speed)
@@ -211,3 +223,16 @@ func _on_death_timer_timeout():
 
 func _on_immunity_timeout():
 	immune = false
+
+func _dash():
+	if can_dash:
+		animated_sprite.play("dash")
+		dashing = true
+		dash_duration.start()
+func _on_dash_duration_timeout():
+	dash_cd.start()
+	dashing = false
+	can_dash = false
+	
+func _on_dash_cd_timeout():
+	can_dash = true

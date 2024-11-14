@@ -17,6 +17,7 @@ func _process(_delta):
 	if player and player.buy and game_manager.coins >= COST:
 		game_manager.coins -= COST
 		player.speed += SPEED_INC
+		player.MAX_SPEED += SPEED_INC
 		animation_player.play("pickup")
 		player = null
 	elif player and player.buy and game_manager.coins < COST:

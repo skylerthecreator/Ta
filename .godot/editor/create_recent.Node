@@ -1,12 +1,12 @@
+Timer
+Label
+CollisionPolygon2D
 AnimatedSprite2D
 Area2D
 Control
 Node
-CollisionPolygon2D
-Timer
 CollisionShape2D
 Button
-Label
 CanvasLayer
 Marker2D
 RigidBody2D

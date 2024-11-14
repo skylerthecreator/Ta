@@ -1,15 +1,18 @@
-res://assets/Pixel Prototype Player/Sprites/JumpFall
+res://assets/Pixel Prototype Player/Sprites/Dash
+res://assets/Pixel Prototype Player/Sprites
+res://assets/sprites/NPCS/Wizard Pack
+res://scenes
 res://scripts
+res://assets/sprites/enemies/Undead executioner puppet/png
+res://assets/Pixel Prototype Player/Sprites/JumpFall
 res://assets/sprites/enemies/Skeleton/Sprite Sheets
 res://assets/sprites/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Warrior/Idle
-res://assets/Pixel Prototype Player/Sprites
 res://assets/Pixel Prototype Player/Sprites/Die
 res://assets/Pixel Prototype Player/Sprites/Run
 res://assets/Pixel Prototype Player/Sprites/Land
 res://assets/Pixel Prototype Player/Sprites/Jump
 res://assets/Pixel Prototype Player/Sprites/Combat/Punch02
 res://assets/Pixel Prototype Player/Sprites/Idle
-res://scenes
 res://assets/sprites/environment
 res://assets/sprites/skills
 res://assets/sprites/ITEMS
@@ -17,6 +20,3 @@ res://assets/sprites/Base Character - Free
 res://assets/sprites/default
 res://assets/sprites/traps
 res://assets/sprites/traps/peaks
-res://assets/sprites/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Rogue/Idle
-res://assets/sprites/Pixel Crawler - FREE - 1.8/Enemy/Orc Crew/Orc/Death
-res://assets/sprites/Pixel Crawler - FREE - 1.8/Enemy/Orc Crew/Orc/Run

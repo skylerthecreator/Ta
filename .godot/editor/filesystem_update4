@@ -12,3 +12,6 @@ res://scenes/hermesboots.tscn
 res://scripts/slime.gd
 res://scripts/notes.gd
 res://scripts/player.gd
+res://scenes/morrow.tscn
+res://scenes/wizard.tscn
+res://scripts/hermesboots.gd

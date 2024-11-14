@@ -5,7 +5,7 @@ The game is still in development, but some core mechanics of the game have alrea
 
 SPECIAL THANKS TO:
 
-ANIMATION:
+ANIMATION AND DESIGNER:
 Attack: Elle Yamamoto
 
 ASSETS:

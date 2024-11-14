@@ -1,12 +1,11 @@
-Welcome to my first game!
-The game is still in development, but some core mechanics of the game have already been implemented, such as attacking, looting, purchasing, and more.
+My first game!
 
 
 
 SPECIAL THANKS TO:
 
-ANIMATION AND DESIGNER:
-Attack: Elle Yamamoto
+DESIGN:
+Elle Yamamoto
 
 ASSETS:
 Map Assets: Brackeys' Platformer Bundle - https://brackeysgames.itch.io/brackeys-platformer-bundle

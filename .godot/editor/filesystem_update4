@@ -15,3 +15,6 @@ res://scripts/player.gd
 res://scenes/morrow.tscn
 res://scenes/wizard.tscn
 res://scripts/hermesboots.gd
+res://scenes/orion.tscn
+res://scripts/orion.gd
+res://scripts/morrow.gd

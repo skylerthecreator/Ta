@@ -20,9 +20,10 @@ const MAX_HP = 3
 @onready var slimedeath = $slimedeath
 @onready var dmg_taken = $dmg_taken
 @onready var dtdt = $dtdt
+@onready var swing = $swing
+
 
 var body_in_range = null
-var attacking = false
 var hit = false
 var hp = MAX_HP
 
@@ -36,10 +37,11 @@ func _physics_process(delta):
 		adie.visible = false
 		ahit.visible = false
 		aattack.visible = true
-		aattack.play("default")
-		if !body_in_range.dead and !attacking:
-			attacking = true
+		if !aattack.is_playing():
+			aattack.play("default")
 			attack_time.start()
+			swing.play()
+			
 	if ray_cast_right.is_colliding():
 		direction *= -1
 		scale.x *= -1
@@ -98,7 +100,6 @@ func _on_attackrange_body_exited(_body):
 func _on_attack_time_timeout():
 	if body_in_range and hp > 0:
 		body_in_range._hit()
-		attacking = false
 
 
 

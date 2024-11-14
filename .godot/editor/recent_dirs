@@ -1,10 +1,13 @@
-res://assets/Pixel Prototype Player/Sprites/Dash
 res://assets/Pixel Prototype Player/Sprites
-res://assets/sprites/NPCS/Wizard Pack
-res://scenes
 res://scripts
-res://assets/sprites/enemies/Undead executioner puppet/png
+res://scenes
+res://assets/sprites/enemies/Monsters/Monster_Creatures_Fantasy(Version 1.3)/Skeleton
+res://assets/sprites/enemies/Monsters/Monster_Creatures_Fantasy(Version 1.2)/Skeleton
+res://assets/sprites/enemies/Monsters/Monsters_Creatures_Fantasy/Skeleton
 res://assets/Pixel Prototype Player/Sprites/JumpFall
+res://assets/Pixel Prototype Player/Sprites/Dash
+res://assets/sprites/NPCS/Wizard Pack
+res://assets/sprites/enemies/Undead executioner puppet/png
 res://assets/sprites/enemies/Skeleton/Sprite Sheets
 res://assets/sprites/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Warrior/Idle
 res://assets/Pixel Prototype Player/Sprites/Die
@@ -17,6 +20,3 @@ res://assets/sprites/environment
 res://assets/sprites/skills
 res://assets/sprites/ITEMS
 res://assets/sprites/Base Character - Free
-res://assets/sprites/default
-res://assets/sprites/traps
-res://assets/sprites/traps/peaks

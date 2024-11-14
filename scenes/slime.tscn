@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=3 uid="uid://bhi0vprfpallj"]
+[gd_scene load_steps=80 format=3 uid="uid://bhi0vprfpallj"]
 
 [ext_resource type="Script" path="res://scripts/slime.gd" id="1_xwb3r"]
 [ext_resource type="Texture2D" uid="uid://bn8bbowx1p23t" path="res://assets/sprites/enemies/Skeleton/Sprite Sheets/Skeleton Walk.png" id="2_031wb"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cc4bk1akj7trn" path="res://assets/sounds/slimedeath.wav" id="4_f1vbd"]
 [ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="5_ygk0l"]
 [ext_resource type="Texture2D" uid="uid://bs83cvapg2y0n" path="res://assets/sprites/enemies/Skeleton/Sprite Sheets/Skeleton Attack.png" id="7_hafam"]
+[ext_resource type="AudioStream" uid="uid://gpuarp8ltggy" path="res://assets/sounds/swing.wav" id="8_k3bl6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f50pk"]
 atlas = ExtResource("2_031wb")
@@ -203,18 +204,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jcwib"]
-atlas = ExtResource("7_hafam")
-region = Rect2(0, 0, 43, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p1pwh"]
-atlas = ExtResource("7_hafam")
-region = Rect2(43, 0, 43, 37)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3yhe4"]
-atlas = ExtResource("7_hafam")
-region = Rect2(86, 0, 43, 37)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_7nhhx"]
 atlas = ExtResource("7_hafam")
 region = Rect2(129, 0, 43, 37)
@@ -279,15 +268,6 @@ region = Rect2(731, 0, 43, 37)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jcwib")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p1pwh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3yhe4")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_7nhhx")
 }, {
 "duration": 1.0,
@@ -334,7 +314,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 18.0
+"speed": 15.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6im3o"]
@@ -579,7 +559,7 @@ offset = Vector2(3, 0.5)
 [node name="attack" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_kamau")
-frame = 17
+frame = 14
 frame_progress = 1.0
 offset = Vector2(10.5, -2.5)
 
@@ -655,12 +635,15 @@ collision_mask = 2
 polygon = PackedVector2Array(15, 0, 25, 0, 25, -1, 24, -1, 24, -14, 23, -18, 21, -24, 17, -29, 13, -32, 8, -34, 2, -34, -3, -32, -6, -29, -7, -28, -7, -27, -2, -27, 5, -27, 11, -23, 13, -21, 14, -19, 16, -15, 16, -11, 17, -10, 17, -5, 16, -4, 16, -3, 15, -2)
 
 [node name="attack_time" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.4
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-9.53674e-07, -0.09375)
 scale = Vector2(1, 1.013)
 polygon = PackedVector2Array(-2, -23.6111, 3, -23.6111, 3, -22.6235, 4, -22.6235, 4, -21.6358, 5, -21.6358, 5, -20.6481, 4, -20.6481, 4, -16.6975, 3, -16.6975, 3, -15.7099, 2, -15.7099, 2, -13.7346, 1, -13.7346, 1, -12.7469, 7, -12.7469, 7, -13.7346, 9, -13.7346, 9, -11.7593, 7, -11.7593, 7, -10.7716, 3, -10.7716, 3, -9.78395, 1, -9.78395, 1, -7.80864, 3, -7.80864, 3, -3.85802, 2, -3.85802, 2, -0.895062, 3, -0.895062, 3, 0.0925926, 9.53674e-07, 0.0925926, 9.53674e-07, -3.85802, 1, -3.85802, 1, -5.83333, -0.999999, -5.83333, -0.999999, -3.85802, -2, -3.85802, -2, -2.87037, -3, -2.87037, -3, -1.88272, -4, -1.88272, -4, 0.0925926, -6, 0.0925926, -6, -1.88272, -5, -1.88272, -5, -3.85802, -4, -3.85802, -4, -5.83333, -3, -5.83333, -3, -7.80864, -0.999999, -7.80864, -0.999999, -9.78395, -3, -9.78395, -3, -10.7716, -3, -11.7593, -4, -11.7593, -4, -13.7346, -5, -13.7346, -5, -12.7469, -6, -12.7469, -6, -10.7716, -5, -10.7716, -5, -9.78395, -6, -9.78395, -6, -7.80864, -7, -7.80864, -7, -8.7963, -8, -8.7963, -8, -13.7346, -7, -13.7346, -7, -14.7222, -6, -14.7222, -6, -15.7099, -2, -15.7099, -2, -17.6852, -3, -17.6852, -3, -22.6235, -2, -22.6235)
+
+[node name="swing" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_k3bl6")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="dtdt" to="." method="_on_dtdt_timeout"]

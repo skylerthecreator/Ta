@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://g77a77m022qm"]
+[gd_scene load_steps=35 format=3 uid="uid://g77a77m022qm"]
 
 [ext_resource type="Texture2D" uid="uid://kpld5n16lvkg" path="res://assets/sprites/default/world_tileset.png" id="1_0yvkf"]
 [ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_iry8t"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://cq83vmu4o5p8i" path="res://scenes/hermesboots.tscn" id="14_qg6jb"]
 [ext_resource type="PackedScene" uid="uid://8jcdoodxb6cs" path="res://scenes/morrow.tscn" id="15_6eak7"]
 [ext_resource type="PackedScene" uid="uid://bwj7ef1aq2yrf" path="res://scenes/spike.tscn" id="16_slx7y"]
+[ext_resource type="PackedScene" uid="uid://cy00t7t5uqi6c" path="res://scenes/orion.tscn" id="16_t1xsl"]
 [ext_resource type="PackedScene" uid="uid://b1tymjfdyf48m" path="res://scenes/healing_potion.tscn" id="17_3yjrd"]
 [ext_resource type="PackedScene" uid="uid://cact4017uha0l" path="res://scenes/fury_of_demetrius.tscn" id="18_v616t"]
 [ext_resource type="PackedScene" uid="uid://q6q33re4yfil" path="res://scenes/pyro_mani.tscn" id="19_tkg12"]
@@ -1765,7 +1766,7 @@ _data = {
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("2_3id2r")]
 z_index = 5
-position = Vector2(2522, 0)
+position = Vector2(2924, -3)
 collision_mask = 5
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -2158,8 +2159,15 @@ position = Vector2(2136, 64)
 z_index = 5
 position = Vector2(2184, 64)
 
+[node name="slime8" parent="Enemies" instance=ExtResource("6_sac27")]
+z_index = 5
+position = Vector2(2405, -3)
+
 [node name="morrow" parent="Enemies" instance=ExtResource("15_6eak7")]
-position = Vector2(3169, 0)
+position = Vector2(3135, -288)
+
+[node name="orion" parent="Enemies" instance=ExtResource("16_t1xsl")]
+position = Vector2(3148, 0.5)
 
 [node name="platforms" type="Node" parent="."]
 

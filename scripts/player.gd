@@ -35,6 +35,7 @@ var fireball = load("res://scenes/fireball.tscn")
 
 @onready var dash_duration = $dash_duration
 @onready var dash_cd = $dash_cd
+@onready var dash_sfx = $dash_sfx
 
 
 
@@ -53,6 +54,7 @@ var can_dash = true
 var dashing = false
 var casting = false
 var cast_dir = 1
+var can_jump = true
 	
 func _physics_process(delta):
 	if waking_up:
@@ -68,7 +70,7 @@ func _physics_process(delta):
 			fireball_bar.visible = true
 			fireball_bar.value += 5.0/3.0
 		# Add the gravity.
-		if not is_on_floor():
+		if not is_on_floor() and not dashing:
 			velocity.y += gravity * delta
 		# Handle jump.
 		if Input.is_action_just_pressed("dash"):
@@ -105,8 +107,8 @@ func _physics_process(delta):
 		else:
 			_play_movement_animations(direction)
 			
-		if dashing and direction:
-			velocity.x = direction * speed * DASH_SPEED_MULTIPLIER
+		if dashing:
+			velocity.x = cast_dir * speed * DASH_SPEED_MULTIPLIER
 		elif direction:
 			velocity.x = direction * speed
 		else:
@@ -216,17 +218,16 @@ func _on_fireball_cast_time_timeout():
 func _die():
 	animated_sprite.play("death")
 	death_timer.start()
-
 func _on_death_timer_timeout():
 	get_tree().reload_current_scene()
-
-
+	
 func _on_immunity_timeout():
 	immune = false
 
 func _dash():
 	if can_dash:
 		animated_sprite.play("dash")
+		dash_sfx.play()
 		dashing = true
 		dash_duration.start()
 func _on_dash_duration_timeout():

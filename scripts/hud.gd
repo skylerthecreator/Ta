@@ -22,10 +22,11 @@ func update_coins(c: int):
 func show_fireball():
 	fireball_icon.visible = true
 	
-func fireball_pressed():
+func fireball_pressed(instant: bool):
 	fireball_icon.emit_signal("pressed")
-	fireball_casting.visible = true
-	fireball_casting_time.start()
+	if !instant:
+		fireball_casting.visible = true
+		fireball_casting_time.start()
 	
 func _physics_process(_delta):
 	if fireball_casting.visible == true:

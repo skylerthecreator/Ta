@@ -5,6 +5,8 @@ const MAX_HP = 5
 var coins = 0
 var amnova_unlocked = false
 var fireball_unlocked = true
+var insta_cast_unlocked = true
+var insta_cast_ready = false
 var amnova_ready = true
 var hp = 5
 
@@ -17,7 +19,7 @@ func _process(_delta):
 		
 func fireball_pressed():
 	if fireball_unlocked:
-		Hud.fireball_pressed()
+		Hud.fireball_pressed(insta_cast_ready)
 func interrupt_fireball():
 	if fireball_unlocked:
 		Hud.fireball_interrupted()

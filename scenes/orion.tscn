@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cy00t7t5uqi6c"]
+[gd_scene load_steps=59 format=3 uid="uid://cy00t7t5uqi6c"]
 
 [ext_resource type="Texture2D" uid="uid://dcvepj8y4qaj0" path="res://assets/sprites/enemies/Monsters/Monsters_Creatures_Fantasy/Skeleton/Attack.png" id="1_87ovw"]
 [ext_resource type="Script" path="res://scripts/orion.gd" id="1_cx0e5"]
@@ -10,7 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://b6bdmhjuie7ri" path="res://assets/sprites/enemies/Monsters/Monsters_Creatures_Fantasy/Skeleton/Idle.png" id="7_3uk6y"]
 [ext_resource type="Texture2D" uid="uid://cbge5ye0qjug5" path="res://assets/sprites/enemies/Monsters/Monsters_Creatures_Fantasy/Skeleton/Walk.png" id="8_s26vn"]
 [ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="10_eqgdt"]
-[ext_resource type="AudioStream" uid="uid://gpuarp8ltggy" path="res://assets/sounds/swing.wav" id="11_thtlr"]
+[ext_resource type="AudioStream" uid="uid://p6f0sv3nrv1f" path="res://assets/sounds/bosssfx/orion/oriona1.wav" id="11_le62v"]
+[ext_resource type="AudioStream" uid="uid://bt7v7ahab5oio" path="res://assets/sounds/bosssfx/orion/orion2edit.mp3" id="12_avy4o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i35v4"]
 atlas = ExtResource("1_87ovw")
@@ -131,10 +132,6 @@ region = Rect2(300, 0, 150, 150)
 [sub_resource type="AtlasTexture" id="AtlasTexture_x36bv"]
 atlas = ExtResource("5_a24wd")
 region = Rect2(450, 0, 150, 150)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kun80"]
-atlas = ExtResource("6_syidr")
-region = Rect2(0, 0, 150, 150)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yat6e"]
 atlas = ExtResource("6_syidr")
@@ -259,7 +256,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b78xt")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack3",
 "speed": 6.0
 }, {
@@ -299,9 +296,6 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_kun80")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_yat6e")
 }, {
 "duration": 1.0,
@@ -310,7 +304,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_i0uqd")
 }],
-"loop": true,
+"loop": false,
 "name": &"hit",
 "speed": 6.0
 }, {
@@ -354,10 +348,13 @@ radius = 8.0
 height = 40.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_geciy"]
-size = Vector2(313.5, 37)
+size = Vector2(528, 37)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8gja"]
 size = Vector2(34, 37)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_myl6d"]
+radius = 32.0
 
 [node name="orion" type="Area2D" groups=["enemies"]]
 script = ExtResource("1_cx0e5")
@@ -366,20 +363,17 @@ script = ExtResource("1_cx0e5")
 position = Vector2(0, -18)
 scale = Vector2(-0.67872, 0.67872)
 sprite_frames = SubResource("SpriteFrames_et7d2")
-animation = &"attack1"
+animation = &"idle"
 offset = Vector2(-4, 0)
 
-[node name="RayCast2D" type="RayCast2D" parent="."]
-position = Vector2(-3, -32)
-target_position = Vector2(-29, 0)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -18)
 shape = SubResource("CapsuleShape2D_lj65s")
 
 [node name="dmg_taken" type="Label" parent="."]
 offset_left = -20.0
-offset_top = -54.0
+offset_top = -55.0
 offset_right = 20.0
 offset_bottom = -41.0
 pivot_offset = Vector2(20, 0)
@@ -401,12 +395,12 @@ offset_bottom = 40.0
 
 [node name="healthbar" type="ProgressBar" parent="Control"]
 modulate = Color(1, 0, 0, 1)
+layout_mode = 0
 offset_left = -13.0
 offset_top = -46.0
 offset_right = 13.0
 offset_bottom = -41.0
 pivot_offset = Vector2(13, 0)
-value = 50.0
 show_percentage = false
 
 [node name="vision" type="Area2D" parent="."]
@@ -414,26 +408,29 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
-visible = false
-position = Vector2(-0.75, -18.5)
+position = Vector2(0, -18.5)
 shape = SubResource("RectangleShape2D_geciy")
-debug_color = Color(1, 0, 0, 0.419608)
+debug_color = Color(0.962451, 0, 0.496116, 0.419608)
 
 [node name="attack1range" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="attack1range"]
+visible = false
 polygon = PackedVector2Array(-14, -37, -25, -37, -42, -32, -47, -25, -47, -18, -38, -10, -31, -8, -24, -7, -14, -7, -5, -9, 2, -13, -7, -17, -20, -25)
 
 [node name="attack1_time" type="Timer" parent="."]
 wait_time = 0.75
 one_shot = true
 
-[node name="swing" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("11_thtlr")
+[node name="attack1_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_le62v")
+bus = &"Louder"
 
 [node name="attackrange" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
@@ -441,10 +438,47 @@ collision_mask = 2
 position = Vector2(-9, -18.5)
 shape = SubResource("RectangleShape2D_v8gja")
 
+[node name="attack2range" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="attack2range"]
+position = Vector2(-16, -29)
+shape = SubResource("CircleShape2D_myl6d")
+
+[node name="attack2_time" type="Timer" parent="."]
+wait_time = 0.75
+one_shot = true
+
+[node name="attack2_cd" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="title" type="Label" parent="."]
+offset_left = -91.0
+offset_top = -68.0
+offset_right = 91.0
+offset_bottom = -33.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_eqgdt")
+theme_override_font_sizes/font_size = 8
+text = "Orion
+<The Forsaken>"
+horizontal_alignment = 1
+
+[node name="attack2_sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_avy4o")
+bus = &"Louder"
+
 [connection signal="timeout" from="dtdt" to="." method="_on_dtdt_timeout"]
 [connection signal="body_entered" from="vision" to="." method="_on_vision_body_entered"]
+[connection signal="body_exited" from="vision" to="." method="_on_vision_body_exited"]
 [connection signal="body_entered" from="attack1range" to="." method="_on_attack_1_range_body_entered"]
 [connection signal="body_exited" from="attack1range" to="." method="_on_attack_1_range_body_exited"]
 [connection signal="timeout" from="attack1_time" to="." method="_on_attack_1_time_timeout"]
 [connection signal="body_entered" from="attackrange" to="." method="_on_attackrange_body_entered"]
 [connection signal="body_exited" from="attackrange" to="." method="_on_attackrange_body_exited"]
+[connection signal="body_entered" from="attack2range" to="." method="_on_attack_2_range_body_entered"]
+[connection signal="body_exited" from="attack2range" to="." method="_on_attack_2_range_body_exited"]
+[connection signal="timeout" from="attack2_time" to="." method="_on_attack_2_time_timeout"]
+[connection signal="timeout" from="attack2_cd" to="." method="_on_attack_2_cd_timeout"]

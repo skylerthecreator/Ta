@@ -38,13 +38,9 @@ var fireball = load("res://scenes/fireball.tscn")
 @onready var dash_sfx = $dash_sfx
 
 
-
-
 var buy = false
 var areas1 = []
-
 var dead = false
-
 var rolling = false
 var waking_up = false
 var attacking = false
@@ -52,6 +48,9 @@ var moving = false
 var immune = false
 var can_dash = true
 var dashing = false
+
+
+
 var casting = false
 var cast_dir = 1
 var can_jump = true
@@ -123,13 +122,13 @@ func _physics_process(delta):
 func _waking_up():
 	animated_sprite.play("wake")
 	waking_up = false
-func _hit():
+func _hit(damage: int):
 	if !immune:
 		hurt.play()
 		_interrupt_skill0()
-		game_manager.hp -= 1
+		game_manager.hp -= damage
 		animated_sprite.play("hit")
-		if game_manager.hp == 0:
+		if game_manager.hp <= 0:
 			dead = true
 			_die()
 		immune = true
@@ -185,12 +184,16 @@ func _skill0():
 	if (!(PREVENT_START.count(animated_sprite.animation) != 0 and 
 	animated_sprite.is_playing()) and game_manager.fireball_unlocked):
 		game_manager.fireball_pressed()
-		casting = true
-		animated_sprite.play("casting")
-		fireball_sound.play()
-		fireball_cast_time.start()
-		fireball_chargeup.visible = true
-		fireball_chargeup.play("default")
+		if game_manager.insta_cast_ready:
+			_fireball()
+			game_manager.insta_cast_ready = false
+		else:
+			casting = true
+			animated_sprite.play("casting")
+			fireball_sound.play()
+			fireball_cast_time.start()
+			fireball_chargeup.visible = true
+			fireball_chargeup.play("default")
 
 func _interrupt_skill0():
 	game_manager.interrupt_fireball()
@@ -204,6 +207,8 @@ func _interrupt_skill0():
 	fireball_bar.value = 0
 	
 func _on_fireball_cast_time_timeout():
+	_fireball()
+func _fireball():
 	fireball_chargeup.visible = false
 	var fb = fireball.instantiate()
 	owner.add_child(fb)
@@ -229,6 +234,8 @@ func _dash():
 		animated_sprite.play("dash")
 		dash_sfx.play()
 		dashing = true
+		if game_manager.insta_cast_unlocked:
+			game_manager.insta_cast_ready = true
 		dash_duration.start()
 func _on_dash_duration_timeout():
 	dash_cd.start()

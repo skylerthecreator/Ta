@@ -33,11 +33,20 @@ func _physics_process(delta):
 		var gap = follow_player.position.x - position.x
 		if gap >= 0 and !(AS.animation == "attack1" and AS.is_playing()):
 			direction =  1
-			scale.x = -1
-			healthbar.scale.x = 1
+			if AS.scale.x < 0:
+				AS.scale.x *= -1
+			if attack_1_range.scale.x > 0:
+				attack_1_range.scale.x *= -1
+			if attackrange.scale.x > 0:
+				attackrange.scale.x *= -1
 		elif gap < 0 and !(AS.animation == "attack1" and AS.is_playing()):
 			direction = -1
-			scale.x = 1
+			if AS.scale.x > 0:
+				AS.scale.x *= -1
+			if attack_1_range.scale.x < 0:
+				attack_1_range.scale.x *= -1
+			if attackrange.scale.x < 0:
+				attackrange.scale.x *= -1
 	else:
 		AS.play("idle")
 

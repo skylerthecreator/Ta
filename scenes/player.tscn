@@ -799,7 +799,7 @@ bus = &"Louder"
 position = Vector2(0, -25)
 sprite_frames = SubResource("SpriteFrames_dxxm0")
 animation = &"new_animation"
-frame_progress = 0.875128
+frame_progress = 0.868055
 
 [connection signal="area_entered" from="skill1outline" to="." method="_on_skill_1_outline_area_entered"]
 [connection signal="area_exited" from="skill1outline" to="." method="_on_skill_1_outline_area_exited"]

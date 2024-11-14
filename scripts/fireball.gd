@@ -7,7 +7,7 @@ extends Area2D
 @onready var fireball_blast = $fireball_blast
 
 var charged = false
-var SPEED = 200
+var SPEED = 250
 var cast_dir = 0
 var exploding = false
 var adjusted = false

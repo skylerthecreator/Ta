@@ -6,6 +6,7 @@ const SPEED = 100
 const JUMP_VELOCITY = -225
 const PRIORITY_MOVEMENT = ["casting", "fireball", "skill1", "wake", "hit"]
 const PREVENT_START = ["casting", "fireball"]
+const PREVENT_FLIP = ["fireball"]
 var speed = SPEED
 
 
@@ -52,8 +53,6 @@ func _physics_process(delta):
 	#	pass
 	elif !dead:
 		var direction = Input.get_axis("move_left", "move_right")
-		if direction != 0:
-			cast_dir = direction
 		moving = direction != 0 or !(is_on_floor())
 		if moving and casting:
 			_interrupt_skill0()
@@ -122,19 +121,22 @@ func _hit():
 		immune = true
 		immunity.start()
 func _flip(direction: int):
-	if direction > 0:
-		animated_sprite.flip_h = false
-		fireball_chargeup.flip_h = false
-		if fbspawn.position.x > 0:
-			fbspawn.position.x *= -1
-			fireball_chargeup.position.x *= -1
-	elif direction < 0:
-		animated_sprite.flip_h = true
-		fireball_chargeup.flip_h = true
-		fbspawn.scale.x = 1
-		if fbspawn.position.x < 0:
-			fbspawn.position.x *= -1
-			fireball_chargeup.position.x *= -1
+	if PREVENT_FLIP.count(animated_sprite.animation) == 0:
+		if direction > 0:
+			cast_dir = direction
+			animated_sprite.flip_h = false
+			fireball_chargeup.flip_h = false
+			if fbspawn.position.x > 0:
+				fbspawn.position.x *= -1
+				fireball_chargeup.position.x *= -1
+		elif direction < 0:
+			cast_dir = direction
+			animated_sprite.flip_h = true
+			fireball_chargeup.flip_h = true
+			fbspawn.scale.x = 1
+			if fbspawn.position.x < 0:
+				fbspawn.position.x *= -1
+				fireball_chargeup.position.x *= -1
 func _play_movement_animations(direction: int):
 	if is_on_floor():
 		if direction == 0:

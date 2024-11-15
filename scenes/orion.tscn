@@ -271,7 +271,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kltsy")
 }, {
-"duration": 5.0,
+"duration": 3.0,
 "texture": SubResource("AtlasTexture_eux7w")
 }, {
 "duration": 1.0,
@@ -599,7 +599,7 @@ visible = false
 position = Vector2(-1.66893e-06, -1.5)
 scale = Vector2(0.5625, 0.171875)
 sprite_frames = SubResource("SpriteFrames_al3ws")
-frame_progress = 0.898595
+frame_progress = 0.530709
 
 [node name="attack1vl" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("17_p0ylr")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://g77a77m022qm"]
+[gd_scene load_steps=36 format=3 uid="uid://g77a77m022qm"]
 
 [ext_resource type="Texture2D" uid="uid://kpld5n16lvkg" path="res://assets/sprites/default/world_tileset.png" id="1_0yvkf"]
 [ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_iry8t"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://gmlljj8gkgwh" path="res://scenes/apple.tscn" id="11_5btnk"]
 [ext_resource type="PackedScene" uid="uid://dg73ggkblgcq2" path="res://scenes/wizard.tscn" id="12_gjoaa"]
 [ext_resource type="PackedScene" uid="uid://c1fnbvgv6vvqc" path="res://scenes/merchant.tscn" id="12_irqes"]
+[ext_resource type="PackedScene" uid="uid://c1psa57wke5jg" path="res://scenes/mauricespendant.tscn" id="13_0kxa6"]
 [ext_resource type="Texture2D" uid="uid://caosdi6rvgr7s" path="res://assets/sprites/Pixel Crawler - FREE - 1.8/Environment/Green Woods/Assets/Trees.png" id="13_tnvc8"]
 [ext_resource type="PackedScene" uid="uid://cq83vmu4o5p8i" path="res://scenes/hermesboots.tscn" id="14_qg6jb"]
 [ext_resource type="PackedScene" uid="uid://8jcdoodxb6cs" path="res://scenes/morrow.tscn" id="15_6eak7"]
@@ -1766,7 +1767,7 @@ _data = {
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("2_3id2r")]
 z_index = 5
-position = Vector2(2873, -1)
+position = Vector2(2417, 1)
 collision_mask = 5
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -1799,7 +1800,7 @@ theme_override_font_sizes/font_size = 8
 text = "(D) MOVE RIGHT
 (A) MOVE LEFT
 (W) JUMP
-(F) PICK UP
+(F) INTERACT
 (SHIFT) DASH"
 
 [node name="wizarddl1" type="Label" parent="labels"]
@@ -1934,17 +1935,16 @@ text = "Psst.. down here! I have an
 IRRESISTABLE offer for you."
 
 [node name="fallexp" type="Label" parent="labels"]
-offset_left = 313.0
-offset_top = 85.0
-offset_right = 464.0
-offset_bottom = 115.0
+offset_left = 311.0
+offset_top = 76.0
+offset_right = 462.0
+offset_bottom = 106.0
 theme_override_colors/font_color = Color(0.6, 0.211765, 0.619608, 1)
 theme_override_fonts/font = ExtResource("8_cwuaj")
 theme_override_font_sizes/font_size = 8
-text = "BEWARE OF CLIFFS! 
-FALLING WILL LEAD
-TO A VERY PAINFUL
-DEATH..."
+text = "Beware of cliffs! 
+Falling will lead to a 
+very painful death..."
 
 [node name="fexp" type="Label" parent="labels"]
 offset_left = 1123.0
@@ -1973,13 +1973,13 @@ exchange for coins. "
 [node name="shopexp2" type="Label" parent="labels"]
 offset_left = 1377.0
 offset_top = -174.0
-offset_right = 1637.0
+offset_right = 1588.0
 offset_bottom = -133.0
 theme_override_colors/font_color = Color(0.6, 0.211765, 0.619608, 1)
 theme_override_fonts/font = ExtResource("8_cwuaj")
 theme_override_font_sizes/font_size = 8
-text = "Overcome these obstacles. I will meet you
-on the other side."
+text = "Overcome these trivial obstacles.
+I will meet you on the other side."
 
 [node name="friendlies" type="Node" parent="."]
 
@@ -2085,6 +2085,15 @@ position = Vector2(1224, 143)
 [node name="Fury of Demetrius" parent="friendlies/items" instance=ExtResource("18_v616t")]
 position = Vector2(-232, 48)
 
+[node name="healing_potion" parent="friendlies/items" instance=ExtResource("17_3yjrd")]
+position = Vector2(-312, 24)
+
+[node name="The Pyromaniac\'s Manifesto" parent="friendlies/items" instance=ExtResource("19_tkg12")]
+position = Vector2(2760, -80)
+
+[node name="mauricespendant" parent="friendlies/items" instance=ExtResource("13_0kxa6")]
+position = Vector2(2472, -5)
+
 [node name="NPCS" type="Node" parent="friendlies"]
 
 [node name="merchant" parent="friendlies/NPCS" instance=ExtResource("12_irqes")]
@@ -2127,17 +2136,14 @@ offset_bottom = -36.0
 theme_override_colors/font_color = Color(0, 0.901961, 0, 1)
 theme_override_fonts/font = ExtResource("8_cwuaj")
 theme_override_font_sizes/font_size = 8
-text = "MAURICE
-<THE WIZARD>"
+text = "Maurice
+<The Wizard>"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="wizard2" parent="friendlies/NPCS" instance=ExtResource("12_gjoaa")]
 position = Vector2(2593, 0)
 scale = Vector2(-1, 1)
-
-[node name="killzone" parent="." instance=ExtResource("4_4q054")]
-position = Vector2(0, 211)
 
 [node name="Enemies" type="Node" parent="."]
 
@@ -2167,13 +2173,19 @@ position = Vector2(2202, 64)
 
 [node name="slime8" parent="Enemies" instance=ExtResource("6_sac27")]
 z_index = 5
-position = Vector2(2887, -258)
+position = Vector2(3165, -313)
 
 [node name="morrow" parent="Enemies" instance=ExtResource("15_6eak7")]
 position = Vector2(3135, -288)
 
 [node name="orion" parent="Enemies" instance=ExtResource("16_t1xsl")]
-position = Vector2(3426, 144)
+position = Vector2(3433, 144)
+
+[node name="training_dummy" parent="Enemies" instance=ExtResource("20_e714n")]
+position = Vector2(3047, -15)
+
+[node name="killzone" parent="Enemies" instance=ExtResource("4_4q054")]
+position = Vector2(0, 211)
 
 [node name="platforms" type="Node" parent="."]
 
@@ -2250,12 +2262,3 @@ position = Vector2(200, 13)
 
 [node name="spike3" parent="traps" instance=ExtResource("16_slx7y")]
 position = Vector2(184, 13)
-
-[node name="healing_potion" parent="." instance=ExtResource("17_3yjrd")]
-position = Vector2(-312, 24)
-
-[node name="The Pyromaniac\'s Manifesto" parent="." instance=ExtResource("19_tkg12")]
-position = Vector2(2760, -80)
-
-[node name="training_dummy" parent="." instance=ExtResource("20_e714n")]
-position = Vector2(3047, -15)

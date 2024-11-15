@@ -8,6 +8,8 @@ var fireball_unlocked = true
 var insta_cast_unlocked = true
 var insta_cast_ready = false
 var amnova_ready = true
+
+var immunity_unlocked = false
 var hp = 5
 
 
@@ -16,6 +18,8 @@ func _process(_delta):
 	Hud.update_coins(coins)
 	if fireball_unlocked:
 		Hud.show_fireball()
+	if insta_cast_ready:
+		Hud.show_insta_cast()
 		
 func fireball_pressed():
 	if fireball_unlocked:

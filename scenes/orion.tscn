@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cy00t7t5uqi6c"]
+[gd_scene load_steps=72 format=3 uid="uid://cy00t7t5uqi6c"]
 
 [ext_resource type="Texture2D" uid="uid://dcvepj8y4qaj0" path="res://assets/sprites/enemies/Monsters/Monsters_Creatures_Fantasy/Skeleton/Attack.png" id="1_87ovw"]
 [ext_resource type="Script" path="res://scripts/orion.gd" id="1_cx0e5"]
@@ -12,6 +12,13 @@
 [ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="10_eqgdt"]
 [ext_resource type="AudioStream" uid="uid://p6f0sv3nrv1f" path="res://assets/sounds/bosssfx/orion/oriona1.wav" id="11_le62v"]
 [ext_resource type="AudioStream" uid="uid://bt7v7ahab5oio" path="res://assets/sounds/bosssfx/orion/orion2edit.mp3" id="12_avy4o"]
+[ext_resource type="AudioStream" uid="uid://dhfwsu3q6np48" path="res://assets/sounds/bosssfx/orion/start.wav" id="13_er57i"]
+[ext_resource type="AudioStream" uid="uid://cddggxoo3d1q4" path="res://assets/sounds/bosssfx/orion/end.wav" id="14_wgjro"]
+[ext_resource type="AudioStream" uid="uid://bho8fmq4aivl7" path="res://assets/sounds/bosssfx/orion/ghoul2.mp3" id="15_vviaj"]
+[ext_resource type="Texture2D" uid="uid://cabmolw7iat4c" path="res://assets/sprites/skills/Retro Impact Effect Pack 5 A.png" id="16_w24g4"]
+[ext_resource type="AudioStream" uid="uid://1l6ae15fuejv" path="res://assets/sounds/bosssfx/orion/ghoul1.mp3" id="17_p0ylr"]
+[ext_resource type="AudioStream" uid="uid://bg8fvava8d2" path="res://assets/sounds/bosssfx/orion/ghoul6.mp3" id="18_6ne8n"]
+[ext_resource type="AudioStream" uid="uid://cr2ho2idv25ma" path="res://assets/sounds/bosssfx/orion/ghoul4.mp3" id="19_deb52"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i35v4"]
 atlas = ExtResource("1_87ovw")
@@ -264,18 +271,18 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kltsy")
 }, {
-"duration": 1.0,
+"duration": 5.0,
 "texture": SubResource("AtlasTexture_eux7w")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uoc11")
 }, {
-"duration": 1.0,
+"duration": 4.0,
 "texture": SubResource("AtlasTexture_3eblp")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
-"speed": 4.0
+"speed": 2.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -348,7 +355,7 @@ radius = 8.0
 height = 40.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_geciy"]
-size = Vector2(528, 37)
+size = Vector2(528, 71)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8gja"]
 size = Vector2(34, 37)
@@ -356,14 +363,113 @@ size = Vector2(34, 37)
 [sub_resource type="CircleShape2D" id="CircleShape2D_myl6d"]
 radius = 32.0
 
-[node name="orion" type="Area2D" groups=["enemies"]]
+[sub_resource type="Animation" id="Animation_uc5b6"]
+resource_name = "die"
+length = 4.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("death:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(4.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_uuow2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("death:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_em3jl"]
+_data = {
+"RESET": SubResource("Animation_uuow2"),
+"die": SubResource("Animation_uc5b6")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qxg8w"]
+atlas = ExtResource("16_w24g4")
+region = Rect2(384, 1408, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2cih1"]
+atlas = ExtResource("16_w24g4")
+region = Rect2(448, 1408, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_al3ws"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qxg8w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2cih1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="morkul" type="Area2D" groups=["enemies"]]
 script = ExtResource("1_cx0e5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -18)
 scale = Vector2(-0.67872, 0.67872)
 sprite_frames = SubResource("SpriteFrames_et7d2")
-animation = &"idle"
+animation = &"death"
+frame = 1
+frame_progress = 0.643412
 offset = Vector2(-4, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -404,11 +510,12 @@ pivot_offset = Vector2(13, 0)
 show_percentage = false
 
 [node name="vision" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
-position = Vector2(0, -18.5)
+position = Vector2(0, -35.5)
 shape = SubResource("RectangleShape2D_geciy")
 debug_color = Color(0.962451, 0, 0.496116, 0.419608)
 
@@ -462,13 +569,49 @@ offset_bottom = -33.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("10_eqgdt")
 theme_override_font_sizes/font_size = 8
-text = "Orion
+text = "Mor'kul
 <The Forsaken>"
 horizontal_alignment = 1
 
 [node name="attack2_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_avy4o")
 bus = &"Louder"
+
+[node name="deathanimation" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_em3jl")
+}
+
+[node name="startfightsfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_er57i")
+bus = &"SFX"
+
+[node name="death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_wgjro")
+bus = &"SFX"
+
+[node name="hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_vviaj")
+bus = &"SFX"
+
+[node name="fx" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-1.66893e-06, -1.5)
+scale = Vector2(0.5625, 0.171875)
+sprite_frames = SubResource("SpriteFrames_al3ws")
+frame_progress = 0.898595
+
+[node name="attack1vl" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_p0ylr")
+bus = &"SFX"
+
+[node name="attack2vl" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_6ne8n")
+bus = &"SFX"
+
+[node name="stage2" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("19_deb52")
+bus = &"SFX"
 
 [connection signal="timeout" from="dtdt" to="." method="_on_dtdt_timeout"]
 [connection signal="body_entered" from="vision" to="." method="_on_vision_body_entered"]

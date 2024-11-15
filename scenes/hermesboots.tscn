@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cq83vmu4o5p8i"]
+[gd_scene load_steps=12 format=3 uid="uid://cq83vmu4o5p8i"]
 
 [ext_resource type="Script" path="res://scripts/hermesboots.gd" id="1_scoif"]
 [ext_resource type="Texture2D" uid="uid://cguy8ginp06n4" path="res://assets/sprites/ITEMS/hermes boots.png" id="2_ubpjd"]
@@ -21,16 +21,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hgn5a"]
-size = Vector2(6, 12)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_eqivv"]
-radius = 3.0
-height = 6.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_sb5u2"]
-radius = 2.0
-
 [sub_resource type="Animation" id="Animation_ft64u"]
 length = 0.001
 tracks/0/type = "value"
@@ -48,7 +38,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/path = NodePath("pickupsound:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -60,34 +50,22 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape2D2:disabled")
+tracks/2/path = NodePath("label:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D3:disabled")
+tracks/3/path = NodePath("outline:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("pickupsound:playing")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -112,7 +90,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/path = NodePath("pickupsound:playing")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -121,34 +99,36 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape2D2:disabled")
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(4),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape2D3:disabled")
+tracks/3/path = NodePath("label:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("pickupsound:playing")
+tracks/4/path = NodePath("outline:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -157,20 +137,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(4),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1dtk2"]
 _data = {
@@ -178,29 +144,20 @@ _data = {
 "pickup": SubResource("Animation_8kren")
 }
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7rpgd"]
+size = Vector2(16, 13)
+
 [node name="hermesboots" type="Area2D"]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_scoif")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(1, -6)
+position = Vector2(1, -6.00001)
 scale = Vector2(0.0116667, 0.0116667)
 sprite_frames = SubResource("SpriteFrames_xmtkd")
 autoplay = "default"
 frame_progress = 0.335528
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -6)
-shape = SubResource("RectangleShape2D_hgn5a")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
-position = Vector2(5, -7)
-shape = SubResource("CapsuleShape2D_eqivv")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
-position = Vector2(-4, -2)
-shape = SubResource("CircleShape2D_sb5u2")
 
 [node name="pickupsound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_j4lko")
@@ -220,18 +177,22 @@ offset_left = -84.0
 offset_top = -110.0
 offset_right = 84.0
 offset_bottom = -24.0
-theme_override_colors/font_color = Color(0, 0.490196, 1, 1)
+theme_override_colors/font_color = Color(0, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_w2f4j")
 theme_override_font_sizes/font_size = 8
-text = "<HERMES' KICKS>
-[PASSIVE ABILITY]
-[COST 8x🪙]
+text = "Herme's Kicks
+<Passive>
+[Cost: 8x🪙]
 
-INCREASE YOUR MOVEMENT 
-SPEED BY 25%
+Increase your movement
+ speed by 25%
 
 Press (F) to buy"
 horizontal_alignment = 1
+
+[node name="outline" type="CollisionShape2D" parent="."]
+position = Vector2(1, -6)
+shape = SubResource("RectangleShape2D_7rpgd")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

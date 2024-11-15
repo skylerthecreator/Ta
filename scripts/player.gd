@@ -22,6 +22,8 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var death_timer = $death_timer
 @onready var playeroutline = $playeroutline
 @onready var immunity = $immunity
+@onready var passives = $passives
+
 
 @onready var s1_sound = $skill1sound
 @onready var s1_cd = $skill1cd
@@ -89,7 +91,11 @@ func _physics_process(delta):
 		# As good practice, you should replace UI actions with custom gameplay actions.
 		
 		# get input direction: -1, 0, 1
-		
+		if immune:
+			passives.play("immunity")
+			passives.visible = true
+		else:
+			passives.visible = false
 		# flip sprite
 		_flip(direction)
 		if direction != 0 and !footsteps.is_playing() and is_on_floor():
@@ -131,8 +137,9 @@ func _hit(damage: int):
 		if game_manager.hp <= 0:
 			dead = true
 			_die()
-		immune = true
-		immunity.start()
+		if game_manager.immunity_unlocked:
+			immune = true
+			immunity.start()
 func _flip(direction: int):
 	if PREVENT_FLIP.count(animated_sprite.animation) == 0:
 		if direction > 0:

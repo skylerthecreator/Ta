@@ -16,3 +16,7 @@ res://scripts/slime.gd
 res://scripts/spike.gd
 res://scripts/gamemanager.gd
 res://scripts/hud.gd
+res://scripts/pyro_mani.gd
+res://scenes/hermesboots.tscn
+res://scripts/mauricespendant.gd
+res://scenes/mauricespendant.tscn

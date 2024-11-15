@@ -61,6 +61,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_2b2t4"]
 resource_name = "pickup"
@@ -115,6 +127,18 @@ tracks/3/keys = {
 "method": &"queue_free"
 }]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("label:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tnn13"]
 _data = {
@@ -148,9 +172,9 @@ libraries = {
 
 [node name="label" type="Label" parent="."]
 offset_left = -102.0
-offset_top = -110.0
+offset_top = -151.0
 offset_right = 102.0
-offset_bottom = -25.0
+offset_bottom = -33.0
 theme_override_colors/font_color = Color(1, 0.509804, 0, 1)
 theme_override_fonts/font = ExtResource("4_8nfpo")
 theme_override_font_sizes/font_size = 8
@@ -160,6 +184,9 @@ text = "<PYRO'S MANIFESTO>
 
 CONJURE A FIREBALL, STRIKING
 THE ENEMY IN FRONT OF YOU
+
+DASHING WILL CAUSE YOUR 
+NEXT FIREBALL TO BE INSTANT
 
 Press (F) to claim"
 horizontal_alignment = 1

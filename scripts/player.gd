@@ -75,7 +75,7 @@ func _physics_process(delta):
 			velocity.y += gravity * delta
 		# Handle jump.
 		if Input.is_action_just_pressed("continue"):
-			game_manager.continue_dialogue()
+			Hud.continue_dialogue()
 		if Input.is_action_just_pressed("dash"):
 			_dash()
 		if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -129,7 +129,6 @@ func _physics_process(delta):
 
 func _waking_up():
 	animated_sprite.play("wake")
-	game_manager.start_dialogue1()
 	waking_up = false
 func _hit(damage: int):
 	if !immune and !dead:
@@ -255,3 +254,5 @@ func _on_dash_duration_timeout():
 	
 func _on_dash_cd_timeout():
 	can_dash = true
+
+

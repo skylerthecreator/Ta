@@ -14,3 +14,8 @@ res://scripts/player.gd
 res://scripts/gamemanager.gd
 res://scripts/hud.gd
 res://scripts/orion.gd
+res://scripts/dialogue2.gd
+res://scenes/dialogue3.gd
+res://scripts/dialogue4.gd
+res://scripts/dialogue3.gd
+res://scripts/dialogue1.gd

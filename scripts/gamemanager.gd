@@ -28,10 +28,3 @@ func interrupt_fireball():
 		Hud.fireball_interrupted()
 func reset():
 	Hud.reset()
-
-func start_dialogue1():
-	print("startingd1")
-	Hud.start_dialogue1()
-
-func continue_dialogue():
-	Hud.continue_dialogue()

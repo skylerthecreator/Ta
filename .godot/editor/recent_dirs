@@ -1,8 +1,8 @@
+res://scripts
 res://assets/sprites/NPCS/Wizard Pack
 res://assets/Pixel Prototype Player/Sprites
 res://assets/sprites/skills
 res://scenes
-res://scripts
 res://assets/sprites/ITEMS
 res://assets/sprites/enemies/Monsters/Monster_Creatures_Fantasy(Version 1.3)/Skeleton
 res://assets/sprites/enemies/Monsters/Monster_Creatures_Fantasy(Version 1.2)/Skeleton
@@ -19,4 +19,3 @@ res://assets/Pixel Prototype Player/Sprites/Jump
 res://assets/Pixel Prototype Player/Sprites/Combat/Punch02
 res://assets/Pixel Prototype Player/Sprites/Idle
 res://assets/sprites/environment
-res://assets/sprites/Base Character - Free

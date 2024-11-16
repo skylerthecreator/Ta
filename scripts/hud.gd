@@ -9,16 +9,7 @@ extends Node2D
 @onready var fb_animation = $Display/fireball_icon/AnimatedSprite2D
 
 @onready var mauricedialogue = $Display/mauricedialogue
-@onready var dialogue1 = $Display/mauricedialogue/dialogue1
-
-const dialogue1_lines = ["Ah, look who's finally awake!", 
-"You don't remember who you are? That will be rather troublesome...",
-"You have suffered a great injury. You must've lost your memory from it.",
-"Have that healing potion on the table. Don't worry, it's a family recipe!",
-"Of course, I should introduce myself. My name is Maurice, a wizard that preserves peace across this world.",
-"I'm afraid for reasons I cannot say, I am unable to tell you who you are.",
-"However, if you follow the path in front of you, I believe you may regain your memory.",
-"In the meantime, to help you on your journey, I have left my amulet just outside. It will provide you with a layer of protection."]
+@onready var dialogue = $Display/mauricedialogue/dialogue
 
 var curr_dialogue = null
 var curr_dialogue_index = 0
@@ -31,13 +22,7 @@ func _physics_process(_delta):
 		fireball_ct -= 1.0/60
 
 
-func continue_dialogue():
-	if curr_dialogue_index < len(curr_dialogue):
-		mauricedialogue.visible = true
-		dialogue1.text = curr_dialogue[curr_dialogue_index]
-		curr_dialogue_index += 1
-	else:
-		mauricedialogue.visible = false
+
 
 func update_hp(curr: int, max_hp: int):
 	hp.text = ""
@@ -52,8 +37,6 @@ func update_coins(c: int):
 	
 func show_fireball():
 	fireball_icon.visible = true
-	#fb_animation.visible = true
-	#fb_animation.play("default")
 	
 func fireball_pressed(instant: bool):
 	fireball_icon.emit_signal("pressed")
@@ -82,8 +65,16 @@ func reset():
 	insta_cast.visible = false
 	fireball_icon.visible = false
 	
-func start_dialogue1():
-	curr_dialogue = dialogue1_lines
-	mauricedialogue.visible = true
-	dialogue1.text = curr_dialogue[curr_dialogue_index]
-	curr_dialogue_index += 1
+func continue_dialogue():
+	if curr_dialogue and curr_dialogue_index < len(curr_dialogue):
+		mauricedialogue.visible = true
+		dialogue.text = curr_dialogue[curr_dialogue_index]
+		curr_dialogue_index += 1
+	else:
+		mauricedialogue.visible = false
+		curr_dialogue_index = 0
+		curr_dialogue = null
+	
+func start_dialogue(dialogue_lines):
+	curr_dialogue = dialogue_lines
+	continue_dialogue()

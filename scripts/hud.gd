@@ -11,6 +11,7 @@ extends Node2D
 @onready var mauricedialogue = $Display/mauricedialogue
 @onready var dialogue = $Display/mauricedialogue/dialogue
 
+var dialogue_queue =[]
 var curr_dialogue = null
 var curr_dialogue_index = 0
 
@@ -64,17 +65,20 @@ func _on_fireball_casting_time_timeout():
 func reset():
 	insta_cast.visible = false
 	fireball_icon.visible = false
+	dialogue_queue = []
 	
 func continue_dialogue():
-	if curr_dialogue and curr_dialogue_index < len(curr_dialogue):
+	if len(dialogue_queue) > 0:
 		mauricedialogue.visible = true
-		dialogue.text = curr_dialogue[curr_dialogue_index]
-		curr_dialogue_index += 1
+		dialogue.text = dialogue_queue[0]
+		dialogue_queue.remove_at(0)
 	else:
 		mauricedialogue.visible = false
-		curr_dialogue_index = 0
-		curr_dialogue = null
 	
 func start_dialogue(dialogue_lines):
-	curr_dialogue = dialogue_lines
-	continue_dialogue()
+	var autostart = len(dialogue_queue) == 0
+		
+	for line in dialogue_lines:
+		dialogue_queue.append(line)
+	if autostart:
+		continue_dialogue()

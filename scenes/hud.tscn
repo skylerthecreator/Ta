@@ -121,7 +121,6 @@ offset_right = 28.0
 offset_bottom = 98.0
 grow_horizontal = 2
 scale = Vector2(1.8, 1.8)
-theme_type_variation = &"FlatButton"
 icon = ExtResource("3_3vgvc")
 alignment = 0
 

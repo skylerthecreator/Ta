@@ -8,5 +8,5 @@ const dialogue_lines = ["You will encounter many monsters on along the way.",
 
 func _on_body_entered(body):
 	if body.is_in_group("player") and !started:
-		Hud.start_dialogue(dialogue_lines)
+		Hud.start_dialogue(dialogue_lines, "Maurice")
 		started = true

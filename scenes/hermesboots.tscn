@@ -50,7 +50,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("label:visible")
+tracks/2/path = NodePath("description:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -116,7 +116,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("label:visible")
+tracks/3/path = NodePath("description:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -172,11 +172,10 @@ libraries = {
 stream = ExtResource("4_74fki")
 bus = &"SFX"
 
-[node name="label" type="Label" parent="."]
+[node name="description" type="Label" parent="."]
 offset_left = -50.0
-offset_top = -82.0
+offset_top = -86.0
 offset_right = 118.0
-offset_bottom = 4.0
 scale = Vector2(0.6, 0.6)
 theme_override_colors/font_color = Color(0, 1, 1, 1)
 theme_override_fonts/font = ExtResource("5_w2f4j")

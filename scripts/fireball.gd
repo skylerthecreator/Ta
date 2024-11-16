@@ -40,7 +40,7 @@ func _on_area_entered(area):
 	fireball_hit.stop()
 	if area.is_in_group("enemies"):
 		#areas0.append(area)
-		area.hit = true
+		area.hit(1)
 	fireball_land.play()
 	fireball_animation.play("explode")
 	fireball_blast.start()

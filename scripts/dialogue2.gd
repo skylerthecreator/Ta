@@ -9,5 +9,5 @@ const dialogue_lines = ["These golden coins will be very beneficial as you ventu
 
 func _on_body_entered(body):
 	if body.is_in_group("player") and !started:
-		Hud.start_dialogue(dialogue_lines)
+		Hud.start_dialogue(dialogue_lines, "Maurice")
 		started = true

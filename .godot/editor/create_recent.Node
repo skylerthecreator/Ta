@@ -1,10 +1,10 @@
-Node
+Timer
+Button
 CollisionShape2D
+AnimatedSprite2D
 Area2D
 Label
-Button
-Timer
-AnimatedSprite2D
+Node
 AudioStreamPlayer2D
 AnimationPlayer
 Sprite2D

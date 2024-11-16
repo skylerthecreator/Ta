@@ -582,15 +582,15 @@ libraries = {
 
 [node name="startfightsfx" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_er57i")
-bus = &"SFX"
+bus = &"Quieter"
 
 [node name="death" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_wgjro")
-bus = &"SFX"
+bus = &"Quieter"
 
 [node name="hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("15_vviaj")
-bus = &"SFX"
+bus = &"Quieter"
 
 [node name="fx" type="AnimatedSprite2D" parent="."]
 visible = false

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://kir1ldklncas"
-path="res://.godot/imported/dialogue.png-de47ef43b996aef02df40db086ce3a54.ctex"
+uid="uid://bk8u2bbnvtt2u"
+path="res://.godot/imported/Gipsy spritesheet no chest.png-eea62829b03872ef60a8b28e6f5211a1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/NPCS/Wizard Pack/dialogue.png"
-dest_files=["res://.godot/imported/dialogue.png-de47ef43b996aef02df40db086ce3a54.ctex"]
+source_file="res://assets/sprites/NPCS/Merchant Pack/Gipsy spritesheet no chest.png"
+dest_files=["res://.godot/imported/Gipsy spritesheet no chest.png-eea62829b03872ef60a8b28e6f5211a1.ctex"]
 
 [params]
 

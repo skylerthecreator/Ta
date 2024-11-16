@@ -24,7 +24,6 @@ const MAX_HP = 3
 
 
 var body_in_range = null
-var hit = false
 var hp = MAX_HP
 
 
@@ -54,31 +53,31 @@ func _physics_process(delta):
 		awalk.visible = true
 		awalk.play("default")
 		position.x += direction * delta * SPEED
-	if dmg_taken.text == "-1":
+	if dmg_taken.text != "":
 		dmg_taken.position.y -= 0.4
 
+func hit(damage: int):
+	hp -= damage
+	dmg_taken.text = "-" + str(damage)
+	dtdt.start()
+	healthbar.value = (hp * 100.0 / MAX_HP)
+	if hp > 0:
+		awalk.visible = false
+		aattack.visible = false
+		adie.visible = false
+		ahit.visible = true
+		ahit.play("default")
+		slimedeath.play()
+	else:
+		awalk.visible = false
+		aattack.visible = false
+		ahit.visible = false
+		slimedeath.play()
+		adie.visible = true
+		animation_player.play("die")
+		adie.play("default")
+
 func update_health():
-	if hit:
-		hp -= 1
-		dmg_taken.text = "-1"
-		dtdt.start()
-		healthbar.value = (hp * 100.0 / MAX_HP)
-		if hp > 0:
-			awalk.visible = false
-			aattack.visible = false
-			adie.visible = false
-			ahit.visible = true
-			ahit.play("default")
-			slimedeath.play()
-			hit = false
-		else:
-			awalk.visible = false
-			aattack.visible = false
-			ahit.visible = false
-			slimedeath.play()
-			adie.visible = true
-			animation_player.play("die")
-			adie.play("default")
 	if hp >= MAX_HP:
 		healthbar.visible = false
 	else:

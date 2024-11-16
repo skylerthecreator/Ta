@@ -40,7 +40,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Label:visible")
+tracks/1/path = NodePath("description:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -92,7 +92,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Label:visible")
+tracks/1/path = NodePath("description:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -156,7 +156,7 @@ position = Vector2(-2.38419e-07, -5)
 scale = Vector2(0.359375, 0.359375)
 sprite_frames = SubResource("SpriteFrames_clkru")
 
-[node name="Label" type="Label" parent="."]
+[node name="description" type="Label" parent="."]
 offset_left = -59.0
 offset_top = -81.0
 offset_right = 137.0

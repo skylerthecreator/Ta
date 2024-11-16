@@ -176,7 +176,7 @@ func _skill1():
 		animated_sprite.play("skill1")
 		if areas1:
 			for area in areas1:
-				area.hit = true
+				area.hit(1)
 		game_manager.amnova_ready = false
 		s1_cd.start()
 func _on_skill_1_outline_area_entered(area):
@@ -188,7 +188,11 @@ func _on_skill_1_outline_area_exited(area):
 		areas1.remove_at(index)
 func _on_skill_1_cd_timeout():
 	game_manager.amnova_ready = true
-
+func _skill2():
+	if (!(PREVENT_START.count(animated_sprite.animation) != 0 and 
+	animated_sprite.is_playing()) and game_manager.blade_unlocked):
+		pass
+	
 func _skill0():
 	if (!(PREVENT_START.count(animated_sprite.animation) != 0 and 
 	animated_sprite.is_playing()) and game_manager.fireball_unlocked):

@@ -30,7 +30,7 @@ var MAX_HP = 20
 
 var begin = false
 var hp = MAX_HP
-var hit = false
+#var hit = false
 
 var follow_player = null
 var player = null
@@ -92,27 +92,26 @@ func _physics_process(delta):
 		
 		
 func update_health():
-	if hit:
-		hp -= 1
-		dmg_taken.text = "-1"
-		dtdt.start()
-		healthbar.value = (hp * 100.0 / MAX_HP)
-		attack_1_time.stop()
-		attack_2_time.stop()
-		if hp > 0:
-			hitsfx.play()
-			AS.play("hit")
-		else:
-			AS.play("death")
-			deathanimation.play("die")
-		hit = false
 	if hp >= MAX_HP:
 		healthbar.visible = false
 	else:
 		healthbar.visible = true
-	if dmg_taken.text == "-1":
+	if dmg_taken.text != "":
 		dmg_taken.position.y -= 0.4
 
+func hit(damage: int):
+	hp -= damage
+	dmg_taken.text = "-" + str(damage)
+	dtdt.start()
+	healthbar.value = (hp * 100.0 / MAX_HP)
+	attack_1_time.stop()
+	attack_2_time.stop()
+	if hp > 0:
+		hitsfx.play()
+		AS.play("hit")
+	else:
+		AS.play("death")
+		deathanimation.play("die")
 
 func _on_dtdt_timeout():
 	dmg_taken.text = ""

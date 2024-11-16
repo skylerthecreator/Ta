@@ -1,12 +1,13 @@
-[gd_scene load_steps=20 format=3 uid="uid://cnpgir75n6dgl"]
+[gd_scene load_steps=23 format=3 uid="uid://cnpgir75n6dgl"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_64fqt"]
 [ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="2_mdka8"]
-[ext_resource type="Texture2D" uid="uid://kir1ldklncas" path="res://assets/sprites/NPCS/Wizard Pack/dialogue.png" id="3_3vgvc"]
+[ext_resource type="Texture2D" uid="uid://kir1ldklncas" path="res://assets/sprites/NPCS/Wizard Pack/mauricepfp.png" id="3_3vgvc"]
 [ext_resource type="FontFile" uid="uid://cj4qjstjnmyrg" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_libq2"]
 [ext_resource type="Texture2D" uid="uid://dcy1obuvgwlwl" path="res://assets/sprites/skills/skill0/FB500-1.png" id="4_sy2fj"]
 [ext_resource type="Texture2D" uid="uid://bvkstdv21j4r7" path="res://assets/sprites/skills/Retro Impact Effect Pack 2 A.png" id="5_nc244"]
 [ext_resource type="Texture2D" uid="uid://e44lxyu1aoqw" path="res://assets/sprites/skills/Yellow Effect Bullet Impact Explosion 32x32.png" id="6_mj6s8"]
+[ext_resource type="Texture2D" uid="uid://4slsbcknnjiu" path="res://assets/sprites/skills/blade/pixil-frame-0.png" id="8_so6ds"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_44bov"]
 action = &"skill0"
@@ -86,6 +87,12 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="InputEventAction" id="InputEventAction_6dg8b"]
+action = &"skill2"
+
+[sub_resource type="Shortcut" id="Shortcut_j430o"]
+events = [SubResource("InputEventAction_6dg8b")]
+
 [node name="HUD" type="Node2D"]
 script = ExtResource("1_64fqt")
 
@@ -111,7 +118,8 @@ theme_override_font_sizes/font_size = 24
 text = "🪙x8"
 metadata/_edit_use_anchors_ = true
 
-[node name="mauricedialogue" type="Button" parent="Display"]
+[node name="dialogue_box" type="Button" parent="Display"]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -124,47 +132,48 @@ scale = Vector2(1.8, 1.8)
 icon = ExtResource("3_3vgvc")
 alignment = 0
 
-[node name="spacecont" type="Label" parent="Display/mauricedialogue"]
+[node name="spacecont" type="Label" parent="Display/dialogue_box"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.555
-anchor_right = 0.555
-offset_left = -55.07
-offset_top = 58.3333
-offset_right = 106.93
-offset_bottom = 66.3333
+anchor_left = 0.568
+anchor_right = 0.568
+offset_left = -56.7431
+offset_top = 58.8889
+offset_right = 105.257
+offset_bottom = 66.8889
 grow_horizontal = 2
 scale = Vector2(0.7, 0.7)
 theme_override_fonts/font = ExtResource("2_mdka8")
 theme_override_font_sizes/font_size = 8
 text = "Press (space) to continue"
 
-[node name="name" type="Label" parent="Display/mauricedialogue"]
+[node name="name" type="Label" parent="Display/dialogue_box"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.067
 anchor_right = 0.067
-offset_left = -17.2469
-offset_top = 54.4444
-offset_right = 31.7531
-offset_bottom = 62.4445
+offset_left = -16.6913
+offset_top = 52.7778
+offset_right = 32.3087
+offset_bottom = 60.7779
 grow_horizontal = 2
 scale = Vector2(0.7, 0.7)
 theme_override_fonts/font = ExtResource("2_mdka8")
 theme_override_font_sizes/font_size = 8
 text = "Maurice"
+horizontal_alignment = 1
 
-[node name="dialogue" type="Label" parent="Display/mauricedialogue"]
+[node name="dialogue" type="Label" parent="Display/dialogue_box"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.555
-anchor_right = 0.555
-offset_left = -115.07
+anchor_left = 0.567
+anchor_right = 0.567
+offset_left = -114.358
 offset_top = 5.0
-offset_right = 271.93
-offset_bottom = 89.0
+offset_right = 342.642
+offset_bottom = 106.0
 grow_horizontal = 2
-scale = Vector2(0.6, 0.6)
+scale = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_mdka8")
 theme_override_font_sizes/font_size = 16
@@ -173,11 +182,10 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="fireball_icon" type="Button" parent="Display"]
-visible = false
 offset_left = 384.0
 offset_top = 539.0
 offset_right = 904.0
-offset_bottom = 1059.0
+offset_bottom = 1319.0
 scale = Vector2(0.1, 0.1)
 theme_override_fonts/font = ExtResource("3_libq2")
 theme_override_font_sizes/font_size = 128
@@ -213,6 +221,28 @@ scale = Vector2(-2.30216, 2.30216)
 sprite_frames = SubResource("SpriteFrames_3jjw3")
 frame_progress = 0.259055
 
+[node name="blade_icon" type="Button" parent="Display"]
+offset_left = 438.0
+offset_top = 539.0
+offset_right = 958.0
+offset_bottom = 1319.0
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("2_mdka8")
+theme_override_font_sizes/font_size = 128
+shortcut = SubResource("Shortcut_j430o")
+text = "K"
+icon = ExtResource("8_so6ds")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="blade_cooldown" type="Button" parent="Display/blade_icon"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
 [node name="fireball_casting_time" type="Timer" parent="."]
 
+[node name="blade_cooldown_time" type="Timer" parent="."]
+
 [connection signal="timeout" from="fireball_casting_time" to="." method="_on_fireball_casting_time_timeout"]
+[connection signal="timeout" from="blade_cooldown_time" to="." method="_on_blade_cooldown_time_timeout"]

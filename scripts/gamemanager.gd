@@ -4,13 +4,12 @@ const MAX_HP = 5
 
 var coins = 0
 var amnova_unlocked = false
-var fireball_unlocked = true
-var insta_cast_unlocked = true
+var fireball_unlocked = false
+var insta_cast_unlocked = false
 var insta_cast_ready = false
 var amnova_ready = true
-
 var immunity_unlocked = false
-var hp = 5
+var hp = 1
 
 
 func _process(_delta):
@@ -27,3 +26,12 @@ func fireball_pressed():
 func interrupt_fireball():
 	if fireball_unlocked:
 		Hud.fireball_interrupted()
+func reset():
+	Hud.reset()
+
+func start_dialogue1():
+	print("startingd1")
+	Hud.start_dialogue1()
+
+func continue_dialogue():
+	Hud.continue_dialogue()

@@ -43,7 +43,7 @@ var NO_MOVE = ["attack1", "attack2", "attack3", "death", "hit"]
 
 func _physics_process(delta):
 	update_health()
-	if hp <= MAX_HP / 2:
+	if hp <= MAX_HP / 2.0:
 		enragedfx.visible = true
 		enragedfx.play("default")
 		SPEED = 45

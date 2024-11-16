@@ -636,6 +636,7 @@ polygon = PackedVector2Array(15, 0, 25, 0, 25, -1, 24, -1, 24, -14, 23, -18, 21,
 
 [node name="attack_time" type="Timer" parent="."]
 wait_time = 0.4
+one_shot = true
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
 position = Vector2(-9.53674e-07, -0.09375)

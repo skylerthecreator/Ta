@@ -171,22 +171,23 @@ libraries = {
 }
 
 [node name="label" type="Label" parent="."]
-offset_left = -102.0
-offset_top = -151.0
-offset_right = 102.0
-offset_bottom = -33.0
+offset_left = -61.0
+offset_top = -99.0
+offset_right = 143.0
+offset_bottom = 19.0
+scale = Vector2(0.6, 0.6)
 theme_override_colors/font_color = Color(1, 0.509804, 0, 1)
 theme_override_fonts/font = ExtResource("4_8nfpo")
 theme_override_font_sizes/font_size = 8
-text = "<PYRO'S MANIFESTO>
-[ACTIVE SKILL: (J)]
-[CAST TIME: 1s]
+text = "Pyro's Manifesto
+<Active Skill: (J)>
+[Casting duration: 1s]
 
-CONJURE A FIREBALL, STRIKING
-THE ENEMY IN FRONT OF YOU
+Conjure a fireball, striking
+the enemy in front of you
 
-DASHING WILL CAUSE YOUR 
-NEXT FIREBALL TO BE INSTANT
+Dashing will cause your next
+fireball to be instant
 
 Press (F) to claim"
 horizontal_alignment = 1

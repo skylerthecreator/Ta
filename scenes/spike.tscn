@@ -32,4 +32,8 @@ sprite_frames = SubResource("SpriteFrames_dcda8")
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_sakho")
 
+[node name="damagetick" type="Timer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="timeout" from="damagetick" to="." method="_on_damagetick_timeout"]

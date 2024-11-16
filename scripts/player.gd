@@ -44,7 +44,7 @@ var buy = false
 var areas1 = []
 var dead = false
 var rolling = false
-var waking_up = false
+var waking_up = true
 var attacking = false
 var moving = false
 var immune = false
@@ -74,6 +74,8 @@ func _physics_process(delta):
 		if not is_on_floor() and not dashing:
 			velocity.y += gravity * delta
 		# Handle jump.
+		if Input.is_action_just_pressed("continue"):
+			game_manager.continue_dialogue()
 		if Input.is_action_just_pressed("dash"):
 			_dash()
 		if Input.is_action_just_pressed("jump") and is_on_floor():
@@ -127,9 +129,10 @@ func _physics_process(delta):
 
 func _waking_up():
 	animated_sprite.play("wake")
+	game_manager.start_dialogue1()
 	waking_up = false
 func _hit(damage: int):
-	if !immune:
+	if !immune and !dead:
 		hurt.play()
 		_interrupt_skill0()
 		game_manager.hp -= damage
@@ -231,6 +234,7 @@ func _die():
 	animated_sprite.play("death")
 	death_timer.start()
 func _on_death_timer_timeout():
+	game_manager.reset()
 	get_tree().reload_current_scene()
 	
 func _on_immunity_timeout():

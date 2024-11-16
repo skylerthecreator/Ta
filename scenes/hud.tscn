@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://cnpgir75n6dgl"]
+[gd_scene load_steps=20 format=3 uid="uid://cnpgir75n6dgl"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_64fqt"]
 [ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="2_mdka8"]
+[ext_resource type="Texture2D" uid="uid://kir1ldklncas" path="res://assets/sprites/NPCS/Wizard Pack/dialogue.png" id="3_3vgvc"]
 [ext_resource type="FontFile" uid="uid://cj4qjstjnmyrg" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_libq2"]
 [ext_resource type="Texture2D" uid="uid://dcy1obuvgwlwl" path="res://assets/sprites/skills/skill0/FB500-1.png" id="4_sy2fj"]
 [ext_resource type="Texture2D" uid="uid://bvkstdv21j4r7" path="res://assets/sprites/skills/Retro Impact Effect Pack 2 A.png" id="5_nc244"]
@@ -98,6 +99,7 @@ offset_bottom = 42.0
 theme_override_fonts/font = ExtResource("2_mdka8")
 theme_override_font_sizes/font_size = 24
 text = "❤️❤️❤️❤️❤️"
+metadata/_edit_use_anchors_ = true
 
 [node name="coins" type="Label" parent="Display"]
 offset_left = 12.0
@@ -107,8 +109,71 @@ offset_bottom = 97.0
 theme_override_fonts/font = ExtResource("2_mdka8")
 theme_override_font_sizes/font_size = 24
 text = "🪙x8"
+metadata/_edit_use_anchors_ = true
+
+[node name="mauricedialogue" type="Button" parent="Display"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -246.0
+offset_top = 31.0
+offset_right = 28.0
+offset_bottom = 115.0
+grow_horizontal = 2
+scale = Vector2(1.8, 1.8)
+icon = ExtResource("3_3vgvc")
+alignment = 0
+
+[node name="spacecont" type="Label" parent="Display/mauricedialogue"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.555
+anchor_right = 0.555
+offset_left = -55.07
+offset_top = 76.0
+offset_right = 106.93
+offset_bottom = 84.0
+grow_horizontal = 2
+scale = Vector2(0.7, 0.7)
+theme_override_fonts/font = ExtResource("2_mdka8")
+theme_override_font_sizes/font_size = 8
+text = "Press (space) to continue"
+
+[node name="name" type="Label" parent="Display/mauricedialogue"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.067
+anchor_right = 0.067
+offset_left = -17.2469
+offset_top = 61.6667
+offset_right = 31.7531
+offset_bottom = 69.6667
+grow_horizontal = 2
+scale = Vector2(0.7, 0.7)
+theme_override_fonts/font = ExtResource("2_mdka8")
+theme_override_font_sizes/font_size = 8
+text = "Maurice"
+
+[node name="dialogue1" type="Label" parent="Display/mauricedialogue"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.555
+anchor_right = 0.555
+offset_left = -116.07
+offset_top = 6.0
+offset_right = 270.93
+offset_bottom = 119.0
+grow_horizontal = 2
+scale = Vector2(0.6, 0.6)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_mdka8")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
 
 [node name="fireball_icon" type="Button" parent="Display"]
+visible = false
 offset_left = 384.0
 offset_top = 539.0
 offset_right = 904.0

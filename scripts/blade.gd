@@ -5,32 +5,31 @@ extends Area2D
 
 @onready var blade_animation = $blade_animation
 @onready var blade_shape = $blade_shape
+@onready var timeintile = $timeintile
+@onready var hit = $hit
 
-var charged = false
 var SPEED = 250
 var cast_dir = 0
-var adjusted = false
 
 func _physics_process(delta):
-	if charged:
-		if cast_dir < 0 and !adjusted:
-			blade_animation.flip_h = true
-			blade_shape.position.x -= 2.2
-			adjusted = true
-		visible = true
-		blade_shape.disabled = false
-		blade_animation.play("shoot")
-		#blade_hit.play()
-		position.x += SPEED * delta * cast_dir
-	
-func _on_body_entered(_body):
-	queue_free()
+	if cast_dir < 0:
+		blade_animation.flip_h = true
+	visible = true
+	blade_shape.disabled = false
+	blade_animation.play("shoot")
+	position.x += SPEED * delta * cast_dir
 	
 	
 func _on_area_entered(area):
 	if area.is_in_group("enemies"):
-		#areas0.append(area)
-		area.hit = true
-	#fireball_land.play()
-	#fireball_animation.play("explode")
-	charged = false
+		hit.play()
+		area.hit(2)
+
+
+func _on_body_entered(body):
+	SPEED = 10
+	timeintile.start()
+
+
+func _on_timeintile_timeout():
+	queue_free()

@@ -98,6 +98,8 @@ func update_health():
 		healthbar.visible = true
 	if dmg_taken.text != "":
 		dmg_taken.position.y -= 0.4
+	else:
+		dmg_taken.position.y = -55
 
 func hit(damage: int):
 	hp -= damage
@@ -115,7 +117,7 @@ func hit(damage: int):
 
 func _on_dtdt_timeout():
 	dmg_taken.text = ""
-	dmg_taken.position.y = -57
+	dmg_taken.position.y = -55
 func _on_vision_body_entered(body):
 	startfightsfx.play()
 	if body.is_in_group("player"):

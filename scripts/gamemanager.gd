@@ -12,6 +12,7 @@ var immunity_unlocked = false
 var hp = 1
 
 var blade_unlocked = true
+var blade_ready = true
 
 func _process(_delta):
 	Hud.update_hp(hp, MAX_HP)

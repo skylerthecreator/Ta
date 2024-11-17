@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://2o0osj5vvpxb"]
+[gd_scene load_steps=9 format=3 uid="uid://2o0osj5vvpxb"]
 
 [ext_resource type="Script" path="res://scripts/blade.gd" id="1_8jgp3"]
 [ext_resource type="Texture2D" uid="uid://c3ggg6kdxa1dk" path="res://assets/sprites/skills/Green Effect and Bullet 16x16.png" id="2_l0ndr"]
+[ext_resource type="AudioStream" uid="uid://bxohnt78304gl" path="res://assets/sprites/skills/blade/bladehit.wav" id="3_oubtw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7rshb"]
 atlas = ExtResource("2_l0ndr")
@@ -24,27 +25,36 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_bcprl")
 }, {
-"duration": 1.0,
+"duration": 30.0,
 "texture": SubResource("AtlasTexture_v3t52")
 }],
-"loop": true,
+"loop": false,
 "name": &"shoot",
-"speed": 5.0
+"speed": 6.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1wegp"]
+radius = 6.0
 
 [node name="blade" type="Area2D"]
+collision_layer = 0
 script = ExtResource("1_8jgp3")
 
 [node name="blade_animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_euf4p")
 animation = &"shoot"
-frame = 1
-frame_progress = 0.216883
+frame = 2
+frame_progress = 1.0
 
 [node name="blade_shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_1wegp")
 
+[node name="timeintile" type="Timer" parent="."]
+
+[node name="hit" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_oubtw")
+bus = &"SFX"
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="timeintile" to="." method="_on_timeintile_timeout"]

@@ -5,8 +5,8 @@ const ROLL_SPEED = 300
 var MAX_SPEED = 100
 const JUMP_VELOCITY = -225
 const DASH_SPEED_MULTIPLIER = 5
-const PRIORITY_MOVEMENT = ["casting", "fireball", "skill1", "wake", "hit", "dash"]
-const PREVENT_START = ["casting", "fireball"]
+const PRIORITY_MOVEMENT = ["casting", "fireball", "blade", "skill1", "wake", "hit", "dash"]
+const PREVENT_START = ["casting", "fireball", "blade"]
 const PREVENT_FLIP = ["fireball"]
 var speed = MAX_SPEED
 
@@ -34,10 +34,17 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var fireball_cast_time = $fireball_cast_time
 @onready var fbspawn = $fbspawn
 var fireball = load("res://scenes/fireball.tscn")
-
+var blade = load("res://scenes/blade.tscn")
 @onready var dash_duration = $dash_duration
 @onready var dash_cd = $dash_cd
 @onready var dash_sfx = $dash_sfx
+
+@onready var bladespawn = $bladespawn
+@onready var blade_cd = $blade_cd
+@onready var blade_cast_time = $blade_cast_time
+@onready var blade_shoot = $blade_shoot
+@onready var blade_launch = $blade_launch
+
 
 
 var buy = false
@@ -50,8 +57,6 @@ var moving = false
 var immune = false
 var can_dash = true
 var dashing = false
-
-
 
 var casting = false
 var cast_dir = 1
@@ -85,6 +90,8 @@ func _physics_process(delta):
 			_skill0()
 		if Input.is_action_just_pressed("skill1"):
 			_skill1()
+		if Input.is_action_just_pressed("skill2"):
+			_skill2()
 		if buy:
 			buy = false
 		if Input.is_action_just_pressed("pickup"):
@@ -151,6 +158,8 @@ func _flip(direction: int):
 			if fbspawn.position.x > 0:
 				fbspawn.position.x *= -1
 				fireball_chargeup.position.x *= -1
+			if bladespawn.position.x > 0:
+				bladespawn.position.x *= -1
 		elif direction < 0:
 			cast_dir = direction
 			animated_sprite.flip_h = true
@@ -188,11 +197,7 @@ func _on_skill_1_outline_area_exited(area):
 		areas1.remove_at(index)
 func _on_skill_1_cd_timeout():
 	game_manager.amnova_ready = true
-func _skill2():
-	if (!(PREVENT_START.count(animated_sprite.animation) != 0 and 
-	animated_sprite.is_playing()) and game_manager.blade_unlocked):
-		pass
-	
+
 func _skill0():
 	if (!(PREVENT_START.count(animated_sprite.animation) != 0 and 
 	animated_sprite.is_playing()) and game_manager.fireball_unlocked):
@@ -207,7 +212,6 @@ func _skill0():
 			fireball_cast_time.start()
 			fireball_chargeup.visible = true
 			fireball_chargeup.play("default")
-
 func _interrupt_skill0():
 	game_manager.interrupt_fireball()
 	casting = false
@@ -218,7 +222,6 @@ func _interrupt_skill0():
 	fireball_chargeup.stop()
 	fireball_bar.visible = false
 	fireball_bar.value = 0
-	
 func _on_fireball_cast_time_timeout():
 	_fireball()
 func _fireball():
@@ -232,6 +235,27 @@ func _fireball():
 	casting = false
 	fireball_bar.visible = false
 	fireball_bar.value = 0
+	
+func _skill2():
+	if (!(PREVENT_START.count(animated_sprite.animation) != 0 and 
+	animated_sprite.is_playing()) and game_manager.blade_unlocked and game_manager.blade_ready):
+		blade_shoot.play()
+		animated_sprite.play("blade")
+		blade_cast_time.start()
+func _blade():
+	game_manager.blade_pressed()
+	var bl = blade.instantiate()
+	owner.add_child(bl)
+	bl.transform = bladespawn.global_transform
+	bl.cast_dir = cast_dir
+	blade_launch.play()
+	game_manager.blade_ready = false
+	blade_cd.start()
+func _on_blade_cd_timeout():
+	game_manager.blade_ready = true
+func _on_blade_cast_time_timeout():
+	_blade()
+
 
 func _die():
 	animated_sprite.play("death")
@@ -239,7 +263,6 @@ func _die():
 func _on_death_timer_timeout():
 	game_manager.reset()
 	get_tree().reload_current_scene()
-	
 func _on_immunity_timeout():
 	immune = false
 
@@ -255,8 +278,9 @@ func _on_dash_duration_timeout():
 	dash_cd.start()
 	dashing = false
 	can_dash = false
-	
 func _on_dash_cd_timeout():
 	can_dash = true
+
+
 
 

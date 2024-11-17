@@ -27,6 +27,9 @@ var curr_dialogue_index = 0
 var fireball_ct = 1.0
 var blade_cd = 5.0
 
+func _ready():
+	reset()
+
 func _physics_process(_delta):
 	if fireball_casting.visible == true:
 		fireball_casting.text = str(snapped(fireball_ct, 0.1))
@@ -80,6 +83,7 @@ func show_insta_cast():
 func reset():
 	insta_cast.visible = false
 	fireball_icon.visible = false
+	blade_icon.visible = false
 	dialogue_queue = []
 	
 func continue_dialogue():

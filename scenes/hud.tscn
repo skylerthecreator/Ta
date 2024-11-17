@@ -227,7 +227,7 @@ offset_top = 539.0
 offset_right = 958.0
 offset_bottom = 1319.0
 scale = Vector2(0.1, 0.1)
-theme_override_fonts/font = ExtResource("2_mdka8")
+theme_override_fonts/font = ExtResource("3_libq2")
 theme_override_font_sizes/font_size = 128
 shortcut = SubResource("Shortcut_j430o")
 text = "K"
@@ -236,13 +236,18 @@ icon_alignment = 1
 vertical_icon_alignment = 0
 
 [node name="blade_cooldown" type="Button" parent="Display/blade_icon"]
+visible = false
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 520.0
+offset_bottom = 500.0
+theme_override_fonts/font = ExtResource("3_libq2")
+theme_override_font_sizes/font_size = 128
+icon_alignment = 1
 
 [node name="fireball_casting_time" type="Timer" parent="."]
 
 [node name="blade_cooldown_time" type="Timer" parent="."]
+wait_time = 5.0
 
 [connection signal="timeout" from="fireball_casting_time" to="." method="_on_fireball_casting_time_timeout"]
 [connection signal="timeout" from="blade_cooldown_time" to="." method="_on_blade_cooldown_time_timeout"]

@@ -484,8 +484,6 @@ pivot_offset = Vector2(20, 0)
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("10_eqgdt")
 theme_override_font_sizes/font_size = 8
-text = "
-"
 horizontal_alignment = 1
 
 [node name="dtdt" type="Timer" parent="."]

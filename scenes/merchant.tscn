@@ -142,7 +142,8 @@ default_font_size = 8
 position = Vector2(18.825, -62.4203)
 scale = Vector2(0.969068, 0.969068)
 sprite_frames = SubResource("SpriteFrames_idjhg")
-frame_progress = 0.448216
+autoplay = "default"
+frame_progress = 0.950969
 flip_h = true
 
 [node name="ezekielname" type="Label" parent="ezekiel"]
@@ -162,6 +163,7 @@ horizontal_alignment = 1
 position = Vector2(-53.0207, -22.9187)
 scale = Vector2(-0.437518, 0.552033)
 sprite_frames = SubResource("SpriteFrames_567mw")
+autoplay = "default"
 frame_progress = 0.750298
 
 [node name="marianame" type="Label" parent="."]

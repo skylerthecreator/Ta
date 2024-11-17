@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=3 uid="uid://cqnov4vrpq7a2"]
+[gd_scene load_steps=159 format=3 uid="uid://cqnov4vrpq7a2"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_osmlu"]
 [ext_resource type="Texture2D" uid="uid://bw55hyv2k77xy" path="res://assets/Pixel Prototype Player/Sprites/Combat/Punch02/Punch0204.png" id="2_2p2b5"]
@@ -50,6 +50,24 @@
 [ext_resource type="Texture2D" uid="uid://h8ii2j0i0spm" path="res://assets/Pixel Prototype Player/Sprites/FXSheet.png" id="47_h1mpw"]
 [ext_resource type="Texture2D" uid="uid://bdt2pmxc2obbh" path="res://assets/sprites/skills/486.png" id="49_sk2vv"]
 [ext_resource type="Texture2D" uid="uid://c6jjj8r8f1ft3" path="res://assets/sprites/skills/Retro Impact Effect Pack 2 C.png" id="50_e7xgm"]
+[ext_resource type="AudioStream" uid="uid://chgq5a851ssdh" path="res://assets/sounds/skills/blade_shoot.mp3" id="51_kj0ft"]
+[ext_resource type="AudioStream" uid="uid://unbgdklijvjx" path="res://assets/sprites/skills/blade/blade.wav" id="52_76ars"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf74u"]
+atlas = ExtResource("15_nfqb8")
+region = Rect2(0, 2604, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6d8k5"]
+atlas = ExtResource("15_nfqb8")
+region = Rect2(192, 756, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ddr0"]
+atlas = ExtResource("15_nfqb8")
+region = Rect2(288, 756, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xp1rv"]
+atlas = ExtResource("15_nfqb8")
+region = Rect2(384, 756, 96, 84)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fojhr"]
 atlas = ExtResource("2_2p2b5")
@@ -341,6 +359,23 @@ region = Rect2(864, 1008, 96, 84)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vvjdw"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wf74u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6d8k5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ddr0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xp1rv")
+}],
+"loop": false,
+"name": &"blade",
+"speed": 4.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fojhr")
@@ -835,7 +870,9 @@ script = ExtResource("1_osmlu")
 position = Vector2(-2.27374e-13, -28)
 scale = Vector2(0.662424, 0.667223)
 sprite_frames = SubResource("SpriteFrames_vvjdw")
-animation = &"wake"
+animation = &"blade"
+frame = 3
+frame_progress = 1.0
 
 [node name="playeroutline" type="CollisionShape2D" parent="."]
 visible = false
@@ -888,7 +925,11 @@ stream = ExtResource("5_0lds3")
 bus = &"SFX"
 
 [node name="fbspawn" type="Marker2D" parent="."]
+visible = false
 position = Vector2(-6, -16)
+
+[node name="bladespawn" type="Marker2D" parent="."]
+position = Vector2(10, -19)
 
 [node name="fireball_cast_time" type="Timer" parent="."]
 one_shot = true
@@ -930,9 +971,21 @@ visible = false
 position = Vector2(10, 0)
 scale = Vector2(1.27637, 1.19948)
 sprite_frames = SubResource("SpriteFrames_w0k4e")
-animation = &"new_animation"
-frame = 4
-frame_progress = 1.0
+
+[node name="blade_cd" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="blade_cast_time" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="blade_shoot" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("51_kj0ft")
+bus = &"SFX"
+
+[node name="blade_launch" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("52_76ars")
+bus = &"SFX"
 
 [connection signal="area_entered" from="skill1outline" to="." method="_on_skill_1_outline_area_entered"]
 [connection signal="area_exited" from="skill1outline" to="." method="_on_skill_1_outline_area_exited"]
@@ -942,3 +995,5 @@ frame_progress = 1.0
 [connection signal="timeout" from="immunity" to="." method="_on_immunity_timeout"]
 [connection signal="timeout" from="dash_duration" to="." method="_on_dash_duration_timeout"]
 [connection signal="timeout" from="dash_cd" to="." method="_on_dash_cd_timeout"]
+[connection signal="timeout" from="blade_cd" to="." method="_on_blade_cd_timeout"]
+[connection signal="timeout" from="blade_cast_time" to="." method="_on_blade_cast_time_timeout"]

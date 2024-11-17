@@ -16,3 +16,4 @@ res://scenes/slime.tscn
 res://scripts/hud.gd
 res://scripts/gamemanager.gd
 res://scenes/blade.tscn
+res://scenes/merchant.tscn

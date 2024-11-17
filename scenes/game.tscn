@@ -1802,7 +1802,7 @@ size = Vector2(127.75, 155)
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("2_3id2r")]
 z_index = 5
-position = Vector2(2978, 24)
+position = Vector2(2276, -32)
 collision_mask = 5
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -1839,15 +1839,6 @@ text = "(D) MOVE RIGHT
 (W) JUMP
 (F) INTERACT
 (SHIFT) DASH"
-
-[node name="wizarddl7" type="Label" parent="labels"]
-offset_left = 2670.0
-offset_top = -121.0
-offset_right = 2941.0
-offset_bottom = -47.0
-theme_override_colors/font_color = Color(0.6, 0.211765, 0.619608, 1)
-theme_override_fonts/font = ExtResource("8_cwuaj")
-theme_override_font_sizes/font_size = 8
 
 [node name="fexp" type="Label" parent="labels"]
 offset_left = 1123.0

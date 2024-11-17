@@ -158,7 +158,7 @@ func _flip(direction: int):
 			if fbspawn.position.x > 0:
 				fbspawn.position.x *= -1
 				fireball_chargeup.position.x *= -1
-			if bladespawn.position.x > 0:
+			if bladespawn.position.x < 0:
 				bladespawn.position.x *= -1
 		elif direction < 0:
 			cast_dir = direction
@@ -168,6 +168,8 @@ func _flip(direction: int):
 			if fbspawn.position.x < 0:
 				fbspawn.position.x *= -1
 				fireball_chargeup.position.x *= -1
+			if bladespawn.position.x > 0:
+				bladespawn.position.x *= -1
 func _play_movement_animations(direction: int):
 	if is_on_floor():
 		if direction == 0:
@@ -271,7 +273,7 @@ func _dash():
 		animated_sprite.play("dash")
 		dash_sfx.play()
 		dashing = true
-		if game_manager.insta_cast_unlocked:
+		if game_manager.insta_cast_unlocked and game_manager.fireball_unlocked:
 			game_manager.insta_cast_ready = true
 		dash_duration.start()
 func _on_dash_duration_timeout():

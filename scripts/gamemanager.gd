@@ -5,7 +5,7 @@ const MAX_HP = 5
 var coins = 0
 var amnova_unlocked = false
 var fireball_unlocked = false
-var insta_cast_unlocked = false
+var insta_cast_unlocked = true
 var insta_cast_ready = false
 var amnova_ready = true
 var immunity_unlocked = false
@@ -21,7 +21,7 @@ func _process(_delta):
 		Hud.show_fireball()
 	if blade_unlocked:
 		Hud.show_blade()
-	if insta_cast_ready:
+	if insta_cast_ready and fireball_unlocked:
 		Hud.show_insta_cast()
 		
 func blade_pressed():

@@ -871,8 +871,8 @@ position = Vector2(-2.27374e-13, -28)
 scale = Vector2(0.662424, 0.667223)
 sprite_frames = SubResource("SpriteFrames_vvjdw")
 animation = &"blade"
-frame = 3
-frame_progress = 1.0
+frame = 2
+frame_progress = 0.435168
 
 [node name="playeroutline" type="CollisionShape2D" parent="."]
 visible = false
@@ -929,7 +929,7 @@ visible = false
 position = Vector2(-6, -16)
 
 [node name="bladespawn" type="Marker2D" parent="."]
-position = Vector2(10, -19)
+position = Vector2(12, -19)
 
 [node name="fireball_cast_time" type="Timer" parent="."]
 one_shot = true

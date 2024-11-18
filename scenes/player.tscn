@@ -1,4 +1,4 @@
-[gd_scene load_steps=159 format=3 uid="uid://cqnov4vrpq7a2"]
+[gd_scene load_steps=162 format=3 uid="uid://cqnov4vrpq7a2"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_osmlu"]
 [ext_resource type="Texture2D" uid="uid://bw55hyv2k77xy" path="res://assets/Pixel Prototype Player/Sprites/Combat/Punch02/Punch0204.png" id="2_2p2b5"]
@@ -72,6 +72,18 @@ region = Rect2(384, 756, 96, 84)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fojhr"]
 atlas = ExtResource("2_2p2b5")
 region = Rect2(0, 0, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_53a18"]
+atlas = ExtResource("23_itnvl")
+region = Rect2(0, 1344, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqjf8"]
+atlas = ExtResource("23_itnvl")
+region = Rect2(96, 1344, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ktq0"]
+atlas = ExtResource("23_itnvl")
+region = Rect2(192, 1344, 96, 84)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xygf6"]
 atlas = ExtResource("3_0a7ef")
@@ -383,6 +395,20 @@ animations = [{
 "loop": false,
 "name": &"casting",
 "speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_53a18")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqjf8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ktq0")
+}],
+"loop": false,
+"name": &"counter",
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -870,9 +896,9 @@ script = ExtResource("1_osmlu")
 position = Vector2(-2.27374e-13, -28)
 scale = Vector2(0.662424, 0.667223)
 sprite_frames = SubResource("SpriteFrames_vvjdw")
-animation = &"blade"
+animation = &"counter"
 frame = 2
-frame_progress = 0.435168
+frame_progress = 1.0
 
 [node name="playeroutline" type="CollisionShape2D" parent="."]
 visible = false

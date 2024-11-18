@@ -12,3 +12,4 @@ res://scripts/item.gd
 res://scenes/orion.tscn
 res://scripts/orion.gd
 res://scripts/player.gd
+res://scripts/fragment.gd

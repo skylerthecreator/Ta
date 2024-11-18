@@ -11,7 +11,7 @@ var amnova_ready = true
 var immunity_unlocked = false
 var hp = 1
 
-var blade_unlocked = true
+var blade_unlocked = false
 var blade_ready = true
 
 func _process(_delta):

@@ -24,9 +24,12 @@ extends Area2D
 @onready var hitsfx = $hit
 @onready var enragedfx = $fx
 
+#var battery = load("res://scenes/battery.tscn")
+#@onready var batteryspawn = $batteryspawn
+
 var SPEED = 30
 var direction = 1
-var MAX_HP = 20
+var MAX_HP = 2
 
 var begin = false
 var hp = MAX_HP
@@ -114,6 +117,9 @@ func hit(damage: int):
 	else:
 		AS.play("death")
 		deathanimation.play("die")
+		#var b = battery.instantiate()
+		#owner.add_child(b)
+		#b.transform = batteryspawn.global_transform
 
 func _on_dtdt_timeout():
 	dmg_taken.text = ""

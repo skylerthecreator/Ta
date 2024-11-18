@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://cy00t7t5uqi6c"]
+[gd_scene load_steps=71 format=3 uid="uid://cy00t7t5uqi6c"]
 
 [ext_resource type="Texture2D" uid="uid://dcvepj8y4qaj0" path="res://assets/sprites/enemies/Monsters/Monsters_Creatures_Fantasy/Skeleton/Attack.png" id="1_87ovw"]
 [ext_resource type="Script" path="res://scripts/orion.gd" id="1_cx0e5"]
@@ -18,7 +18,6 @@
 [ext_resource type="Texture2D" uid="uid://cabmolw7iat4c" path="res://assets/sprites/skills/Retro Impact Effect Pack 5 A.png" id="16_w24g4"]
 [ext_resource type="AudioStream" uid="uid://1l6ae15fuejv" path="res://assets/sounds/bosssfx/orion/ghoul1.mp3" id="17_p0ylr"]
 [ext_resource type="AudioStream" uid="uid://bg8fvava8d2" path="res://assets/sounds/bosssfx/orion/ghoul6.mp3" id="18_6ne8n"]
-[ext_resource type="AudioStream" uid="uid://cr2ho2idv25ma" path="res://assets/sounds/bosssfx/orion/ghoul4.mp3" id="19_deb52"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i35v4"]
 atlas = ExtResource("1_87ovw")
@@ -532,6 +531,10 @@ one_shot = true
 stream = ExtResource("11_le62v")
 bus = &"Louder"
 
+[node name="attack1vl" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_p0ylr")
+bus = &"SFX"
+
 [node name="attackrange" type="Area2D" parent="."]
 visible = false
 collision_layer = 0
@@ -556,6 +559,10 @@ one_shot = true
 
 [node name="attack2_cd" type="Timer" parent="."]
 wait_time = 5.0
+
+[node name="attack2vl" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_6ne8n")
+bus = &"SFX"
 
 [node name="title" type="Label" parent="."]
 offset_left = -91.0
@@ -597,17 +604,7 @@ scale = Vector2(0.5625, 0.171875)
 sprite_frames = SubResource("SpriteFrames_al3ws")
 frame_progress = 0.530709
 
-[node name="attack1vl" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("17_p0ylr")
-bus = &"SFX"
-
-[node name="attack2vl" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("18_6ne8n")
-bus = &"SFX"
-
-[node name="stage2" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("19_deb52")
-bus = &"SFX"
+[node name="batteryspawn" type="Marker2D" parent="."]
 
 [connection signal="timeout" from="dtdt" to="." method="_on_dtdt_timeout"]
 [connection signal="body_entered" from="vision" to="." method="_on_vision_body_entered"]

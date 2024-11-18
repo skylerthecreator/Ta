@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://g77a77m022qm"]
+[gd_scene load_steps=54 format=3 uid="uid://g77a77m022qm"]
 
 [ext_resource type="Texture2D" uid="uid://kpld5n16lvkg" path="res://assets/sprites/default/world_tileset.png" id="1_0yvkf"]
 [ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_iry8t"]
@@ -30,6 +30,7 @@
 [ext_resource type="Script" path="res://scripts/dialogue7.gd" id="27_0kr2h"]
 [ext_resource type="Script" path="res://scripts/dialogue8.gd" id="28_bc1aq"]
 [ext_resource type="Script" path="res://scripts/dialogue9.gd" id="29_7djv2"]
+[ext_resource type="PackedScene" uid="uid://b1qqitl1xtl0g" path="res://scenes/battery.tscn" id="31_xunmr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yfw1x"]
 texture = ExtResource("1_0yvkf")
@@ -2216,6 +2217,9 @@ shape = SubResource("RectangleShape2D_ceycd")
 position = Vector2(1064, -40)
 scale = Vector2(0.545455, 0.545455)
 texture = ExtResource("26_1hutj")
+
+[node name="plasma battery" parent="." instance=ExtResource("31_xunmr")]
+position = Vector2(2356, -31)
 
 [connection signal="body_entered" from="dialogues/dialogue1" to="dialogues/dialogue1" method="_on_body_entered"]
 [connection signal="body_entered" from="dialogues/dialogue2" to="dialogues/dialogue2" method="_on_body_entered"]

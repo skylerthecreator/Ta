@@ -258,7 +258,6 @@ func _on_blade_cd_timeout():
 func _on_blade_cast_time_timeout():
 	_blade()
 
-
 func _die():
 	animated_sprite.play("death")
 	death_timer.start()

@@ -1,15 +1,14 @@
-res://scenes/pyro_mani.tscn
-res://scripts/dialogue6.gd
-res://scripts/plasma battery.gd
-res://scenes/fury_of_demetrius.tscn
-res://scripts/gamemanager.gd
-res://scenes/battery.tscn
 res://scenes/game.tscn
+res://scripts/dialogue6.gd
 res://scenes/player.tscn
+res://scenes/pyro_mani.tscn
+res://scenes/battery.tscn
+res://scenes/fury_of_demetrius.tscn
 res://scenes/hermesboots.tscn
 res://scenes/mauricespendant.tscn
-res://scripts/item.gd
 res://scenes/orion.tscn
-res://scripts/orion.gd
-res://scripts/player.gd
-res://scripts/fragment.gd
+res://scenes/blade.tscn
+res://scripts/blade.gd
+res://scenes/hud.tscn
+res://scripts/hud.gd
+res://scripts/gamemanager.gd

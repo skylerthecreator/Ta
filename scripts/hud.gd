@@ -5,8 +5,8 @@ extends Node2D
 @onready var fireball_icon = $Display/fireball_icon
 @onready var fireball_casting = $Display/fireball_icon/fireball_casting
 @onready var fireball_casting_time = $fireball_casting_time
-@onready var insta_cast = $Display/insta_cast
 @onready var fb_animation = $Display/fireball_icon/AnimatedSprite2D
+@onready var insta_cast = $Display/fireball_icon/insta_cast
 
 @onready var blade_icon = $Display/blade_icon
 @onready var blade_cooldown = $Display/blade_icon/blade_cooldown

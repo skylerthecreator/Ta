@@ -8,7 +8,7 @@ extends Area2D
 @onready var timeintile = $timeintile
 @onready var hit = $hit
 
-var SPEED = 250
+var SPEED = 400
 var cast_dir = 0
 
 func _physics_process(delta):

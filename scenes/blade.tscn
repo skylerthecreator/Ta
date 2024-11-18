@@ -4,6 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://c3ggg6kdxa1dk" path="res://assets/sprites/skills/Green Effect and Bullet 16x16.png" id="2_l0ndr"]
 [ext_resource type="AudioStream" uid="uid://bxohnt78304gl" path="res://assets/sprites/skills/blade/bladehit.wav" id="3_oubtw"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3t52"]
+atlas = ExtResource("2_l0ndr")
+region = Rect2(192, 49, 16, 31)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_7rshb"]
 atlas = ExtResource("2_l0ndr")
 region = Rect2(160, 49, 16, 31)
@@ -12,12 +16,16 @@ region = Rect2(160, 49, 16, 31)
 atlas = ExtResource("2_l0ndr")
 region = Rect2(176, 49, 16, 31)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v3t52"]
-atlas = ExtResource("2_l0ndr")
-region = Rect2(192, 49, 16, 31)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_euf4p"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3t52")
+}],
+"loop": true,
+"name": &"shoot",
+"speed": 1.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_7rshb")
@@ -29,7 +37,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_v3t52")
 }],
 "loop": false,
-"name": &"shoot",
+"name": &"shoot2",
 "speed": 6.0
 }]
 
@@ -43,8 +51,6 @@ script = ExtResource("1_8jgp3")
 [node name="blade_animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_euf4p")
 animation = &"shoot"
-frame = 2
-frame_progress = 1.0
 
 [node name="blade_shape" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_1wegp")

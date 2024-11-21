@@ -406,7 +406,7 @@ offset_bottom = -56.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_boeh8")
 theme_override_font_sizes/font_size = 8
-text = "Salazar
+text = "Lord Salazar
 <The Banished>"
 horizontal_alignment = 1
 metadata/_edit_use_anchors_ = true

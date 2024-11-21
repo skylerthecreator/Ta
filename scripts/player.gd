@@ -48,7 +48,8 @@ var forbidden = load("res://scenes/forbidden.tscn")
 
 @onready var forbidden_cast_time = $forbidden_cast_time
 @onready var forbiddenspawn = $forbiddenspawn
-@onready var forbidden_moving = $forbidden_moving
+@onready var forbidden_chargeup = $forbidden_chargeup
+
 
 
 var buy = false
@@ -105,7 +106,6 @@ func _physics_process(delta):
 			buy = true
 		# Get the input direction and handle the movement/deceleration.
 		# As good practice, you should replace UI actions with custom gameplay actions.
-		
 		# get input direction: -1, 0, 1
 		if immune:
 			passives.play("immunity")
@@ -167,20 +167,20 @@ func _flip(direction: int):
 				fireball_chargeup.position.x *= -1
 			if bladespawn.position.x < 0:
 				bladespawn.position.x *= -1
-			if forbiddenspawn.position.x < 0:
 				forbiddenspawn.position.x *= -1
+				forbidden_chargeup.scale.x *= -1
 		elif direction < 0:
 			cast_dir = direction
 			animated_sprite.flip_h = true
 			fireball_chargeup.flip_h = true
-			fbspawn.scale.x = 1
 			if fbspawn.position.x < 0:
 				fbspawn.position.x *= -1
 				fireball_chargeup.position.x *= -1
 			if bladespawn.position.x > 0:
 				bladespawn.position.x *= -1
-			if forbiddenspawn.position.x > 0:
 				forbiddenspawn.position.x *= -1
+				forbidden_chargeup.scale.x *= -1
+				
 func _play_movement_animations(direction: int):
 	if is_on_floor():
 		if direction == 0:
@@ -233,7 +233,9 @@ func _interrupt_casting():
 	fireball_sound.stop()
 	fireball_cast_time.stop()
 	forbidden_cast_time.stop()
+	forbidden_chargeup.visible = false
 	fireball_chargeup.visible = false
+	forbidden_chargeup.stop()
 	fireball_chargeup.stop()
 	casting_bar.visible = false
 	casting_bar.value = 0
@@ -279,8 +281,11 @@ func _special1():
 		casting = true
 		casting_speed = 5.0/9.0
 		animated_sprite.play("forbiddencasting")
+		forbidden_chargeup.visible = true
+		forbidden_chargeup.play("default")
 		forbidden_cast_time.start()
 func _on_forbidden_cast_time_timeout():
+	forbidden_chargeup.visible = false
 	_hit(1)
 	var forb = forbidden.instantiate()
 	owner.add_child(forb)

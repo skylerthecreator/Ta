@@ -6369,7 +6369,7 @@ summonIdle.png::CompressedTexture2D::1808177768597940328::1731567182::1731567191
 Background_0.png::CompressedTexture2D::4808048548664091032::1731736285::1731736291::1::::<><>::
 Training Dummy Sprite Sheet.png::CompressedTexture2D::2702556791916291795::1731411352::1731411378::1::::<><>::
 trees.png::CompressedTexture2D::4004328350772535857::1731221872::1731221881::1::::<><>::
-::res://assets/sprites/environment/Final/::1732176359
+::res://assets/sprites/environment/Final/::1732176367
 Background_0.png::CompressedTexture2D::6919163194246683543::1732176358::1732176367::1::::<><>::
 Background_1.png::CompressedTexture2D::1760658295935261938::1732176358::1732176367::1::::<><>::
 brush.png::CompressedTexture2D::6249530551695199097::1732176358::1732176367::1::::<><>::
@@ -6377,7 +6377,7 @@ Grass_background_1.png::CompressedTexture2D::2204756728544860146::1732176358::17
 Grass_background_2.png::CompressedTexture2D::2562265620357779037::1732176358::1732176367::1::::<><>::
 Salt.png::CompressedTexture2D::2815288751083806607::1732176358::1732176367::1::::<><>::
 Tiles.png::CompressedTexture2D::6374658011828059165::1732176359::1732176367::1::::<><>::
-::res://assets/sprites/environment/Final/Social/::1732176359
+::res://assets/sprites/environment/Final/Social/::1732176368
 Autor_note.txt::TextFile::-1::1732176359::0::1::::<><>::
 moon.png::CompressedTexture2D::928905027542444005::1732176359::1732176368::1::::<><>::
 test_1.png::CompressedTexture2D::3959779063809742416::1732176359::1732176367::1::::<><>::
@@ -6516,7 +6516,7 @@ Bone.png::CompressedTexture2D::6406168338772708136::1731047844::1731047847::1:::
 Hands.png::CompressedTexture2D::8803610624167625519::1731047844::1731047847::1::::<><>::
 ::res://assets/sprites/Pixel Crawler - FREE - 1.8/Weapons/Wood/::1731047847
 Wood.png::CompressedTexture2D::8903785363892001617::1731047844::1731047847::1::::<><>::
-::res://assets/sprites/skills/::1732167184
+::res://assets/sprites/skills/::1732178002
 475.png::CompressedTexture2D::7825456844327591889::1731716358::1731716365::1::::<><>::
 486.png::CompressedTexture2D::2637877203585808589::1731716358::1731716365::1::::<><>::
 fireball2.png::CompressedTexture2D::5705912062911367751::1731350418::1731350429::1::::<><>::
@@ -6539,6 +6539,45 @@ AbilityIcons0.png::CompressedTexture2D::7389378630542963793::1731797872::1731797
 blade.wav::AudioStreamWAV::1430685388848573893::1731802365::1731802518::1::::<><>::
 bladehit.wav::AudioStreamWAV::4030114659110008435::1731803841::1731803871::1::::<><>::
 pixil-frame-0.png::CompressedTexture2D::2073335352371941568::1731798415::1731798417::1::::<><>::
+::res://assets/sprites/skills/Dark VFX 1/::1643496347
+Dark VFX 1 (40x32).png::CompressedTexture2D::5577157094470548681::1643496081::1732178009::1::::<><>::
+::res://assets/sprites/skills/Dark VFX 1/Separeted frames/::1643496068
+Dark VFX 1 (40x32)1.png::CompressedTexture2D::3573541838903401561::1643496067::1732178009::1::::<><>::
+Dark VFX 1 (40x32)2.png::CompressedTexture2D::7869970707206772171::1643496067::1732178009::1::::<><>::
+Dark VFX 1 (40x32)3.png::CompressedTexture2D::2197882468166239758::1643496067::1732178009::1::::<><>::
+Dark VFX 1 (40x32)4.png::CompressedTexture2D::5428561248585627478::1643496067::1732178009::1::::<><>::
+Dark VFX 1 (40x32)5.png::CompressedTexture2D::3724276550221396171::1643496067::1732178009::1::::<><>::
+Dark VFX 1 (40x32)6.png::CompressedTexture2D::5824248101082149971::1643496067::1732178009::1::::<><>::
+Dark VFX 1 (40x32)7.png::CompressedTexture2D::5818873529184837987::1643496067::1732178009::1::::<><>::
+Dark VFX 1 (40x32)8.png::CompressedTexture2D::6380406326295106009::1643496067::1732178009::1::::<><>::
+Dark VFX 1 (40x32)9.png::CompressedTexture2D::7104028185519163701::1643496067::1732178009::1::::<><>::
+Dark VFX 1 (40x32)10.png::CompressedTexture2D::7535259494572110672::1643496067::1732178009::1::::<><>::
+Dark VFX 1 (40x32)11.png::CompressedTexture2D::439276862977495579::1643496067::1732178009::1::::<><>::
+Dark VFX 1 (40x32)12.png::CompressedTexture2D::3643936138003698000::1643496067::1732178009::1::::<><>::
+Dark VFX 1 (40x32)13.png::CompressedTexture2D::9047242357929927354::1643496068::1732178009::1::::<><>::
+Dark VFX 1 (40x32)14.png::CompressedTexture2D::1681020048731230292::1643496068::1732178009::1::::<><>::
+Dark VFX 1 (40x32)15.png::CompressedTexture2D::6121512373634744582::1643496068::1732178009::1::::<><>::
+Dark VFX 1 (40x32)16.png::CompressedTexture2D::8835282927885442960::1643496068::1732178009::1::::<><>::
+Dark VFX 1 (40x32)17.png::CompressedTexture2D::3093540443962835634::1643496068::1732178009::1::::<><>::
+::res://assets/sprites/skills/Dark VFX 2/::1643496351
+Dark VFX 2 (48x64).png::CompressedTexture2D::2835909607496488173::1643496291::1732178009::1::::<><>::
+::res://assets/sprites/skills/Dark VFX 2/Separated Frames/::1643496320
+Dark VFX 2 (48x64)1.png::CompressedTexture2D::4630358297265205761::1643496320::1732178009::1::::<><>::
+Dark VFX 2 (48x64)2.png::CompressedTexture2D::8192835655327262959::1643496320::1732178009::1::::<><>::
+Dark VFX 2 (48x64)3.png::CompressedTexture2D::5751346042892820068::1643496320::1732178009::1::::<><>::
+Dark VFX 2 (48x64)4.png::CompressedTexture2D::633815234591155734::1643496320::1732178009::1::::<><>::
+Dark VFX 2 (48x64)5.png::CompressedTexture2D::2198873427339914127::1643496320::1732178009::1::::<><>::
+Dark VFX 2 (48x64)6.png::CompressedTexture2D::4711314880214998249::1643496320::1732178009::1::::<><>::
+Dark VFX 2 (48x64)7.png::CompressedTexture2D::3527649285344654434::1643496320::1732178009::1::::<><>::
+Dark VFX 2 (48x64)8.png::CompressedTexture2D::6251920969169348587::1643496320::1732178009::1::::<><>::
+Dark VFX 2 (48x64)9.png::CompressedTexture2D::5109772380064313346::1643496320::1732178009::1::::<><>::
+Dark VFX 2 (48x64)10.png::CompressedTexture2D::5901778851949075748::1643496320::1732178009::1::::<><>::
+Dark VFX 2 (48x64)11.png::CompressedTexture2D::7345947484160728217::1643496320::1732178009::1::::<><>::
+Dark VFX 2 (48x64)12.png::CompressedTexture2D::8567220160538670351::1643496320::1732178009::1::::<><>::
+Dark VFX 2 (48x64)13.png::CompressedTexture2D::6486628739100703000::1643496320::1732178009::1::::<><>::
+Dark VFX 2 (48x64)14.png::CompressedTexture2D::1692802366504659053::1643496320::1732178009::1::::<><>::
+Dark VFX 2 (48x64)15.png::CompressedTexture2D::7545411291534275590::1643496320::1732178009::1::::<><>::
+Dark VFX 2 (48x64)16.png::CompressedTexture2D::3714716088916632268::1643496320::1732178009::1::::<><>::
 ::res://assets/sprites/skills/DarkSpells/::1732167190
 DarkSpells_previews.png::CompressedTexture2D::5868436735267678075::1732167184::1732167190::1::::<><>::
 ::res://assets/sprites/skills/DarkSpells/DarkSpell_01/::1732167190

@@ -1,4 +1,4 @@
-[gd_scene load_steps=183 format=3 uid="uid://cqnov4vrpq7a2"]
+[gd_scene load_steps=177 format=3 uid="uid://cqnov4vrpq7a2"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_osmlu"]
 [ext_resource type="Texture2D" uid="uid://bw55hyv2k77xy" path="res://assets/Pixel Prototype Player/Sprites/Combat/Punch02/Punch0204.png" id="2_2p2b5"]
@@ -957,34 +957,6 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_xhjue"]
-animations = [{
-"frames": [],
-"loop": true,
-"name": &"default",
-"speed": 10.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_f5fjn"]
-atlas = ExtResource("55_4uivj")
-region = Rect2(0, 0, 256, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3nikt"]
-atlas = ExtResource("55_4uivj")
-region = Rect2(256, 0, 256, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ptw6y"]
-atlas = ExtResource("55_4uivj")
-region = Rect2(512, 0, 256, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nh4nr"]
-atlas = ExtResource("55_4uivj")
-region = Rect2(768, 0, 256, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_htfdi"]
-atlas = ExtResource("55_4uivj")
-region = Rect2(1024, 0, 256, 128)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_vgcc3"]
 atlas = ExtResource("55_4uivj")
 region = Rect2(1280, 0, 256, 128)
@@ -1001,19 +973,22 @@ region = Rect2(1792, 0, 256, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_f5fjn")
+"texture": SubResource("AtlasTexture_vgcc3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_3nikt")
+"texture": SubResource("AtlasTexture_rn7ga")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ptw6y")
+"texture": SubResource("AtlasTexture_udkuh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nh4nr")
+"texture": SubResource("AtlasTexture_vgcc3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_htfdi")
+"texture": SubResource("AtlasTexture_rn7ga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udkuh")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vgcc3")
@@ -1026,7 +1001,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 5.0
+"speed": 3.0
 }]
 
 [node name="player" type="CharacterBody2D"]
@@ -1038,9 +1013,8 @@ z_index = 1
 position = Vector2(-2.27374e-13, -28)
 scale = Vector2(0.662424, 0.667223)
 sprite_frames = SubResource("SpriteFrames_vvjdw")
-animation = &"forbidden"
-frame = 3
-frame_progress = 1.0
+animation = &"forbiddencasting"
+frame_progress = 0.569359
 
 [node name="playeroutline" type="CollisionShape2D" parent="."]
 visible = false
@@ -1094,7 +1068,6 @@ stream = ExtResource("5_0lds3")
 bus = &"SFX"
 
 [node name="fbspawn" type="Marker2D" parent="."]
-visible = false
 position = Vector2(-6, -16)
 
 [node name="bladespawn" type="Marker2D" parent="."]
@@ -1163,24 +1136,18 @@ bus = &"SFX"
 wait_time = 3.0
 one_shot = true
 
-[node name="forbidden_chargeup" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(5, -19)
-scale = Vector2(0.633789, 0.633789)
-sprite_frames = SubResource("SpriteFrames_xhjue")
-frame_progress = 0.74505
-
 [node name="forbiddenspawn" type="Marker2D" parent="."]
 position = Vector2(14, -18)
 
-[node name="forbidden_moving" type="AnimatedSprite2D" parent="."]
+[node name="forbidden_chargeup" type="AnimatedSprite2D" parent="."]
 visible = false
 z_index = 2
-position = Vector2(93.5, -33)
-scale = Vector2(0.855469, 0.640625)
+position = Vector2(-0.008, -36)
+scale = Vector2(0.086, 0.617)
 sprite_frames = SubResource("SpriteFrames_m0hdy")
-frame = 7
-frame_progress = 0.308067
+frame = 8
+frame_progress = 1.0
+offset = Vector2(-35, 0)
 
 [connection signal="area_entered" from="skill1outline" to="." method="_on_skill_1_outline_area_entered"]
 [connection signal="area_exited" from="skill1outline" to="." method="_on_skill_1_outline_area_exited"]

@@ -4,7 +4,7 @@ My first game!
 
 SPECIAL THANKS TO:
 
-DESIGN:
+CO-DESIGNER:
 Elle Yamamoto
 
 ASSETS:

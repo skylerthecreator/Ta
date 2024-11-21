@@ -1,8 +1,10 @@
+res://assets/Pixel Prototype Player/Sprites
+res://assets/sprites/skills/DarkSpells/DarkSpell_02
+res://assets/sprites/skills/DarkSpells/DarkSpell_01
+res://scenes
+res://scripts
 res://assets/sprites/enemies/Ice Demon
 res://assets/sprites/skills
-res://scripts
-res://scenes
-res://assets/Pixel Prototype Player/Sprites
 res://assets/Pixel Prototype Player/Sprites/Combat/Punch03
 res://assets/Pixel Prototype Player/Sprites/Jump
 res://assets/sprites/NPCS/Merchant Pack
@@ -18,5 +20,3 @@ res://assets/sprites/enemies/Undead executioner puppet/png
 res://assets/sprites/enemies/Skeleton/Sprite Sheets
 res://assets/sprites/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Warrior/Idle
 res://assets/Pixel Prototype Player/Sprites/Die
-res://assets/Pixel Prototype Player/Sprites/Run
-res://assets/Pixel Prototype Player/Sprites/Land

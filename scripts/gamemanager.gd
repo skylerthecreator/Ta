@@ -14,6 +14,7 @@ var hp = 10
 var blade_unlocked = false
 var blade_ready = true
 
+var forbidden_unlocked = true
 func _process(_delta):
 	Hud.update_hp(hp, MAX_HP)
 	Hud.update_coins(coins)

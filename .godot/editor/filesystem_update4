@@ -12,3 +12,8 @@ res://scenes/hud.tscn
 res://scenes/salazar.tscn
 res://scripts/salazar.gd
 res://scripts/gamemanager.gd
+res://scripts/forbidden.gd
+res://scripts/player.gd
+res://scenes/forbidden.tscn
+res://scenes/fireball.tscn
+res://scenes/training_dummy.tscn

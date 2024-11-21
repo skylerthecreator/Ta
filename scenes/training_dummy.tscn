@@ -45,7 +45,7 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="training_dummy" type="Area2D" groups=["enemies"]]
+[node name="training_dummy" type="Area2D" groups=["enemies", "ineffective"]]
 script = ExtResource("1_gc4nk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

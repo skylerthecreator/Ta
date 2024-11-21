@@ -5,9 +5,9 @@ const ROLL_SPEED = 300
 var MAX_SPEED = 100
 const JUMP_VELOCITY = -225
 const DASH_SPEED_MULTIPLIER = 5
-const PRIORITY_MOVEMENT = ["casting", "fireball", "blade", "counter", "skill1", "wake", "hit", "dash"]
-const PREVENT_START = ["casting", "fireball", "blade", "counter"]
-const PREVENT_FLIP = ["fireball", "blade", "counter"]
+const PRIORITY_MOVEMENT = ["casting", "fireball", "blade", "counter", "skill1", "wake", "hit", "dash", "forbiddencasting", "forbidden"]
+const PREVENT_START = ["casting", "fireball", "blade", "counter", "forbiddencasting", "forbidden"]
+const PREVENT_FLIP = ["fireball", "blade", "counter", "forbiddencasting", "forbidden"]
 var speed = MAX_SPEED
 
 
@@ -35,6 +35,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var fbspawn = $fbspawn
 var fireball = load("res://scenes/fireball.tscn")
 var blade = load("res://scenes/blade.tscn")
+var forbidden = load("res://scenes/forbidden.tscn")
 @onready var dash_duration = $dash_duration
 @onready var dash_cd = $dash_cd
 @onready var dash_sfx = $dash_sfx
@@ -45,6 +46,9 @@ var blade = load("res://scenes/blade.tscn")
 @onready var blade_shoot = $blade_shoot
 @onready var blade_launch = $blade_launch
 
+@onready var forbidden_cast_time = $forbidden_cast_time
+@onready var forbiddenspawn = $forbiddenspawn
+@onready var forbidden_moving = $forbidden_moving
 
 
 var buy = false
@@ -61,6 +65,7 @@ var dashing = false
 var casting = false
 var cast_dir = 1
 var can_jump = true
+var casting_speed = 0
 	
 func _physics_process(delta):
 	if waking_up:
@@ -74,7 +79,7 @@ func _physics_process(delta):
 			_interrupt_skill0()
 		if casting:
 			fireball_bar.visible = true
-			fireball_bar.value += 5.0/3.0
+			fireball_bar.value += casting_speed
 		# Add the gravity.
 		if not is_on_floor() and not dashing:
 			velocity.y += gravity * delta
@@ -92,6 +97,8 @@ func _physics_process(delta):
 			_skill1()
 		if Input.is_action_just_pressed("skill2"):
 			_skill2()
+		if Input.is_action_just_pressed("special1"):
+			_special1()
 		if buy:
 			buy = false
 		if Input.is_action_just_pressed("pickup"):
@@ -160,6 +167,8 @@ func _flip(direction: int):
 				fireball_chargeup.position.x *= -1
 			if bladespawn.position.x < 0:
 				bladespawn.position.x *= -1
+			if forbiddenspawn.position.x < 0:
+				forbiddenspawn.position.x *= -1
 		elif direction < 0:
 			cast_dir = direction
 			animated_sprite.flip_h = true
@@ -170,6 +179,8 @@ func _flip(direction: int):
 				fireball_chargeup.position.x *= -1
 			if bladespawn.position.x > 0:
 				bladespawn.position.x *= -1
+			if forbiddenspawn.position.x > 0:
+				forbiddenspawn.position.x *= -1
 func _play_movement_animations(direction: int):
 	if is_on_floor():
 		if direction == 0:
@@ -209,6 +220,7 @@ func _skill0():
 			game_manager.insta_cast_ready = false
 		else:
 			casting = true
+			casting_speed = 5.0/3.0
 			animated_sprite.play("casting")
 			fireball_sound.play()
 			fireball_cast_time.start()
@@ -258,6 +270,26 @@ func _on_blade_cd_timeout():
 func _on_blade_cast_time_timeout():
 	_blade()
 
+func _special1():
+	if (!(PREVENT_START.count(animated_sprite.animation) != 0 and 
+	animated_sprite.is_playing()) and game_manager.forbidden_unlocked):
+		#game_manager.forbidden_pressed()
+		casting = true
+		casting_speed = 5.0/9.0
+		animated_sprite.play("forbiddencasting")
+		forbidden_cast_time.start()
+func _on_forbidden_cast_time_timeout():
+	_hit(1)
+	var forb = forbidden.instantiate()
+	owner.add_child(forb)
+	forb.transform = forbiddenspawn.global_transform
+	forb.cast_dir = cast_dir
+	forb.charged = true
+	animated_sprite.play("forbidden")
+	casting = false
+	fireball_bar.visible = false
+	fireball_bar.value = 0
+	
 func _die():
 	animated_sprite.play("death")
 	death_timer.start()
@@ -275,12 +307,16 @@ func _dash():
 		if game_manager.insta_cast_unlocked and game_manager.fireball_unlocked:
 			game_manager.insta_cast_ready = true
 		dash_duration.start()
+		can_dash = false
 func _on_dash_duration_timeout():
 	dash_cd.start()
 	dashing = false
-	can_dash = false
+	
 func _on_dash_cd_timeout():
 	can_dash = true
+
+
+
 
 
 

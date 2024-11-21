@@ -4,11 +4,12 @@ extends Area2D
 @onready var vision = $vision
 @onready var AS = $AnimatedSprite2D
 @onready var attack_1_range = $attack1range
-@onready var healthbar = $healthbar
+@onready var healthbar = $Control/healthbar
 @onready var dmg_taken = $dmg_taken
 @onready var dtdt = $dtdt
 @onready var die = $die
 @onready var attackwaittime = $attackwaittime
+@onready var CS = $CollisionShape2D
 
 var SPEED = 20
 var direction = 1
@@ -32,12 +33,14 @@ func _physics_process(delta):
 				if AS.scale.x > 0:
 					AS.scale.x *= -1
 					AS.rotation *= -1
+					CS.rotation *= -1
 					die.scale.x *= -1
 					attack_1_range.scale.x *= -1					
 			elif gap < 0 and !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()):
 				direction = -1
 				if AS.scale.x < 0:
 					AS.scale.x *= -1
+					CS.rotation *= -1
 					AS.rotation *= -1
 					die.scale.x *= -1
 					attack_1_range.scale.x *= -1
@@ -68,7 +71,7 @@ func update_health():
 	if dmg_taken.text != "":
 		dmg_taken.position.y -= 0.4
 	else:
-		dmg_taken.position.y = -55
+		dmg_taken.position.y = -96
 
 func hit(damage: int):
 	hp -= damage
@@ -89,7 +92,6 @@ func hit(damage: int):
 
 func _on_dtdt_timeout():
 	dmg_taken.text = ""
-	dmg_taken.position.y = -100
 	
 func _on_vision_body_entered(body):
 	if body.is_in_group("player"):

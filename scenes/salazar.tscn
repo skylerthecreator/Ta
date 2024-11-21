@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://nkfs734x7htp"]
+[gd_scene load_steps=58 format=3 uid="uid://nkfs734x7htp"]
 
 [ext_resource type="Script" path="res://scripts/salazar.gd" id="1_f8c1t"]
 [ext_resource type="Texture2D" uid="uid://doir3lmdcsext" path="res://assets/sprites/enemies/Ice Demon/TheDemonIce.png" id="1_txfss"]
@@ -294,8 +294,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_aysqh"]
-radius = 27.0
-height = 62.0
+radius = 22.8726
+height = 64.5461
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vgfvu"]
 size = Vector2(843, 69)
@@ -303,6 +303,8 @@ size = Vector2(843, 69)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tgdgb"]
 radius = 13.2366
 height = 72.642
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_paxmw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uqfgs"]
 atlas = ExtResource("5_okver")
@@ -380,19 +382,20 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="salazar" type="Area2D" groups=["enemies"]]
+[node name="salazar" type="Area2D" groups=["enemies", "ineffective"]]
 position = Vector2(0, -3)
 script = ExtResource("1_f8c1t")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-6, -42)
+position = Vector2(7.15256e-07, -42)
 rotation = -0.106465
 sprite_frames = SubResource("SpriteFrames_hkcir")
 animation = &"attack"
-offset = Vector2(-27, 0)
+offset = Vector2(-30, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -27)
+position = Vector2(4.76837e-07, -32)
+rotation = 1.309
 shape = SubResource("CapsuleShape2D_aysqh")
 
 [node name="title" type="Label" parent="."]
@@ -427,21 +430,31 @@ position = Vector2(-38, -5)
 rotation = 1.46957
 shape = SubResource("CapsuleShape2D_tgdgb")
 
-[node name="healthbar" type="ProgressBar" parent="."]
-offset_left = -27.0
-offset_top = 5.0
-offset_right = 29.0
-offset_bottom = 15.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_colors/font_outline_color = Color(1, 0, 0, 1)
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="healthbar" type="ProgressBar" parent="Control"]
+modulate = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.65
+anchor_bottom = -0.65
+offset_left = -23.0
+offset_top = 30.0
+offset_right = 23.0
+offset_bottom = 40.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_paxmw")
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
 [node name="dmg_taken" type="Label" parent="."]
-offset_left = -93.0
-offset_top = -102.0
-offset_right = -53.0
-offset_bottom = -79.0
+offset_left = -23.0
+offset_top = -97.0
+offset_right = 17.0
+offset_bottom = -74.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("4_hgucj")
 theme_override_font_sizes/font_size = 8
@@ -469,4 +482,5 @@ one_shot = true
 [connection signal="body_exited" from="vision" to="." method="_on_vision_body_exited"]
 [connection signal="body_entered" from="attack1range" to="." method="_on_attack_1_range_body_entered"]
 [connection signal="body_exited" from="attack1range" to="." method="_on_attack_1_range_body_exited"]
+[connection signal="timeout" from="dtdt" to="." method="_on_dtdt_timeout"]
 [connection signal="timeout" from="attackwaittime" to="." method="_on_attackwaittime_timeout"]

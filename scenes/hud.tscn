@@ -119,6 +119,7 @@ text = "🪙x8"
 metadata/_edit_use_anchors_ = true
 
 [node name="dialogue_box" type="Button" parent="Display"]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5

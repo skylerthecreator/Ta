@@ -1,3 +1,5 @@
+Node
+ColorRect
 CollisionShape2D
 AnimatedSprite2D
 Marker2D
@@ -10,5 +12,3 @@ RayCast2D
 AudioStreamPlayer2D
 AnimationPlayer
 Button
-Node
-Sprite2D

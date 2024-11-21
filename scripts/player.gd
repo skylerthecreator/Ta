@@ -28,7 +28,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var s1_sound = $skill1sound
 @onready var s1_cd = $skill1cd
 
-@onready var fireball_bar = $fireball_bar
+@onready var casting_bar = $casting_bar
 @onready var fireball_chargeup = $fireball_chargeup
 @onready var fireball_sound = $fireball_sound
 @onready var fireball_cast_time = $fireball_cast_time
@@ -76,10 +76,10 @@ func _physics_process(delta):
 		var direction = Input.get_axis("move_left", "move_right")
 		moving = direction != 0 or !(is_on_floor())
 		if moving and casting:
-			_interrupt_skill0()
+			_interrupt_casting()
 		if casting:
-			fireball_bar.visible = true
-			fireball_bar.value += casting_speed
+			casting_bar.visible = true
+			casting_bar.value += casting_speed
 		# Add the gravity.
 		if not is_on_floor() and not dashing:
 			velocity.y += gravity * delta
@@ -147,7 +147,7 @@ func _waking_up():
 func _hit(damage: int):
 	if !immune and !dead:
 		hurt.play()
-		_interrupt_skill0()
+		_interrupt_casting()
 		game_manager.hp -= damage
 		animated_sprite.play("hit")
 		if game_manager.hp <= 0:
@@ -226,16 +226,18 @@ func _skill0():
 			fireball_cast_time.start()
 			fireball_chargeup.visible = true
 			fireball_chargeup.play("default")
-func _interrupt_skill0():
+func _interrupt_casting():
 	game_manager.interrupt_fireball()
 	casting = false
 	animated_sprite.stop()
 	fireball_sound.stop()
 	fireball_cast_time.stop()
+	forbidden_cast_time.stop()
 	fireball_chargeup.visible = false
 	fireball_chargeup.stop()
-	fireball_bar.visible = false
-	fireball_bar.value = 0
+	casting_bar.visible = false
+	casting_bar.value = 0
+	
 func _on_fireball_cast_time_timeout():
 	_fireball()
 func _fireball():
@@ -247,8 +249,8 @@ func _fireball():
 	fb.charged = true
 	animated_sprite.play("fireball")
 	casting = false
-	fireball_bar.visible = false
-	fireball_bar.value = 0
+	casting_bar.visible = false
+	casting_bar.value = 0
 	
 func _skill2():
 	if (!(PREVENT_START.count(animated_sprite.animation) != 0 and 
@@ -287,8 +289,8 @@ func _on_forbidden_cast_time_timeout():
 	forb.charged = true
 	animated_sprite.play("forbidden")
 	casting = false
-	fireball_bar.visible = false
-	fireball_bar.value = 0
+	casting_bar.visible = false
+	casting_bar.value = 0
 	
 func _die():
 	animated_sprite.play("death")

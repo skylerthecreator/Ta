@@ -1048,7 +1048,7 @@ z_index = 5
 position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_2qq0b")
 
-[node name="fireball_bar" type="ProgressBar" parent="."]
+[node name="casting_bar" type="ProgressBar" parent="."]
 visible = false
 modulate = Color(0, 1, 0.701961, 1)
 offset_left = -12.0
@@ -1168,7 +1168,7 @@ visible = false
 position = Vector2(5, -19)
 scale = Vector2(0.633789, 0.633789)
 sprite_frames = SubResource("SpriteFrames_xhjue")
-frame_progress = 0.428571
+frame_progress = 0.74505
 
 [node name="forbiddenspawn" type="Marker2D" parent="."]
 position = Vector2(14, -18)

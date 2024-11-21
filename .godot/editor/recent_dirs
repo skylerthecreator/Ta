@@ -1,9 +1,10 @@
+res://assets/sprites/enemies/Ice Demon
+res://assets/sprites/skills
+res://scripts
+res://scenes
 res://assets/Pixel Prototype Player/Sprites
 res://assets/Pixel Prototype Player/Sprites/Combat/Punch03
 res://assets/Pixel Prototype Player/Sprites/Jump
-res://scripts
-res://scenes
-res://assets/sprites/skills
 res://assets/sprites/NPCS/Merchant Pack
 res://assets/fonts
 res://assets/sprites/NPCS/Wizard Pack
@@ -19,4 +20,3 @@ res://assets/sprites/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - W
 res://assets/Pixel Prototype Player/Sprites/Die
 res://assets/Pixel Prototype Player/Sprites/Run
 res://assets/Pixel Prototype Player/Sprites/Land
-res://assets/Pixel Prototype Player/Sprites/Combat/Punch02

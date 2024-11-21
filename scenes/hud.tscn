@@ -181,7 +181,7 @@ vertical_alignment = 1
 autowrap_mode = 3
 
 [node name="fireball_icon" type="Button" parent="Display"]
-anchors_preset = -1
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -234,7 +234,7 @@ sprite_frames = SubResource("SpriteFrames_3jjw3")
 frame_progress = 0.259055
 
 [node name="blade_icon" type="Button" parent="Display"]
-anchors_preset = -1
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5

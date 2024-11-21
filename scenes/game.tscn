@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://g77a77m022qm"]
+[gd_scene load_steps=55 format=3 uid="uid://g77a77m022qm"]
 
 [ext_resource type="Texture2D" uid="uid://kpld5n16lvkg" path="res://assets/sprites/default/world_tileset.png" id="1_0yvkf"]
 [ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_iry8t"]
@@ -31,6 +31,7 @@
 [ext_resource type="Script" path="res://scripts/dialogue8.gd" id="28_bc1aq"]
 [ext_resource type="Script" path="res://scripts/dialogue9.gd" id="29_7djv2"]
 [ext_resource type="PackedScene" uid="uid://b1qqitl1xtl0g" path="res://scenes/battery.tscn" id="31_xunmr"]
+[ext_resource type="PackedScene" uid="uid://nkfs734x7htp" path="res://scenes/salazar.tscn" id="32_6isuq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yfw1x"]
 texture = ExtResource("1_0yvkf")
@@ -1803,7 +1804,7 @@ size = Vector2(127.75, 155)
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("2_3id2r")]
 z_index = 5
-position = Vector2(2276, -32)
+position = Vector2(3201, 134)
 collision_mask = 5
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -2034,7 +2035,7 @@ z_index = 5
 position = Vector2(2202, 64)
 
 [node name="orion" parent="Enemies" instance=ExtResource("16_t1xsl")]
-position = Vector2(3433, 144)
+position = Vector2(3570, -11)
 
 [node name="training_dummy" parent="Enemies" instance=ExtResource("20_e714n")]
 position = Vector2(3074, 21)
@@ -2220,6 +2221,9 @@ texture = ExtResource("26_1hutj")
 
 [node name="plasma battery" parent="." instance=ExtResource("31_xunmr")]
 position = Vector2(2356, -31)
+
+[node name="salazar" parent="." instance=ExtResource("32_6isuq")]
+position = Vector2(3486, 142)
 
 [connection signal="body_entered" from="dialogues/dialogue1" to="dialogues/dialogue1" method="_on_body_entered"]
 [connection signal="body_entered" from="dialogues/dialogue2" to="dialogues/dialogue2" method="_on_body_entered"]

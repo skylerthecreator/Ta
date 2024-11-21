@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=3 uid="uid://cy00t7t5uqi6c"]
+[gd_scene load_steps=72 format=3 uid="uid://cy00t7t5uqi6c"]
 
 [ext_resource type="Texture2D" uid="uid://dcvepj8y4qaj0" path="res://assets/sprites/enemies/Monsters/Monsters_Creatures_Fantasy/Skeleton/Attack.png" id="1_87ovw"]
 [ext_resource type="Script" path="res://scripts/orion.gd" id="1_cx0e5"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://p6f0sv3nrv1f" path="res://assets/sounds/bosssfx/orion/oriona1.wav" id="11_le62v"]
 [ext_resource type="AudioStream" uid="uid://bt7v7ahab5oio" path="res://assets/sounds/bosssfx/orion/orion2edit.mp3" id="12_avy4o"]
 [ext_resource type="AudioStream" uid="uid://dhfwsu3q6np48" path="res://assets/sounds/bosssfx/orion/start.wav" id="13_er57i"]
+[ext_resource type="FontFile" uid="uid://cj4qjstjnmyrg" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="14_rg4lj"]
 [ext_resource type="AudioStream" uid="uid://cddggxoo3d1q4" path="res://assets/sounds/bosssfx/orion/end.wav" id="14_wgjro"]
 [ext_resource type="AudioStream" uid="uid://bho8fmq4aivl7" path="res://assets/sounds/bosssfx/orion/ghoul2.mp3" id="15_vviaj"]
 [ext_resource type="Texture2D" uid="uid://cabmolw7iat4c" path="res://assets/sprites/skills/Retro Impact Effect Pack 5 A.png" id="16_w24g4"]
@@ -570,7 +571,7 @@ offset_top = -68.0
 offset_right = 91.0
 offset_bottom = -33.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
-theme_override_fonts/font = ExtResource("10_eqgdt")
+theme_override_fonts/font = ExtResource("14_rg4lj")
 theme_override_font_sizes/font_size = 8
 text = "Mor'kul
 <The Forsaken>"

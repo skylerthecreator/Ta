@@ -1,6 +1,6 @@
 extends Node
 
-const MAX_HP = 5
+const MAX_HP = 10
 
 var coins = 0
 var amnova_unlocked = false
@@ -9,7 +9,7 @@ var insta_cast_unlocked = true
 var insta_cast_ready = false
 var amnova_ready = true
 var immunity_unlocked = false
-var hp = 1
+var hp = 10
 
 var blade_unlocked = false
 var blade_ready = true

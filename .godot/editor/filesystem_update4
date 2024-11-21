@@ -8,7 +8,7 @@ res://scenes/hermesboots.tscn
 res://scenes/mauricespendant.tscn
 res://scenes/orion.tscn
 res://scenes/blade.tscn
-res://scripts/blade.gd
 res://scenes/hud.tscn
-res://scripts/hud.gd
+res://scenes/salazar.tscn
+res://scripts/salazar.gd
 res://scripts/gamemanager.gd

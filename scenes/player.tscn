@@ -1014,7 +1014,7 @@ position = Vector2(-2.27374e-13, -28)
 scale = Vector2(0.662424, 0.667223)
 sprite_frames = SubResource("SpriteFrames_vvjdw")
 animation = &"forbiddencasting"
-frame_progress = 0.569359
+frame_progress = 0.771298
 
 [node name="playeroutline" type="CollisionShape2D" parent="."]
 visible = false

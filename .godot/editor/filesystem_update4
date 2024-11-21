@@ -17,3 +17,4 @@ res://scripts/player.gd
 res://scenes/forbidden.tscn
 res://scenes/fireball.tscn
 res://scenes/training_dummy.tscn
+res://scripts/dialogue1.gd

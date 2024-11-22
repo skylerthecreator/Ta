@@ -1804,11 +1804,11 @@ size = Vector2(127.75, 155)
 
 [node name="player" parent="." groups=["player"] instance=ExtResource("2_3id2r")]
 z_index = 5
-position = Vector2(2880, 24)
+position = Vector2(2968, 32)
 collision_mask = 5
 
 [node name="Camera2D" type="Camera2D" parent="player"]
-position = Vector2(0, -7)
+position = Vector2(1, -20)
 zoom = Vector2(3, 3)
 
 [node name="TileMap" type="TileMap" parent="." groups=["map"]]
@@ -2205,12 +2205,13 @@ position = Vector2(2311.5, -69)
 shape = SubResource("RectangleShape2D_j4n1j")
 
 [node name="dialogue9" type="Area2D" parent="dialogues"]
+visible = false
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("29_7djv2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dialogues/dialogue9"]
-position = Vector2(2879.88, -48)
+position = Vector2(2878, -45)
 shape = SubResource("RectangleShape2D_ceycd")
 
 [node name="Sign" type="Sprite2D" parent="."]

@@ -56,6 +56,7 @@ func _physics_process(delta):
 			AS.play("walk")
 			position.x += direction * delta * SPEED
 	else:
+		attack_1_range.disabled = true
 		if !AS.is_playing():
 			AS.visible = false;
 		if !die.is_playing():

@@ -2,6 +2,8 @@ extends Area2D
 
 @onready var shape = $shape
 @onready var explode = $explode
+@onready var explodesound = $explodesound
+@onready var end = $end
 
 
 var charged = false
@@ -19,7 +21,7 @@ func _physics_process(delta):
 		shape.disabled = false
 		position.x += SPEED * delta * cast_dir
 	if exploding and !explode.is_playing():
-		queue_free()
+		explode.visible = false
 	
 func _on_body_entered(_body):
 	queue_free()
@@ -31,3 +33,9 @@ func _on_area_entered(area):
 		area.hit(area.MAX_HP)
 	explode.visible = true
 	explode.play("default")
+	explodesound.play()
+	end.start()
+
+
+func _on_end_timeout():
+	queue_free()

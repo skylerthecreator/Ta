@@ -6,24 +6,22 @@ extends Area2D
 @onready var fireball_land = $fireball_land
 @onready var fireball_blast = $fireball_blast
 
-var charged = false
 var SPEED = 250
 var cast_dir = 0
 var exploding = false
-var adjusted = false
 
+func _ready():
+	fireball_hit.play()
 func _physics_process(delta):
 	if exploding:
 		fireball_shape.disabled = true
-	elif charged:
-		if cast_dir < 0 and !adjusted:
+	else:
+		if cast_dir < 0:
 			fireball_animation.flip_h = true
-			fireball_shape.position.x -= 2.2
-			adjusted = true
+			fireball_shape.position.x = -2.2
 		visible = true
 		fireball_shape.disabled = false
 		fireball_animation.play("shoot")
-		fireball_hit.play()
 		position.x += SPEED * delta * cast_dir
 	if fireball_animation.animation == "explode" and !fireball_animation.is_playing():
 		fireball_animation.visible = false
@@ -33,7 +31,6 @@ func _on_body_entered(_body):
 	fireball_land.play()
 	fireball_animation.play("explode")
 	fireball_blast.start()
-	charged = false
 	exploding = true
 	
 func _on_area_entered(area):
@@ -43,7 +40,6 @@ func _on_area_entered(area):
 	fireball_land.play()
 	fireball_animation.play("explode")
 	fireball_blast.start()
-	charged = false
 	exploding = true
 
 

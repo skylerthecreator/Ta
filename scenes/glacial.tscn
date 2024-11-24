@@ -1,0 +1,140 @@
+[gd_scene load_steps=28 format=3 uid="uid://c1pi8xqrvmexp"]
+
+[ext_resource type="Script" path="res://scripts/glacial.gd" id="1_k5l50"]
+[ext_resource type="Texture2D" uid="uid://c5utbubvop516" path="res://assets/sprites/skills/ice/I5050-1.png" id="2_50iop"]
+[ext_resource type="Texture2D" uid="uid://d00dnn08gonit" path="res://assets/sprites/skills/ice/I5050-8.png" id="2_ycoj4"]
+[ext_resource type="Texture2D" uid="uid://b206a0reija8k" path="res://assets/sprites/skills/ice/I5050-2.png" id="3_bwdl6"]
+[ext_resource type="Texture2D" uid="uid://cexfi5n1fivxl" path="res://assets/sprites/skills/ice/I5050-9.png" id="3_ujy4v"]
+[ext_resource type="Texture2D" uid="uid://ctd1y5cgbux6i" path="res://assets/sprites/skills/ice/I5050-10.png" id="4_4edha"]
+[ext_resource type="Texture2D" uid="uid://cm2dymw1kw51j" path="res://assets/sprites/skills/ice/I5050-3.png" id="4_7q8e7"]
+[ext_resource type="Texture2D" uid="uid://c1hi4rg05rtki" path="res://assets/sprites/skills/ice/I5050-4.png" id="5_pon40"]
+[ext_resource type="Texture2D" uid="uid://dnkuhyfpev6tm" path="res://assets/sprites/skills/ice/I5050-11.png" id="5_sfeif"]
+[ext_resource type="Texture2D" uid="uid://iodaip5nthlu" path="res://assets/sprites/skills/ice/I5050-5.png" id="6_fn2qp"]
+[ext_resource type="Texture2D" uid="uid://dj3cojhhbnncj" path="res://assets/sprites/skills/ice/I5050-6.png" id="7_autdq"]
+[ext_resource type="Texture2D" uid="uid://dp0ghv6428bdr" path="res://assets/sprites/skills/ice/I5050-7.png" id="8_8ng67"]
+[ext_resource type="AudioStream" uid="uid://dqdkwh2q2swho" path="res://assets/sprites/skills/ice/shatter.wav" id="13_ub33o"]
+[ext_resource type="AudioStream" uid="uid://dc724blddp24f" path="res://assets/sprites/skills/ice/glacialshoot.wav" id="14_m1ytj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfwyh"]
+atlas = ExtResource("2_ycoj4")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_koecc"]
+atlas = ExtResource("3_ujy4v")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b006l"]
+atlas = ExtResource("4_4edha")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nk0by"]
+atlas = ExtResource("5_sfeif")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jprg1"]
+atlas = ExtResource("2_50iop")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_goxpn"]
+atlas = ExtResource("3_bwdl6")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jj0w8"]
+atlas = ExtResource("4_7q8e7")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wjwcs"]
+atlas = ExtResource("5_pon40")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwecw"]
+atlas = ExtResource("6_fn2qp")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7pd3"]
+atlas = ExtResource("7_autdq")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmbp1"]
+atlas = ExtResource("8_8ng67")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oifj2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfwyh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koecc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b006l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nk0by")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jprg1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_goxpn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jj0w8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wjwcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwecw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7pd3")
+}, {
+"duration": 100.0,
+"texture": SubResource("AtlasTexture_xmbp1")
+}],
+"loop": false,
+"name": &"shoot",
+"speed": 24.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xncbt"]
+radius = 3.0
+height = 10.0
+
+[node name="glacial" type="Area2D"]
+collision_layer = 0
+script = ExtResource("1_k5l50")
+
+[node name="glacial_animation" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.0473633, 0.0473633)
+sprite_frames = SubResource("SpriteFrames_oifj2")
+animation = &"shoot"
+frame = 6
+frame_progress = 0.207288
+
+[node name="glacial_shape" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_xncbt")
+
+[node name="slow_time" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="shatter" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_ub33o")
+bus = &"SFX"
+
+[node name="flying" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_m1ytj")
+bus = &"SFX"
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="slow_time" to="." method="_on_slow_time_timeout"]

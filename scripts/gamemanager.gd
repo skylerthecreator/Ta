@@ -3,18 +3,25 @@ extends Node
 const MAX_HP = 10
 
 var coins = 0
-var amnova_unlocked = false
-var fireball_unlocked = true
-var insta_cast_unlocked = true
+
 var insta_cast_ready = false
 var amnova_ready = true
-var immunity_unlocked = false
+
 var hp = 10
 
-var blade_unlocked = false
-var blade_ready = true
-
+var fireball_unlocked = true
+var glacial_unlocked = true
+var blade_unlocked = true
 var forbidden_unlocked = true
+var amnova_unlocked = false
+
+var insta_cast_unlocked = true
+var immunity_unlocked = false
+
+var blade_ready = true
+var glacial_ready = true
+
+
 func _process(_delta):
 	Hud.update_hp(hp, MAX_HP)
 	Hud.update_coins(coins)
@@ -22,16 +29,20 @@ func _process(_delta):
 		Hud.show_fireball()
 	if blade_unlocked:
 		Hud.show_blade()
+	if glacial_unlocked:
+		Hud.show_glacial()
 	if insta_cast_ready and fireball_unlocked:
 		Hud.show_insta_cast()
 		
 func blade_pressed():
 	if blade_unlocked:
 		Hud.blade_pressed()
-		
 func fireball_pressed():
 	if fireball_unlocked:
 		Hud.fireball_pressed(insta_cast_ready)
+func glacial_pressed():
+	if glacial_unlocked:
+		Hud.glacial_pressed()
 func interrupt_fireball():
 	if fireball_unlocked:
 		Hud.fireball_interrupted()

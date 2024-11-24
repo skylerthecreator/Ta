@@ -5,9 +5,9 @@ const ROLL_SPEED = 300
 var MAX_SPEED = 100
 const JUMP_VELOCITY = -225
 const DASH_SPEED_MULTIPLIER = 5
-const PRIORITY_MOVEMENT = ["casting", "fireball", "blade", "counter", "skill1", "wake", "hit", "dash", "forbiddencasting", "forbidden"]
-const PREVENT_START = ["casting", "fireball", "blade", "counter", "forbiddencasting", "forbidden"]
-const PREVENT_FLIP = ["fireball", "blade", "counter", "forbiddencasting", "forbidden"]
+const PRIORITY_MOVEMENT = ["casting", "fireball", "blade", "counter", "skill1", "wake", "hit", "dash", "forbiddencasting", "forbidden", "glacial"]
+const PREVENT_START = ["casting", "fireball", "blade", "counter", "forbiddencasting", "forbidden", "glacial"]
+const PREVENT_FLIP = ["fireball", "blade", "counter", "forbiddencasting", "forbidden", "dash"]
 var speed = MAX_SPEED
 
 
@@ -36,6 +36,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var fireball = load("res://scenes/fireball.tscn")
 var blade = load("res://scenes/blade.tscn")
 var forbidden = load("res://scenes/forbidden.tscn")
+var glacial = load("res://scenes/glacial.tscn")
 @onready var dash_duration = $dash_duration
 @onready var dash_cd = $dash_cd
 @onready var dash_sfx = $dash_sfx
@@ -44,12 +45,16 @@ var forbidden = load("res://scenes/forbidden.tscn")
 @onready var blade_cd = $blade_cd
 @onready var blade_cast_time = $blade_cast_time
 @onready var blade_shoot = $blade_shoot
-@onready var blade_launch = $blade_launch
 
 @onready var forbidden_cast_time = $forbidden_cast_time
 @onready var forbiddenspawn = $forbiddenspawn
 @onready var forbidden_chargeup = $forbidden_chargeup
+@onready var fcs = $forbiddencastsound
 
+
+@onready var glacialspawn = $glacialspawn
+@onready var glacial_cast_time = $glacial_cast_time
+@onready var glacial_cd = $glacial_cd
 
 
 var buy = false
@@ -98,6 +103,8 @@ func _physics_process(delta):
 			_skill1()
 		if Input.is_action_just_pressed("skill2"):
 			_skill2()
+		if Input.is_action_just_pressed("skill3"):
+			_skill3()
 		if Input.is_action_just_pressed("special1"):
 			_special1()
 		if buy:
@@ -169,6 +176,7 @@ func _flip(direction: int):
 				bladespawn.position.x *= -1
 				forbiddenspawn.position.x *= -1
 				forbidden_chargeup.scale.x *= -1
+				glacialspawn.position.x *= -1
 		elif direction < 0:
 			cast_dir = direction
 			animated_sprite.flip_h = true
@@ -180,7 +188,6 @@ func _flip(direction: int):
 				bladespawn.position.x *= -1
 				forbiddenspawn.position.x *= -1
 				forbidden_chargeup.scale.x *= -1
-				
 func _play_movement_animations(direction: int):
 	if is_on_floor():
 		if direction == 0:
@@ -190,6 +197,21 @@ func _play_movement_animations(direction: int):
 	else:
 		animated_sprite.play("jump")
 		
+
+func _interrupt_casting():
+	game_manager.interrupt_fireball()
+	casting = false
+	animated_sprite.stop()
+	fireball_sound.stop()
+	fireball_cast_time.stop()
+	forbidden_cast_time.stop()
+	forbidden_chargeup.visible = false
+	fcs.stop()
+	fireball_chargeup.visible = false
+	forbidden_chargeup.stop()
+	fireball_chargeup.stop()
+	casting_bar.visible = false
+	casting_bar.value = 0
 
 func _skill1():
 	if (!(animated_sprite.animation == "skill1" and animated_sprite.is_playing())
@@ -226,20 +248,6 @@ func _skill0():
 			fireball_cast_time.start()
 			fireball_chargeup.visible = true
 			fireball_chargeup.play("default")
-func _interrupt_casting():
-	game_manager.interrupt_fireball()
-	casting = false
-	animated_sprite.stop()
-	fireball_sound.stop()
-	fireball_cast_time.stop()
-	forbidden_cast_time.stop()
-	forbidden_chargeup.visible = false
-	fireball_chargeup.visible = false
-	forbidden_chargeup.stop()
-	fireball_chargeup.stop()
-	casting_bar.visible = false
-	casting_bar.value = 0
-	
 func _on_fireball_cast_time_timeout():
 	_fireball()
 func _fireball():
@@ -248,7 +256,6 @@ func _fireball():
 	owner.add_child(fb)
 	fb.transform = fbspawn.global_transform
 	fb.cast_dir = cast_dir
-	fb.charged = true
 	animated_sprite.play("fireball")
 	casting = false
 	casting_bar.visible = false
@@ -266,13 +273,31 @@ func _blade():
 	owner.add_child(bl)
 	bl.transform = bladespawn.global_transform
 	bl.cast_dir = cast_dir
-	blade_launch.play()
 	game_manager.blade_ready = false
 	blade_cd.start()
 func _on_blade_cd_timeout():
 	game_manager.blade_ready = true
 func _on_blade_cast_time_timeout():
 	_blade()
+
+func _skill3():
+	if (!(PREVENT_START.count(animated_sprite.animation) != 0 and 
+	animated_sprite.is_playing()) and game_manager.glacial_unlocked and game_manager.glacial_ready):
+		#blade_shoot.play()
+		animated_sprite.play("glacial")
+		glacial_cast_time.start()
+func _glacial():
+	game_manager.glacial_pressed()
+	var g = glacial.instantiate()
+	owner.add_child(g)
+	g.transform = glacialspawn.global_transform
+	g.cast_dir = cast_dir
+	game_manager.glacial_ready = false
+	glacial_cd.start()
+func _on_glacial_cast_time_timeout():
+	_glacial()
+func _on_glacial_cd_timeout():
+	game_manager.glacial_ready = true
 
 func _special1():
 	if (!(PREVENT_START.count(animated_sprite.animation) != 0 and 
@@ -281,12 +306,13 @@ func _special1():
 		casting = true
 		casting_speed = 5.0/9.0
 		animated_sprite.play("forbiddencasting")
+		fcs.play()
 		forbidden_chargeup.visible = true
 		forbidden_chargeup.play("default")
 		forbidden_cast_time.start()
 func _on_forbidden_cast_time_timeout():
 	forbidden_chargeup.visible = false
-	_hit(1)
+	game_manager.hp -= 1
 	var forb = forbidden.instantiate()
 	owner.add_child(forb)
 	forb.transform = forbiddenspawn.global_transform
@@ -296,7 +322,7 @@ func _on_forbidden_cast_time_timeout():
 	casting = false
 	casting_bar.visible = false
 	casting_bar.value = 0
-	
+
 func _die():
 	animated_sprite.play("death")
 	death_timer.start()
@@ -317,10 +343,14 @@ func _dash():
 		can_dash = false
 func _on_dash_duration_timeout():
 	dash_cd.start()
-	dashing = false
-	
+	dashing = false	
 func _on_dash_cd_timeout():
 	can_dash = true
+
+
+
+
+
 
 
 

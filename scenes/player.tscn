@@ -1,4 +1,4 @@
-[gd_scene load_steps=177 format=3 uid="uid://cqnov4vrpq7a2"]
+[gd_scene load_steps=181 format=3 uid="uid://cqnov4vrpq7a2"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_osmlu"]
 [ext_resource type="Texture2D" uid="uid://bw55hyv2k77xy" path="res://assets/Pixel Prototype Player/Sprites/Combat/Punch02/Punch0204.png" id="2_2p2b5"]
@@ -53,8 +53,8 @@
 [ext_resource type="Texture2D" uid="uid://bdt2pmxc2obbh" path="res://assets/sprites/skills/486.png" id="49_sk2vv"]
 [ext_resource type="Texture2D" uid="uid://c6jjj8r8f1ft3" path="res://assets/sprites/skills/Retro Impact Effect Pack 2 C.png" id="50_e7xgm"]
 [ext_resource type="AudioStream" uid="uid://chgq5a851ssdh" path="res://assets/sounds/skills/blade_shoot.mp3" id="51_kj0ft"]
-[ext_resource type="AudioStream" uid="uid://unbgdklijvjx" path="res://assets/sprites/skills/blade/blade.wav" id="52_76ars"]
 [ext_resource type="Texture2D" uid="uid://ckjtb1iwwpqwl" path="res://assets/sprites/skills/DarkSpells/DarkSpell_02/DarkSpell_02_spritesheet.png" id="55_4uivj"]
+[ext_resource type="AudioStream" uid="uid://dfhwu22eif43r" path="res://assets/sounds/skills/forbiddencastsound.mp3" id="55_38h8u"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_quk64"]
 atlas = ExtResource("15_nfqb8")
@@ -235,6 +235,22 @@ region = Rect2(384, 2436, 96, 84)
 [sub_resource type="AtlasTexture" id="AtlasTexture_vy8nn"]
 atlas = ExtResource("15_nfqb8")
 region = Rect2(480, 2436, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b5lgj"]
+atlas = ExtResource("15_nfqb8")
+region = Rect2(96, 1848, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6dgcy"]
+atlas = ExtResource("15_nfqb8")
+region = Rect2(192, 1848, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4uk5"]
+atlas = ExtResource("15_nfqb8")
+region = Rect2(288, 1848, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ugrh"]
+atlas = ExtResource("15_nfqb8")
+region = Rect2(384, 1848, 96, 84)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_khard"]
 atlas = ExtResource("15_nfqb8")
@@ -586,6 +602,23 @@ animations = [{
 "loop": true,
 "name": &"forbiddencasting2",
 "speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b5lgj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6dgcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4uk5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ugrh")
+}],
+"loop": false,
+"name": &"glacial",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1013,8 +1046,9 @@ z_index = 1
 position = Vector2(-2.27374e-13, -28)
 scale = Vector2(0.662424, 0.667223)
 sprite_frames = SubResource("SpriteFrames_vvjdw")
-animation = &"forbiddencasting"
-frame_progress = 0.771298
+animation = &"glacial"
+frame = 2
+frame_progress = 0.78594
 
 [node name="playeroutline" type="CollisionShape2D" parent="."]
 visible = false
@@ -1118,7 +1152,7 @@ scale = Vector2(1.27637, 1.19948)
 sprite_frames = SubResource("SpriteFrames_w0k4e")
 
 [node name="blade_cd" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
 
 [node name="blade_cast_time" type="Timer" parent="."]
 wait_time = 0.4
@@ -1128,9 +1162,9 @@ one_shot = true
 stream = ExtResource("51_kj0ft")
 bus = &"SFX"
 
-[node name="blade_launch" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("52_76ars")
-bus = &"SFX"
+[node name="forbiddencastsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("55_38h8u")
+bus = &"Louder"
 
 [node name="forbidden_cast_time" type="Timer" parent="."]
 wait_time = 3.0
@@ -1149,6 +1183,16 @@ frame = 8
 frame_progress = 1.0
 offset = Vector2(-35, 0)
 
+[node name="glacialspawn" type="Marker2D" parent="."]
+position = Vector2(3, -17)
+
+[node name="glacial_cast_time" type="Timer" parent="."]
+wait_time = 0.125
+one_shot = true
+
+[node name="glacial_cd" type="Timer" parent="."]
+wait_time = 5.0
+
 [connection signal="area_entered" from="skill1outline" to="." method="_on_skill_1_outline_area_entered"]
 [connection signal="area_exited" from="skill1outline" to="." method="_on_skill_1_outline_area_exited"]
 [connection signal="timeout" from="skill1cd" to="." method="_on_skill_1_cd_timeout"]
@@ -1160,3 +1204,5 @@ offset = Vector2(-35, 0)
 [connection signal="timeout" from="blade_cd" to="." method="_on_blade_cd_timeout"]
 [connection signal="timeout" from="blade_cast_time" to="." method="_on_blade_cast_time_timeout"]
 [connection signal="timeout" from="forbidden_cast_time" to="." method="_on_forbidden_cast_time_timeout"]
+[connection signal="timeout" from="glacial_cast_time" to="." method="_on_glacial_cast_time_timeout"]
+[connection signal="timeout" from="glacial_cd" to="." method="_on_glacial_cd_timeout"]

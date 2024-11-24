@@ -146,24 +146,22 @@ position = Vector2(0, -7.75)
 shape = SubResource("RectangleShape2D_62hfn")
 
 [node name="description" type="Label" parent="."]
-offset_left = -58.0
+offset_left = -111.0
 offset_top = -114.0
-offset_right = 137.0
-offset_bottom = 15.0
+offset_right = 262.0
+offset_bottom = 9.0
 scale = Vector2(0.6, 0.6)
 theme_override_colors/font_color = Color(1, 0.509804, 0, 1)
 theme_override_fonts/font = ExtResource("3_jrssd")
 theme_override_font_sizes/font_size = 8
 text = "Plasma Core
-<Active Skill: (K)>
+<Grants Active Skill (K): Plasma Strike>
 [Casting: 0s]
 [Cooldown: 5s]
 
-Concentrate your energy to
-generate a lethal blade, 
-sending out a devastating
-wave of energy, hitting all
-enemies in your path for (2)
+Concentrate your energy to generate a lethal blade, 
+sending out a devastating wave of energy, striking 
+all enemies in your path for (2)
 
 
 Press (F) to claim"

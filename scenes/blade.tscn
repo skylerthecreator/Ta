@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://2o0osj5vvpxb"]
+[gd_scene load_steps=10 format=3 uid="uid://2o0osj5vvpxb"]
 
 [ext_resource type="Script" path="res://scripts/blade.gd" id="1_8jgp3"]
 [ext_resource type="Texture2D" uid="uid://c3ggg6kdxa1dk" path="res://assets/sprites/skills/Green Effect and Bullet 16x16.png" id="2_l0ndr"]
 [ext_resource type="AudioStream" uid="uid://bxohnt78304gl" path="res://assets/sprites/skills/blade/bladehit.wav" id="3_oubtw"]
+[ext_resource type="AudioStream" uid="uid://unbgdklijvjx" path="res://assets/sprites/skills/blade/blade.wav" id="4_cj3qc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v3t52"]
 atlas = ExtResource("2_l0ndr")
@@ -59,6 +60,10 @@ shape = SubResource("CapsuleShape2D_1wegp")
 
 [node name="hit" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_oubtw")
+bus = &"SFX"
+
+[node name="blade_launch" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_cj3qc")
 bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]

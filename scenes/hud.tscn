@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cnpgir75n6dgl"]
+[gd_scene load_steps=26 format=3 uid="uid://cnpgir75n6dgl"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_64fqt"]
 [ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="2_mdka8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://bvkstdv21j4r7" path="res://assets/sprites/skills/Retro Impact Effect Pack 2 A.png" id="5_nc244"]
 [ext_resource type="Texture2D" uid="uid://e44lxyu1aoqw" path="res://assets/sprites/skills/Yellow Effect Bullet Impact Explosion 32x32.png" id="6_mj6s8"]
 [ext_resource type="Texture2D" uid="uid://4slsbcknnjiu" path="res://assets/sprites/skills/blade/pixil-frame-0.png" id="8_so6ds"]
+[ext_resource type="Texture2D" uid="uid://cpxrqiny2fc04" path="res://assets/sprites/skills/ice/glacialicon2.png" id="9_phdwj"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_44bov"]
 action = &"skill0"
@@ -92,6 +93,12 @@ action = &"skill2"
 
 [sub_resource type="Shortcut" id="Shortcut_j430o"]
 events = [SubResource("InputEventAction_6dg8b")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_k166w"]
+action = &"skill3"
+
+[sub_resource type="Shortcut" id="Shortcut_pwvfu"]
+events = [SubResource("InputEventAction_k166w")]
 
 [node name="HUD" type="Node2D"]
 script = ExtResource("1_64fqt")
@@ -262,10 +269,43 @@ theme_override_fonts/font = ExtResource("3_libq2")
 theme_override_font_sizes/font_size = 128
 icon_alignment = 1
 
+[node name="glacial_icon" type="Button" parent="Display"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -83.0
+offset_top = -109.0
+offset_right = 437.0
+offset_bottom = 671.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.1, 0.1)
+theme_override_fonts/font = ExtResource("3_libq2")
+theme_override_font_sizes/font_size = 128
+shortcut = SubResource("Shortcut_pwvfu")
+text = "L"
+icon = ExtResource("9_phdwj")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="glacial_cooldown" type="Button" parent="Display/glacial_icon"]
+visible = false
+layout_mode = 0
+offset_right = 520.0
+offset_bottom = 500.0
+theme_override_fonts/font = ExtResource("3_libq2")
+theme_override_font_sizes/font_size = 128
+
 [node name="fireball_casting_time" type="Timer" parent="."]
 
 [node name="blade_cooldown_time" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="glacial_cooldown_time" type="Timer" parent="."]
 wait_time = 5.0
 
 [connection signal="timeout" from="fireball_casting_time" to="." method="_on_fireball_casting_time_timeout"]
 [connection signal="timeout" from="blade_cooldown_time" to="." method="_on_blade_cooldown_time_timeout"]
+[connection signal="timeout" from="glacial_cooldown_time" to="." method="_on_glacial_cooldown_time_timeout"]

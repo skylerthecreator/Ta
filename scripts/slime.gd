@@ -1,6 +1,6 @@
 extends Node2D
 
-const SPEED = 60
+var SPEED = 60
 var direction = 1
 const MAX_HP = 3
 
@@ -21,6 +21,7 @@ const MAX_HP = 3
 @onready var dmg_taken = $dmg_taken
 @onready var dtdt = $dtdt
 @onready var swing = $swing
+@onready var C2D = $CollisionPolygon2D
 
 
 var body_in_range = null

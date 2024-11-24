@@ -3,7 +3,8 @@ extends Area2D
 @onready var dmg_tracker = $dmg_tracker
 @onready var body = $AnimatedSprite2D
 @onready var dtdt = $dtdt
-
+var hp = 0
+var SPEED = 0
 
 func _physics_process(_delta):
 	if !(body.animation == "hit" and body.is_playing()):

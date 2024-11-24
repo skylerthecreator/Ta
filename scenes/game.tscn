@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://g77a77m022qm"]
+[gd_scene load_steps=56 format=3 uid="uid://g77a77m022qm"]
 
 [ext_resource type="Texture2D" uid="uid://kpld5n16lvkg" path="res://assets/sprites/default/world_tileset.png" id="1_0yvkf"]
 [ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_iry8t"]
@@ -32,6 +32,7 @@
 [ext_resource type="Script" path="res://scripts/dialogue9.gd" id="29_7djv2"]
 [ext_resource type="PackedScene" uid="uid://b1qqitl1xtl0g" path="res://scenes/battery.tscn" id="31_xunmr"]
 [ext_resource type="PackedScene" uid="uid://nkfs734x7htp" path="res://scenes/salazar.tscn" id="32_6isuq"]
+[ext_resource type="PackedScene" uid="uid://ce75i1eqfwy8r" path="res://scenes/salazarinsig.tscn" id="33_nu5ef"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yfw1x"]
 texture = ExtResource("1_0yvkf")
@@ -2045,6 +2046,9 @@ position = Vector2(3048, 21)
 [node name="killzone" parent="Enemies" instance=ExtResource("4_4q054")]
 position = Vector2(0, 211)
 
+[node name="salazar" parent="Enemies" instance=ExtResource("32_6isuq")]
+position = Vector2(3486, 142)
+
 [node name="platforms" type="Node" parent="."]
 
 [node name="platform" parent="platforms" instance=ExtResource("3_3344p")]
@@ -2222,8 +2226,8 @@ texture = ExtResource("26_1hutj")
 [node name="plasma battery" parent="." instance=ExtResource("31_xunmr")]
 position = Vector2(2356, -31)
 
-[node name="salazar" parent="." instance=ExtResource("32_6isuq")]
-position = Vector2(3486, 142)
+[node name="salazarinsig" parent="." instance=ExtResource("33_nu5ef")]
+position = Vector2(2994, 28)
 
 [connection signal="body_entered" from="dialogues/dialogue1" to="dialogues/dialogue1" method="_on_body_entered"]
 [connection signal="body_entered" from="dialogues/dialogue2" to="dialogues/dialogue2" method="_on_body_entered"]

@@ -1,10 +1,9 @@
-res://assets/sprites/environment/Final
-res://assets/sprites/environment/Graveyard
+res://scripts
+res://scenes
 res://assets/Pixel Prototype Player/Sprites
+res://assets/sprites/skills/ice
 res://assets/sprites/skills/DarkSpells/DarkSpell_02
 res://assets/sprites/skills/DarkSpells/DarkSpell_01
-res://scenes
-res://scripts
 res://assets/sprites/enemies/Ice Demon
 res://assets/sprites/skills
 res://assets/Pixel Prototype Player/Sprites/Combat/Punch03

@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://cvakivpfbegjx"]
+[gd_scene load_steps=15 format=3 uid="uid://cvakivpfbegjx"]
 
 [ext_resource type="Script" path="res://scripts/forbidden.gd" id="1_qynph"]
 [ext_resource type="Texture2D" uid="uid://8pdgvgf4t02w" path="res://assets/sprites/skills/DarkSpells/DarkSpell_01/DarkSpell_01_spritesheet.png" id="3_11giy"]
+[ext_resource type="AudioStream" uid="uid://brqgrvjq7b68c" path="res://assets/sounds/skills/forbiddenexplos.wav" id="3_30m1n"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_x1eo0"]
 atlas = ExtResource("3_11giy")
@@ -83,7 +84,6 @@ collision_layer = 0
 script = ExtResource("1_qynph")
 
 [node name="explode" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(9, -7)
 sprite_frames = SubResource("SpriteFrames_jthiv")
 frame = 8
@@ -92,5 +92,14 @@ frame_progress = 1.0
 [node name="shape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_f5xaq")
 
+[node name="explodesound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_30m1n")
+bus = &"SFX"
+
+[node name="end" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="end" to="." method="_on_end_timeout"]

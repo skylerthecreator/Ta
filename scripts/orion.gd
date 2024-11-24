@@ -29,7 +29,7 @@ extends Area2D
 
 var SPEED = 30
 var direction = 1
-var MAX_HP = 2
+var MAX_HP = 20
 
 var begin = false
 var hp = MAX_HP

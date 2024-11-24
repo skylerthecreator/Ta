@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dskojjmr48h04" path="res://assets/sounds/pickupsounds/fod.mp3" id="4_sb3dk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nmcxd"]
-radius = 8.0
+radius = 6.0
 
 [sub_resource type="Animation" id="Animation_6kopq"]
 length = 0.001
@@ -132,25 +132,25 @@ _data = {
 }
 
 [node name="mauricespendant" type="Area2D"]
+position = Vector2(0, 5)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_c5fbk")
 
 [node name="description" type="Label" parent="."]
-offset_left = -59.0
-offset_top = -81.0
-offset_right = 137.0
+offset_left = -100.0
+offset_top = -76.0
+offset_right = 235.0
 offset_bottom = 4.0
 scale = Vector2(0.6, 0.6)
 theme_override_colors/font_color = Color(0, 1, 1, 1)
 theme_override_fonts/font = ExtResource("3_ie8tm")
 theme_override_font_sizes/font_size = 8
 text = "Maurice's Amulet
-<Passive Ability>
+<Grants Passive Ability: Maurice's Embrace>
 
-Upon taking damage, gain
-a shield that prevents you 
-from taking damage for 1.5s
+Upon taking damage, gain a shield that prevents 
+you from taking additional damage for 0.5s
 
 Press (F) to claim"
 horizontal_alignment = 1
@@ -169,8 +169,8 @@ stream = ExtResource("4_sb3dk")
 bus = &"SFX"
 
 [node name="icon" type="Sprite2D" parent="."]
-position = Vector2(-4.76837e-07, -5)
-scale = Vector2(0.34375, 0.34375)
+position = Vector2(0, -5)
+scale = Vector2(0.265625, 0.265625)
 texture = ExtResource("2_40jxg")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -12,7 +12,7 @@ var hp = 1
 var fireball_unlocked = false
 var glacial_unlocked = false
 var blade_unlocked = false
-var forbidden_unlocked = false
+var forbidden_unlocked = true
 var amnova_unlocked = false
 
 var insta_cast_unlocked = true

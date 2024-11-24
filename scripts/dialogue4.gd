@@ -4,7 +4,7 @@ extends Area2D
 var started = false
 
 const dialogue_lines = ["These wild berries will heal you if you are injured, or grant two coins otherwise.",
-"Riea and Ezekiel are well-known merchant who scavange goods and sell them to travelers like yourself.",
+"Riea and Ezekiel are well-known merchants who scavange goods and sell them to travelers like yourself.",
 "They have shops all over Vatereo. You may run into them quite often, selling their newest findings.",
 "These items will grant you unique powers, but be sure to spend wisely, as they are known to be quite greedy..."]
 

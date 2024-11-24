@@ -7,7 +7,7 @@ const JUMP_VELOCITY = -225
 const DASH_SPEED_MULTIPLIER = 5
 const PRIORITY_MOVEMENT = ["casting", "fireball", "blade", "counter", "skill1", "wake", "hit", "dash", "forbiddencasting", "forbidden", "glacial"]
 const PREVENT_START = ["casting", "fireball", "blade", "counter", "forbiddencasting", "forbidden", "glacial"]
-const PREVENT_FLIP = ["fireball", "blade", "counter", "forbiddencasting", "forbidden", "dash"]
+const PREVENT_FLIP = ["fireball", "blade", "counter", "forbiddencasting", "forbidden", "dash", "glacial"]
 var speed = MAX_SPEED
 
 
@@ -322,6 +322,9 @@ func _on_forbidden_cast_time_timeout():
 	casting = false
 	casting_bar.visible = false
 	casting_bar.value = 0
+	if game_manager.hp <= 0:
+		dead = true
+		_die()
 
 func _die():
 	animated_sprite.play("death")

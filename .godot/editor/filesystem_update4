@@ -32,3 +32,8 @@ res://scripts/background.gd
 res://scenes/background.tscn
 res://scripts/dialogue5.gd
 res://scenes/music.tscn
+res://scripts/orion.gd
+res://default_bus_layout.tres
+res://scripts/dialogue4.gd
+res://scenes/mauricespendant.tscn
+res://scripts/dialogue1.gd

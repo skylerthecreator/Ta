@@ -137,7 +137,8 @@ collision_mask = 2
 script = ExtResource("1_nq7ak")
 
 [node name="icon" type="Sprite2D" parent="."]
-scale = Vector2(0.304688, 0.304688)
+position = Vector2(-5.96046e-08, 5.96046e-08)
+scale = Vector2(0.246094, 0.246094)
 texture = ExtResource("1_ypwrh")
 
 [node name="description" type="Label" parent="."]

@@ -6,7 +6,7 @@
 [ext_resource type="FontFile" uid="uid://cj4qjstjnmyrg" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_8nfpo"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lh06n"]
-radius = 14.7692
+radius = 12.3077
 
 [sub_resource type="Animation" id="Animation_ph0bm"]
 length = 0.001
@@ -137,12 +137,13 @@ collision_mask = 2
 script = ExtResource("1_dns54")
 
 [node name="icon" type="Sprite2D" parent="."]
-position = Vector2(1, -5)
-scale = Vector2(0.414062, 0.414062)
+position = Vector2(3.55271e-15, -2.38419e-07)
+scale = Vector2(0.244141, 0.249335)
 texture = ExtResource("2_5fxe3")
+offset = Vector2(2, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(9.53674e-07, -6)
+position = Vector2(9.53674e-07, 0)
 scale = Vector2(0.40625, 0.40625)
 shape = SubResource("CircleShape2D_lh06n")
 
@@ -157,9 +158,9 @@ libraries = {
 
 [node name="description" type="Label" parent="."]
 offset_left = -73.0
-offset_top = -108.0
+offset_top = -106.0
 offset_right = 169.0
-offset_bottom = 21.0
+offset_bottom = 23.0
 scale = Vector2(0.6, 0.6)
 theme_override_colors/font_color = Color(1, 0.509804, 0, 1)
 theme_override_fonts/font = ExtResource("4_8nfpo")

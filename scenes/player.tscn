@@ -1046,9 +1046,7 @@ z_index = 1
 position = Vector2(-2.27374e-13, -28)
 scale = Vector2(0.662424, 0.667223)
 sprite_frames = SubResource("SpriteFrames_vvjdw")
-animation = &"glacial"
-frame = 2
-frame_progress = 0.78594
+animation = &"wake"
 
 [node name="playeroutline" type="CollisionShape2D" parent="."]
 visible = false

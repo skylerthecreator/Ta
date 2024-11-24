@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dskojjmr48h04" path="res://assets/sounds/pickupsounds/fod.mp3" id="4_qt1ds"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_62hfn"]
-size = Vector2(10, 14.5)
+size = Vector2(7.25, 10.5625)
 
 [sub_resource type="Animation" id="Animation_fh16w"]
 length = 0.001
@@ -132,24 +132,25 @@ _data = {
 }
 
 [node name="plasma battery" type="Area2D"]
+position = Vector2(0, 5)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_rur82")
 
 [node name="icon" type="Sprite2D" parent="."]
-position = Vector2(0, -6)
-scale = Vector2(0.5, 0.5)
+position = Vector2(0, -5)
+scale = Vector2(0.291667, 0.385)
 texture = ExtResource("2_agqq5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -7.75)
+position = Vector2(0, -5)
 shape = SubResource("RectangleShape2D_62hfn")
 
 [node name="description" type="Label" parent="."]
-offset_left = -111.0
-offset_top = -114.0
-offset_right = 262.0
-offset_bottom = 9.0
+offset_left = -112.0
+offset_top = -106.0
+offset_right = 261.0
+offset_bottom = 17.0
 scale = Vector2(0.6, 0.6)
 theme_override_colors/font_color = Color(1, 0.509804, 0, 1)
 theme_override_fonts/font = ExtResource("3_jrssd")

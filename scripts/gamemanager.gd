@@ -1,18 +1,18 @@
 extends Node
 
-const MAX_HP = 10
+const MAX_HP = 5
 
 var coins = 0
 
 var insta_cast_ready = false
 var amnova_ready = true
 
-var hp = 10
+var hp = 1
 
-var fireball_unlocked = true
-var glacial_unlocked = true
-var blade_unlocked = true
-var forbidden_unlocked = true
+var fireball_unlocked = false
+var glacial_unlocked = false
+var blade_unlocked = false
+var forbidden_unlocked = false
 var amnova_unlocked = false
 
 var insta_cast_unlocked = true

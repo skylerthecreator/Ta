@@ -7,7 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://cc4bk1akj7trn" path="res://assets/sounds/slimedeath.wav" id="4_f1vbd"]
 [ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="5_ygk0l"]
 [ext_resource type="Texture2D" uid="uid://bs83cvapg2y0n" path="res://assets/sprites/enemies/Skeleton/Sprite Sheets/Skeleton Attack.png" id="7_hafam"]
-[ext_resource type="AudioStream" uid="uid://gpuarp8ltggy" path="res://assets/sounds/swing.wav" id="8_k3bl6"]
+[ext_resource type="AudioStream" uid="uid://gpuarp8ltggy" path="res://assets/sounds/bosssfx/orion/swing.wav" id="8_k3bl6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f50pk"]
 atlas = ExtResource("2_031wb")

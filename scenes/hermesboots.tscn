@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/hermesboots.gd" id="1_scoif"]
 [ext_resource type="Texture2D" uid="uid://cguy8ginp06n4" path="res://assets/sprites/ITEMS/hermes boots.png" id="2_ubpjd"]
 [ext_resource type="AudioStream" uid="uid://dskojjmr48h04" path="res://assets/sounds/pickupsounds/fod.mp3" id="3_j4lko"]
-[ext_resource type="AudioStream" uid="uid://6st68mn0dinq" path="res://assets/sounds/error.wav" id="4_74fki"]
+[ext_resource type="AudioStream" uid="uid://6st68mn0dinq" path="res://assets/sounds/pickupsounds/error.wav" id="4_74fki"]
 [ext_resource type="FontFile" uid="uid://cj4qjstjnmyrg" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="5_w2f4j"]
 
 [sub_resource type="Animation" id="Animation_ft64u"]

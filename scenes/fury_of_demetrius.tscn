@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/fury_of_demetrius.gd" id="1_4k4r0"]
 [ext_resource type="Texture2D" uid="uid://bycqyfcposkyq" path="res://assets/sprites/skills/skill1.png" id="1_5t8jl"]
-[ext_resource type="AudioStream" uid="uid://6st68mn0dinq" path="res://assets/sounds/error.wav" id="3_0p86m"]
+[ext_resource type="AudioStream" uid="uid://6st68mn0dinq" path="res://assets/sounds/pickupsounds/error.wav" id="3_0p86m"]
 [ext_resource type="AudioStream" uid="uid://dskojjmr48h04" path="res://assets/sounds/pickupsounds/fod.mp3" id="3_p3wt8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gwvxd"]

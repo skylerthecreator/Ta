@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://blclvy2nw0unm" path="res://assets/Pixel Prototype Player/Sprites/Combat/Punch02/Punch0201.png" id="4_il5m8"]
 [ext_resource type="AudioStream" uid="uid://lm1o1sncijak" path="res://assets/sounds/hurt.wav" id="4_nh6jv"]
 [ext_resource type="Texture2D" uid="uid://dj1ky5hfy6x1o" path="res://assets/Pixel Prototype Player/Sprites/Dash/Dash03.png" id="4_xqi53"]
-[ext_resource type="AudioStream" uid="uid://bvnxuig2xfvso" path="res://assets/sounds/footstepsedit.mp3" id="5_0lds3"]
 [ext_resource type="Texture2D" uid="uid://dajjd7cvub7a4" path="res://assets/Pixel Prototype Player/Sprites/Die/Die03.png" id="5_4ohom"]
 [ext_resource type="Texture2D" uid="uid://cfc121atvq6p4" path="res://assets/Pixel Prototype Player/Sprites/Combat/Punch02/Punch0202.png" id="5_eecx6"]
 [ext_resource type="Texture2D" uid="uid://jaixkaqqhyk2" path="res://assets/Pixel Prototype Player/Sprites/Dash/Dash04.png" id="5_fsair"]
@@ -18,7 +17,6 @@
 [ext_resource type="Texture2D" uid="uid://c31e1w06r8k5l" path="res://assets/Pixel Prototype Player/Sprites/Die/Die05.png" id="7_gavpl"]
 [ext_resource type="Texture2D" uid="uid://bssc6fdntaxmy" path="res://assets/Pixel Prototype Player/Sprites/Dash/Dash06.png" id="7_yrvta"]
 [ext_resource type="Texture2D" uid="uid://c7xmfo5ccgjce" path="res://assets/Pixel Prototype Player/Sprites/Die/Die06.png" id="8_7m881"]
-[ext_resource type="AudioStream" uid="uid://dw8kenwgr1pdb" path="res://assets/sounds/jump2.wav" id="8_11tyn"]
 [ext_resource type="Texture2D" uid="uid://d1yj6b72qlfs7" path="res://assets/Pixel Prototype Player/Sprites/Idle/Idle01.png" id="8_be26n"]
 [ext_resource type="Texture2D" uid="uid://bl2qdy36lj3if" path="res://assets/Pixel Prototype Player/Sprites/Dash/Dash07.png" id="8_wrpa5"]
 [ext_resource type="Texture2D" uid="uid://c7nv8x8r6inxn" path="res://assets/Pixel Prototype Player/Sprites/Die/Die07.png" id="9_1odu0"]
@@ -47,6 +45,8 @@
 [ext_resource type="Texture2D" uid="uid://c2v4yp5l46qyo" path="res://assets/Pixel Prototype Player/Sprites/Jump/Jump01.png" id="32_mwrob"]
 [ext_resource type="Texture2D" uid="uid://bf8kc74d35ne" path="res://assets/Pixel Prototype Player/Sprites/Jump/Jump02.png" id="33_hncwd"]
 [ext_resource type="Texture2D" uid="uid://ct75b8i8pkc5n" path="res://assets/Pixel Prototype Player/Sprites/Run/Run08.png" id="33_k6n02"]
+[ext_resource type="AudioStream" uid="uid://dw8kenwgr1pdb" path="res://assets/sounds/movement/jump2.wav" id="44_dhgg3"]
+[ext_resource type="AudioStream" uid="uid://bvnxuig2xfvso" path="res://assets/sounds/movement/footstepsedit.mp3" id="46_5ejrt"]
 [ext_resource type="AudioStream" uid="uid://dgdjbeujg4qy1" path="res://assets/sounds/movement/dash.wav" id="46_8cu7a"]
 [ext_resource type="Texture2D" uid="uid://dp5xhskfi18jf" path="res://assets/sprites/skills/Retro Impact Effect Pack 3 C.png" id="47_cady2"]
 [ext_resource type="Texture2D" uid="uid://h8ii2j0i0spm" path="res://assets/Pixel Prototype Player/Sprites/FXSheet.png" id="47_h1mpw"]
@@ -1090,7 +1090,7 @@ bus = &"SFX"
 wait_time = 3.0
 
 [node name="jump" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_11tyn")
+stream = ExtResource("44_dhgg3")
 bus = &"SFX"
 
 [node name="hurt" type="AudioStreamPlayer2D" parent="."]
@@ -1098,7 +1098,7 @@ stream = ExtResource("4_nh6jv")
 bus = &"SFX"
 
 [node name="footsteps" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("5_0lds3")
+stream = ExtResource("46_5ejrt")
 bus = &"SFX"
 
 [node name="fbspawn" type="Marker2D" parent="."]

@@ -31,3 +31,4 @@ res://scenes/platform.tscn
 res://scripts/background.gd
 res://scenes/background.tscn
 res://scripts/dialogue5.gd
+res://scenes/music.tscn

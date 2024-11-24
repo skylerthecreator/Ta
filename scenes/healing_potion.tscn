@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/healing_potion.gd" id="1_p6ice"]
 [ext_resource type="Texture2D" uid="uid://kpld5n16lvkg" path="res://assets/sprites/default/world_tileset.png" id="2_j84xe"]
-[ext_resource type="AudioStream" uid="uid://cw5u10dvd3upm" path="res://assets/sounds/drinking.mp3" id="3_mx5os"]
+[ext_resource type="AudioStream" uid="uid://cw5u10dvd3upm" path="res://assets/sounds/pickupsounds/drinking.mp3" id="3_mx5os"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wmx8g"]
 atlas = ExtResource("2_j84xe")

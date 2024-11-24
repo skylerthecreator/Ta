@@ -32,6 +32,8 @@ var hp = MAX_HP
 		
 func _physics_process(delta):
 	update_health()
+	if hp <= 0:
+		C2D.disabled = true
 	if body_in_range and hp > 0:
 		awalk.visible = false
 		adie.visible = false

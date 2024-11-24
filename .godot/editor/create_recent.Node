@@ -1,3 +1,4 @@
+Node
 Sprite2D
 ParallaxLayer
 ParallaxBackground
@@ -11,4 +12,3 @@ Area2D
 Timer
 CollisionPolygon2D
 AnimatedSprite2D
-Node

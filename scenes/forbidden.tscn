@@ -94,7 +94,6 @@ shape = SubResource("RectangleShape2D_f5xaq")
 
 [node name="explodesound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_30m1n")
-bus = &"SFX"
 
 [node name="end" type="Timer" parent="."]
 wait_time = 5.0

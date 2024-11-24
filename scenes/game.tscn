@@ -2966,6 +2966,12 @@ position = Vector2(2760, -80)
 [node name="mauricespendant" parent="friendlies/items" instance=ExtResource("13_0kxa6")]
 position = Vector2(-629, 28)
 
+[node name="plasma battery" parent="friendlies/items" instance=ExtResource("31_xunmr")]
+position = Vector2(2356, -31)
+
+[node name="salazarinsig" parent="friendlies/items" instance=ExtResource("33_nu5ef")]
+position = Vector2(2994, 28)
+
 [node name="NPCS" type="Node" parent="friendlies"]
 
 [node name="merchant" parent="friendlies/NPCS" instance=ExtResource("12_irqes")]
@@ -3041,8 +3047,6 @@ position = Vector2(-1, 306)
 
 [node name="salazar" parent="Enemies" instance=ExtResource("32_6isuq")]
 position = Vector2(3522, -170)
-
-[node name="platforms" type="Node" parent="."]
 
 [node name="traps" type="Node" parent="."]
 
@@ -3190,18 +3194,14 @@ script = ExtResource("29_7djv2")
 position = Vector2(2878, -45)
 shape = SubResource("RectangleShape2D_ceycd")
 
-[node name="Sign" type="Sprite2D" parent="."]
+[node name="environment" type="Node" parent="."]
+
+[node name="Sign" type="Sprite2D" parent="environment"]
 position = Vector2(1064, -40)
 scale = Vector2(0.545455, 0.545455)
 texture = ExtResource("26_1hutj")
 
-[node name="plasma battery" parent="." instance=ExtResource("31_xunmr")]
-position = Vector2(2356, -31)
-
-[node name="salazarinsig" parent="." instance=ExtResource("33_nu5ef")]
-position = Vector2(2994, 28)
-
-[node name="background" parent="." instance=ExtResource("35_dg7v2")]
+[node name="background" parent="environment" instance=ExtResource("35_dg7v2")]
 
 [connection signal="body_entered" from="dialogues/dialogue1" to="dialogues/dialogue1" method="_on_body_entered"]
 [connection signal="body_entered" from="dialogues/dialogue2" to="dialogues/dialogue2" method="_on_body_entered"]

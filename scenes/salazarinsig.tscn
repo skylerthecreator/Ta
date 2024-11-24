@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dskojjmr48h04" path="res://assets/sounds/pickupsounds/fod.mp3" id="4_ojwc2"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dmpaf"]
-radius = 7.07107
+radius = 5.0
 
 [sub_resource type="Animation" id="Animation_jh6ib"]
 resource_name = "pickup"
@@ -137,7 +137,7 @@ collision_mask = 2
 script = ExtResource("1_nq7ak")
 
 [node name="icon" type="Sprite2D" parent="."]
-scale = Vector2(0.40625, 0.40625)
+scale = Vector2(0.304688, 0.304688)
 texture = ExtResource("1_ypwrh")
 
 [node name="description" type="Label" parent="."]
@@ -171,6 +171,7 @@ libraries = {
 
 [node name="pickupsound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_ojwc2")
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

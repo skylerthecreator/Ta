@@ -1,17 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://m7ni1fayt0tk"]
 
-[ext_resource type="Texture2D" uid="uid://quwuae10vtgf" path="res://assets/sprites/default/platforms.png" id="1_6l6v6"]
+[ext_resource type="Texture2D" uid="uid://geyfcumv2fo1" path="res://assets/sprites/environment/Fantasy Swamp Forest/Free/Terrain_and_Props.png" id="1_3pn77"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cy4ch"]
-size = Vector2(31, 8)
+size = Vector2(78, 11)
 
 [node name="platform" type="AnimatableBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_6l6v6")
+texture = ExtResource("1_3pn77")
 region_enabled = true
-region_rect = Rect2(16.8365, 48.7853, 30.4745, 7.53965)
+region_rect = Rect2(80.9718, 159.891, 78.3757, 13.3779)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_cy4ch")
 one_way_collision = true

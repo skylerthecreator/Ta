@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbhva7eaom1im"]
+
+[ext_resource type="Script" path="res://scripts/background.gd" id="1_2afsb"]
+[ext_resource type="Texture2D" uid="uid://dbwpow2iunfof" path="res://assets/sprites/environment/Fantasy Swamp Forest/Free/BG_3/BG_3.png" id="2_posan"]
+[ext_resource type="Texture2D" uid="uid://bwdtrjl185m1r" path="res://assets/sprites/environment/Fantasy Swamp Forest/Free/BG_2/BG_2.png" id="3_kluuj"]
+[ext_resource type="Texture2D" uid="uid://bwgiluddw578d" path="res://assets/sprites/environment/Fantasy Swamp Forest/Free/BG_1/BG_1.png" id="4_3aun0"]
+
+[node name="background" type="ParallaxBackground"]
+script = ExtResource("1_2afsb")
+
+[node name="1" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0, 0)
+motion_mirroring = Vector2(2048, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="1"]
+texture = ExtResource("2_posan")
+region_enabled = true
+region_rect = Rect2(0, 0, 2048, 648)
+
+[node name="2" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1817, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="2"]
+texture = ExtResource("3_kluuj")
+region_enabled = true
+region_rect = Rect2(0, 0, 1817, 648)
+
+[node name="3" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1868, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="3"]
+texture = ExtResource("4_3aun0")
+region_enabled = true
+region_rect = Rect2(0, 0, 1868.07, 648)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]

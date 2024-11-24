@@ -4,16 +4,20 @@ extends Area2D
 @onready var vision = $vision
 @onready var AS = $AnimatedSprite2D
 @onready var attack_1_range = $attack1range
+@onready var rng = $attack1range/range
 @onready var healthbar = $Control/healthbar
 @onready var dmg_taken = $dmg_taken
 @onready var dtdt = $dtdt
 @onready var die = $die
 @onready var attackwaittime = $attackwaittime
 @onready var CS = $CollisionShape2D
+@onready var drop = $drop
+
+#var loot = load("res://scenes/salazarinsig.tscn")
 
 var SPEED = 20
 var direction = 1
-var MAX_HP = 20
+var MAX_HP = 2
 
 var hp = MAX_HP
 #var hit = false
@@ -56,7 +60,8 @@ func _physics_process(delta):
 			AS.play("walk")
 			position.x += direction * delta * SPEED
 	else:
-		attack_1_range.disabled = true
+		rng.disabled = true
+		CS.disabled = true
 		if !AS.is_playing():
 			AS.visible = false;
 		if !die.is_playing():
@@ -86,6 +91,9 @@ func hit(damage: int):
 		AS.play("hit")
 		die.play("die")
 		dead = true;
+		#var l = loot.instantiate()
+		#owner.add_child(l)
+		#l.transform = drop.global_transform
 
 		#var b = battery.instantiate()
 		#owner.add_child(b)

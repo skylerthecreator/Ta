@@ -4,7 +4,7 @@ extends CharacterBody2D
 const ROLL_SPEED = 300
 var MAX_SPEED = 100
 const JUMP_VELOCITY = -225
-const DASH_SPEED_MULTIPLIER = 5
+const DASH_SPEED_MULTIPLIER = 4
 const PRIORITY_MOVEMENT = ["casting", "fireball", "blade", "counter", "skill1", "wake", "hit", "dash", "forbiddencasting", "forbidden", "glacial"]
 const PREVENT_START = ["casting", "fireball", "blade", "counter", "forbiddencasting", "forbidden", "glacial"]
 const PREVENT_FLIP = ["fireball", "blade", "counter", "forbiddencasting", "forbidden", "dash", "glacial"]
@@ -343,9 +343,9 @@ func _dash():
 		if game_manager.insta_cast_unlocked and game_manager.fireball_unlocked:
 			game_manager.insta_cast_ready = true
 		dash_duration.start()
+		dash_cd.start()
 		can_dash = false
 func _on_dash_duration_timeout():
-	dash_cd.start()
 	dashing = false	
 func _on_dash_cd_timeout():
 	can_dash = true

@@ -1,3 +1,4 @@
+AnimatedSprite2D
 Node
 Sprite2D
 ParallaxLayer
@@ -11,4 +12,3 @@ Label
 Area2D
 Timer
 CollisionPolygon2D
-AnimatedSprite2D

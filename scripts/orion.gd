@@ -6,6 +6,8 @@ extends Area2D
 
 @onready var startfightsfx = $startfightsfx
 
+@onready var dir = $DIR
+@onready var under = $UNDER
 
 @onready var attackrange = $attackrange
 
@@ -29,7 +31,7 @@ extends Area2D
 
 var SPEED = 30
 var direction = 1
-var MAX_HP = 20
+var MAX_HP = 10
 
 var begin = false
 var hp = MAX_HP
@@ -56,26 +58,25 @@ func _physics_process(delta):
 			direction =  1
 			if AS.scale.x < 0:
 				AS.scale.x *= -1
-			if enragedfx.scale.x > 0:
-				enragedfx.scale.x *= -1
 			if attack_1_range.scale.x > 0:
 				attack_1_range.scale.x *= -1
-			if attack_2_range.scale.x > 0:
 				attack_2_range.scale.x *= -1
-			if attackrange.scale.x > 0:
 				attackrange.scale.x *= -1
+				enragedfx.scale.x *= -1
+				dir.scale.x *= -1
+				under.position.x *= -1
+				
 		elif gap < 0 and !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()):
 			direction = -1
 			if AS.scale.x > 0:
 				AS.scale.x *= -1
-			if enragedfx.scale.x < 0:
-				enragedfx.scale.x *= -1
 			if attack_1_range.scale.x < 0:
 				attack_1_range.scale.x *= -1
-			if attack_2_range.scale.x < 0:
+				enragedfx.scale.x *= -1
 				attack_2_range.scale.x *= -1
-			if attackrange.scale.x < 0:
 				attackrange.scale.x *= -1
+				dir.scale.x *= -1
+				under.position.x *= -1
 	else:
 		AS.play("idle")
 
@@ -90,6 +91,10 @@ func _physics_process(delta):
 			attack_1_time.start()
 	if !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()) and hp > 0 and follow_player:
 		AS.play("walk")
+		if !under.is_colliding():
+			position.y += 0.5
+		if dir.is_colliding():
+			position.y -= 0.5
 		position.x += direction * delta * SPEED
 		
 		

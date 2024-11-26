@@ -1,3 +1,4 @@
+RayCast2D
 AnimatedSprite2D
 Node
 Sprite2D
@@ -11,4 +12,3 @@ CollisionShape2D
 Label
 Area2D
 Timer
-CollisionPolygon2D

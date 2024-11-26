@@ -463,6 +463,10 @@ animations = [{
 [node name="morkul" type="Area2D" groups=["enemies"]]
 script = ExtResource("1_cx0e5")
 
+[node name="DIR" type="RayCast2D" parent="."]
+position = Vector2(0, -4)
+target_position = Vector2(-6, 4)
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17.6)
 scale = Vector2(-0.67872, 0.67872)
@@ -606,6 +610,10 @@ sprite_frames = SubResource("SpriteFrames_al3ws")
 frame_progress = 0.530709
 
 [node name="batteryspawn" type="Marker2D" parent="."]
+
+[node name="UNDER" type="RayCast2D" parent="."]
+position = Vector2(-8, -14)
+target_position = Vector2(0, 15)
 
 [connection signal="timeout" from="dtdt" to="." method="_on_dtdt_timeout"]
 [connection signal="body_entered" from="vision" to="." method="_on_vision_body_entered"]

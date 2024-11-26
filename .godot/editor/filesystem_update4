@@ -6,8 +6,9 @@ res://scenes/hud.tscn
 res://scenes/mauricespendant.tscn
 res://scenes/hermesboots.tscn
 res://scenes/background.tscn
-res://scenes/pyro_mani.tscn
 res://scenes/salazarinsig.tscn
 res://scenes/battery.tscn
-res://scripts/player.gd
+res://scenes/pyro_mani.tscn
+res://scenes/orion.tscn
+res://scripts/orion.gd
 res://scripts/dialogue1.gd

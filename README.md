@@ -23,7 +23,10 @@ Pixel Tree Set by Jestan - https://jestan.itch.io/trees
 Gems / Coins Free - https://laredgames.itch.io/gems-coins-free
 Battery - https://ruxar.itch.io/battery
 Spikes: Simple Tileset and spikes - https://ideelino.itch.io/simple-tileset-and-spikes
+
+Icons:
 Sword Icons - https://bizmasterstudios.itch.io/sword-icons
+Idylwild's Armory - https://idylwild.itch.io/idylwilds-armory
 
 NPCS: 
 Pixel Crawler - https://anokolisa.itch.io/dungeon-crawler-pixel-art-asset-pack

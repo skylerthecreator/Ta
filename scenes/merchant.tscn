@@ -1,8 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://c1fnbvgv6vvqc"]
+[gd_scene load_steps=17 format=3 uid="uid://c1fnbvgv6vvqc"]
 
 [ext_resource type="Texture2D" uid="uid://c7jprdp1t7v5p" path="res://assets/sprites/NPCS/Merchant Pack/shop_anim.png" id="1_3byym"]
 [ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="2_xr3sj"]
-[ext_resource type="Texture2D" uid="uid://bk8u2bbnvtt2u" path="res://assets/sprites/NPCS/Merchant Pack/Gipsy spritesheet no chest.png" id="3_tpecm"]
+[ext_resource type="Texture2D" uid="uid://crbb3dbfdgnaf" path="res://assets/sprites/NPCS/Merchant Pack/idle.png" id="3_7mw2s"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3swa8"]
 atlas = ExtResource("1_3byym")
@@ -54,82 +54,40 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_pmbaw"]
-atlas = ExtResource("3_tpecm")
-region = Rect2(0, 160, 80, 80)
+[sub_resource type="AtlasTexture" id="AtlasTexture_id5d4"]
+atlas = ExtResource("3_7mw2s")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ggm8c"]
-atlas = ExtResource("3_tpecm")
-region = Rect2(80, 160, 80, 80)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytprl"]
+atlas = ExtResource("3_7mw2s")
+region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d8xed"]
-atlas = ExtResource("3_tpecm")
-region = Rect2(160, 160, 80, 80)
+[sub_resource type="AtlasTexture" id="AtlasTexture_frtba"]
+atlas = ExtResource("3_7mw2s")
+region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_j6s05"]
-atlas = ExtResource("3_tpecm")
-region = Rect2(240, 160, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0teqj"]
-atlas = ExtResource("3_tpecm")
-region = Rect2(320, 160, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eqllo"]
-atlas = ExtResource("3_tpecm")
-region = Rect2(400, 160, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_00kcl"]
-atlas = ExtResource("3_tpecm")
-region = Rect2(480, 160, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yhi4v"]
-atlas = ExtResource("3_tpecm")
-region = Rect2(560, 160, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ebjdj"]
-atlas = ExtResource("3_tpecm")
-region = Rect2(640, 160, 80, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6boqg"]
-atlas = ExtResource("3_tpecm")
-region = Rect2(720, 160, 80, 80)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbuqa"]
+atlas = ExtResource("3_7mw2s")
+region = Rect2(192, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_567mw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_pmbaw")
+"texture": SubResource("AtlasTexture_id5d4")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ggm8c")
+"texture": SubResource("AtlasTexture_ytprl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d8xed")
+"texture": SubResource("AtlasTexture_frtba")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_j6s05")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0teqj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eqllo")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_00kcl")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_yhi4v")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ebjdj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6boqg")
+"texture": SubResource("AtlasTexture_bbuqa")
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 6.0
 }]
 
 [sub_resource type="Theme" id="Theme_haolw"]
@@ -139,41 +97,42 @@ default_font_size = 8
 [node name="merchant" type="Node2D"]
 
 [node name="ezekiel" type="AnimatedSprite2D" parent="."]
-position = Vector2(18.825, -62.4203)
-scale = Vector2(0.969068, 0.969068)
+position = Vector2(-0.0875014, -44.8322)
+scale = Vector2(0.696398, 0.700503)
 sprite_frames = SubResource("SpriteFrames_idjhg")
 autoplay = "default"
 frame_progress = 0.950969
 flip_h = true
 
-[node name="ezekielname" type="Label" parent="ezekiel"]
-offset_left = -23.5536
-offset_top = 25.1998
-offset_right = 74.4464
-offset_bottom = 48.1998
+[node name="ezekielname" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -31.0
+offset_right = 74.0
+offset_bottom = -8.0
 scale = Vector2(0.5, 0.5)
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 theme_override_fonts/font = ExtResource("2_xr3sj")
 theme_override_font_sizes/font_size = 8
 text = "Ezekiel
-<The Scavenger>"
+<The Merchant>"
 horizontal_alignment = 1
 
 [node name="maria" type="AnimatedSprite2D" parent="."]
-position = Vector2(-53.0207, -22.9187)
-scale = Vector2(-0.437518, 0.552033)
+position = Vector2(-67, -16)
+scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_567mw")
 autoplay = "default"
-frame_progress = 0.750298
+frame = 2
+frame_progress = 0.226724
 
 [node name="marianame" type="Label" parent="."]
-offset_left = -77.0
-offset_top = -34.7974
-offset_right = 15.0
-offset_bottom = -11.7974
+offset_left = -91.0
+offset_top = -29.0
+offset_right = 7.0
+offset_bottom = -6.0
 scale = Vector2(0.5, 0.5)
 theme = SubResource("Theme_haolw")
 theme_override_colors/font_color = Color(0, 1, 0, 1)
 text = "Riea
-<The Merchant>"
+<The Scavenger>"
 horizontal_alignment = 1

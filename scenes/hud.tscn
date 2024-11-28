@@ -1,57 +1,22 @@
-[gd_scene load_steps=27 format=3 uid="uid://cnpgir75n6dgl"]
+[gd_scene load_steps=25 format=3 uid="uid://cnpgir75n6dgl"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_64fqt"]
 [ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="2_mdka8"]
 [ext_resource type="Texture2D" uid="uid://kir1ldklncas" path="res://assets/sprites/NPCS/Wizard Pack/mauricepfp.png" id="3_3vgvc"]
 [ext_resource type="FontFile" uid="uid://cj4qjstjnmyrg" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_libq2"]
-[ext_resource type="Texture2D" uid="uid://dcy1obuvgwlwl" path="res://assets/sprites/skills/skill0/FB500-1.png" id="4_sy2fj"]
-[ext_resource type="Texture2D" uid="uid://bvkstdv21j4r7" path="res://assets/sprites/skills/Retro Impact Effect Pack 2 A.png" id="5_nc244"]
+[ext_resource type="Texture2D" uid="uid://dme4pl058vkxn" path="res://assets/sprites/skills/skill0/fireball.png" id="6_a8vp7"]
 [ext_resource type="Texture2D" uid="uid://e44lxyu1aoqw" path="res://assets/sprites/skills/Yellow Effect Bullet Impact Explosion 32x32.png" id="6_mj6s8"]
-[ext_resource type="Texture2D" uid="uid://4slsbcknnjiu" path="res://assets/sprites/skills/blade/pixil-frame-0.png" id="8_so6ds"]
-[ext_resource type="Texture2D" uid="uid://cpxrqiny2fc04" path="res://assets/sprites/skills/ice/glacialicon2.png" id="9_phdwj"]
+[ext_resource type="Texture2D" uid="uid://doylgdj3mc6bm" path="res://assets/sprites/skills/blade/blade.png" id="8_ohpqi"]
+[ext_resource type="Texture2D" uid="uid://ct8lbviwcy0ul" path="res://assets/sprites/skills/ice/glacial.png" id="9_48gkj"]
 [ext_resource type="Texture2D" uid="uid://c2xkedgli3ilw" path="res://assets/sprites/ITEMS/spr_coin_strip4.png" id="10_a5bvh"]
+[ext_resource type="Texture2D" uid="uid://cffdvqkxhnm87" path="res://assets/sprites/skills/block/block.png" id="10_p5ism"]
+[ext_resource type="Texture2D" uid="uid://crbb3dbfdgnaf" path="res://assets/sprites/NPCS/Merchant Pack/idle.png" id="11_re4qp"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_44bov"]
 action = &"skill0"
 
 [sub_resource type="Shortcut" id="Shortcut_63jbj"]
 events = [SubResource("InputEventAction_44bov")]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ge7wy"]
-atlas = ExtResource("5_nc244")
-region = Rect2(0, 1024, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_50a5h"]
-atlas = ExtResource("5_nc244")
-region = Rect2(64, 1024, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8rh0e"]
-atlas = ExtResource("5_nc244")
-region = Rect2(128, 1024, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_10sp8"]
-atlas = ExtResource("5_nc244")
-region = Rect2(192, 1024, 64, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_yrqfd"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ge7wy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_50a5h")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8rh0e")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_10sp8")
-}],
-"loop": false,
-"name": &"default",
-"speed": 12.0
-}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lccpr"]
 atlas = ExtResource("6_mj6s8")
@@ -101,6 +66,12 @@ action = &"skill3"
 [sub_resource type="Shortcut" id="Shortcut_pwvfu"]
 events = [SubResource("InputEventAction_k166w")]
 
+[sub_resource type="InputEventAction" id="InputEventAction_jaqly"]
+action = &"block"
+
+[sub_resource type="Shortcut" id="Shortcut_gomm8"]
+events = [SubResource("InputEventAction_jaqly")]
+
 [node name="HUD" type="Node2D"]
 script = ExtResource("1_64fqt")
 
@@ -130,7 +101,6 @@ region_enabled = true
 region_rect = Rect2(2.67411, 0, 10.5402, 16)
 
 [node name="coins" type="Label" parent="Display"]
-anchors_preset = -1
 offset_left = 38.0
 offset_top = 45.0
 offset_right = 264.0
@@ -141,7 +111,6 @@ text = "x8"
 metadata/_edit_use_anchors_ = true
 
 [node name="dialogue_box" type="Button" parent="Display"]
-visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -209,17 +178,19 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -192.0
-offset_top = -109.0
-offset_right = 328.0
-offset_bottom = 671.0
-scale = Vector2(0.1, 0.1)
+offset_left = -304.0
+offset_top = -151.0
+offset_right = -264.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.3, 1.3)
 theme_override_fonts/font = ExtResource("3_libq2")
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 16
 action_mode = 0
 shortcut = SubResource("Shortcut_63jbj")
 text = "J"
-icon = ExtResource("4_sy2fj")
+icon = ExtResource("6_a8vp7")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
@@ -229,32 +200,23 @@ z_index = 3
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.5
-anchor_top = 0.321
+anchor_top = 0.264
 anchor_right = 0.5
-anchor_bottom = 0.321
-offset_left = -260.0
-offset_top = -250.38
-offset_right = 260.0
-offset_bottom = 249.62
+anchor_bottom = 0.264
+offset_left = -20.0
+offset_top = -19.008
+offset_right = 20.0
+offset_bottom = 18.992
 theme_override_fonts/font = ExtResource("3_libq2")
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 8
 icon_alignment = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Display/fireball_icon"]
-visible = false
-position = Vector2(259, 259)
-scale = Vector2(9.09375, 9.09375)
-sprite_frames = SubResource("SpriteFrames_yrqfd")
-frame = 3
-frame_progress = 1.0
-
 [node name="insta_cast" type="AnimatedSprite2D" parent="Display/fireball_icon"]
-visible = false
-position = Vector2(260, 240)
+position = Vector2(18, 24)
 rotation = 3.14159
-scale = Vector2(23.0216, -23.0216)
+scale = Vector2(1.14122, -1.14122)
 sprite_frames = SubResource("SpriteFrames_3jjw3")
-frame_progress = 0.259055
+frame_progress = 0.136389
 
 [node name="blade_icon" type="Button" parent="Display"]
 anchors_preset = 7
@@ -262,26 +224,35 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -138.0
-offset_top = -109.0
-offset_right = 382.0
-offset_bottom = 671.0
-scale = Vector2(0.1, 0.1)
+offset_left = -250.0
+offset_top = -151.0
+offset_right = -210.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.3, 1.3)
 theme_override_fonts/font = ExtResource("3_libq2")
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 16
 shortcut = SubResource("Shortcut_j430o")
 text = "K"
-icon = ExtResource("8_so6ds")
+icon = ExtResource("8_ohpqi")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
 [node name="blade_cooldown" type="Button" parent="Display/blade_icon"]
 visible = false
-layout_mode = 0
-offset_right = 520.0
-offset_bottom = 500.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.264
+anchor_right = 0.5
+anchor_bottom = 0.264
+offset_left = -20.0
+offset_top = -19.008
+offset_right = 20.0
+offset_bottom = 18.992
 theme_override_fonts/font = ExtResource("3_libq2")
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 8
 icon_alignment = 1
 
 [node name="glacial_icon" type="Button" parent="Display"]
@@ -290,28 +261,74 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -83.0
-offset_top = -109.0
-offset_right = 437.0
-offset_bottom = 671.0
+offset_left = -196.0
+offset_top = -151.0
+offset_right = -156.0
+offset_bottom = -79.0
 grow_horizontal = 2
 grow_vertical = 0
-scale = Vector2(0.1, 0.1)
+scale = Vector2(1.3, 1.3)
 theme_override_fonts/font = ExtResource("3_libq2")
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 16
 shortcut = SubResource("Shortcut_pwvfu")
 text = "L"
-icon = ExtResource("9_phdwj")
+icon = ExtResource("9_48gkj")
 icon_alignment = 1
 vertical_icon_alignment = 0
 
 [node name="glacial_cooldown" type="Button" parent="Display/glacial_icon"]
 visible = false
-layout_mode = 0
-offset_right = 520.0
-offset_bottom = 500.0
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.264
+anchor_right = 0.5
+anchor_bottom = 0.264
+offset_left = -20.0
+offset_top = -19.008
+offset_right = 20.0
+offset_bottom = 18.992
 theme_override_fonts/font = ExtResource("3_libq2")
-theme_override_font_sizes/font_size = 128
+theme_override_font_sizes/font_size = 8
+
+[node name="block_icon" type="Button" parent="Display"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 147.0
+offset_top = -151.0
+offset_right = 187.0
+offset_bottom = -79.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(1.3, 1.3)
+theme_override_fonts/font = ExtResource("3_libq2")
+theme_override_font_sizes/font_size = 16
+shortcut = SubResource("Shortcut_gomm8")
+text = "E"
+icon = ExtResource("10_p5ism")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
+[node name="block_cooldown" type="Button" parent="Display/block_icon"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.512
+anchor_top = 0.278
+anchor_right = 0.512
+anchor_bottom = 0.278
+offset_left = -20.48
+offset_top = -20.016
+offset_right = 19.52
+offset_bottom = 17.984
+theme_override_fonts/font = ExtResource("3_libq2")
+theme_override_font_sizes/font_size = 8
+
+[node name="block_cooldown_time" type="Timer" parent="."]
+wait_time = 3.5
 
 [node name="fireball_casting_time" type="Timer" parent="."]
 
@@ -321,6 +338,14 @@ wait_time = 10.0
 [node name="glacial_cooldown_time" type="Timer" parent="."]
 wait_time = 5.0
 
+[node name="Idle" type="Sprite2D" parent="."]
+position = Vector2(175, 104)
+scale = Vector2(2.62128, 2.62128)
+texture = ExtResource("11_re4qp")
+region_enabled = true
+region_rect = Rect2(12.5395, 19.1887, 41.2148, 31.3503)
+
+[connection signal="timeout" from="block_cooldown_time" to="." method="_on_block_cooldown_time_timeout"]
 [connection signal="timeout" from="fireball_casting_time" to="." method="_on_fireball_casting_time_timeout"]
 [connection signal="timeout" from="blade_cooldown_time" to="." method="_on_blade_cooldown_time_timeout"]
 [connection signal="timeout" from="glacial_cooldown_time" to="." method="_on_glacial_cooldown_time_timeout"]

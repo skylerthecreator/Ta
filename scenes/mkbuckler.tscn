@@ -163,7 +163,7 @@ theme_override_fonts/font = ExtResource("4_xwvrd")
 theme_override_font_sizes/font_size = 8
 text = "<Grants Active Skill (E): Block>
 [Casting: Instant]
-[Cooldown: 5s]
+[Cooldown: 3.5s]
 
 Block all incoming attacks for 0.5s
 

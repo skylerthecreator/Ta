@@ -470,7 +470,7 @@ script = ExtResource("1_cx0e5")
 
 [node name="DIR" type="RayCast2D" parent="."]
 position = Vector2(0, -4)
-target_position = Vector2(-5, 4)
+target_position = Vector2(-7, 3)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17.6)

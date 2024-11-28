@@ -1,8 +1,6 @@
 extends CharacterBody2D
 
-
-const ROLL_SPEED = 300
-var MAX_SPEED = 100
+var MAX_SPEED = 300
 const JUMP_VELOCITY = -225
 const DASH_SPEED_MULTIPLIER = 4
 const PRIORITY_MOVEMENT = ["casting", "fireball", "blade", "counter", "skill1", "wake", "hit", "dash", "forbiddencasting", "forbidden", "glacial", "block"]
@@ -59,6 +57,7 @@ var glacial = load("res://scenes/glacial.tscn")
 @onready var block = $block
 @onready var block_duration = $block_duration
 @onready var block_cd = $block_cd
+@onready var blocked = $blocked
 
 var buy = false
 var areas1 = []
@@ -157,7 +156,9 @@ func _waking_up():
 	animated_sprite.play("wake")
 	waking_up = false
 func _hit(damage: int):
-	if !immune and !dead and !blocking:
+	if blocking:
+		blocked.play()
+	elif !immune and !dead and !blocking:
 		hurt.play()
 		_interrupt_casting()
 		game_manager.hp -= damage
@@ -222,6 +223,8 @@ func _interrupt_casting():
 	fireball_chargeup.stop()
 	casting_bar.visible = false
 	casting_bar.value = 0
+	blocking = false
+	block_duration.stop()
 
 func _skill1():
 	if (!(animated_sprite.animation == "skill1" and animated_sprite.is_playing())
@@ -362,18 +365,17 @@ func _on_dash_cd_timeout():
 
 func _block():
 	if can_block and game_manager.block_unlocked:
+		game_manager.block_pressed()
 		_interrupt_casting()
 		animated_sprite.play("block")
 		blocking = true
 		can_block = false
 		block_duration.start()
-	
-
+		speed /= 2
+		block_cd.start()
 func _on_block_duration_timeout():
 	animated_sprite.stop()
+	speed = MAX_SPEED
 	blocking = false
-	block_cd.start()
-
-
 func _on_block_cd_timeout():
 	can_block = true

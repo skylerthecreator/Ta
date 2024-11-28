@@ -1,4 +1,4 @@
-[gd_scene load_steps=185 format=3 uid="uid://cqnov4vrpq7a2"]
+[gd_scene load_steps=186 format=3 uid="uid://cqnov4vrpq7a2"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_osmlu"]
 [ext_resource type="Texture2D" uid="uid://bw55hyv2k77xy" path="res://assets/Pixel Prototype Player/Sprites/Combat/Punch02/Punch0204.png" id="2_2p2b5"]
@@ -57,6 +57,7 @@
 [ext_resource type="AudioStream" uid="uid://dfhwu22eif43r" path="res://assets/sounds/skills/forbiddencastsound.mp3" id="55_38h8u"]
 [ext_resource type="Shader" path="res://scripts/inner.gdshader" id="56_eu3sh"]
 [ext_resource type="Texture2D" uid="uid://bjk0d5vpfwme3" path="res://assets/sprites/ITEMS/iron_buckler.png" id="56_vgvon"]
+[ext_resource type="AudioStream" uid="uid://dpsp2o1ceqbk8" path="res://assets/sounds/skills/blocked.wav" id="58_8om0a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_quk64"]
 atlas = ExtResource("15_nfqb8")
@@ -1223,8 +1224,11 @@ wait_time = 0.5
 one_shot = true
 
 [node name="block_cd" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.5
 one_shot = true
+
+[node name="blocked" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("58_8om0a")
 
 [connection signal="area_entered" from="skill1outline" to="." method="_on_skill_1_outline_area_entered"]
 [connection signal="area_exited" from="skill1outline" to="." method="_on_skill_1_outline_area_exited"]

@@ -5,7 +5,6 @@ extends Node2D
 @onready var fireball_icon = $Display/fireball_icon
 @onready var fireball_casting = $Display/fireball_icon/fireball_casting
 @onready var fireball_casting_time = $fireball_casting_time
-@onready var fb_animation = $Display/fireball_icon/AnimatedSprite2D
 @onready var insta_cast = $Display/fireball_icon/insta_cast
 
 @onready var blade_icon = $Display/blade_icon
@@ -20,10 +19,13 @@ extends Node2D
 @onready var glacial_cooldown = $Display/glacial_icon/glacial_cooldown
 @onready var glacial_cooldown_time = $glacial_cooldown_time
 
+@onready var block_icon = $Display/block_icon
+@onready var block_cooldown = $Display/block_icon/block_cooldown
+@onready var block_cooldown_time = $block_cooldown_time
 
 
 const MAURICEPFP = preload("res://assets/sprites/NPCS/Wizard Pack/mauricepfp.png")
-const RIEAPFP = preload("res://assets/sprites/NPCS/Merchant Pack/rieapfp.png")
+const RIEAPFP = preload("res://assets/sprites/NPCS/Merchant Pack/riea3pfp.png")
 
 var dialogue_queue =[]
 var curr_dialogue = null
@@ -32,19 +34,23 @@ var curr_dialogue_index = 0
 var fireball_ct = 0
 var blade_cd = 0
 var glacial_cd = 0
+var block_cd = 0
 
 func _ready():
 	reset()
 func _physics_process(_delta):
-	if fireball_casting.visible == true:
+	if fireball_casting.visible:
 		fireball_casting.text = str(snapped(fireball_ct, 0.1))
 		fireball_ct -= 1.0/60
-	if blade_cooldown.visible == true:
+	if blade_cooldown.visible:
 		blade_cooldown.text = str(snapped(blade_cd, 0.1))
 		blade_cd -= 1.0/60
-	if glacial_cooldown.visible == true:
+	if glacial_cooldown.visible:
 		glacial_cooldown.text = str(snapped(glacial_cd, 0.1))
 		glacial_cd -= 1.0/60
+	if block_cooldown.visible:
+		block_cooldown.text = str(snapped(block_cd, 0.1))
+		block_cd -= 1.0/60
 func update_hp(curr: int, max_hp: int):
 	hp.text = ""
 	for i in range(curr):
@@ -100,6 +106,7 @@ func reset():
 	fireball_icon.visible = false
 	blade_icon.visible = false
 	glacial_icon.visible = false
+	block_icon.visible = false
 	dialogue_queue = []
 func continue_dialogue():
 	if len(dialogue_queue) > 0:
@@ -120,6 +127,16 @@ func start_dialogue(dialogue_lines, npc):
 		dialogue_queue.append([line, npc])
 	if autostart:
 		continue_dialogue()
+
+func show_block():
+	block_icon.visible = true
+func block_pressed():
+	block_cooldown.visible = true
+	block_cd = block_cooldown_time.wait_time
+	block_cooldown_time.start()
+func _on_block_cooldown_time_timeout():
+	block_cooldown.visible = false
+	block_cd = block_cooldown_time.wait_time
 
 
 

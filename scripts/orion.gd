@@ -61,7 +61,7 @@ func _physics_process(delta):
 		defending = true
 	defending = AS.animation == "defend"
 	shield.disabled = AS.animation != "defend"
-	if follow_player:
+	if follow_player and !follow_player.dead:
 		var gap = follow_player.position.x - position.x
 		if gap >= 0 and !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()):
 			direction =  1

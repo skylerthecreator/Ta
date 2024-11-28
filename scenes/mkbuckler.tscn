@@ -1,0 +1,200 @@
+[gd_scene load_steps=13 format=3 uid="uid://bvmqq3m5v66e5"]
+
+[ext_resource type="Script" path="res://scripts/mkbuckler.gd" id="1_5m8f3"]
+[ext_resource type="Texture2D" uid="uid://bjk0d5vpfwme3" path="res://assets/sprites/ITEMS/iron_buckler.png" id="2_ygepc"]
+[ext_resource type="Shader" path="res://scripts/outershader.gdshader" id="3_gj8s7"]
+[ext_resource type="FontFile" uid="uid://cj4qjstjnmyrg" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_pcm0c"]
+[ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="4_xwvrd"]
+[ext_resource type="AudioStream" uid="uid://dskojjmr48h04" path="res://assets/sounds/pickupsounds/fod.mp3" id="6_ddnim"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nj3iw"]
+shader = ExtResource("3_gj8s7")
+shader_parameter/line_color = Color(0, 1, 0, 1)
+shader_parameter/line_thickness = 1.25
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qfw5i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3ivqd"]
+
+[sub_resource type="Animation" id="Animation_4337y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("description:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pickupsound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_3s7iv"]
+resource_name = "pickup"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("description:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("pickupsound:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(3.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cmgn3"]
+_data = {
+"RESET": SubResource("Animation_4337y"),
+"pickup": SubResource("Animation_3s7iv")
+}
+
+[node name="mkbuckler" type="Area2D"]
+collision_layer = 4
+collision_mask = 2
+script = ExtResource("1_5m8f3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_nj3iw")
+scale = Vector2(0.59375, 0.59375)
+texture = ExtResource("2_ygepc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_qfw5i")
+
+[node name="description" type="Label" parent="."]
+offset_left = -65.0
+offset_top = -74.0
+offset_right = 152.0
+scale = Vector2(0.6, 0.6)
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("4_xwvrd")
+theme_override_font_sizes/font_size = 8
+text = "<Grants Active Skill (E): Block>
+[Casting: Instant]
+[Cooldown: 5s]
+
+Block all incoming attacks for 0.5s
+
+Press (F) to claim"
+horizontal_alignment = 1
+
+[node name="description2" type="Label" parent="description"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.8333
+offset_top = -21.6667
+offset_right = 43.1667
+offset_bottom = -12.6667
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_pcm0c")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxTexture_3ivqd")
+text = "Mor'kul's Buckler"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_cmgn3")
+}
+
+[node name="pickupsound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ddnim")
+bus = &"SFX"
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

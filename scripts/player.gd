@@ -5,9 +5,9 @@ const ROLL_SPEED = 300
 var MAX_SPEED = 100
 const JUMP_VELOCITY = -225
 const DASH_SPEED_MULTIPLIER = 4
-const PRIORITY_MOVEMENT = ["casting", "fireball", "blade", "counter", "skill1", "wake", "hit", "dash", "forbiddencasting", "forbidden", "glacial"]
-const PREVENT_START = ["casting", "fireball", "blade", "counter", "forbiddencasting", "forbidden", "glacial"]
-const PREVENT_FLIP = ["fireball", "blade", "counter", "forbiddencasting", "forbidden", "dash", "glacial"]
+const PRIORITY_MOVEMENT = ["casting", "fireball", "blade", "counter", "skill1", "wake", "hit", "dash", "forbiddencasting", "forbidden", "glacial", "block"]
+const PREVENT_START = ["casting", "fireball", "blade", "counter", "forbiddencasting", "forbidden", "glacial", "block"]
+const PREVENT_FLIP = ["fireball", "blade", "counter", "forbiddencasting", "forbidden", "dash", "glacial", "block"]
 var speed = MAX_SPEED
 
 
@@ -56,21 +56,23 @@ var glacial = load("res://scenes/glacial.tscn")
 @onready var glacial_cast_time = $glacial_cast_time
 @onready var glacial_cd = $glacial_cd
 
+@onready var block = $block
+@onready var block_duration = $block_duration
+@onready var block_cd = $block_cd
 
 var buy = false
 var areas1 = []
 var dead = false
-var rolling = false
 var waking_up = true
 var attacking = false
 var moving = false
 var immune = false
 var can_dash = true
 var dashing = false
-
+var can_block = true
+var blocking = false
 var casting = false
 var cast_dir = 1
-var can_jump = true
 var casting_speed = 0
 	
 func _physics_process(delta):
@@ -107,6 +109,9 @@ func _physics_process(delta):
 			_skill3()
 		if Input.is_action_just_pressed("special1"):
 			_special1()
+		if Input.is_action_just_pressed("block"):
+			_block()
+		block.visible = blocking
 		if buy:
 			buy = false
 		if Input.is_action_just_pressed("pickup"):
@@ -152,7 +157,7 @@ func _waking_up():
 	animated_sprite.play("wake")
 	waking_up = false
 func _hit(damage: int):
-	if !immune and !dead:
+	if !immune and !dead and !blocking:
 		hurt.play()
 		_interrupt_casting()
 		game_manager.hp -= damage
@@ -177,6 +182,8 @@ func _flip(direction: int):
 				forbiddenspawn.position.x *= -1
 				forbidden_chargeup.scale.x *= -1
 				glacialspawn.position.x *= -1
+				block.position.x *= -1
+				block.scale.x *= -1
 		elif direction < 0:
 			cast_dir = direction
 			animated_sprite.flip_h = true
@@ -188,6 +195,9 @@ func _flip(direction: int):
 				bladespawn.position.x *= -1
 				forbiddenspawn.position.x *= -1
 				forbidden_chargeup.scale.x *= -1
+				glacialspawn.position.x *= -1
+				block.position.x *= -1
+				block.scale.x *= -1
 func _play_movement_animations(direction: int):
 	if is_on_floor():
 		if direction == 0:
@@ -350,14 +360,20 @@ func _on_dash_duration_timeout():
 func _on_dash_cd_timeout():
 	can_dash = true
 
+func _block():
+	if can_block and game_manager.block_unlocked:
+		_interrupt_casting()
+		animated_sprite.play("block")
+		blocking = true
+		can_block = false
+		block_duration.start()
+	
+
+func _on_block_duration_timeout():
+	animated_sprite.stop()
+	blocking = false
+	block_cd.start()
 
 
-
-
-
-
-
-
-
-
-
+func _on_block_cd_timeout():
+	can_block = true

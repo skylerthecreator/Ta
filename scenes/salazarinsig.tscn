@@ -1,172 +1,16 @@
-[gd_scene load_steps=33 format=3 uid="uid://ce75i1eqfwy8r"]
+[gd_scene load_steps=13 format=3 uid="uid://ce75i1eqfwy8r"]
 
 [ext_resource type="Script" path="res://scripts/salazarinsig.gd" id="1_nq7ak"]
 [ext_resource type="Texture2D" uid="uid://drwmi0im3pc80" path="res://assets/sprites/ITEMS/salazardrop.png" id="1_ypwrh"]
-[ext_resource type="Texture2D" uid="uid://bddn55nr7nha1" path="res://assets/sprites/skills/glow.png" id="2_v1g3o"]
 [ext_resource type="FontFile" uid="uid://cj4qjstjnmyrg" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_1hdj5"]
+[ext_resource type="Shader" path="res://scripts/outershader.gdshader" id="3_x1sof"]
 [ext_resource type="AudioStream" uid="uid://dskojjmr48h04" path="res://assets/sounds/pickupsounds/fod.mp3" id="4_ojwc2"]
+[ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="6_t33xc"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jg6gj"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(0, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ffaix"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(192, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jgj0g"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(384, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4lix4"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(576, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2prhr"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(768, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pmkxh"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(0, 192, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x8as2"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(192, 192, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_33ryp"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(384, 192, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_85yvi"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(576, 192, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iekcp"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(768, 192, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iq7p1"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(0, 384, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o6abq"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(192, 384, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_elfpp"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(384, 384, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j2so7"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(576, 384, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sx5a2"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(768, 384, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c7vpf"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(0, 576, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y0sww"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(192, 576, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0s0lm"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(384, 576, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oi6go"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(576, 576, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eefqg"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(768, 576, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a3knr"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(0, 768, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dflwn"]
-atlas = ExtResource("2_v1g3o")
-region = Rect2(192, 768, 192, 192)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_tr5sw"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jg6gj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ffaix")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jgj0g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4lix4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2prhr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pmkxh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x8as2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_33ryp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_85yvi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iekcp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iq7p1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o6abq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_elfpp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j2so7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sx5a2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c7vpf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y0sww")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0s0lm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oi6go")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eefqg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a3knr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dflwn")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jno6r"]
+shader = ExtResource("3_x1sof")
+shader_parameter/line_color = Color(0, 1, 0, 1)
+shader_parameter/line_thickness = 1.25
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dmpaf"]
 
@@ -219,18 +63,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("glow:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_jh6ib"]
@@ -298,18 +130,6 @@ tracks/4/keys = {
 "method": &"queue_free"
 }]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("glow:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_etxcs"]
 _data = {
@@ -317,45 +137,21 @@ _data = {
 "pickup": SubResource("Animation_jh6ib")
 }
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yom1m"]
+
 [node name="salazarinsig" type="Area2D"]
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_nq7ak")
 
-[node name="glow" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.568627)
-position = Vector2(-1.90735e-06, 1.90735e-06)
-scale = Vector2(0.21224, 0.21224)
-sprite_frames = SubResource("SpriteFrames_tr5sw")
-autoplay = "default"
-
 [node name="icon" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_jno6r")
 position = Vector2(-5.96046e-08, 5.96046e-08)
 scale = Vector2(0.246094, 0.246094)
 texture = ExtResource("1_ypwrh")
 
-[node name="description" type="Label" parent="."]
-offset_left = -99.0
-offset_top = -88.0
-offset_right = 231.0
-offset_bottom = 14.0
-scale = Vector2(0.6, 0.6)
-theme_override_colors/font_color = Color(1, 0.509804, 0, 1)
-theme_override_fonts/font = ExtResource("3_1hdj5")
-theme_override_font_sizes/font_size = 8
-text = "Salazar's Insignia
-<Grants Active Skill (L): Frost Spike>
-[Casting: Instant]
-[Cooldown: 5s]
-
-Hurl a frost spike at the enemy in front of you,
- dealing (1) damage and slowing them for 3s
-
-Press (F) to claim
-"
-horizontal_alignment = 1
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_dmpaf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -366,6 +162,44 @@ libraries = {
 [node name="pickupsound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_ojwc2")
 bus = &"SFX"
+
+[node name="description" type="Label" parent="."]
+offset_left = -97.0
+offset_top = -79.0
+offset_right = 226.0
+offset_bottom = 28.0
+scale = Vector2(0.6, 0.6)
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("6_t33xc")
+theme_override_font_sizes/font_size = 8
+text = "<Grants Active Skill (L): Frost Spike>
+[Casting: Instant]
+[Cooldown: 5s]
+
+Hurl a frost spike at the enemy in front of you,
+ dealing (1) damage and slowing them for 3s
+
+Press (F) to claim
+"
+horizontal_alignment = 1
+
+[node name="description2" type="Label" parent="description"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -84.8333
+offset_top = -23.3333
+offset_right = 45.1667
+offset_bottom = -12.3333
+grow_horizontal = 2
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_1hdj5")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxTexture_yom1m")
+text = "Salazar's Insignia"
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,68 +1,48 @@
-[gd_scene load_steps=16 format=3 uid="uid://c6xk73lautgxt"]
+[gd_scene load_steps=13 format=3 uid="uid://c6xk73lautgxt"]
 
 [ext_resource type="Script" path="res://scripts/coin.gd" id="1_ytq0i"]
-[ext_resource type="Texture2D" uid="uid://cr0hex7pvekue" path="res://assets/sprites/ITEMS/coin2.png" id="2_q4aye"]
-[ext_resource type="AudioStream" uid="uid://pogfe5jjof4v" path="res://assets/sounds/pickupsounds/coin2.wav" id="3_hj5fp"]
+[ext_resource type="Texture2D" uid="uid://c2xkedgli3ilw" path="res://assets/sprites/ITEMS/spr_coin_strip4.png" id="2_3b8q5"]
+[ext_resource type="AudioStream" uid="uid://urskkvg8ugqs" path="res://assets/sounds/pickupsounds/gem.wav" id="3_6ls6o"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k70ra"]
-atlas = ExtResource("2_q4aye")
-region = Rect2(0, 0, 800, 800)
+[sub_resource type="AtlasTexture" id="AtlasTexture_uipj2"]
+atlas = ExtResource("2_3b8q5")
+region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xvcd6"]
-atlas = ExtResource("2_q4aye")
-region = Rect2(800, 0, 800, 800)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdt7b"]
+atlas = ExtResource("2_3b8q5")
+region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ilock"]
-atlas = ExtResource("2_q4aye")
-region = Rect2(1600, 0, 800, 800)
+[sub_resource type="AtlasTexture" id="AtlasTexture_jq82k"]
+atlas = ExtResource("2_3b8q5")
+region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ndbf7"]
-atlas = ExtResource("2_q4aye")
-region = Rect2(0, 800, 800, 800)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eve28"]
-atlas = ExtResource("2_q4aye")
-region = Rect2(800, 800, 800, 800)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kbcls"]
-atlas = ExtResource("2_q4aye")
-region = Rect2(1600, 800, 800, 800)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_cs08m"]
-atlas = ExtResource("2_q4aye")
-region = Rect2(0, 1600, 800, 800)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ggjs8"]
+atlas = ExtResource("2_3b8q5")
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gmnep"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k70ra")
+"texture": SubResource("AtlasTexture_uipj2")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xvcd6")
+"texture": SubResource("AtlasTexture_mdt7b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ilock")
+"texture": SubResource("AtlasTexture_jq82k")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ndbf7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eve28")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kbcls")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_cs08m")
+"texture": SubResource("AtlasTexture_ggjs8")
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 4.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mgmf6"]
-radius = 5.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_putdv"]
+radius = 3.0
+height = 10.0
 
 [sub_resource type="Animation" id="Animation_4esjo"]
 length = 0.001
@@ -105,6 +85,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_5lot7"]
 resource_name = "pickupanimation"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -148,7 +129,7 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.3),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -168,17 +149,17 @@ collision_mask = 2
 script = ExtResource("1_ytq0i")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(2.98023e-08, 0)
-scale = Vector2(0.0184375, 0.0184375)
+position = Vector2(-5.96046e-08, -5.96046e-08)
+scale = Vector2(0.596055, 0.596055)
 sprite_frames = SubResource("SpriteFrames_gmnep")
 autoplay = "default"
-frame_progress = 0.724225
+frame_progress = 0.477703
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_mgmf6")
+shape = SubResource("CapsuleShape2D_putdv")
 
 [node name="pickup" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_hj5fp")
+stream = ExtResource("3_6ls6o")
 bus = &"SFX"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

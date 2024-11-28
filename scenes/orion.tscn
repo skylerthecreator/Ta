@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://cy00t7t5uqi6c"]
+[gd_scene load_steps=73 format=3 uid="uid://cy00t7t5uqi6c"]
 
 [ext_resource type="Texture2D" uid="uid://dcvepj8y4qaj0" path="res://assets/sprites/enemies/Monsters/Monsters_Creatures_Fantasy/Skeleton/Attack.png" id="1_87ovw"]
 [ext_resource type="Script" path="res://scripts/orion.gd" id="1_cx0e5"]
@@ -460,18 +460,23 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cejeu"]
+radius = 4.0
+height = 18.0
+
 [node name="morkul" type="Area2D" groups=["enemies"]]
+z_index = -1
 script = ExtResource("1_cx0e5")
 
 [node name="DIR" type="RayCast2D" parent="."]
 position = Vector2(0, -4)
-target_position = Vector2(-6, 4)
+target_position = Vector2(-5, 4)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -17.6)
 scale = Vector2(-0.67872, 0.67872)
 sprite_frames = SubResource("SpriteFrames_et7d2")
-animation = &"idle"
+animation = &"walk"
 offset = Vector2(-4, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -570,10 +575,10 @@ stream = ExtResource("18_6ne8n")
 bus = &"SFX"
 
 [node name="title" type="Label" parent="."]
-offset_left = -91.0
+offset_left = -52.0
 offset_top = -68.0
-offset_right = 91.0
-offset_bottom = -33.0
+offset_right = 52.0
+offset_bottom = -47.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("14_rg4lj")
 theme_override_font_sizes/font_size = 8
@@ -609,11 +614,19 @@ scale = Vector2(0.5625, 0.171875)
 sprite_frames = SubResource("SpriteFrames_al3ws")
 frame_progress = 0.530709
 
-[node name="batteryspawn" type="Marker2D" parent="."]
+[node name="spawn" type="Marker2D" parent="."]
+position = Vector2(0, -17)
 
 [node name="UNDER" type="RayCast2D" parent="."]
 position = Vector2(-8, -14)
-target_position = Vector2(0, 15)
+target_position = Vector2(0, 14)
+
+[node name="shield" type="Area2D" parent="."]
+visible = false
+
+[node name="shieldarea" type="CollisionShape2D" parent="shield"]
+position = Vector2(-17, -21)
+shape = SubResource("CapsuleShape2D_cejeu")
 
 [connection signal="timeout" from="dtdt" to="." method="_on_dtdt_timeout"]
 [connection signal="body_entered" from="vision" to="." method="_on_vision_body_entered"]

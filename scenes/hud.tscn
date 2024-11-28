@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cnpgir75n6dgl"]
+[gd_scene load_steps=27 format=3 uid="uid://cnpgir75n6dgl"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_64fqt"]
 [ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="2_mdka8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://e44lxyu1aoqw" path="res://assets/sprites/skills/Yellow Effect Bullet Impact Explosion 32x32.png" id="6_mj6s8"]
 [ext_resource type="Texture2D" uid="uid://4slsbcknnjiu" path="res://assets/sprites/skills/blade/pixil-frame-0.png" id="8_so6ds"]
 [ext_resource type="Texture2D" uid="uid://cpxrqiny2fc04" path="res://assets/sprites/skills/ice/glacialicon2.png" id="9_phdwj"]
+[ext_resource type="Texture2D" uid="uid://c2xkedgli3ilw" path="res://assets/sprites/ITEMS/spr_coin_strip4.png" id="10_a5bvh"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_44bov"]
 action = &"skill0"
@@ -115,14 +116,28 @@ theme_override_font_sizes/font_size = 24
 text = "❤️❤️❤️❤️❤️"
 metadata/_edit_use_anchors_ = true
 
+[node name="Control" type="Control" parent="Display"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SprCoinStrip4" type="Sprite2D" parent="Display"]
+position = Vector2(28, 55)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("10_a5bvh")
+region_enabled = true
+region_rect = Rect2(2.67411, 0, 10.5402, 16)
+
 [node name="coins" type="Label" parent="Display"]
-offset_left = 12.0
-offset_top = 42.0
-offset_right = 278.0
-offset_bottom = 97.0
+anchors_preset = -1
+offset_left = 38.0
+offset_top = 45.0
+offset_right = 264.0
+offset_bottom = 100.0
 theme_override_fonts/font = ExtResource("2_mdka8")
 theme_override_font_sizes/font_size = 24
-text = "🪙x8"
+text = "x8"
 metadata/_edit_use_anchors_ = true
 
 [node name="dialogue_box" type="Button" parent="Display"]

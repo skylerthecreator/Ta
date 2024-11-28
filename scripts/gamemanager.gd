@@ -8,12 +8,13 @@ var insta_cast_ready = false
 var amnova_ready = true
 
 var hp = 1
-
-var fireball_unlocked = false
-var glacial_unlocked = false
-var blade_unlocked = false
-var forbidden_unlocked = true
-var amnova_unlocked = false
+var cheats = false
+var fireball_unlocked = false or cheats
+var glacial_unlocked = false or cheats
+var blade_unlocked = false or cheats
+var forbidden_unlocked = true or cheats
+var amnova_unlocked = false or cheats
+var block_unlocked = false or cheats
 
 var insta_cast_unlocked = true
 var immunity_unlocked = false

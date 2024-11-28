@@ -1,16 +1,21 @@
 extends Area2D
 
 @onready var animation_player = $AnimationPlayer
-@onready var game_manager = %GameManager
+#@onready var game_manager = %GameManager
 @onready var description = $description
 
 var player = null
+var game_manager = null
 
 func _ready():
+	if owner == null:
+		owner = get_parent()
+	game_manager = %GameManager
 	description.visible = false
 	
 func _process(_delta):
 	if player and player.buy:
+		#player.unlock_blade()
 		game_manager.blade_unlocked = true
 		animation_player.play("pickup")
 		player = null

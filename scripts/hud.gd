@@ -53,7 +53,7 @@ func update_hp(curr: int, max_hp: int):
 		hp.text += "🖤"
 func update_coins(c: int):
 	coins.text = ""
-	coins.text = "🪙x" + str(c)
+	coins.text = "x" + str(c)
 	
 func show_fireball():
 	fireball_icon.visible = true

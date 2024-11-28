@@ -26,12 +26,16 @@ extends Area2D
 @onready var hitsfx = $hit
 @onready var enragedfx = $fx
 
-#var battery = load("res://scenes/battery.tscn")
-#@onready var batteryspawn = $batteryspawn
+@onready var game_manager = %GameManager
+var buckler = load("res://scenes/mkbuckler.tscn")
+@onready var spawn = $spawn
+
+@onready var shield = $shield/shieldarea
+
 
 var SPEED = 30
 var direction = 1
-var MAX_HP = 10
+var MAX_HP = 1
 
 var begin = false
 var hp = MAX_HP
@@ -43,8 +47,8 @@ var player2 = null
 var in_range = false
 
 var attack_2_ready = true
-
-var NO_MOVE = ["attack1", "attack2", "attack3", "death", "hit"]
+var defending = false
+var NO_MOVE = ["attack1", "attack2", "attack3", "death", "hit", "defend"]
 
 func _physics_process(delta):
 	update_health()
@@ -52,6 +56,11 @@ func _physics_process(delta):
 		enragedfx.visible = true
 		enragedfx.play("default")
 		SPEED = 45
+	if hp == 10 or hp == 5:
+		AS.play("defend")
+		defending = true
+	defending = AS.animation == "defend"
+	shield.disabled = AS.animation != "defend"
 	if follow_player:
 		var gap = follow_player.position.x - position.x
 		if gap >= 0 and !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()):
@@ -65,6 +74,7 @@ func _physics_process(delta):
 				enragedfx.scale.x *= -1
 				dir.scale.x *= -1
 				under.position.x *= -1
+				shield.position.x *= -1
 				
 		elif gap < 0 and !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()):
 			direction = -1
@@ -77,6 +87,7 @@ func _physics_process(delta):
 				attackrange.scale.x *= -1
 				dir.scale.x *= -1
 				under.position.x *= -1
+				shield.position.x *= -1
 	else:
 		AS.play("idle")
 
@@ -92,9 +103,9 @@ func _physics_process(delta):
 	if !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()) and hp > 0 and follow_player:
 		AS.play("walk")
 		if !under.is_colliding():
-			position.y += 0.5
+			position.y += 0.4
 		if dir.is_colliding():
-			position.y -= 0.5
+			position.y -= 0.4
 		position.x += direction * delta * SPEED
 		
 		
@@ -122,9 +133,9 @@ func hit(damage: int):
 	else:
 		AS.play("death")
 		deathanimation.play("die")
-		#var b = battery.instantiate()
-		#owner.add_child(b)
-		#b.transform = batteryspawn.global_transform
+		var b = buckler.instantiate()
+		owner.add_child(b)
+		b.transform = spawn.global_transform
 
 func _on_dtdt_timeout():
 	dmg_taken.text = ""

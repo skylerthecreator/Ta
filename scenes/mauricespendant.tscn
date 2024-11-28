@@ -1,172 +1,13 @@
-[gd_scene load_steps=33 format=3 uid="uid://c1psa57wke5jg"]
+[gd_scene load_steps=13 format=3 uid="uid://c1psa57wke5jg"]
 
 [ext_resource type="Script" path="res://scripts/mauricespendant.gd" id="1_c5fbk"]
-[ext_resource type="Texture2D" uid="uid://ccpkyovamxm8j" path="res://assets/sprites/ITEMS/Abyss necklace8_Variant 9_1.png" id="2_40jxg"]
-[ext_resource type="Texture2D" uid="uid://bddn55nr7nha1" path="res://assets/sprites/skills/glow.png" id="2_gytu0"]
+[ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="2_bt156"]
 [ext_resource type="FontFile" uid="uid://cj4qjstjnmyrg" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_ie8tm"]
 [ext_resource type="AudioStream" uid="uid://dskojjmr48h04" path="res://assets/sounds/pickupsounds/fod.mp3" id="4_sb3dk"]
+[ext_resource type="Shader" path="res://scripts/outershader.gdshader" id="5_plgkk"]
+[ext_resource type="Texture2D" uid="uid://cp57udt7vu1uv" path="res://assets/sprites/ITEMS/mauricenecklace2.png" id="6_l75r6"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jg6gj"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(0, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ffaix"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(192, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jgj0g"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(384, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4lix4"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(576, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2prhr"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(768, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pmkxh"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(0, 192, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x8as2"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(192, 192, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_33ryp"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(384, 192, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_85yvi"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(576, 192, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iekcp"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(768, 192, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iq7p1"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(0, 384, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o6abq"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(192, 384, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_elfpp"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(384, 384, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j2so7"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(576, 384, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sx5a2"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(768, 384, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c7vpf"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(0, 576, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y0sww"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(192, 576, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0s0lm"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(384, 576, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oi6go"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(576, 576, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eefqg"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(768, 576, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a3knr"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(0, 768, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dflwn"]
-atlas = ExtResource("2_gytu0")
-region = Rect2(192, 768, 192, 192)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_vrro0"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jg6gj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ffaix")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jgj0g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4lix4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2prhr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pmkxh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x8as2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_33ryp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_85yvi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iekcp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iq7p1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o6abq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_elfpp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j2so7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sx5a2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c7vpf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y0sww")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0s0lm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oi6go")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eefqg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a3knr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dflwn")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oajus"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nmcxd"]
 radius = 11.0454
@@ -216,18 +57,6 @@ tracks/3/path = NodePath("icon:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("glow:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -299,18 +128,6 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("glow:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f2e8l"]
 _data = {
@@ -318,30 +135,27 @@ _data = {
 "pickup": SubResource("Animation_ilikj")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5juy6"]
+shader = ExtResource("5_plgkk")
+shader_parameter/line_color = Color(0, 1, 1, 1)
+shader_parameter/line_thickness = 1.25
+
 [node name="mauricespendant" type="Area2D"]
 position = Vector2(0, 5)
 collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_c5fbk")
 
-[node name="glow" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.568627)
-position = Vector2(2.27374e-13, -5)
-scale = Vector2(0.21224, 0.21224)
-sprite_frames = SubResource("SpriteFrames_vrro0")
-autoplay = "default"
-
 [node name="description" type="Label" parent="."]
-offset_left = -100.0
-offset_top = -76.0
-offset_right = 235.0
-offset_bottom = 4.0
+offset_left = -89.0
+offset_top = -71.0
+offset_right = 207.0
+offset_bottom = -3.0
 scale = Vector2(0.6, 0.6)
 theme_override_colors/font_color = Color(0, 1, 1, 1)
-theme_override_fonts/font = ExtResource("3_ie8tm")
+theme_override_fonts/font = ExtResource("2_bt156")
 theme_override_font_sizes/font_size = 8
-text = "Maurice's Amulet
-<Grants Passive Ability: Maurice's Embrace>
+text = "<Grants Passive Ability: Maurice's Embrace>
 
 Upon taking damage, gain a shield that prevents 
 you from taking additional damage for 0.5s
@@ -349,7 +163,25 @@ you from taking additional damage for 0.5s
 Press (F) to claim"
 horizontal_alignment = 1
 
+[node name="description2" type="Label" parent="description"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.501
+anchor_right = 0.501
+offset_left = -84.9627
+offset_top = -20.0
+offset_right = 46.0373
+offset_bottom = -9.99999
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_fonts/font = ExtResource("3_ie8tm")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxTexture_oajus")
+text = "Maurice's Amulet"
+horizontal_alignment = 1
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_nmcxd")
 
@@ -363,9 +195,10 @@ stream = ExtResource("4_sb3dk")
 bus = &"SFX"
 
 [node name="icon" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_5juy6")
 position = Vector2(0, -5)
 scale = Vector2(0.265625, 0.265625)
-texture = ExtResource("2_40jxg")
+texture = ExtResource("6_l75r6")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

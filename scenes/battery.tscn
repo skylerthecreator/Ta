@@ -1,175 +1,21 @@
-[gd_scene load_steps=33 format=3 uid="uid://b1qqitl1xtl0g"]
+[gd_scene load_steps=13 format=3 uid="uid://b1qqitl1xtl0g"]
 
 [ext_resource type="Script" path="res://scripts/plasma battery.gd" id="1_rur82"]
 [ext_resource type="Texture2D" uid="uid://435kggk0r18d" path="res://assets/sprites/ITEMS/battery_25x50px27.png" id="2_agqq5"]
-[ext_resource type="Texture2D" uid="uid://bddn55nr7nha1" path="res://assets/sprites/skills/glow.png" id="2_q3fwa"]
+[ext_resource type="Shader" path="res://scripts/outershader.gdshader" id="3_jl00w"]
 [ext_resource type="FontFile" uid="uid://cj4qjstjnmyrg" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_jrssd"]
 [ext_resource type="AudioStream" uid="uid://dskojjmr48h04" path="res://assets/sounds/pickupsounds/fod.mp3" id="4_qt1ds"]
+[ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="4_wemd2"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jg6gj"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(0, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ffaix"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(192, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jgj0g"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(384, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4lix4"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(576, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2prhr"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(768, 0, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pmkxh"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(0, 192, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_x8as2"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(192, 192, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_33ryp"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(384, 192, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_85yvi"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(576, 192, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iekcp"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(768, 192, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_iq7p1"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(0, 384, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_o6abq"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(192, 384, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_elfpp"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(384, 384, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_j2so7"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(576, 384, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sx5a2"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(768, 384, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_c7vpf"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(0, 576, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y0sww"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(192, 576, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0s0lm"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(384, 576, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oi6go"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(576, 576, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_eefqg"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(768, 576, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a3knr"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(0, 768, 192, 192)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_dflwn"]
-atlas = ExtResource("2_q3fwa")
-region = Rect2(192, 768, 192, 192)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_dkb0c"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jg6gj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ffaix")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jgj0g")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4lix4")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2prhr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_pmkxh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_x8as2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_33ryp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_85yvi")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iekcp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_iq7p1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o6abq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_elfpp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j2so7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sx5a2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_c7vpf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y0sww")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0s0lm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oi6go")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_eefqg")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a3knr")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dflwn")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c33qo"]
+shader = ExtResource("3_jl00w")
+shader_parameter/line_color = Color(0, 1, 0, 1)
+shader_parameter/line_thickness = 1.25
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sqcx3"]
 radius = 11.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eh7go"]
 
 [sub_resource type="Animation" id="Animation_fh16w"]
 length = 0.001
@@ -182,7 +28,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 tracks/1/type = "value"
@@ -221,18 +67,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("glow:visible")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_sbs3x"]
 resource_name = "pickup"
@@ -246,7 +80,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [false]
 }
 tracks/1/type = "value"
@@ -299,18 +133,6 @@ tracks/4/keys = {
 "method": &"queue_free"
 }]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("glow:visible")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_q6v78"]
 _data = {
@@ -324,34 +146,28 @@ collision_layer = 4
 collision_mask = 2
 script = ExtResource("1_rur82")
 
-[node name="glow" type="AnimatedSprite2D" parent="."]
-modulate = Color(1, 1, 1, 0.568627)
-position = Vector2(-2.71051e-20, -5)
-scale = Vector2(0.21224, 0.21224)
-sprite_frames = SubResource("SpriteFrames_dkb0c")
-autoplay = "default"
-
 [node name="icon" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_c33qo")
 position = Vector2(0, -5)
 scale = Vector2(0.211806, 0.279583)
 texture = ExtResource("2_agqq5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_sqcx3")
 
 [node name="description" type="Label" parent="."]
-offset_left = -112.0
-offset_top = -106.0
-offset_right = 261.0
+offset_left = -97.0
+offset_top = -90.0
+offset_right = 226.0
 offset_bottom = 17.0
 scale = Vector2(0.6, 0.6)
-theme_override_colors/font_color = Color(1, 0.509804, 0, 1)
-theme_override_fonts/font = ExtResource("3_jrssd")
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("4_wemd2")
 theme_override_font_sizes/font_size = 8
-text = "Plasma Core
-<Grants Active Skill (K): Plasma Strike>
-[Casting: 0s]
+text = "<Grants Active Skill (K): Plasma Strike>
+[Casting: Instant]
 [Cooldown: 5s]
 
 Concentrate your energy to generate a lethal blade, 
@@ -359,7 +175,25 @@ sending out a devastating wave of energy, striking
 all enemies in your path for (2)
 
 
-Press (F) to claim"
+Press (F) to claim
+"
+horizontal_alignment = 1
+
+[node name="description2" type="Label" parent="description"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -81.5
+offset_top = -21.6667
+offset_right = 43.5
+offset_bottom = -11.6667
+scale = Vector2(1.3, 1.3)
+theme_override_colors/font_color = Color(0, 1, 0, 1)
+theme_override_fonts/font = ExtResource("3_jrssd")
+theme_override_font_sizes/font_size = 8
+theme_override_styles/normal = SubResource("StyleBoxTexture_eh7go")
+text = "Plasma Core"
 horizontal_alignment = 1
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

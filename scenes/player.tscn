@@ -1,4 +1,4 @@
-[gd_scene load_steps=181 format=3 uid="uid://cqnov4vrpq7a2"]
+[gd_scene load_steps=185 format=3 uid="uid://cqnov4vrpq7a2"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_osmlu"]
 [ext_resource type="Texture2D" uid="uid://bw55hyv2k77xy" path="res://assets/Pixel Prototype Player/Sprites/Combat/Punch02/Punch0204.png" id="2_2p2b5"]
@@ -55,6 +55,8 @@
 [ext_resource type="AudioStream" uid="uid://chgq5a851ssdh" path="res://assets/sounds/skills/blade_shoot.mp3" id="51_kj0ft"]
 [ext_resource type="Texture2D" uid="uid://ckjtb1iwwpqwl" path="res://assets/sprites/skills/DarkSpells/DarkSpell_02/DarkSpell_02_spritesheet.png" id="55_4uivj"]
 [ext_resource type="AudioStream" uid="uid://dfhwu22eif43r" path="res://assets/sounds/skills/forbiddencastsound.mp3" id="55_38h8u"]
+[ext_resource type="Shader" path="res://scripts/inner.gdshader" id="56_eu3sh"]
+[ext_resource type="Texture2D" uid="uid://bjk0d5vpfwme3" path="res://assets/sprites/ITEMS/iron_buckler.png" id="56_vgvon"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_quk64"]
 atlas = ExtResource("15_nfqb8")
@@ -83,6 +85,10 @@ region = Rect2(480, 2604, 96, 84)
 [sub_resource type="AtlasTexture" id="AtlasTexture_63c8y"]
 atlas = ExtResource("15_nfqb8")
 region = Rect2(576, 2604, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwvti"]
+atlas = ExtResource("15_nfqb8")
+region = Rect2(480, 2604, 96, 84)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fojhr"]
 atlas = ExtResource("2_2p2b5")
@@ -443,6 +449,14 @@ animations = [{
 "loop": false,
 "name": &"blade",
 "speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwvti")
+}],
+"loop": true,
+"name": &"block",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1037,6 +1051,11 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_k33e4"]
+shader = ExtResource("56_eu3sh")
+shader_parameter/line_color = Color(0.560784, 0.584314, 0.639216, 1)
+shader_parameter/line_thickness = 1.0
+
 [node name="player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_osmlu")
@@ -1046,7 +1065,8 @@ z_index = 1
 position = Vector2(-2.27374e-13, -28)
 scale = Vector2(0.662424, 0.667223)
 sprite_frames = SubResource("SpriteFrames_vvjdw")
-animation = &"wake"
+animation = &"block"
+frame_progress = 0.642571
 
 [node name="playeroutline" type="CollisionShape2D" parent="."]
 visible = false
@@ -1191,6 +1211,21 @@ one_shot = true
 [node name="glacial_cd" type="Timer" parent="."]
 wait_time = 5.0
 
+[node name="block" type="Sprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_k33e4")
+position = Vector2(8.5, -20)
+scale = Vector2(-0.344, 0.813)
+texture = ExtResource("56_vgvon")
+
+[node name="block_duration" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[node name="block_cd" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="area_entered" from="skill1outline" to="." method="_on_skill_1_outline_area_entered"]
 [connection signal="area_exited" from="skill1outline" to="." method="_on_skill_1_outline_area_exited"]
 [connection signal="timeout" from="skill1cd" to="." method="_on_skill_1_cd_timeout"]
@@ -1204,3 +1239,5 @@ wait_time = 5.0
 [connection signal="timeout" from="forbidden_cast_time" to="." method="_on_forbidden_cast_time_timeout"]
 [connection signal="timeout" from="glacial_cast_time" to="." method="_on_glacial_cast_time_timeout"]
 [connection signal="timeout" from="glacial_cd" to="." method="_on_glacial_cd_timeout"]
+[connection signal="timeout" from="block_duration" to="." method="_on_block_duration_timeout"]
+[connection signal="timeout" from="block_cd" to="." method="_on_block_cd_timeout"]

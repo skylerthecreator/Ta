@@ -20,9 +20,10 @@ Map:
 Fantasy Swamp Forest Tileset - https://theflavare.itch.io/forest-nature-fantasy-tileset
 Brackeys' Platformer Bundle - https://brackeysgames.itch.io/brackeys-platformer-bundle
 Pixel Tree Set by Jestan - https://jestan.itch.io/trees
-Coin! - https://merlym.itch.io/coin
+Gems / Coins Free - https://laredgames.itch.io/gems-coins-free
 Battery - https://ruxar.itch.io/battery
 Spikes: Simple Tileset and spikes - https://ideelino.itch.io/simple-tileset-and-spikes
+Sword Icons - https://bizmasterstudios.itch.io/sword-icons
 
 NPCS: 
 Pixel Crawler - https://anokolisa.itch.io/dungeon-crawler-pixel-art-asset-pack

@@ -61,23 +61,25 @@ var glacial = load("res://scenes/glacial.tscn")
 @onready var block_cd = $block_cd
 @onready var blocked = $blocked
 
-var buy = false
-var areas1 = []
-var dead = false
-var waking_up = true
-var attacking = false
+var waking = true
 var moving = false
-var immune = false
-var can_dash = true
 var dashing = false
-var can_block = true
+var dead = false
 var blocking = false
 var casting = false
+
+var buy = false
+var areas1 = []
+var immune = false
+var can_dash = true
+var can_block = true
+
+
 var cast_dir = 1
 var casting_speed = 0
 	
 func _physics_process(delta):
-	if waking_up:
+	if waking:
 		_waking_up()
 	#elif animated_sprite.animation == "wake" and animated_sprite.is_playing():
 	#	pass
@@ -156,21 +158,7 @@ func _physics_process(delta):
 
 func _waking_up():
 	animated_sprite.play("wake")
-	waking_up = false
-func _hit(damage: int):
-	if blocking:
-		blocked.play()
-	elif !immune and !dead and !blocking:
-		hurt.play()
-		_interrupt_casting()
-		game_manager.hp -= damage
-		animated_sprite.play("hit")
-		if game_manager.hp <= 0:
-			dead = true
-			_die()
-		if game_manager.immunity_unlocked:
-			immune = true
-			immunity.start()
+	waking = false
 func _flip(direction: int):
 	if PREVENT_FLIP.count(animated_sprite.animation) == 0:
 		if direction > 0:
@@ -367,7 +355,23 @@ func _on_dash_duration_timeout():
 	dashing = false	
 func _on_dash_cd_timeout():
 	can_dash = true
-
+	
+func hit(damage: int, dir: int):
+	if facing(dir) and blocking:
+		blocked.play()
+	elif !immune and !dead:
+		hurt.play()
+		_interrupt_casting()
+		game_manager.hp -= damage
+		animated_sprite.play("hit")
+		if game_manager.hp <= 0:
+			dead = true
+			_die()
+		if game_manager.immunity_unlocked:
+			immune = true
+			immunity.start()	
+func facing(dir: float):
+	return dir != 0 and sign(dir) != sign(cast_dir)
 func _block():
 	if can_block and game_manager.block_unlocked:
 		game_manager.block_pressed()

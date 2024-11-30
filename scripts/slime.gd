@@ -101,7 +101,7 @@ func _on_attackrange_body_exited(_body):
 
 func _on_attack_time_timeout():
 	if body_in_range and hp > 0:
-		body_in_range._hit(1)
+		body_in_range.hit(1, direction)
 
 
 

@@ -5,7 +5,6 @@ extends Area2D
 var started = false
 
 const dialogue_lines = ["Ah, look who's finally awake!", 
-"You don't remember who or where you are?... What a peculiar case...",
 "My name is Maurice. I am a council member of the organization responsible for preserving peace across Vatereo.",
 "I received an anonymous tip of your whereabouts, but when I arrived, there was no one else around.",
 "You were in the restricted zone where only a select number of powerful sorcerers are allowed entry.",

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cnpgir75n6dgl"]
+[gd_scene load_steps=24 format=3 uid="uid://cnpgir75n6dgl"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_64fqt"]
 [ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="2_mdka8"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://ct8lbviwcy0ul" path="res://assets/sprites/skills/ice/glacial.png" id="9_48gkj"]
 [ext_resource type="Texture2D" uid="uid://c2xkedgli3ilw" path="res://assets/sprites/ITEMS/spr_coin_strip4.png" id="10_a5bvh"]
 [ext_resource type="Texture2D" uid="uid://cffdvqkxhnm87" path="res://assets/sprites/skills/block/block.png" id="10_p5ism"]
-[ext_resource type="Texture2D" uid="uid://crbb3dbfdgnaf" path="res://assets/sprites/NPCS/Merchant Pack/idle.png" id="11_re4qp"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_44bov"]
 action = &"skill0"
@@ -111,6 +110,7 @@ text = "x8"
 metadata/_edit_use_anchors_ = true
 
 [node name="dialogue_box" type="Button" parent="Display"]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -337,13 +337,6 @@ wait_time = 10.0
 
 [node name="glacial_cooldown_time" type="Timer" parent="."]
 wait_time = 5.0
-
-[node name="Idle" type="Sprite2D" parent="."]
-position = Vector2(175, 104)
-scale = Vector2(2.62128, 2.62128)
-texture = ExtResource("11_re4qp")
-region_enabled = true
-region_rect = Rect2(12.5395, 19.1887, 41.2148, 31.3503)
 
 [connection signal="timeout" from="block_cooldown_time" to="." method="_on_block_cooldown_time_timeout"]
 [connection signal="timeout" from="fireball_casting_time" to="." method="_on_fireball_casting_time_timeout"]

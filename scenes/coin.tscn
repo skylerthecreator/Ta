@@ -161,7 +161,7 @@ shape = SubResource("CapsuleShape2D_putdv")
 
 [node name="pickup" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_6ls6o")
-bus = &"SFX"
+bus = &"Quieter"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

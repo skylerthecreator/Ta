@@ -12,3 +12,15 @@ res://scenes/orion.tscn
 res://scenes/scene2.gd
 res://scenes/killzone.tscn
 res://scripts/killzone.gd
+res://scripts/dialogue1.gd
+res://scripts/glacial.gd
+res://scenes/glacial.tscn
+res://scenes/slime.tscn
+res://scenes/background.tscn
+res://scripts/states/state.gd
+res://scripts/states/player state machine.gd
+res://scenes/hud.tscn
+res://scenes/spike.tscn
+res://scenes/coin.tscn
+res://scripts/slime.gd
+res://scripts/spike.gd

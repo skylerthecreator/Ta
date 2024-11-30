@@ -718,9 +718,8 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2qq0b"]
-radius = 5.0
-height = 26.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gq37k"]
+size = Vector2(9, 27)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cty86"]
 
@@ -1002,10 +1001,9 @@ sprite_frames = SubResource("SpriteFrames_vvjdw")
 animation = &"idle"
 
 [node name="playeroutline" type="CollisionShape2D" parent="."]
-visible = false
 z_index = 5
-position = Vector2(0, -13)
-shape = SubResource("CapsuleShape2D_2qq0b")
+position = Vector2(-0.5, -13.5)
+shape = SubResource("RectangleShape2D_gq37k")
 
 [node name="casting_bar" type="ProgressBar" parent="."]
 visible = false

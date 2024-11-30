@@ -107,9 +107,9 @@ func _physics_process(delta):
 		if !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()) and hp > 0 and follow_player:
 			AS.play("walk")
 			if !under.is_colliding():
-				position.y += 0.4
+				position.y += delta * SPEED
 			if dir.is_colliding():
-				position.y -= 0.4
+				position.y -= delta * SPEED
 			position.x += direction * delta * SPEED
 	else:
 		if !item_dropped:
@@ -163,7 +163,7 @@ func _on_attack_1_range_body_exited(_body):
 func _on_attack_1_time_timeout():
 	attack_1_sound.play()
 	if player and hp > 0:
-		player._hit(1)
+		player.hit(1, direction)
 
 
 func _on_attack_2_range_body_entered(body):
@@ -176,7 +176,7 @@ func _on_attack_2_time_timeout():
 	attack_2_ready = false
 	attack_2_sound.play()
 	if player2 and hp > 0:
-		player2._hit(2)
+		player2.hit(2, direction)
 func _on_attack_2_cd_timeout():
 	attack_2_ready = true
 

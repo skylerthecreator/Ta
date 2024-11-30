@@ -271,13 +271,13 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kltsy")
 }, {
-"duration": 3.0,
+"duration": 2.0,
 "texture": SubResource("AtlasTexture_eux7w")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uoc11")
 }, {
-"duration": 4.0,
+"duration": 5.0,
 "texture": SubResource("AtlasTexture_3eblp")
 }],
 "loop": false,
@@ -355,7 +355,7 @@ radius = 8.0
 height = 40.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_geciy"]
-size = Vector2(528, 71)
+size = Vector2(614, 282)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v8gja"]
 size = Vector2(34, 37)
@@ -476,7 +476,9 @@ target_position = Vector2(-7, 3)
 position = Vector2(0, -17.6)
 scale = Vector2(-0.67872, 0.67872)
 sprite_frames = SubResource("SpriteFrames_et7d2")
-animation = &"walk"
+animation = &"death"
+frame = 3
+frame_progress = 1.0
 offset = Vector2(-4, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -518,7 +520,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="vision"]
-position = Vector2(0, -35.5)
+position = Vector2(0, -21)
 shape = SubResource("RectangleShape2D_geciy")
 debug_color = Color(0.962451, 0, 0.496116, 0.419608)
 
@@ -616,7 +618,7 @@ frame_progress = 0.530709
 position = Vector2(0, -17)
 
 [node name="UNDER" type="RayCast2D" parent="."]
-position = Vector2(-8, -14)
+position = Vector2(0, -14)
 target_position = Vector2(0, 14)
 
 [node name="shield" type="Area2D" parent="."]

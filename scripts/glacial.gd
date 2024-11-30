@@ -11,7 +11,6 @@ var cast_dir = 0
 var exploding = false
 var target = null
 var ogs = 0
-
 func _ready():
 	flying.play()
 func _physics_process(delta):
@@ -34,6 +33,9 @@ func _on_area_entered(area):
 	shatter.play()
 	if area.is_in_group("enemies"):
 		area.hit(1)
+		for c in area.get_children():
+			if c is Node2D:
+				c.modulate = Color(0, 0.8, 1)
 		ogs = area.SPEED
 		target = area
 		area.SPEED *= 1.0/2.0
@@ -54,4 +56,7 @@ func _on_body_entered(_body):
 func _on_slow_time_timeout():
 	if is_instance_valid(target):
 		target.SPEED = ogs
+		for c in target.get_children():
+			if c is Node2D:
+				c.modulate = Color(1, 1, 1)
 	queue_free()

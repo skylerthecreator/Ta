@@ -11,6 +11,8 @@ var speed = MAX_SPEED
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+@onready var debug = $debug
+
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var jump = $jump
@@ -203,10 +205,13 @@ func _play_movement_animations(direction: int):
 	if is_on_floor():
 		if direction == 0:
 			animated_sprite.play("idle")
+			debug.text = "idle"
 		else:
 			animated_sprite.play("run")
+			debug.text = "run"
 	else:
 		animated_sprite.play("jump")
+		debug.text = "jump"
 		
 
 func _interrupt_casting():

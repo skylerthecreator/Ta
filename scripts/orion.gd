@@ -35,8 +35,9 @@ var buckler = load("res://scenes/mkbuckler.tscn")
 
 var SPEED = 30
 var direction = 1
-var MAX_HP = 1
-
+var MAX_HP = 15
+var ds = 25
+var gap = 0
 var begin = false
 var hp = MAX_HP
 #var hit = false
@@ -49,76 +50,85 @@ var in_range = false
 var attack_2_ready = true
 var defending = false
 var NO_MOVE = ["attack1", "attack2", "attack3", "death", "hit", "defend"]
-
+var item_dropped = false
 func _physics_process(delta):
 	update_health()
-	if hp <= MAX_HP / 2.0:
-		enragedfx.visible = true
-		enragedfx.play("default")
-		SPEED = 45
-	if hp == 10 or hp == 5:
-		AS.play("defend")
-		defending = true
-	defending = AS.animation == "defend"
-	shield.disabled = AS.animation != "defend"
-	if follow_player and !follow_player.dead:
-		var gap = follow_player.position.x - position.x
-		if gap >= 0 and !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()):
-			direction =  1
-			if AS.scale.x < 0:
-				AS.scale.x *= -1
-			if attack_1_range.scale.x > 0:
-				attack_1_range.scale.x *= -1
-				attack_2_range.scale.x *= -1
-				attackrange.scale.x *= -1
-				enragedfx.scale.x *= -1
-				dir.scale.x *= -1
-				under.position.x *= -1
-				shield.position.x *= -1
-				
-		elif gap < 0 and !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()):
-			direction = -1
-			if AS.scale.x > 0:
-				AS.scale.x *= -1
-			if attack_1_range.scale.x < 0:
-				attack_1_range.scale.x *= -1
-				enragedfx.scale.x *= -1
-				attack_2_range.scale.x *= -1
-				attackrange.scale.x *= -1
-				dir.scale.x *= -1
-				under.position.x *= -1
-				shield.position.x *= -1
-	else:
-		AS.play("idle")
+	if hp > 0:
+		if hp <= MAX_HP / 2.0:
+			enragedfx.visible = true
+			enragedfx.play("default")
+			SPEED = 45
+		if hp == 10 or hp == 5:
+			AS.play("defend")
+			defending = true
+		defending = AS.animation == "defend"
+		shield.disabled = AS.animation != "defend"
 
-	if !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()) and hp > 0 and in_range:
-		if attack_2_ready and !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()):
-			attack_2_vl.play()
-			AS.play("attack2")
-			attack_2_time.start()
-		elif !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()):
-			#attack_1_vl.play()
-			AS.play("attack1")
-			attack_1_time.start()
-	if !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()) and hp > 0 and follow_player:
-		AS.play("walk")
-		if !under.is_colliding():
-			position.y += 0.4
-		if dir.is_colliding():
-			position.y -= 0.4
-		position.x += direction * delta * SPEED
-		
-		
-		
+		if follow_player and !follow_player.dead:
+			gap = follow_player.position.x - position.x
+
+			if gap >= 0 and !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()):
+				direction =  1
+				if AS.scale.x < 0:
+					AS.scale.x *= -1
+				if attack_1_range.scale.x > 0:
+					attack_1_range.scale.x *= -1
+					attack_2_range.scale.x *= -1
+					attackrange.scale.x *= -1
+					enragedfx.scale.x *= -1
+					dir.scale.x *= -1
+					under.position.x *= -1
+					shield.position.x *= -1
+					
+			elif gap < 0 and !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()):
+				direction = -1
+				if AS.scale.x > 0:
+					AS.scale.x *= -1
+				if attack_1_range.scale.x < 0:
+					attack_1_range.scale.x *= -1
+					enragedfx.scale.x *= -1
+					attack_2_range.scale.x *= -1
+					attackrange.scale.x *= -1
+					dir.scale.x *= -1
+					under.position.x *= -1
+					shield.position.x *= -1
+		else:
+			AS.play("idle")
+
+		if !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()) and hp > 0 and in_range:
+			if attack_2_ready and !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()):
+				attack_2_vl.play()
+				AS.play("attack2")
+				attack_2_time.start()
+			elif !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()):
+				#attack_1_vl.play()
+				AS.play("attack1")
+				attack_1_time.start()
+		if !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()) and hp > 0 and follow_player:
+			AS.play("walk")
+			if !under.is_colliding():
+				position.y += 0.4
+			if dir.is_colliding():
+				position.y -= 0.4
+			position.x += direction * delta * SPEED
+	else:
+		if !item_dropped:
+			var b = buckler.instantiate()
+			owner.add_child(b)
+			b.transform = spawn.global_transform
+			item_dropped = true
+
 func update_health():
-	if hp >= MAX_HP:
-		healthbar.visible = false
-	else:
-		healthbar.visible = true
+	healthbar.visible = false if hp >= MAX_HP else true
 	if dmg_taken.text != "":
-		dmg_taken.position.y -= 0.4
+		dmg_taken.position.x += ds * -0.1 if dmg_taken.horizontal_alignment == HORIZONTAL_ALIGNMENT_LEFT else ds * 0.1
+		ds = ds * 0.9
+		dmg_taken.position.y += 0.4
 	else:
-		dmg_taken.position.y = -55
+		dmg_taken.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT if gap >= 0 else HORIZONTAL_ALIGNMENT_RIGHT
+		dmg_taken.position.x = -25
+		dmg_taken.position.y = -40
+		ds = 25
 
 func hit(damage: int):
 	hp -= damage
@@ -134,13 +144,10 @@ func hit(damage: int):
 		AS.play("death")
 		deathanimation.play("die")
 		game_manager.first_boss_complete = true
-		var b = buckler.instantiate()
-		owner.add_child(b)
-		b.transform = spawn.global_transform
 
 func _on_dtdt_timeout():
 	dmg_taken.text = ""
-	dmg_taken.position.y = -55
+	dmg_taken.position.y = -40
 func _on_vision_body_entered(body):
 	startfightsfx.play()
 	if body.is_in_group("player"):

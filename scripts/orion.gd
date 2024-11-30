@@ -97,7 +97,7 @@ func _physics_process(delta):
 			AS.play("attack2")
 			attack_2_time.start()
 		elif !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()):
-			attack_1_vl.play()
+			#attack_1_vl.play()
 			AS.play("attack1")
 			attack_1_time.start()
 	if !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()) and hp > 0 and follow_player:
@@ -133,6 +133,7 @@ func hit(damage: int):
 	else:
 		AS.play("death")
 		deathanimation.play("die")
+		game_manager.first_boss_complete = true
 		var b = buckler.instantiate()
 		owner.add_child(b)
 		b.transform = spawn.global_transform

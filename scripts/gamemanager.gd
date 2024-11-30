@@ -21,6 +21,8 @@ var immunity_unlocked = false
 var blade_ready = true
 var glacial_ready = true
 
+var first_boss_complete = false
+
 func _ready():
 	if cheats:
 		hp = MAX_HP

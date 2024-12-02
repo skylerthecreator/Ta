@@ -110,6 +110,7 @@ radius = 3.0
 height = 10.0
 
 [node name="glacial" type="Area2D"]
+z_index = 5
 collision_layer = 0
 script = ExtResource("1_k5l50")
 

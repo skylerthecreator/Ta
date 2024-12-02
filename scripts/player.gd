@@ -150,8 +150,7 @@ func _physics_process(delta):
 		else:
 			velocity.x = move_toward(velocity.x, 0, speed)
 		
-		if !(animated_sprite.animation == "wake" and animated_sprite.is_playing()):
-			move_and_slide()
+		move_and_slide()
 		
 	else:
 		pass

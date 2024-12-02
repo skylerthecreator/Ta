@@ -46,6 +46,7 @@ animations = [{
 radius = 6.0
 
 [node name="blade" type="Area2D"]
+z_index = 5
 collision_layer = 0
 script = ExtResource("1_8jgp3")
 

@@ -476,9 +476,7 @@ target_position = Vector2(-7, 3)
 position = Vector2(0, -17.6)
 scale = Vector2(-0.67872, 0.67872)
 sprite_frames = SubResource("SpriteFrames_et7d2")
-animation = &"death"
-frame = 3
-frame_progress = 1.0
+animation = &"idle"
 offset = Vector2(-4, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

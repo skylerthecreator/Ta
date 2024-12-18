@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-var MAX_SPEED = 300
+var MAX_SPEED = 100
 const JUMP_VELOCITY = -225
 const DASH_SPEED_MULTIPLIER = 4
 const PRIORITY_MOVEMENT = ["casting", "fireball", "blade", "counter", "skill1", "wake", "hit", "dash", "forbiddencasting", "forbidden", "glacial", "block"]
@@ -23,6 +23,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var playeroutline = $playeroutline
 @onready var immunity = $immunity
 @onready var passives = $passives
+@onready var land = $land
 
 
 @onready var s1_sound = $skill1sound
@@ -60,6 +61,8 @@ var glacial = load("res://scenes/glacial.tscn")
 @onready var block_duration = $block_duration
 @onready var block_cd = $block_cd
 @onready var blocked = $blocked
+@onready var go_up = $go_up
+
 
 var waking = true
 var moving = false
@@ -67,6 +70,7 @@ var dashing = false
 var dead = false
 var blocking = false
 var casting = false
+var falling = false
 
 var buy = false
 var areas1 = []
@@ -93,7 +97,13 @@ func _physics_process(delta):
 			casting_bar.value += casting_speed
 		# Add the gravity.
 		if not is_on_floor() and not dashing:
+			falling = true
 			velocity.y += gravity * delta
+		else:
+			if falling:
+				land.play()
+				falling = false
+				
 		# Handle jump.
 		if Input.is_action_just_pressed("continue"):
 			Hud.continue_dialogue()
@@ -149,7 +159,8 @@ func _physics_process(delta):
 			velocity.x = direction * speed
 		else:
 			velocity.x = move_toward(velocity.x, 0, speed)
-		
+		if is_on_floor() and go_up.is_colliding():
+			position.y -= delta * speed
 		move_and_slide()
 		
 	else:
@@ -174,6 +185,7 @@ func _flip(direction: int):
 				glacialspawn.position.x *= -1
 				block.position.x *= -1
 				block.scale.x *= -1
+				go_up.scale.x *= -1
 		elif direction < 0:
 			cast_dir = direction
 			animated_sprite.flip_h = true
@@ -188,6 +200,7 @@ func _flip(direction: int):
 				glacialspawn.position.x *= -1
 				block.position.x *= -1
 				block.scale.x *= -1
+				go_up.scale.x *= -1
 func _play_movement_animations(direction: int):
 	if is_on_floor():
 		if direction == 0:
@@ -202,7 +215,7 @@ func _play_movement_animations(direction: int):
 		
 
 func _interrupt_casting():
-	game_manager.interrupt_fireball()
+	#game_manager.interrupt_fireball()
 	casting = false
 	animated_sprite.stop()
 	fireball_sound.stop()

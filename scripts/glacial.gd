@@ -35,7 +35,7 @@ func _on_area_entered(area):
 		area.hit(1)
 		for c in area.get_children():
 			if c is Node2D:
-				c.modulate = Color(0, 0.8, 1)
+				c.modulate = Color(0, 0.7, 1)
 		ogs = area.SPEED
 		target = area
 		area.SPEED *= 1.0/2.0

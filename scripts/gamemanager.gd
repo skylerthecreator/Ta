@@ -22,6 +22,7 @@ var blade_ready = true
 var glacial_ready = true
 
 var first_boss_complete = false
+var second_boss_complete = false
 
 func _ready():
 	if cheats:
@@ -50,9 +51,9 @@ func fireball_pressed():
 func glacial_pressed():
 	if glacial_unlocked:
 		Hud.glacial_pressed()
-func interrupt_fireball():
-	if fireball_unlocked:
-		Hud.fireball_interrupted()
+#func interrupt_fireball():
+	#if fireball_unlocked:
+		#Hud.fireball_interrupted()
 func reset():
 	Hud.reset()
 

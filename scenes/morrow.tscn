@@ -449,8 +449,8 @@ position = Vector2(0, -84)
 scale = Vector2(-1, 1)
 sprite_frames = SubResource("SpriteFrames_faeyg")
 animation = &"summon"
-frame = 4
-frame_progress = 1.0
+frame = 3
+frame_progress = 0.844361
 centered = false
 offset = Vector2(-46.5, 0)
 

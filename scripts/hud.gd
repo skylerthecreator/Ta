@@ -3,8 +3,8 @@ extends Node2D
 @onready var hp = $Display/hp
 @onready var coins = $Display/coins
 @onready var fireball_icon = $Display/fireball_icon
-@onready var fireball_casting = $Display/fireball_icon/fireball_casting
-@onready var fireball_casting_time = $fireball_casting_time
+#@onready var fireball_casting = $Display/fireball_icon/fireball_casting
+#@onready var fireball_casting_time = $fireball_casting_time
 @onready var insta_cast = $Display/fireball_icon/insta_cast
 
 @onready var blade_icon = $Display/blade_icon
@@ -39,9 +39,6 @@ var block_cd = 0
 func _ready():
 	reset()
 func _physics_process(_delta):
-	if fireball_casting.visible:
-		fireball_casting.text = str(snapped(fireball_ct, 0.1))
-		fireball_ct -= 1.0/60
 	if blade_cooldown.visible:
 		blade_cooldown.text = str(snapped(blade_cd, 0.1))
 		blade_cd -= 1.0/60
@@ -64,19 +61,22 @@ func update_coins(c: int):
 func show_fireball():
 	fireball_icon.visible = true
 func fireball_pressed(instant: bool):
-	if !instant:
-		fireball_casting.visible = true
-		fireball_ct = fireball_casting_time.wait_time
-		fireball_casting_time.start()
-	else:
+	if instant:
 		insta_cast.visible = false
-func fireball_interrupted():
-	fireball_casting.visible = false
-	fireball_casting_time.stop()
-	fireball_ct = 1
-func _on_fireball_casting_time_timeout():
-	fireball_casting.visible = false
-	fireball_ct = fireball_casting_time.wait_time
+	#if !instant:
+		#pass
+		##fireball_ct = fireball_casting_time.wait_time
+		##fireball_casting_time.start()
+	#else:
+		#insta_cast.visible = false
+#func fireball_interrupted():
+	#pass
+	#fireball_casting.visible = false
+	#fireball_casting_time.stop()
+	#fireball_ct = 1
+#func _on_fireball_casting_time_timeout():
+	#fireball_casting.visible = false
+	#fireball_ct = fireball_casting_time.wait_time
 
 func show_blade():
 	blade_icon.visible = true

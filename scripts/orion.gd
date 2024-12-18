@@ -35,7 +35,7 @@ var buckler = load("res://scenes/mkbuckler.tscn")
 
 var SPEED = 30
 var direction = 1
-var MAX_HP = 15
+var MAX_HP = 1
 var ds = 25
 var gap = 0
 var begin = false
@@ -104,7 +104,7 @@ func _physics_process(delta):
 				#attack_1_vl.play()
 				AS.play("attack1")
 				attack_1_time.start()
-		if !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()) and hp > 0 and follow_player:
+		if !(NO_MOVE.count(AS.animation) != 0 and AS.is_playing()) and hp > 0 and follow_player and abs(gap) >= 5:
 			AS.play("walk")
 			if !under.is_colliding():
 				position.y += delta * SPEED

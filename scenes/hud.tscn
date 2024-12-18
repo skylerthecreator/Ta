@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cnpgir75n6dgl"]
+[gd_scene load_steps=25 format=3 uid="uid://cnpgir75n6dgl"]
 
 [ext_resource type="Script" path="res://scripts/hud.gd" id="1_64fqt"]
 [ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="2_mdka8"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://doylgdj3mc6bm" path="res://assets/sprites/skills/blade/blade.png" id="8_ohpqi"]
 [ext_resource type="Texture2D" uid="uid://ct8lbviwcy0ul" path="res://assets/sprites/skills/ice/glacial.png" id="9_48gkj"]
 [ext_resource type="Texture2D" uid="uid://c2xkedgli3ilw" path="res://assets/sprites/ITEMS/spr_coin_strip4.png" id="10_a5bvh"]
+[ext_resource type="Texture2D" uid="uid://dr22quj2am5pv" path="res://assets/sprites/skills/forbidden.png" id="10_kuby2"]
 [ext_resource type="Texture2D" uid="uid://cffdvqkxhnm87" path="res://assets/sprites/skills/block/block.png" id="10_p5ism"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_44bov"]
@@ -178,9 +179,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -304.0
+offset_left = 65.0
 offset_top = -151.0
-offset_right = -264.0
+offset_right = 105.0
 offset_bottom = -79.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -224,9 +225,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -250.0
+offset_left = 175.0
 offset_top = -151.0
-offset_right = -210.0
+offset_right = 215.0
 offset_bottom = -79.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -234,7 +235,7 @@ scale = Vector2(1.3, 1.3)
 theme_override_fonts/font = ExtResource("3_libq2")
 theme_override_font_sizes/font_size = 16
 shortcut = SubResource("Shortcut_j430o")
-text = "K"
+text = "L"
 icon = ExtResource("8_ohpqi")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -261,9 +262,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -196.0
+offset_left = 120.0
 offset_top = -151.0
-offset_right = -156.0
+offset_right = 160.0
 offset_bottom = -79.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -271,7 +272,7 @@ scale = Vector2(1.3, 1.3)
 theme_override_fonts/font = ExtResource("3_libq2")
 theme_override_font_sizes/font_size = 16
 shortcut = SubResource("Shortcut_pwvfu")
-text = "L"
+text = "K"
 icon = ExtResource("9_48gkj")
 icon_alignment = 1
 vertical_icon_alignment = 0
@@ -291,15 +292,28 @@ offset_bottom = 18.992
 theme_override_fonts/font = ExtResource("3_libq2")
 theme_override_font_sizes/font_size = 8
 
+[node name="forbidden_icon" type="Button" parent="Display"]
+offset_left = 807.0
+offset_top = 497.0
+offset_right = 847.0
+offset_bottom = 569.0
+scale = Vector2(1.3, 1.3)
+theme_override_fonts/font = ExtResource("3_libq2")
+theme_override_font_sizes/font_size = 16
+text = "N"
+icon = ExtResource("10_kuby2")
+icon_alignment = 1
+vertical_icon_alignment = 0
+
 [node name="block_icon" type="Button" parent="Display"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 147.0
+offset_left = -280.0
 offset_top = -151.0
-offset_right = 187.0
+offset_right = -240.0
 offset_bottom = -79.0
 grow_horizontal = 2
 grow_vertical = 0

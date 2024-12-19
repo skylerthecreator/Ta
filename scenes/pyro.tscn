@@ -1,8 +1,9 @@
-[gd_scene load_steps=77 format=3 uid="uid://l15uwbct7mmx"]
+[gd_scene load_steps=78 format=3 uid="uid://l15uwbct7mmx"]
 
 [ext_resource type="Script" path="res://scripts/pyro.gd" id="1_72gee"]
 [ext_resource type="Texture2D" uid="uid://sjmwewxou2k8" path="res://assets/sprites/enemies/demon/spritesheets/demon_slime_FREE_v1.0_288x160_spritesheet.png" id="2_lxr6p"]
 [ext_resource type="FontFile" uid="uid://xrudeiuywrxk" path="res://assets/fonts/PixelOperator8.ttf" id="3_b88f3"]
+[ext_resource type="FontFile" uid="uid://cj4qjstjnmyrg" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="4_6hkh0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5nojf"]
 atlas = ExtResource("2_lxr6p")
@@ -695,6 +696,33 @@ one_shot = true
 [node name="spawn_cd" type="Timer" parent="." groups=["enemies"]]
 wait_time = 10.0
 one_shot = true
+
+[node name="name" type="Label" parent="."]
+offset_left = -54.0
+offset_top = -80.0
+offset_right = 55.0
+offset_bottom = -71.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_6hkh0")
+theme_override_font_sizes/font_size = 8
+text = "Pyro"
+horizontal_alignment = 1
+
+[node name="title" type="Label" parent="name"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.495
+anchor_right = 0.495
+offset_left = -53.955
+offset_top = 11.0
+offset_right = 54.045
+offset_bottom = 19.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_b88f3")
+theme_override_font_sizes/font_size = 8
+text = "<The Hellspawn>"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [connection signal="body_entered" from="attackrange" to="." method="_on_attackrange_body_entered"]
 [connection signal="body_exited" from="attackrange" to="." method="_on_attackrange_body_exited"]

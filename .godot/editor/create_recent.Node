@@ -1,6 +1,7 @@
+Label
+RayCast2D
 Timer
 Marker2D
-RayCast2D
 Area2D
 Control
 ProgressBar
@@ -9,6 +10,5 @@ AnimatedSprite2D
 Button
 AudioStreamPlayer2D
 Node
-Label
 Sprite2D
 StaticBody2D

@@ -103,7 +103,11 @@ animation = &"die"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -5)
+position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_bt1hp")
+
+[node name="down" type="RayCast2D" parent="."]
+position = Vector2(0, -2)
+target_position = Vector2(0, 3)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

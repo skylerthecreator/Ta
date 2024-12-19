@@ -572,17 +572,32 @@ wait_time = 5.0
 stream = ExtResource("18_6ne8n")
 bus = &"SFX"
 
-[node name="title" type="Label" parent="."]
-offset_left = -52.0
-offset_top = -68.0
-offset_right = 52.0
-offset_bottom = -47.0
+[node name="name" type="Label" parent="."]
+offset_left = -54.0
+offset_top = -67.0
+offset_right = 55.0
+offset_bottom = -58.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("14_rg4lj")
 theme_override_font_sizes/font_size = 8
-text = "Mor'kul
-<The Forsaken>"
+text = "Mor'kul"
 horizontal_alignment = 1
+
+[node name="title" type="Label" parent="name"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.495
+anchor_right = 0.495
+offset_left = -53.955
+offset_top = 9.0
+offset_right = 54.045
+offset_bottom = 18.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("10_eqgdt")
+theme_override_font_sizes/font_size = 8
+text = "<The Forsaken>"
+horizontal_alignment = 1
+vertical_alignment = 2
 
 [node name="attack2_sound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_avy4o")

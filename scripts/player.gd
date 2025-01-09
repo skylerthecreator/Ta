@@ -3,9 +3,9 @@ extends CharacterBody2D
 var MAX_SPEED = 100
 const JUMP_VELOCITY = -225
 const DASH_SPEED_MULTIPLIER = 4
-const PRIORITY_MOVEMENT = ["casting", "fireball", "blade", "counter", "skill1", "wake", "hit", "dash", "forbiddencasting", "forbidden", "glacial", "block"]
-const PREVENT_START = ["casting", "fireball", "blade", "counter", "forbiddencasting", "forbidden", "glacial", "block"]
-const PREVENT_FLIP = ["fireball", "blade", "counter", "forbiddencasting", "forbidden", "dash", "glacial", "block"]
+const PRIORITY_MOVEMENT = ["casting", "fireball", "blade", "counter", "skill1", "wake", "hit", "dash", "sliding", "forbiddencasting", "forbidden", "glacial", "block"]
+const PREVENT_START = ["sliding", "casting", "fireball", "blade", "counter", "forbiddencasting", "forbidden", "glacial", "block"]
+const PREVENT_FLIP = ["sliding", "fireball", "blade", "counter", "forbiddencasting", "forbidden", "dash", "glacial", "block"]
 var speed = MAX_SPEED
 
 
@@ -24,6 +24,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var immunity = $immunity
 @onready var passives = $passives
 @onready var land = $land
+@onready var slide = $slide
 
 
 @onready var s1_sound = $skill1sound
@@ -71,6 +72,7 @@ var dead = false
 var blocking = false
 var casting = false
 var falling = false
+var sliding = false
 
 var buy = false
 var areas1 = []
@@ -103,7 +105,22 @@ func _physics_process(delta):
 			if falling:
 				land.play()
 				falling = false
-				
+		if is_on_floor() and not slide.is_colliding():
+			sliding = true
+			animated_sprite.rotation_degrees = 45
+			playeroutline.rotation_degrees = 45
+			animated_sprite.play("sliding")
+			velocity.y += gravity * delta * 25
+			velocity.x = cast_dir * MAX_SPEED * delta * 25
+			move_and_slide()
+		else:
+			sliding = false
+			if animated_sprite.is_playing() and animated_sprite.animation == "sliding":
+				animated_sprite.stop()
+				animated_sprite.rotation_degrees = 0
+				playeroutline.rotation_degrees = 0
+
+			
 		# Handle jump.
 		if Input.is_action_just_pressed("continue"):
 			Hud.continue_dialogue()
@@ -186,6 +203,8 @@ func _flip(direction: int):
 				block.position.x *= -1
 				block.scale.x *= -1
 				go_up.scale.x *= -1
+				slide.position.x *= -1
+				
 		elif direction < 0:
 			cast_dir = direction
 			animated_sprite.flip_h = true
@@ -201,6 +220,7 @@ func _flip(direction: int):
 				block.position.x *= -1
 				block.scale.x *= -1
 				go_up.scale.x *= -1
+				slide.position.x *= -1
 func _play_movement_animations(direction: int):
 	if is_on_floor():
 		if direction == 0:

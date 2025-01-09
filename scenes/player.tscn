@@ -1,4 +1,4 @@
-[gd_scene load_steps=144 format=3 uid="uid://cqnov4vrpq7a2"]
+[gd_scene load_steps=150 format=3 uid="uid://cqnov4vrpq7a2"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_osmlu"]
 [ext_resource type="AudioStream" uid="uid://lm1o1sncijak" path="res://assets/sounds/hurt.wav" id="4_nh6jv"]
@@ -53,9 +53,17 @@ region = Rect2(576, 2604, 96, 84)
 atlas = ExtResource("15_nfqb8")
 region = Rect2(480, 2604, 96, 84)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nttbx"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_twf28"]
 atlas = ExtResource("15_nfqb8")
-region = Rect2(288, 2520, 96, 84)
+region = Rect2(288, 2436, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ofyqo"]
+atlas = ExtResource("15_nfqb8")
+region = Rect2(384, 2436, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kvis"]
+atlas = ExtResource("15_nfqb8")
+region = Rect2(480, 2436, 96, 84)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_53a18"]
 atlas = ExtResource("23_itnvl")
@@ -325,6 +333,22 @@ region = Rect2(768, 2100, 96, 84)
 atlas = ExtResource("15_nfqb8")
 region = Rect2(864, 2100, 96, 84)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_hh16w"]
+atlas = ExtResource("23_itnvl")
+region = Rect2(0, 1512, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sklnb"]
+atlas = ExtResource("23_itnvl")
+region = Rect2(96, 1512, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_omwwk"]
+atlas = ExtResource("23_itnvl")
+region = Rect2(192, 1512, 96, 84)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g48wm"]
+atlas = ExtResource("23_itnvl")
+region = Rect2(288, 1512, 96, 84)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_03q65"]
 atlas = ExtResource("15_nfqb8")
 region = Rect2(0, 1848, 96, 84)
@@ -407,11 +431,17 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nttbx")
+"texture": SubResource("AtlasTexture_twf28")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ofyqo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kvis")
 }],
 "loop": true,
 "name": &"casting",
-"speed": 1.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -676,6 +706,23 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_hh16w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sklnb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_omwwk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g48wm")
+}],
+"loop": false,
+"name": &"sliding",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_03q65")
 }, {
 "duration": 1.0,
@@ -719,7 +766,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gq37k"]
-size = Vector2(9, 27)
+size = Vector2(10, 27)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cty86"]
 
@@ -995,15 +1042,16 @@ horizontal_alignment = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
-position = Vector2(0, -28)
+position = Vector2(0, -13.5)
 scale = Vector2(0.662424, 0.667223)
 sprite_frames = SubResource("SpriteFrames_vvjdw")
-animation = &"idle"
+animation = &"casting"
+frame_progress = 0.982506
+offset = Vector2(0, -22)
 
 [node name="playeroutline" type="CollisionShape2D" parent="."]
-visible = false
 z_index = 5
-position = Vector2(-0.5, -13.5)
+position = Vector2(0, -13.5)
 shape = SubResource("RectangleShape2D_gq37k")
 
 [node name="casting_bar" type="ProgressBar" parent="."]
@@ -1053,7 +1101,7 @@ stream = ExtResource("46_5ejrt")
 bus = &"SFX"
 
 [node name="fbspawn" type="Marker2D" parent="."]
-position = Vector2(-6, -16)
+position = Vector2(5, -17)
 
 [node name="bladespawn" type="Marker2D" parent="."]
 position = Vector2(14, -21)
@@ -1121,6 +1169,10 @@ bus = &"Louder"
 wait_time = 3.0
 one_shot = true
 
+[node name="slide" type="RayCast2D" parent="."]
+position = Vector2(3, 0)
+target_position = Vector2(0, 5)
+
 [node name="forbiddenspawn" type="Marker2D" parent="."]
 position = Vector2(14, -18)
 
@@ -1165,6 +1217,7 @@ stream = ExtResource("58_8om0a")
 
 [node name="go_up" type="RayCast2D" parent="."]
 position = Vector2(2, -1)
+enabled = false
 target_position = Vector2(3, 0)
 
 [node name="land" type="AudioStreamPlayer2D" parent="."]

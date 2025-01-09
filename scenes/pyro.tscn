@@ -422,7 +422,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"hit",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -607,9 +607,7 @@ script = ExtResource("1_72gee")
 position = Vector2(0, -43.5)
 scale = Vector2(0.55, 0.55)
 sprite_frames = SubResource("SpriteFrames_2gdah")
-animation = &"spawn"
-frame = 31
-frame_progress = 1.0
+animation = &"hit"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
@@ -617,6 +615,7 @@ position = Vector2(0, -24)
 shape = SubResource("CapsuleShape2D_161gr")
 
 [node name="attackrange" type="Area2D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 2
 

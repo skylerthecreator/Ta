@@ -107,8 +107,12 @@ func _physics_process(delta):
 				falling = false
 		if is_on_floor() and not slide.is_colliding():
 			sliding = true
-			animated_sprite.rotation_degrees = 45
-			playeroutline.rotation_degrees = 45
+			if cast_dir > 0:
+				animated_sprite.rotation_degrees = 45
+				playeroutline.rotation_degrees = 45
+			else:
+				animated_sprite.rotation_degrees = 315
+				playeroutline.rotation_degrees = 315
 			animated_sprite.play("sliding")
 			velocity.y += gravity * delta * 25
 			velocity.x = cast_dir * MAX_SPEED * delta * 25
@@ -192,10 +196,9 @@ func _flip(direction: int):
 			cast_dir = direction
 			animated_sprite.flip_h = false
 			fireball_chargeup.flip_h = false
-			if fbspawn.position.x > 0:
+			if bladespawn.position.x < 0:
 				fbspawn.position.x *= -1
 				fireball_chargeup.position.x *= -1
-			if bladespawn.position.x < 0:
 				bladespawn.position.x *= -1
 				forbiddenspawn.position.x *= -1
 				forbidden_chargeup.scale.x *= -1
@@ -209,10 +212,9 @@ func _flip(direction: int):
 			cast_dir = direction
 			animated_sprite.flip_h = true
 			fireball_chargeup.flip_h = true
-			if fbspawn.position.x < 0:
+			if bladespawn.position.x > 0:
 				fbspawn.position.x *= -1
 				fireball_chargeup.position.x *= -1
-			if bladespawn.position.x > 0:
 				bladespawn.position.x *= -1
 				forbiddenspawn.position.x *= -1
 				forbidden_chargeup.scale.x *= -1

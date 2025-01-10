@@ -128,7 +128,7 @@ z_index = 5
 position = Vector2(-25, -23)
 scale = Vector2(0.48, 0.48)
 sprite_frames = SubResource("SpriteFrames_6y1km")
-animation = &"explode"
+animation = &"chargeup"
 centered = false
 
 [node name="fireball_shape" type="CollisionShape2D" parent="."]

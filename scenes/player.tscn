@@ -1050,6 +1050,7 @@ frame_progress = 0.982506
 offset = Vector2(0, -22)
 
 [node name="playeroutline" type="CollisionShape2D" parent="."]
+visible = false
 z_index = 5
 position = Vector2(0, -13.5)
 shape = SubResource("RectangleShape2D_gq37k")
@@ -1101,7 +1102,7 @@ stream = ExtResource("46_5ejrt")
 bus = &"SFX"
 
 [node name="fbspawn" type="Marker2D" parent="."]
-position = Vector2(5, -17)
+position = Vector2(5, -18)
 
 [node name="bladespawn" type="Marker2D" parent="."]
 position = Vector2(14, -21)
@@ -1111,12 +1112,12 @@ one_shot = true
 
 [node name="fireball_chargeup" type="AnimatedSprite2D" parent="."]
 visible = false
-z_index = 1
-position = Vector2(-7, -15)
+position = Vector2(5, -18)
 scale = Vector2(0.35, 0.35)
 sprite_frames = SubResource("SpriteFrames_0hdij")
 frame = 3
 frame_progress = 1.0
+offset = Vector2(-2, 2)
 
 [node name="death_timer" type="Timer" parent="."]
 wait_time = 1.5
@@ -1171,7 +1172,7 @@ one_shot = true
 
 [node name="slide" type="RayCast2D" parent="."]
 position = Vector2(3, 0)
-target_position = Vector2(0, 5)
+target_position = Vector2(0, 3)
 
 [node name="forbiddenspawn" type="Marker2D" parent="."]
 position = Vector2(14, -18)
